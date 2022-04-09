@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+<% _.each(allTokens, function(prop) {
+    // Notice: this is an alternative way to use Lodash templating syntax,
+    // that uses string concatenation and the print() function to have
+    // more control over the indentation, whitespace, newlines, etc.
+    var output = "";
+    output += "\t<" + "style" + " name=\"" + prop.name + "\">";
+
+    var items = "";
+    items += "\n\t\t<item" + " name=android:fontFamily>";
+    items += prop.value.fontFamily
+    items += "</item>";
+    items += "\n\t\t<item" + " name=android:textSize>";
+    items += "@font_size/fontsize_" + prop.name;
+    items += "</item>";
+
+    output += items;
+
+    output += "\n\t</" + "style" + ">";
+    if(prop.comment) {
+    output += "<!-- " + prop.comment + " -->";
+    }
+    output += "\n";
+    print(output);
+});
+%></resources>

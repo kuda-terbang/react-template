@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+<% _.each(allTokens, function(prop) {
+    // Notice: this is an alternative way to use Lodash templating syntax,
+    // that uses string concatenation and the print() function to have
+    // more control over the indentation, whitespace, newlines, etc.
+    var output = "";
+    output += "\t<" + "dimen" + " name=\"fontsize_" + prop.name + "\">";
+
+    output += prop.value.fontSize + "sp";
+
+    output += "</" + "dimen" + ">";
+    if(prop.comment) {
+    output += "<!-- " + prop.comment + " -->";
+    }
+    output += "\n";
+    print(output);
+});
+%></resources>

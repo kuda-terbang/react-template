@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<dimen name="fontsize_font_m3_display1">64sp</dimen>
+	<dimen name="fontsize_font_m3_display2">57sp</dimen>
+	<dimen name="fontsize_font_m3_display3">45sp</dimen>
+	<dimen name="fontsize_font_m3_headline1">36sp</dimen>
+	<dimen name="fontsize_font_m3_headline2">32sp</dimen>
+	<dimen name="fontsize_font_m3_headline3">28sp</dimen>
+	<dimen name="fontsize_font_m3_headline4">24sp</dimen>
+	<dimen name="fontsize_font_m3_headline5">22sp</dimen>
+	<dimen name="fontsize_font_m3_headline6">18sp</dimen>
+	<dimen name="fontsize_font_m3_subhead1">16sp</dimen>
+	<dimen name="fontsize_font_m3_subhead2">14sp</dimen>
+	<dimen name="fontsize_font_m3_button">14sp</dimen>
+	<dimen name="fontsize_font_m3_body1">16sp</dimen>
+	<dimen name="fontsize_font_m3_body2">14sp</dimen>
+	<dimen name="fontsize_font_m3_caption">12sp</dimen>
+	<dimen name="fontsize_font_m3_overline">12sp</dimen>
+	<dimen name="fontsize_font_m3_labelsmall">11sp</dimen>
+	<dimen name="fontsize_font_m3_display_large">57sp</dimen>
+	<dimen name="fontsize_font_m3_display_medium">45sp</dimen>
+	<dimen name="fontsize_font_m3_display_small">36sp</dimen>
+	<dimen name="fontsize_font_m3_headline_large">32sp</dimen>
+	<dimen name="fontsize_font_m3_headline_medium">28sp</dimen>
+	<dimen name="fontsize_font_m3_headline_small">24sp</dimen>
+	<dimen name="fontsize_font_m3_title_large">22sp</dimen>
+	<dimen name="fontsize_font_m3_title_medium">16sp</dimen>
+	<dimen name="fontsize_font_m3_title_small">14sp</dimen>
+	<dimen name="fontsize_font_m3_label_large">14sp</dimen>
+	<dimen name="fontsize_font_m3_label_medium">12sp</dimen>
+	<dimen name="fontsize_font_m3_label_small">11sp</dimen>
+	<dimen name="fontsize_font_m3_body_large">16sp</dimen>
+	<dimen name="fontsize_font_m3_body_medium">14sp</dimen>
+	<dimen name="fontsize_font_m3_body_small">12sp</dimen>
+</resources>
