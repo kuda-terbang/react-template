@@ -1,0 +1,13 @@
+{
+  "name": "custom-icons",
+  "version": "0.1.0",
+  "description": "Custom icons",
+  "scripts": {
+    "build": "yarn run build:web && yarn run build:native",
+    "build:web": "npx @svgr/cli --typescript --out-dir dist -- icons",
+    "build:native": "npx @svgr/cli --typescript --native --out-dir dist-native -- icons"
+  },
+  "devDependencies": {
+    "@svgr/core": "^6.2.1"
+  }
+}
