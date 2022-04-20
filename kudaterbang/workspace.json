@@ -1,7 +1,0 @@
-{
-  "version": 2,
-  "projects": {
-    "design-token": "packages/design-token",
-    "design-token-e2e": "e2e/design-token-e2e"
-  }
-}
