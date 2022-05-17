@@ -1,11 +1,18 @@
 {
-  "extends": "@nrwl/workspace/presets/core.json",
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "npmScope": "kudaterbang",
   "affected": {
     "defaultBase": "main"
   },
   "cli": {
     "defaultCollection": "@nrwl/workspace"
+  },
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    ".eslintrc.json": "*"
   },
   "tasksRunnerOptions": {
     "default": {
@@ -17,6 +24,30 @@
           "test",
           "e2e"
         ]
+      }
+    }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "style": "styled-components",
+        "linter": "eslint",
+        "babel": true
+      },
+      "component": {
+        "style": "styled-components"
+      },
+      "library": {
+        "style": "styled-components",
+        "linter": "eslint"
       }
     }
   }

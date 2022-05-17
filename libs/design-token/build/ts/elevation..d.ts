@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sat, 09 Apr 2022 07:45:59 GMT
+ * Generated on Tue, 17 May 2022 07:31:53 GMT
  */
 
 export const EffectM3ElevationLight10 : { shadowType: string, radius: number, color: string, offsetX: number, offsetY: number, spread: number };

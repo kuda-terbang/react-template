@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sat, 09 Apr 2022 07:45:59 GMT
+ * Generated on Tue, 17 May 2022 07:31:53 GMT
  */
 
 export const FontM3Display1 = {"fontSize":64,"textDecoration":"none","fontFamily":"Roboto","fontWeight":400,"fontStyle":"normal","fontStretch":"normal","letterSpacing":-0.5,"lineHeight":76,"paragraphIndent":0,"paragraphSpacing":0,"textCase":"none"};
