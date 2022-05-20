@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "custom-generator",
+  "version": "0.0.1",
+  "generators": {
+    "design-token": {
+      "factory": "./src/generators/design-token/design-token",
+      "schema": "./src/generators/design-token/schema.json",
+      "description": "design-token generator"
+    }
+  }
+}

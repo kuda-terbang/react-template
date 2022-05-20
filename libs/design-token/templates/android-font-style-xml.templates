@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-<% _.each(allTokens, function(prop) {
+<% allTokens.forEach(function(prop) {
     // Notice: this is an alternative way to use Lodash templating syntax,
     // that uses string concatenation and the print() function to have
     // more control over the indentation, whitespace, newlines, etc.

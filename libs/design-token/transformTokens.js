@@ -11,11 +11,11 @@ const logIfValueNotExist = (message, token) => {
 
 StyleDictionary.registerFormat({
   name: 'custom/format/android-font-style-xml',
-  formatter: _.template(fs.readFileSync(__dirname + '/templates/android-font-style-xml.template'))
+  formatter: _.template(fs.readFileSync(__dirname + '/templates/android-font-style-xml.templates'))
 });
 StyleDictionary.registerFormat({
   name: 'custom/format/android-font-size-xml',
-  formatter: _.template(fs.readFileSync(__dirname + '/templates/android-font-size-xml.template'))
+  formatter: _.template(fs.readFileSync(__dirname + '/templates/android-font-size-xml.templates'))
 });
 
 StyleDictionary.registerTransform({
