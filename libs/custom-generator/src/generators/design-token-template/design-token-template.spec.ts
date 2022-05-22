@@ -1,7 +1,7 @@
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import { Tree, readProjectConfiguration } from '@nrwl/devkit';
 
-import generator from './design-token';
+import generator from './design-token-template';
 import { CustomGeneratorGeneratorSchema } from './schema';
 
 describe('custom-generator generator', () => {

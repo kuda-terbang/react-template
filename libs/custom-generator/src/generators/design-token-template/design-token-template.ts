@@ -43,12 +43,12 @@ async function addFiles(tree: Tree, options: NormalizedSchema) {
     ...options,
     ...names(options.name),
     offsetFromRoot: offsetFromRoot(options.projectRoot),
-    // Define variable used in design-token template as it is
+    // Define variable used in design-token-template template as it is
     allTokens: [],
   };
 
   // Copy paste template value
-  const designTokenTemplatePath = '/libs/design-token/templates'
+  const designTokenTemplatePath = '/libs/design-token-template/templates'
   const templateFiles = tree.children(designTokenTemplatePath)
   const fileContents = []
 
@@ -62,11 +62,11 @@ async function addFiles(tree: Tree, options: NormalizedSchema) {
     const deleteFilePath = `libs/${options.name}/templates/${templateFile}`
     tree.delete(deleteFilePath)
   })
-  logger.log('COPY', 'package design-token/template')
+  logger.log('COPY', 'package design-token-template/template')
 
   generateFiles(
     tree,
-    tree.root.concat('/libs/design-token'),
+    tree.root.concat('/libs/design-token-template'),
     options.projectRoot,
     templateOptions
   );

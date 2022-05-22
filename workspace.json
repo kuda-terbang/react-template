@@ -2,7 +2,7 @@
   "version": 2,
   "projects": {
     "custom-generator": "libs/custom-generator",
-    "design-token": "libs/design-token",
+    "design-token-template": "libs/design-token-template",
     "icons": "libs/icons"
   }
 }
