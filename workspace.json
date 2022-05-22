@@ -3,6 +3,6 @@
   "projects": {
     "custom-generator": "libs/custom-generator",
     "design-token-template": "libs/design-token-template",
-    "icons": "libs/icons"
+    "icons-template": "libs/icons-template"
   }
 }
