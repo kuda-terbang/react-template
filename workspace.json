@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "projects": {
+    "custom-generator": "libs/custom-generator",
+    "design-token-template": "libs/design-token-template",
+    "icons-template": "libs/icons-template"
+  }
+}
