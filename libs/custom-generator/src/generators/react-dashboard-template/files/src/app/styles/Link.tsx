@@ -10,9 +10,7 @@ const LinkBehavior = React.forwardRef<
 >((props, ref) => {
   const { href, ...other } = props;
   // Map href (MUI) -> to (react-router)
-  return (
-    <RouterLink data-testid="custom-link" ref={ref} to={href} {...other} />
-  );
+  return <RouterLink data-testid="custom-link" ref={ref} to={href} {...other} />;
 });
 
-export default LinkBehavior;
+export default LinkBehavior

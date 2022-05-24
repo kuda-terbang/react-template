@@ -3,7 +3,7 @@ import { red } from '@mui/material/colors';
 import type { LinkProps } from '@mui/material/Link';
 import type { CSSInterpolation } from '@mui/material';
 
-import Link from './Link';
+import Link from './Link'
 
 // A custom theme for this app
 const theme = createTheme({
@@ -15,13 +15,13 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           textDecoration: 'none',
-        } as CSSInterpolation,
-      },
+        } as CSSInterpolation
+      }
     },
     MuiListItemButton: {
       defaultProps: {
         LinkComponent: Link,
-      },
+      }
     },
     MuiButtonBase: {
       defaultProps: {

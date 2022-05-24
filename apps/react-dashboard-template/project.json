@@ -19,7 +19,7 @@
           "apps/react-dashboard-template/src/favicon.ico",
           "apps/react-dashboard-template/src/assets"
         ],
-        "styles": [],
+        "styles": ["apps/react-dashboard-template/src/styles.css"],
         "scripts": [],
         "webpackConfig": "@nrwl/react/plugins/webpack"
       },

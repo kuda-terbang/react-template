@@ -12,6 +12,11 @@
       "factory": "./src/generators/icons/icons",
       "schema": "./src/generators/icons/schema.json",
       "description": "generate icons template"
+    },
+    "react-dashboard-template": {
+      "factory": "./src/generators/react-dashboard-template/react-dashboard-template",
+      "schema": "./src/generators/react-dashboard-template/schema.json",
+      "description": "generate react dashboard"
     }
   }
 }

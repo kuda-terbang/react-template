@@ -1,17 +1,22 @@
-import React from 'react';
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import React from 'react'
+import {
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
 
-import Layout from '../../components/Layout';
+import Layout from '../../components/Layout'
 
 const useElementBuilder = (
   Component: React.LazyExoticComponent<() => JSX.Element>,
   options?: {
-    isProtected: boolean;
-  }
+    isProtected: boolean
+  },
 ) => {
   // TODO: connect to global state
-  const isAuthenticated = true;
-  const location = useLocation();
+  const isAuthenticated = true
+  const location = useLocation()
 
   if (options?.isProtected && !isAuthenticated) {
     return <Navigate to="/" state={{ from: location }} replace />;
@@ -20,10 +25,10 @@ const useElementBuilder = (
     <React.Suspense fallback={<>...</>}>
       <Component />
     </React.Suspense>
-  );
-};
+  )
+}
 
-const Home = React.lazy(() => import('../pages/home'));
+const Home = React.lazy(() => import('../pages/home'))
 
 const RootRoutes = () => {
   return (
@@ -33,7 +38,7 @@ const RootRoutes = () => {
         <Route path="*" element={<>No page</>} />
       </Route>
     </Routes>
-  );
-};
+  )
+}
 
-export default RootRoutes;
+export default RootRoutes

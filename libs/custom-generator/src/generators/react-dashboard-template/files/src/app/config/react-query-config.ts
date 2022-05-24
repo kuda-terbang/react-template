@@ -4,4 +4,4 @@ export const config = {
       refetchOnWindowFocus: false,
     },
   },
-};
+}
