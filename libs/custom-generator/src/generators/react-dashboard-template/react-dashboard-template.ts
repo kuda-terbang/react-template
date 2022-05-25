@@ -1,22 +1,15 @@
 import {
   formatFiles,
-  generateFiles,
   getWorkspaceLayout,
-  logger,
   names,
-  offsetFromRoot,
   Tree,
 } from '@nrwl/devkit';
 import { applicationGenerator } from '@nrwl/react'
-import * as path from 'path';
-import { ReactDashboardTemplateGeneratorSchema } from './schema';
 
-interface NormalizedSchema extends ReactDashboardTemplateGeneratorSchema {
-  projectName: string;
-  projectRoot: string;
-  projectDirectory: string;
-  parsedTags: string[]
-}
+import { ReactDashboardTemplateGeneratorSchema } from './schema';
+import { addFiles } from './util-file'
+import generateCraTemplate from './generate-cra-template'
+import type { NormalizedSchema } from './types'
 
 function normalizeOptions(tree: Tree, options: ReactDashboardTemplateGeneratorSchema): NormalizedSchema {
   const name = names(options.name).fileName;
@@ -36,16 +29,6 @@ function normalizeOptions(tree: Tree, options: ReactDashboardTemplateGeneratorSc
   };
 }
 
-function addFiles(tree: Tree, options: NormalizedSchema) {
-  const templateOptions = {
-    ...options,
-    ...names(options.name),
-    offsetFromRoot: offsetFromRoot(options.projectRoot),
-    template: ''
-  };
-  generateFiles(tree, path.join(__dirname, 'files'), options.projectRoot, templateOptions);
-}
-
 export default async function (tree: Tree, options: ReactDashboardTemplateGeneratorSchema) {
   const normalizedOptions = normalizeOptions(tree, options);
 
@@ -53,12 +36,11 @@ export default async function (tree: Tree, options: ReactDashboardTemplateGenera
     ...normalizedOptions,
   });
 
-  addFiles(tree, normalizedOptions);
+  addFiles(tree, normalizedOptions, 'files');
   
-  logger.log('COPY env file')
-  const envFile = tree.read(normalizedOptions.projectRoot.concat('/.env-example'))
-  const envPath = normalizedOptions.projectRoot.concat('/.env')
-  tree.write(envPath, envFile)
+  if (normalizedOptions.isCraTemplate) {
+    generateCraTemplate(tree, normalizedOptions)
+  }
 
   await formatFiles(tree);
   return () => installDeps()

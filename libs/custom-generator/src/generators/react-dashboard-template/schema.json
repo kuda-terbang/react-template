@@ -143,6 +143,11 @@
       "description": "The compiler to use.",
       "enum": ["babel", "swc"],
       "default": "babel"
+    },
+    "isCraTemplate": {
+      "type": "boolean",
+      "description": "Build create react application template",
+      "default": false
     }
   },
   "required": ["name"]

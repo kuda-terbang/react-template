@@ -1,0 +1,25 @@
+{
+  "name": "cra-template-dashboard",
+  "version": "0.0.1",
+  "description": "Production ready react dashboard boilerplate",
+  "repository": "https://github.com/kudaterbang/design-system-template.git",
+  "author": "Robby Caesar Putra <robbycaesar@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "boilerplate",
+    "template",
+    "starter",
+    "redux",
+    "redux-saga",
+    "typescript"
+  ],
+  "homepage": "https://github.com/robbycp/react-dashboard-boilerplate",
+  "bugs": {
+    "url": "https://github.com/robbycp/react-dashboard-boilerplate/issues"
+  },
+  "funding": {
+    "type" : "individual",
+    "url" : "https://www.buymeacoffee.com/robbycp"
+  }
+}

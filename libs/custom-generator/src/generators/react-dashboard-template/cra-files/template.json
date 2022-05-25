@@ -1,0 +1,24 @@
+{
+  "package": {
+    "dependencies": {
+      "@emotion/react": "^11.9.0",
+      "@emotion/styled": "^11.8.1",
+      "@mui/icons-material": "^5.8.0",
+      "@mui/material": "^5.8.0",
+      "eslint-plugin-jsx-a11y": "^6.2.3",
+      "notistack": "^2.0.5",
+      "react-query": "^3.39.0",
+      "react-router-dom": "6.3.0",
+      "styled-components": "5.3.5",
+      "serve": "^11.2.0"
+    },
+    "scripts": {
+      "serve": "serve -s build",
+      "build-and-serve": "npm run build && npm run serve"
+    },
+    "eslintConfig": {
+      "extends": ["react-app", "plugin:jsx-a11y/recommended"],
+      "plugins": ["jsx-a11y"]
+    }
+  }
+}

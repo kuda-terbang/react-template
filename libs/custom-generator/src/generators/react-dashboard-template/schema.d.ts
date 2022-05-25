@@ -21,4 +21,5 @@ export interface ReactDashboardTemplateGeneratorSchema {
     compiler?: 'babel' | 'swc';
     remotes?: string[];
     devServerPort?: number;
+    isCraTemplate?: boolean;
 }
