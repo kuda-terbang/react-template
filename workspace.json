@@ -4,7 +4,6 @@
     "custom-generator": "libs/custom-generator",
     "design-token-template": "libs/design-token-template",
     "icons-template": "libs/icons-template",
-    "react-dashboard-example": "apps/react-dashboard-example",
-    "react-dashboard-template": "apps/react-dashboard-template"
+    "react-dashboard-example": "apps/react-dashboard-example"
   }
 }
