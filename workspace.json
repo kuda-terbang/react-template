@@ -2,7 +2,7 @@
   "version": 2,
   "projects": {
     "custom-generator": "libs/custom-generator",
-    "design-token-template": "libs/design-token-template",
+    "design-token-example": "libs/design-token-example",
     "icons-example": "libs/icons-example",
     "react-dashboard-example": "apps/react-dashboard-example"
   }
