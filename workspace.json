@@ -3,7 +3,7 @@
   "projects": {
     "custom-generator": "libs/custom-generator",
     "design-token-template": "libs/design-token-template",
-    "icons-template": "libs/icons-template",
+    "icons-example": "libs/icons-example",
     "react-dashboard-example": "apps/react-dashboard-example"
   }
 }

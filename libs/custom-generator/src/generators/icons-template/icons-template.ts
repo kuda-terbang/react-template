@@ -7,6 +7,7 @@ import {
   offsetFromRoot,
   Tree,
 } from '@nrwl/devkit';
+import * as path from 'path';
 import { IconsGeneratorSchema } from './schema';
 
 interface NormalizedSchema extends IconsGeneratorSchema {
@@ -41,7 +42,7 @@ function addFiles(tree: Tree, options: NormalizedSchema) {
       offsetFromRoot: offsetFromRoot(options.projectRoot),
       template: ''
     };
-    generateFiles(tree, tree.root.concat('/libs/icons-template'), options.projectRoot, templateOptions);
+    generateFiles(tree, path.join(__dirname, 'files'), options.projectRoot, templateOptions);
 }
 
 export default async function (tree: Tree, options: IconsGeneratorSchema) {

@@ -8,9 +8,9 @@
       "schema": "./src/generators/design-token-template/schema.json",
       "description": "design-token-template generator"
     },
-    "icons": {
-      "factory": "./src/generators/icons/icons",
-      "schema": "./src/generators/icons/schema.json",
+    "icons-template": {
+      "factory": "./src/generators/icons-template/icons-template",
+      "schema": "./src/generators/icons-template/schema.json",
       "description": "generate icons template"
     },
     "react-dashboard-template": {

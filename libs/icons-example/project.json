@@ -1,0 +1,11 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/icons-example/src",
+  "targets": {
+    "build": {
+      "executor": "@kudaterbang/custom-generator:build"
+    }
+  },
+  "tags": []
+}

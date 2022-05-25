@@ -1,7 +1,7 @@
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import { Tree, readProjectConfiguration } from '@nrwl/devkit';
 
-import generator from './icons';
+import generator from './icons-template';
 import { IconsGeneratorSchema } from './schema';
 
 describe('icons generator', () => {
