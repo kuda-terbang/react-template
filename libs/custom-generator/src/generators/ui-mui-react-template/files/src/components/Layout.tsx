@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
-import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom'
 import Box from '@mui/material/Box';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -18,9 +18,6 @@ import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-
-import logo from '../assets/img/logo.svg';
-import { menus } from '../app/config/menus';
 
 const drawerWidth = 240;
 
@@ -76,58 +73,71 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
-const Drawer = styled(MuiDrawer, {
-  shouldForwardProp: (prop) => prop !== 'open',
-})(({ theme, open }) => ({
-  width: drawerWidth,
-  flexShrink: 0,
-  whiteSpace: 'nowrap',
-  boxSizing: 'border-box',
-  ...(open && {
-    ...openedMixin(theme),
-    '& .MuiDrawer-paper': openedMixin(theme),
+const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
+  ({ theme, open }) => ({
+    width: drawerWidth,
+    flexShrink: 0,
+    whiteSpace: 'nowrap',
+    boxSizing: 'border-box',
+    ...(open && {
+      ...openedMixin(theme),
+      '& .MuiDrawer-paper': openedMixin(theme),
+    }),
+    ...(!open && {
+      ...closedMixin(theme),
+      '& .MuiDrawer-paper': closedMixin(theme),
+    }),
   }),
-  ...(!open && {
-    ...closedMixin(theme),
-    '& .MuiDrawer-paper': closedMixin(theme),
-  }),
-}));
+);
 
 interface LogoProps extends React.HTMLProps<HTMLImageElement> {
-  isDrawer?: boolean;
-  open: boolean;
+  isDrawer?: boolean
+  open: boolean
 }
 
-const Logo = styled('img', {
-  shouldForwardProp: (props) => props !== 'isDrawer',
-})<LogoProps>(({ open, isDrawer, theme }) => {
+const Logo = styled(
+  'img',
+  { shouldForwardProp: (props) => props !== 'isDrawer' },
+)<LogoProps>(({ open, isDrawer, theme }) => {
   const logoSize = {
     height: theme.spacing(5),
     width: theme.spacing(5),
-  };
+  }
   if (isDrawer) {
     return {
       ...logoSize,
       ...(!open && {
-        display: 'none',
-      }),
-    };
+        display: 'none'
+      })
+    }
   }
   return {
     ...logoSize,
     marginRight: theme.spacing(3),
     ...(open && {
-      display: 'none',
-    }),
-  };
-});
-
-export default function Layout() {
+      display: 'none'
+    })
+  }
+})
+export interface LayoutProps {
+  logo: string;
+  menus: {
+    isDivider?: boolean,
+    isProtected?: boolean,
+    name: string,
+    route: string,
+    Icon?: typeof MenuIcon
+  }[]
+}
+export default function Layout({
+  logo,
+  menus,
+}: LayoutProps) {
   const theme = useTheme();
 
   const [open, setOpen] = React.useState(false);
   // TODO: connect to global state
-  const isAuthenticated = true;
+  const isAuthenticated = true
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -159,23 +169,14 @@ export default function Layout() {
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           {isAuthenticated && (
-            <Typography
-              variant="body1"
-              noWrap
-              component="div"
-              sx={{ marginRight: theme.spacing(2) }}
-            >
+            <Typography variant="body1" noWrap component="div" sx={{ marginRight: theme.spacing(2) }}>
               robbycaesar@gmail.com
             </Typography>
           )}
           {isAuthenticated && (
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
               <Tooltip title="Logout">
-                <IconButton
-                  size="large"
-                  aria-label="logout icon"
-                  color="inherit"
-                >
+                <IconButton size="large" aria-label="logout icon" color="inherit">
                   <LogoutIcon />
                 </IconButton>
               </Tooltip>
@@ -187,35 +188,31 @@ export default function Layout() {
         <DrawerHeader>
           <Logo src={logo} alt="logo-appbar" open={open} isDrawer />
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
+            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
         <Divider />
         <List>
           {menus.map(({ isDivider, isProtected, name, route, Icon }) => {
             if (isProtected && !isAuthenticated) {
-              return null;
+              return null
             }
             const listButton = (
               <ListItemButton key={name} divider={isDivider}>
-                <ListItemIcon>
-                  <Icon />
-                </ListItemIcon>
+                {!!Icon && (
+                  <ListItemIcon>
+                    <Icon />
+                  </ListItemIcon>
+                )}
                 <ListItemText primary={name} />
               </ListItemButton>
-            );
+            )
 
             return route ? (
               <Link href={route} key={name}>
                 {listButton}
               </Link>
-            ) : (
-              listButton
-            );
+            ) : listButton
           })}
           {isAuthenticated && (
             <ListItemButton key="Logout">

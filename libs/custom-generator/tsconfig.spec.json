@@ -5,5 +5,5 @@
     "module": "commonjs",
     "types": ["jest", "node"]
   },
-  "include": ["jest.config.ts", "**/*.test.ts", "**/*.spec.ts", "**/*.d.ts", "src/generators/react-dashboard-template/react-dashboard-template.ts"]
+  "include": ["jest.config.ts", "**/*.test.ts", "**/*.spec.ts", "**/*.d.ts", "src/generators/react-dashboard-template/react-dashboard-template.ts", "src/generators/ui-mui-react-template/ui-mui-react-template.ts"]
 }

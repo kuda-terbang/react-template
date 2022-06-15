@@ -3,6 +3,9 @@ import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 
 import Layout from '../../components/Layout';
 
+import logo from '../../assets/img/logo.svg';
+import { menus } from '../config/menus';
+
 const useElementBuilder = (
   Component: React.LazyExoticComponent<() => JSX.Element>,
   options?: {
@@ -28,7 +31,7 @@ const Home = React.lazy(() => import('../pages/home'));
 const RootRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route path="/" element={<Layout logo={logo} menus={menus} />}>
         <Route index element={useElementBuilder(Home)} />
         <Route path="*" element={<>No page</>} />
       </Route>

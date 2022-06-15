@@ -19,7 +19,7 @@
           "apps/react-dashboard-example/src/favicon.ico",
           "apps/react-dashboard-example/src/assets"
         ],
-        "styles": ["apps/react-dashboard-example/src/styles.css"],
+        "styles": [],
         "scripts": [],
         "webpackConfig": "@nrwl/react/plugins/webpack"
       },

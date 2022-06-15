@@ -54,11 +54,6 @@ export default async function (tree: Tree, options: IconsGeneratorSchema) {
       root: normalizedOptions.projectRoot,
       projectType: 'library',
       sourceRoot: `${normalizedOptions.projectRoot}/src`,
-      targets: {
-        build: {
-          executor: "@kudaterbang/custom-generator:build",
-        },
-      },
       tags: normalizedOptions.parsedTags,
     }
   );

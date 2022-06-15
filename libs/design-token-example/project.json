@@ -1,11 +1,6 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "libs/design-token-example/src",
-  "targets": {
-    "build": {
-      "executor": "@kudaterbang/custom-generator:build"
-    }
-  },
+  "sourceRoot": "libs/design-token-example/build",
   "tags": []
 }

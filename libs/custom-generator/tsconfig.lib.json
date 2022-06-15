@@ -5,6 +5,6 @@
     "declaration": true,
     "types": []
   },
-  "include": ["**/*.ts"],
+  "include": ["**/*.ts", "src/generators/ui-mui-react-template/files/src/index.tsx", "src/generators/ui-mui-react-template/files/src/components/index.tsx", "src/generators/react-dashboard-template/files/src/app/styles/override-component/index.tsx"],
   "exclude": ["jest.config.ts", "**/*.spec.ts", "**/*.test.ts"]
 }

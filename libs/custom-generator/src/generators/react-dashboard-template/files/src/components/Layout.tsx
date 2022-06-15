@@ -19,9 +19,6 @@ import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 
-import logo from '../assets/img/logo.svg';
-import { menus } from '../app/config/menus';
-
 const drawerWidth = 240;
 
 const openedMixin = (theme: Theme): CSSObject => ({
@@ -122,8 +119,20 @@ const Logo = styled(
     })
   }
 })
-
-export default function Layout() {
+export interface LayoutProps {
+  logo: string;
+  menus: {
+    isDivider?: boolean,
+    isProtected?: boolean,
+    name: string,
+    route: string,
+    Icon?: typeof MenuIcon
+  }[]
+}
+export default function Layout({
+  logo,
+  menus,
+}: LayoutProps) {
   const theme = useTheme();
 
   const [open, setOpen] = React.useState(false);
@@ -190,9 +199,11 @@ export default function Layout() {
             }
             const listButton = (
               <ListItemButton key={name} divider={isDivider}>
-                <ListItemIcon>
-                  <Icon />
-                </ListItemIcon>
+                {!!Icon && (
+                  <ListItemIcon>
+                    <Icon />
+                  </ListItemIcon>
+                )}
                 <ListItemText primary={name} />
               </ListItemButton>
             )

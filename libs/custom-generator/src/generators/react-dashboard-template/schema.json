@@ -148,6 +148,11 @@
       "type": "boolean",
       "description": "Build create react application template",
       "default": false
+    },
+    "isUseDesignTheme": {
+      "type": "boolean",
+      "description": "Use design token generated from @kudaterbang/design-token-template. It's not working when isCraTemplate is true",
+      "default": false
     }
   },
   "required": ["name"]

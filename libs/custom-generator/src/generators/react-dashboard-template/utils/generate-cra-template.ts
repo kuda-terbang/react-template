@@ -1,7 +1,7 @@
-import { moveFilesToNewDirectory, logger, Tree, updateProjectConfiguration } from "@nrwl/devkit";
+import { moveFilesToNewDirectory, logger, Tree } from "@nrwl/devkit";
 
-import { NormalizedSchema } from "./types";
-import { addFiles, copyFile } from './util-file'
+import { NormalizedSchema } from "../types";
+import { addFiles, copyFile } from '../util-file'
 
 const createPath = (options: NormalizedSchema, oldPath: string, newPath: string) => ({
   newPath: options.projectRoot.concat(newPath),
@@ -10,13 +10,6 @@ const createPath = (options: NormalizedSchema, oldPath: string, newPath: string)
 
 export default function (tree: Tree, normalizedOptions: NormalizedSchema) {
   logger.log('START restructure for create react app')
-  // updateProjectConfiguration(
-  //   tree,
-  //   normalizedOptions.projectName,
-  //   {
-
-  //   }
-  // )
   moveFilesToNewDirectory(
     tree,
     normalizedOptions.projectRoot,

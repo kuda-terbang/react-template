@@ -88,11 +88,6 @@ export default async function (
     root: normalizedOptions.projectRoot,
     projectType: 'library',
     sourceRoot: `${normalizedOptions.projectRoot}/src`,
-    targets: {
-      build: {
-        executor: '@kudaterbang/custom-generator:build',
-      },
-    },
     tags: normalizedOptions.parsedTags,
   });
   addFiles(tree, normalizedOptions);
