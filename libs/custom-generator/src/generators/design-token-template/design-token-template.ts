@@ -8,6 +8,7 @@ import {
   offsetFromRoot,
   Tree,
 } from '@nrwl/devkit';
+import * as path from 'path';
 import { CustomGeneratorGeneratorSchema } from './schema';
 
 interface NormalizedSchema extends CustomGeneratorGeneratorSchema {
@@ -48,7 +49,8 @@ async function addFiles(tree: Tree, options: NormalizedSchema) {
   };
 
   // Copy paste template value
-  const designTokenTemplatePath = '/libs/design-token-template/templates'
+  logger.log('options.projectRoot', options.projectRoot)
+  const designTokenTemplatePath = '/' + options.projectRoot + '/templates'
   const templateFiles = tree.children(designTokenTemplatePath)
   const fileContents = []
 
@@ -59,14 +61,14 @@ async function addFiles(tree: Tree, options: NormalizedSchema) {
       fileName: templateFile,
       content: fileRead,
     })
-    const deleteFilePath = `libs/${options.name}/templates/${templateFile}`
+    const deleteFilePath = `${options.projectRoot}/templates/${templateFile}`
     tree.delete(deleteFilePath)
   })
   logger.log('COPY', 'package design-token-template/template')
 
   generateFiles(
     tree,
-    tree.root.concat('/libs/design-token-template'),
+    path.join(__dirname, 'files'),
     options.projectRoot,
     templateOptions
   );
@@ -86,11 +88,6 @@ export default async function (
     root: normalizedOptions.projectRoot,
     projectType: 'library',
     sourceRoot: `${normalizedOptions.projectRoot}/src`,
-    targets: {
-      build: {
-        executor: '@kudaterbang/custom-generator:build',
-      },
-    },
     tags: normalizedOptions.parsedTags,
   });
   addFiles(tree, normalizedOptions);

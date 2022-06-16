@@ -10,13 +10,44 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "paths": {
-      "@kudaterbang/custom-generator": ["libs/custom-generator/src/index.ts"]
+      "@kudaterbang/custom-generator": [
+        "libs/custom-generator/src/index.ts"
+      ],
+      "@kudaterbang/design-token-example/color": [
+        "libs/design-token-example/build/json/color.json"
+      ],
+      "@kudaterbang/design-token-example/json/breakpoint": [
+        "libs/design-token-example/build/json/breakpoint.json"
+      ],
+      "@kudaterbang/design-token-example/json/color": [
+        "libs/design-token-example/build/json/color.json"
+      ],
+      "@kudaterbang/design-token-example/json/elevation": [
+        "libs/design-token-example/build/json/elevation.json"
+      ],
+      "@kudaterbang/design-token-example/json/font_style": [
+        "libs/design-token-example/build/json/font_style.json"
+      ],
+      "@kudaterbang/ui-mui-react-example": [
+        "libs/ui-mui-react-example/src/index.tsx"
+      ],
+      "@kudaterbang/util-confirmation": [
+        "libs/util-confirmation/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }
