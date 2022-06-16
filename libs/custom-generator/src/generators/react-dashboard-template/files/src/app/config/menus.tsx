@@ -3,29 +3,29 @@ import ListIcon from '@mui/icons-material/List';
 import TableChartIcon from '@mui/icons-material/TableChart';
 
 interface Menu {
-  Icon: typeof HomeIcon,
-  name: string,
-  route: string,
-  isDivider?: boolean,
-  isProtected?: boolean
+  Icon: typeof HomeIcon;
+  name: string;
+  route: string;
+  isDivider?: boolean;
+  isProtected?: boolean;
 }
 export const menus: Menu[] = [
   {
     Icon: HomeIcon,
     name: 'Home',
-    route: '/'
+    route: '/',
   },
   {
     Icon: TableChartIcon,
     isDivider: true,
     isProtected: true,
-    name: 'Table',
-    route: '/table'
+    name: 'Common',
+    route: '/common',
   },
   {
     Icon: ListIcon,
     isProtected: true,
     name: 'Todo',
     route: '/todo',
-  }
-]
+  },
+];

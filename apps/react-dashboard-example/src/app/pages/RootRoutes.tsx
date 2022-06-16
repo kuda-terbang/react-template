@@ -27,6 +27,7 @@ const useElementBuilder = (
 };
 
 const Home = React.lazy(() => import('../pages/home'));
+const Common = React.lazy(() => import('../../features/common/pages'));
 
 const RootRoutes = () => {
   return (
@@ -34,6 +35,7 @@ const RootRoutes = () => {
       <Route path="/" element={<Layout logo={logo} menus={menus} />}>
         <Route index element={useElementBuilder(Home)} />
         <Route path="*" element={<>No page</>} />
+        <Route path="/common" element={<Common />} />
       </Route>
     </Routes>
   );

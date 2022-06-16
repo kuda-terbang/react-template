@@ -35,6 +35,12 @@
         ]
       }
     },
+    "generate-ui-mui-react-example": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "generate-ui-mui-react-example"
+      }
+    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],

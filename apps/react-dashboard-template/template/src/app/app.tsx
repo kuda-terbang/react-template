@@ -2,8 +2,9 @@ import React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
-import { SnackbarProvider } from 'notistack';
 import { QueryClient, QueryClientProvider } from 'react-query';
+
+import Snackbar from '../components/snackbar';
 
 import { config } from './config/react-query-config';
 import Routes from './pages/RootRoutes';
@@ -18,10 +19,10 @@ function App() {
       <BrowserRouter>
         <QueryClientProvider client={queryClient}>
           <ThemeProvider theme={theme}>
-            <SnackbarProvider>
+            <Snackbar>
               <CssBaseline />
               <Routes />
-            </SnackbarProvider>
+            </Snackbar>
           </ThemeProvider>
         </QueryClientProvider>
       </BrowserRouter>

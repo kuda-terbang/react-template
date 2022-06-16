@@ -1,16 +1,21 @@
 import React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
-import { SnackbarProvider } from 'notistack';
-import { QueryClient, QueryClientProvider } from 'react-query'
+import { QueryClient, QueryClientProvider } from 'react-query';
 
-import { config } from './config/react-query-config'
-import Routes from './pages/RootRoutes'
+<% if (!isUseDesignTheme || isCraTemplate) { %>
+import Snackbar from '../components/snackbar'
+<% } else { %>
+import { Snackbar } from '@kudaterbang/ui-mui-react-example'
+<% } %>
+
+import { config } from './config/react-query-config';
+import Routes from './pages/RootRoutes';
 import theme from './styles/theme';
 
 // Create a client
-const queryClient = new QueryClient(config)
+const queryClient = new QueryClient(config);
 
 function App() {
   return (
@@ -18,10 +23,10 @@ function App() {
       <BrowserRouter>
         <QueryClientProvider client={queryClient}>
           <ThemeProvider theme={theme}>
-            <SnackbarProvider>
+            <Snackbar>
               <CssBaseline />
               <Routes />
-            </SnackbarProvider>
+            </Snackbar>
           </ThemeProvider>
         </QueryClientProvider>
       </BrowserRouter>

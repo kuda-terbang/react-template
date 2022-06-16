@@ -42,4 +42,12 @@ export default function (tree: Tree, normalizedOptions: NormalizedSchema) {
   // Delete .browserlistrc as may conflict with create-react-app configuration in package.json
   logger.log('DELETE .browserlistrc')
   tree.delete(normalizedOptions.projectRoot.concat('/template/.browserslistrc'))
+  
+  // Delete nx related file
+  tree.delete(normalizedOptions.projectRoot.concat('/template/.eslintrc.json'))
+  tree.delete(normalizedOptions.projectRoot.concat('/template/.babelrc'))
+  tree.delete(normalizedOptions.projectRoot.concat('/template/tsconfig.app.json'))
+  tree.delete(normalizedOptions.projectRoot.concat('/template/tsconfig.spec.json'))
+  tree.delete(normalizedOptions.projectRoot.concat('/template/project.json'))
+  tree.delete(normalizedOptions.projectRoot.concat('/template/src/app/nx-welcome.tsx'))
 }

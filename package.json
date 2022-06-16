@@ -50,6 +50,7 @@
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.8.0",
     "@mui/material": "^5.8.0",
+    "@mui/styles": "^5.8.4",
     "core-js": "^3.6.5",
     "notistack": "^2.0.5",
     "react": "18.1.0",

@@ -33,7 +33,7 @@ function normalizeOptions(tree: Tree, options: ReactDashboardTemplateGeneratorSc
 export default async function (tree: Tree, options: ReactDashboardTemplateGeneratorSchema) {
   const normalizedOptions = normalizeOptions(tree, options);
 
-  const installDeps = await applicationGenerator(tree, {
+  await applicationGenerator(tree, {
     ...normalizedOptions,
   });
 
@@ -47,5 +47,4 @@ export default async function (tree: Tree, options: ReactDashboardTemplateGenera
   }
 
   await formatFiles(tree);
-  return () => installDeps()
 }

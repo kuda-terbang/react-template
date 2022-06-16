@@ -19,8 +19,8 @@ export const menus: Menu[] = [
     Icon: TableChartIcon,
     isDivider: true,
     isProtected: true,
-    name: 'Table',
-    route: '/table',
+    name: 'Common',
+    route: '/common',
   },
   {
     Icon: ListIcon,
