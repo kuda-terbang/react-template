@@ -43,7 +43,7 @@ const RootRoutes = () => {
       <Route path="/" element={<Layout logo={logo} menus={menus} />}>
         <Route index element={useElementBuilder(Home)} />
         <Route path="*" element={<>No page</>} />
-        <Route path="/common" element={<Common />} />
+        <Route path="/common" element={useElementBuilder(Common)} />
       </Route>
     </Routes>
   )

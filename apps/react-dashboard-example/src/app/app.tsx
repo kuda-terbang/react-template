@@ -5,6 +5,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { Snackbar } from '@kudaterbang/ui-mui-react-example';
+import { ConfirmationProvider } from '@kudaterbang/util-confirmation';
 
 import { config } from './config/react-query-config';
 import Routes from './pages/RootRoutes';
@@ -21,7 +22,9 @@ function App() {
           <ThemeProvider theme={theme}>
             <Snackbar>
               <CssBaseline />
-              <Routes />
+              <ConfirmationProvider>
+                <Routes />
+              </ConfirmationProvider>
             </Snackbar>
           </ThemeProvider>
         </QueryClientProvider>

@@ -40,6 +40,9 @@
       ],
       "@kudaterbang/ui-mui-react-example": [
         "libs/ui-mui-react-example/src/index.tsx"
+      ],
+      "@kudaterbang/util-confirmation": [
+        "libs/util-confirmation/src/index.ts"
       ]
     }
   },

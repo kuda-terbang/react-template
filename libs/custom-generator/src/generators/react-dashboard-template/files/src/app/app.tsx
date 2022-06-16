@@ -6,8 +6,10 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 
 <% if (!isUseDesignTheme || isCraTemplate) { %>
 import Snackbar from '../components/snackbar'
+import { ConfirmationProvider } from '../utils/confirmation'
 <% } else { %>
 import { Snackbar } from '@kudaterbang/ui-mui-react-example'
+import { ConfirmationProvider } from '@kudaterbang/util-confirmation'
 <% } %>
 
 import { config } from './config/react-query-config';
@@ -25,7 +27,9 @@ function App() {
           <ThemeProvider theme={theme}>
             <Snackbar>
               <CssBaseline />
-              <Routes />
+              <ConfirmationProvider>
+                <Routes />
+              </ConfirmationProvider>
             </Snackbar>
           </ThemeProvider>
         </QueryClientProvider>
