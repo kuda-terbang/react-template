@@ -153,6 +153,11 @@
       "type": "boolean",
       "description": "Use design token generated from @kudaterbang/design-token-template. It's not working when isCraTemplate is true",
       "default": false
+    },
+    "isUseUtilApi": {
+      "type": "boolean",
+      "description": "Use @kudaterbang/util-api. It's not working when isCraTemplate is true",
+      "default": false
     }
   },
   "required": ["name"]

@@ -8,6 +8,8 @@ import { useConfirmation } from '../../../utils/confirmation';
 import { useConfirmation } from '@kudaterbang/util-confirmation'
 <% } %>
 
+import Strapi from './strapi'
+
 const PageCommonView = () => {
   const { openConfirmation } = useConfirmation()
   const { enqueueSnackbar } = useSnackbar();
@@ -37,6 +39,7 @@ const PageCommonView = () => {
           message: 'Are you sure?'
         })}>Confirm without title</Button>
       </div>
+      <Strapi />
     </div>
   );
 };

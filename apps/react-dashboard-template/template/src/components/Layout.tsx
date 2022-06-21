@@ -19,6 +19,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 
+import { websiteName } from '../config/envValue';
 const drawerWidth = 240;
 
 const openedMixin = (theme: Theme): CSSObject => ({
@@ -161,7 +162,7 @@ export default function Layout({ logo, menus }: LayoutProps) {
           </IconButton>
           <Logo src={logo} alt="logo-appbar" open={open} />
           <Typography variant="h6" noWrap component="div">
-            {process.env['NX_WEBSITE_NAME']}
+            {websiteName}
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           {isAuthenticated && (

@@ -23,4 +23,5 @@ export interface ReactDashboardTemplateGeneratorSchema {
     devServerPort?: number;
     isCraTemplate?: boolean;
     isUseDesignTheme?: boolean;
+    isUseUtilApi?: boolean;
 }

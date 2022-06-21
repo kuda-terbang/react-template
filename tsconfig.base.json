@@ -23,6 +23,9 @@
       "@kudaterbang/custom-generator": [
         "libs/custom-generator/src/index.ts"
       ],
+      "@kudaterbang/data-access-strapi": [
+        "libs/data-access-strapi/src/index.ts"
+      ],
       "@kudaterbang/design-token-example/color": [
         "libs/design-token-example/build/json/color.json"
       ],
@@ -40,6 +43,9 @@
       ],
       "@kudaterbang/ui-mui-react-example": [
         "libs/ui-mui-react-example/src/index.tsx"
+      ],
+      "@kudaterbang/util-api": [
+        "libs/util-api/src/index.ts"
       ],
       "@kudaterbang/util-confirmation": [
         "libs/util-confirmation/src/index.ts"
