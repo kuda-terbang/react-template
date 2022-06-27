@@ -8,6 +8,7 @@
     "react-dashboard-example": "apps/react-dashboard-example",
     "ui-mui-react-example": "libs/ui-mui-react-example",
     "util-api": "libs/util-api",
+    "util-auth": "libs/util-auth",
     "util-confirmation": "libs/util-confirmation"
   }
 }

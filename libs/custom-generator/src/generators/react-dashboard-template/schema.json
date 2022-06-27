@@ -158,6 +158,11 @@
       "type": "boolean",
       "description": "Use @kudaterbang/util-api. It's not working when isCraTemplate is true",
       "default": false
+    },
+    "isUseUtilAuth": {
+      "type": "boolean",
+      "description": "Use @kudaterbang/util-auth. It's not working when isCraTemplate is true",
+      "default": false
     }
   },
   "required": ["name"]

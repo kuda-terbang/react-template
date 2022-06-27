@@ -1,6 +1,8 @@
 import axios, {AxiosRequestConfig, AxiosResponse} from 'axios';
 import UrlPattern from 'url-pattern';
 
+import { getCookie } from '@kudaterbang/util-auth'
+
 export type Endpoint<RequestType, ResponseType, ParamsUrlType = void> = {
   method: AxiosRequestConfig['method'];
   path: string;
@@ -101,21 +103,20 @@ export const createAxios: CreateAxios = ({baseURL, baseHeaders}) => {
       if (headers['serviceSecret']) {
         headers['serviceSecret'] = baseHeaders.serviceSecret;
       }
-      // TODO : implement logout after authentication feature
-      // if (baseHeaders.tokenKeyName) {
-      //   const authorization = baseHeaders.withBearer ? 'Bearer ' : ''
-      //   const token = getCookie(baseHeaders.tokenKeyName)
+      if (baseHeaders.tokenKeyName) {
+        const authorization = baseHeaders.withBearer ? 'Bearer ' : ''
+        const token = getCookie(baseHeaders.tokenKeyName)
         
-      //   // Cancel if no token and authorization
-      //   if (endpoint.isAuthenticated && !token) {
-      //     return Promise.reject('Not Authenticated')
-      //   }
+        // Cancel if no token and authorization
+        if (endpoint.isAuthenticated && !token) {
+          return Promise.reject('Not Authenticated')
+        }
 
-      //   if (token) {
-      //     const tokenAuthorization = authorization + token
-      //     headers['Authorization'] = tokenAuthorization
-      //   }
-      // }
+        if (token) {
+          const tokenAuthorization = authorization + token
+          headers['Authorization'] = tokenAuthorization
+        }
+      }
     }
 
     const axiosInstance = axios.create({

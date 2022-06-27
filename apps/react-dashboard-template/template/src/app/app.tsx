@@ -10,6 +10,7 @@ import { ConfirmationProvider } from '../utils/confirmation';
 import { config } from './config/react-query-config';
 import Routes from './pages/RootRoutes';
 import theme from './styles/theme';
+import { AuthProviderApp } from '../utils/auth-strapi';
 
 // Create a client
 const queryClient = new QueryClient(config);
@@ -22,9 +23,11 @@ function App() {
           <ThemeProvider theme={theme}>
             <Snackbar>
               <CssBaseline />
-              <ConfirmationProvider>
-                <Routes />
-              </ConfirmationProvider>
+              <AuthProviderApp>
+                <ConfirmationProvider>
+                  <Routes />
+                </ConfirmationProvider>
+              </AuthProviderApp>
             </Snackbar>
           </ThemeProvider>
         </QueryClientProvider>

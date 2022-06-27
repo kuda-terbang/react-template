@@ -3,6 +3,8 @@ import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 
 import { Layout } from '@kudaterbang/ui-mui-react-example';
 
+import { useAuth } from '../../utils/auth-strapi';
+
 import logo from '../../assets/img/logo.svg';
 import { menus } from '../config/menus';
 
@@ -12,8 +14,7 @@ const useElementBuilder = (
     isProtected: boolean;
   }
 ) => {
-  // TODO: connect to global state
-  const isAuthenticated = true;
+  const { isAuthenticated } = useAuth();
   const location = useLocation();
 
   if (options?.isProtected && !isAuthenticated) {
@@ -30,12 +31,27 @@ const Home = React.lazy(() => import('../pages/home'));
 const Common = React.lazy(() => import('../../features/common/pages'));
 
 const RootRoutes = () => {
+  const { isAuthenticated, logout, user } = useAuth();
   return (
     <Routes>
-      <Route path="/" element={<Layout logo={logo} menus={menus} />}>
+      <Route
+        path="/"
+        element={
+          <Layout
+            logo={logo}
+            menus={menus}
+            logout={logout}
+            isAuthenticated={isAuthenticated}
+            username={user?.username}
+          />
+        }
+      >
         <Route index element={useElementBuilder(Home)} />
         <Route path="*" element={<>No page</>} />
-        <Route path="/common" element={useElementBuilder(Common)} />
+        <Route
+          path="/common"
+          element={useElementBuilder(Common, { isProtected: true })}
+        />
       </Route>
     </Routes>
   );
