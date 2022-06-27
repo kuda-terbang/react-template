@@ -19,6 +19,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 
+import { websiteName } from '../config/envValue';
 const drawerWidth = 240;
 
 const openedMixin = (theme: Theme): CSSObject => ({
@@ -119,7 +120,10 @@ const Logo = styled('img', {
   };
 });
 export interface LayoutProps {
+  isAuthenticated: boolean;
   logo: string;
+  logout: () => void;
+  username?: string;
   menus: {
     isDivider?: boolean;
     isProtected?: boolean;
@@ -128,12 +132,16 @@ export interface LayoutProps {
     Icon?: typeof MenuIcon;
   }[];
 }
-export default function Layout({ logo, menus }: LayoutProps) {
+export default function Layout({
+  isAuthenticated,
+  logo,
+  logout,
+  username,
+  menus,
+}: LayoutProps) {
   const theme = useTheme();
 
   const [open, setOpen] = React.useState(false);
-  // TODO: connect to global state
-  const isAuthenticated = true;
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -161,7 +169,7 @@ export default function Layout({ logo, menus }: LayoutProps) {
           </IconButton>
           <Logo src={logo} alt="logo-appbar" open={open} />
           <Typography variant="h6" noWrap component="div">
-            {process.env['NX_WEBSITE_NAME']}
+            {websiteName}
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           {isAuthenticated && (
@@ -171,7 +179,7 @@ export default function Layout({ logo, menus }: LayoutProps) {
               component="div"
               sx={{ marginRight: theme.spacing(2) }}
             >
-              robbycaesar@gmail.com
+              {username}
             </Typography>
           )}
           {isAuthenticated && (
@@ -181,6 +189,7 @@ export default function Layout({ logo, menus }: LayoutProps) {
                   size="large"
                   aria-label="logout icon"
                   color="inherit"
+                  onClick={() => logout()}
                 >
                   <LogoutIcon />
                 </IconButton>
@@ -226,7 +235,7 @@ export default function Layout({ logo, menus }: LayoutProps) {
             );
           })}
           {isAuthenticated && (
-            <ListItemButton key="Logout">
+            <ListItemButton key="Logout" onClick={() => logout()}>
               <ListItemIcon>
                 <LogoutIcon />
               </ListItemIcon>

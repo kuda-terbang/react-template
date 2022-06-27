@@ -77,4 +77,17 @@ export default async function (tree: Tree, options: UiMuiReactComponentGenerator
       return json;
     }
   );
+  updateJson(
+    tree,
+    `${normalizedOptions.projectRoot}/tsconfig.lib.json`,
+    (json) => {
+      json.compilerOptions.paths = {
+        ...json.compilerOptions.paths,
+        [`config/envValue`]: [
+          `${normalizedOptions.projectRoot}/src/config/envValue.ts`
+        ]
+      }
+      return json;
+    }
+  );
 }

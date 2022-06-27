@@ -4,6 +4,8 @@ import { Button, Typography } from '@mui/material';
 
 import { useConfirmation } from '@kudaterbang/util-confirmation';
 
+import Strapi from './strapi';
+
 const PageCommonView = () => {
   const { openConfirmation } = useConfirmation();
   const { enqueueSnackbar } = useSnackbar();
@@ -45,6 +47,7 @@ const PageCommonView = () => {
           Confirm without title
         </Button>
       </div>
+      <Strapi />
     </div>
   );
 };
