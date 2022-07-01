@@ -2,7 +2,7 @@ import React from 'react';
 import { OptionsObject, useSnackbar } from 'notistack';
 import { Button, Typography } from '@mui/material';
 
-import { useConfirmation } from '../../../utils/confirmation';
+import { useConfirmation } from 'utils/util-confirmation';
 
 import Strapi from './strapi';
 

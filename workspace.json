@@ -6,6 +6,7 @@
     "design-token-example": "libs/design-token-example",
     "icons-example": "libs/icons-example",
     "react-dashboard-example": "apps/react-dashboard-example",
+    "react-dashboard-template": "apps/react-dashboard-template",
     "ui-mui-react-example": "libs/ui-mui-react-example",
     "util-api": "libs/util-api",
     "util-auth": "libs/util-auth",

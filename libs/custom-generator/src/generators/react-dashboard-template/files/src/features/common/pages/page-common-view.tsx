@@ -2,11 +2,7 @@ import React from 'react';
 import { OptionsObject, useSnackbar } from 'notistack';
 import { Button, Typography } from '@mui/material';
 
-<% if (!isUseDesignTheme || isCraTemplate) { %>
-import { useConfirmation } from '../../../utils/confirmation';
-<% } else { %>
 import { useConfirmation } from '@kudaterbang/util-confirmation'
-<% } %>
 
 import Strapi from './strapi'
 

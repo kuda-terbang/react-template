@@ -5,11 +5,7 @@ import {
   Navigate,
   useLocation,
 } from "react-router-dom";
-<% if (isUseDesignTheme && !isCraTemplate) { %>
 import { Layout } from '@kudaterbang/ui-mui-react-example';
-<% } else { %>
-import Layout from '../../components/Layout'
-<% } %>
 import { useAuth } from '../../utils/auth-strapi';
 
 import logo from '../../assets/img/logo.svg'

@@ -21,6 +21,7 @@
       "@kudaterbang/data-access-strapi": [
         "libs/data-access-strapi/src/index.ts"
       ],
+      "@kudaterbang/design-token": ["libs/design-token/src/index.ts"],
       "@kudaterbang/design-token-example/color": [
         "libs/design-token-example/build/json/color.json"
       ],

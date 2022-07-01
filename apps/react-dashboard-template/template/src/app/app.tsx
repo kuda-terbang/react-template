@@ -4,12 +4,11 @@ import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-import Snackbar from '../components/snackbar';
-import { ConfirmationProvider } from '../utils/confirmation';
+import { Snackbar, theme } from 'design-system';
+import { ConfirmationProvider } from 'utils/util-confirmation';
 
 import { config } from './config/react-query-config';
 import Routes from './pages/RootRoutes';
-import theme from './styles/theme';
 import { AuthProviderApp } from '../utils/auth-strapi';
 
 // Create a client

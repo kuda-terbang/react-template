@@ -120,9 +120,9 @@ const Logo = styled('img', {
   };
 });
 export interface LayoutProps {
-  isAuthenticated: boolean
+  isAuthenticated: boolean;
   logo: string;
-  logout: () => void,
+  logout: () => void;
   username?: string;
   menus: {
     isDivider?: boolean;
