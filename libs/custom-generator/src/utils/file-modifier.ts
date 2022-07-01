@@ -57,10 +57,6 @@ export function addFiles<TOptions>(
     + '/libs/custom-generator/src/generators'
     + `/${generatorName}`
     + `/${directoryName}`
-  // logger.log('path.join(__dirname, directoryName)', path.join(__dirname, directoryName))
-  // logger.log('tree', tree.root)
-  // logger.log('options', options.projectRoot)
-  console.log('outputPath', outputPath)
   generateFiles(tree, outputPath, options.projectRoot, templateOptions);
 }
 
@@ -102,17 +98,20 @@ export function addModules<TOptions>({
     paths: string[]
   }[]
 }) {
-  logger.log('GENERATE module ', modulePath)
+  logger.log('GENERATE module', modulePath)
+  logger.log('options', options)
   const templateOptions = {
     ...options,
     ...names(options.name),
     offsetFromRoot: offsetFromRoot(options.projectRoot),
     template: ''
   };
+  logger.log('templateOptions', templateOptions)
 
   const sourcePath = tree.root.concat(modulePath)
   const targetPath = options.projectRoot + targetModulePath
-
+  logger.log('sourcePath', sourcePath)
+  logger.log('targetPath', targetPath)
   generateFiles(
     tree,
     sourcePath,

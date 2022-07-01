@@ -3,9 +3,11 @@ import {
   getWorkspaceLayout,
   updateJson,
   Tree,
+  readWorkspaceConfiguration,
+  logger,
 } from '@nrwl/devkit';
 import { libraryGenerator } from '@nrwl/react'
-import { addFiles, normalizeOptions } from '../../utils/file-modifier';
+import { addFiles, addModules, normalizeOptions } from '../../utils/file-modifier';
 import { UiMuiReactComponentNormalized } from './schema';
 
 export default async function (tree: Tree, options: UiMuiReactComponentNormalized) {
@@ -17,6 +19,26 @@ export default async function (tree: Tree, options: UiMuiReactComponentNormalize
 
   addFiles(tree, normalizedOptions, 'ui-mui-react-template', 'files');
   await formatFiles(tree);
+
+  if (!options.withLocalToken) {
+    const scopeName = '@' + readWorkspaceConfiguration(tree).npmScope
+    addModules({
+      tree,
+      options: normalizedOptions,
+      modulePath: `/libs/${options.designTokenProject}/build/json`,
+      targetModulePath: '/src/token',
+      replaceStrings: [
+        {
+          fromString: `${scopeName}/${options.designTokenProject}/json/color`,
+          toString: '../token/color.json',
+          paths: [
+            '/src/mui-theme/index.ts',
+            '/src/utils/generateColor.ts',
+          ]
+        }
+      ]
+    })
+  }
 
   // Delete existing template from nrwl/react library generator files
   tree.delete(normalizedOptions.projectRoot.concat('/src/lib/'))
