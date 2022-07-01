@@ -1,12 +1,14 @@
-import { logger, Tree } from "@nrwl/devkit";
+import { logger, readWorkspaceConfiguration, Tree } from "@nrwl/devkit";
 
 import { NormalizedReactDashboardSchema } from "../schema";
 import { addModules } from "../../../utils/file-modifier";
 
 export default function (tree: Tree, options: NormalizedReactDashboardSchema) {
   const prefixPath = options.isCraTemplate ? '/template' : ''
+  const workspace = readWorkspaceConfiguration(tree)
+  const scopeName = '@' + workspace.npmScope
 
-  if (options.isUseUtilApi || options.isCraTemplate) {
+  if (options.isCraTemplate) {
     logger.log('GENERATE util-api and services')
     addModules({
       tree,
@@ -21,7 +23,7 @@ export default function (tree: Tree, options: NormalizedReactDashboardSchema) {
       targetModulePath: `${prefixPath}/src/services/data-access-strapi`,
       replaceStrings: options.isCraTemplate ? [
         {
-          fromString: '@kudaterbang/util-api',
+          fromString: `${scopeName}/util-api`,
           toString: 'utils/util-api',
           paths: [
             `${prefixPath}/src/services/data-access-strapi/lib/model/product.ts`,
@@ -29,7 +31,7 @@ export default function (tree: Tree, options: NormalizedReactDashboardSchema) {
           ]
         },
         {
-          fromString: '@kudaterbang/data-access-strapi',
+          fromString: `${scopeName}/data-access-strapi`,
           toString: 'services/data-access-strapi',
           paths: [
             `${prefixPath}/src/app/pages/home/page-home-view.tsx`,
@@ -48,9 +50,8 @@ export default function (tree: Tree, options: NormalizedReactDashboardSchema) {
         },
       ] : undefined
     })
-  }
-  if (options.isUseUtilConfirmation || options.isCraTemplate) {
-    logger.log('Generate Util Confirmation')
+
+    logger.log('GENERATE Util Confirmation')
     addModules({
       tree,
       options,
@@ -58,7 +59,7 @@ export default function (tree: Tree, options: NormalizedReactDashboardSchema) {
       targetModulePath: `${prefixPath}/src/utils/util-confirmation`,
       replaceStrings: options.isCraTemplate ? [
         {
-          fromString: '@kudaterbang/util-confirmation',
+          fromString: `${scopeName}/util-confirmation`,
           toString: 'utils/util-confirmation',
           paths: [
             `${prefixPath}/src/app/app.tsx`,
@@ -66,7 +67,7 @@ export default function (tree: Tree, options: NormalizedReactDashboardSchema) {
           ]
         },
         {
-          fromString: '@kudaterbang/ui-mui-react-example',
+          fromString: `${scopeName}/${options.designSystemProject}`,
           toString: 'design-system',
           paths: [
             `${prefixPath}/src/utils/util-confirmation/components/dialog-confirm/dialog-confirm.view.tsx`,
@@ -74,9 +75,8 @@ export default function (tree: Tree, options: NormalizedReactDashboardSchema) {
         },
       ] : undefined
     })
-  }
-  if (options.isUseUtilAuth || options.isCraTemplate) {
-    logger.log('Generate Util Auth')
+
+    logger.log('GENERATE Util Auth')
     addModules({
       tree,
       options,
@@ -84,7 +84,7 @@ export default function (tree: Tree, options: NormalizedReactDashboardSchema) {
       targetModulePath: `${prefixPath}/src/utils/util-auth`,
       replaceStrings: options.isCraTemplate ? [
         {
-          fromString: '@kudaterbang/util-auth',
+          fromString: `${scopeName}/util-auth`,
           toString: 'utils/util-auth',
           paths: [
             `${prefixPath}/src/utils/auth-strapi/lib/auth-strapi.tsx`,
@@ -93,17 +93,16 @@ export default function (tree: Tree, options: NormalizedReactDashboardSchema) {
         },
       ] : undefined
     })
-  }
-  if (options.isUseDesignTheme || options.isCraTemplate) {
-    logger.log('Generate Design System')
+
+    logger.log('GENERATE Design System')
     addModules({
       tree,
       options,
-      modulePath: '/libs/ui-mui-react-example/src',
+      modulePath: `/libs/${options.designSystemProject}/src`,
       targetModulePath: `${prefixPath}/src/design-system`,
       replaceStrings: options.isCraTemplate ? [
         {
-          fromString: '@kudaterbang/ui-mui-react-example',
+          fromString: `${scopeName}/${options.designSystemProject}`,
           toString: 'design-system',
           paths: [
             `${prefixPath}/src/app/app.tsx`,
@@ -111,7 +110,7 @@ export default function (tree: Tree, options: NormalizedReactDashboardSchema) {
           ]
         },
         {
-          fromString: '@kudaterbang/design-token-example/json/color',
+          fromString: `${scopeName}/${options.designTokenProject}/json/color`,
           toString: '../token/color.json',
           paths: [
             `${prefixPath}/src/design-system/utils/generateColor.ts`,
@@ -123,7 +122,7 @@ export default function (tree: Tree, options: NormalizedReactDashboardSchema) {
     addModules({
       tree,
       options,
-      modulePath: '/libs/design-token-example/build/json',
+      modulePath: `/libs/${options.designTokenProject}/build/json`,
       targetModulePath: `${prefixPath}/src/design-system/token`,
     })
   }

@@ -10,7 +10,6 @@ import { NormalizedReactDashboardSchema, ReactDashboardTemplateGeneratorSchema }
 import { addFiles } from '../../utils/file-modifier'
 import generateCraTemplate from './libs/generate-cra-template'
 import generateFromModules from './libs/generate-from-modules'
-import removeDesignTheme from './libs/remove-design-theme'
 
 function normalizeOptions(
   tree: Tree,
@@ -45,9 +44,7 @@ export default async function (tree: Tree, options: ReactDashboardTemplateGenera
   if (normalizedOptions.isCraTemplate) {
     generateCraTemplate(tree, normalizedOptions)
   }
-  if (normalizedOptions.isUseDesignTheme && !normalizedOptions.isCraTemplate) {
-    removeDesignTheme(tree, normalizedOptions)
-  }
+
   generateFromModules(tree, normalizedOptions)
 
   await formatFiles(tree);

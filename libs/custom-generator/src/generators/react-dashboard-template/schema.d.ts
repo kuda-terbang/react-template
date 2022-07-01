@@ -23,10 +23,8 @@ export interface ReactDashboardTemplateGeneratorSchema {
     remotes?: string[];
     devServerPort?: number;
     isCraTemplate?: boolean;
-    isUseDesignTheme?: boolean;
-    isUseUtilApi?: boolean;
-    isUseUtilAuth?: boolean;
-    isUseUtilConfirmation?: boolean;
+    designTokenProject?: string;
+    designSystemProject?: string;
 }
 
 export type NormalizedReactDashboardSchema = NormalizedSchema<ReactDashboardTemplateGeneratorSchema>
