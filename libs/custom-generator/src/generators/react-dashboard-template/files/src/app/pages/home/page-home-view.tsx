@@ -3,7 +3,7 @@ import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import React, { useState } from 'react'
 
-import apiStrapiService from '@kudaterbang/data-access-strapi'
+import apiStrapiService from '@<%= npmScope %>/data-access-strapi'
 import { useAuth } from '../../../utils/auth-strapi'
 import { websiteName } from '../../../config/envValue'
 

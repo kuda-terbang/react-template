@@ -5,7 +5,7 @@ import {
   Navigate,
   useLocation,
 } from "react-router-dom";
-import { Layout } from '@kudaterbang/ui-mui-react-example';
+import { Layout } from '@<%= npmScope %>/<%= designSystemProject %>';
 import { useAuth } from '../../utils/auth-strapi';
 
 import logo from '../../assets/img/logo.svg'

@@ -12,23 +12,30 @@ type DefaultSchema = {
   tags?: string
 }
 export type NormalizedSchema<TOptions> = TOptions & DefaultSchema & {
+  npmScope: string;
   projectName: string;
   projectRoot: string;
   projectDirectory: string;
   parsedTags: string[]
 }
 
-export function normalizeOptions<TOptions extends DefaultSchema>(tree: Tree, options: TOptions): NormalizedSchema<TOptions> {
+export function normalizeOptions<TOptions extends DefaultSchema>(
+  tree: Tree,
+  options: TOptions,
+  typeDir: 'lib' | 'app' = 'lib'
+): NormalizedSchema<TOptions> {
+  const workspaceLayout = getWorkspaceLayout(tree)
   const name = names(options.name).fileName;
   const projectDirectory = name;
   const projectName = projectDirectory.replace(new RegExp('/', 'g'), '-');
-  const projectRoot = `${getWorkspaceLayout(tree).libsDir}/${projectDirectory}`;
+  const projectRoot = `${workspaceLayout[typeDir === 'lib' ? 'libsDir' : 'appsDir']}/${projectDirectory}`;
   const parsedTags = options.tags
     ? options.tags.split(',').map((s) => s.trim())
     : [];
 
   return {
     ...options,
+    npmScope: workspaceLayout.npmScope,
     projectName,
     projectRoot,
     projectDirectory,
@@ -47,6 +54,7 @@ export function addFiles<TOptions>(
   generatorName: string,
   directoryName: string,
 ) {
+  logger.log(`GENERATE FILES ${generatorName} ${directoryName}`)
   const templateOptions = {
     ...options,
     ...names(options.name),
@@ -57,6 +65,9 @@ export function addFiles<TOptions>(
     + '/libs/custom-generator/src/generators'
     + `/${generatorName}`
     + `/${directoryName}`
+  logger.log(`projectRoot : ${options.projectRoot}`)
+  logger.log(`outputPath : ${outputPath}`)
+  logger.log('')
   generateFiles(tree, outputPath, options.projectRoot, templateOptions);
 }
 
@@ -99,19 +110,16 @@ export function addModules<TOptions>({
   }[]
 }) {
   logger.log('GENERATE module', modulePath)
-  logger.log('options', options)
   const templateOptions = {
     ...options,
     ...names(options.name),
     offsetFromRoot: offsetFromRoot(options.projectRoot),
     template: ''
   };
-  logger.log('templateOptions', templateOptions)
 
   const sourcePath = tree.root.concat(modulePath)
   const targetPath = options.projectRoot + targetModulePath
-  logger.log('sourcePath', sourcePath)
-  logger.log('targetPath', targetPath)
+
   generateFiles(
     tree,
     sourcePath,
@@ -135,13 +143,8 @@ export function addModules<TOptions>({
 }
 
 export function copyFile(tree: Tree, oldPath: string, newPath: string) {
-  
-  logger.log('READ ', oldPath)
   const readPublicFile = tree.read(oldPath)
-  logger.log('CONTENT ', readPublicFile)
   tree.write(newPath, readPublicFile)
-  logger.log('WRITE ', newPath)
   tree.delete(oldPath)
-  logger.log('DELETE ', oldPath)
-  logger.log('')
+  logger.log(`COPY : ${oldPath} to ${newPath}`)
 }

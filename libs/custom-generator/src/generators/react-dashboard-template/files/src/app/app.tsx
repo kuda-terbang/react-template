@@ -4,8 +4,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-import { Snackbar, theme } from '@kudaterbang/ui-mui-react-example'
-import { ConfirmationProvider } from '@kudaterbang/util-confirmation'
+import { Snackbar, theme } from '@<%= npmScope %>/<%= designSystemProject %>'
+import { ConfirmationProvider } from '@<%= npmScope %>/util-confirmation'
 
 import { config } from './config/react-query-config';
 import Routes from './pages/RootRoutes';

@@ -1,6 +1,6 @@
-import { createAuthentication } from '@kudaterbang/util-auth'
+import { createAuthentication } from '@<%= npmScope %>/util-auth'
 
-import apiStrapi, { strapiTokenKey } from '@kudaterbang/data-access-strapi';
+import apiStrapi, { strapiTokenKey } from '@<%= npmScope %>/data-access-strapi';
 import { useNavigate } from 'react-router-dom';
 
 const { AuthContext, AuthProvider, useAuth } = createAuthentication({

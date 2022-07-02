@@ -1,4 +1,4 @@
-import type colors from '@kudaterbang/design-token-example/json/color';
+import type colors from '@<%= npmScope %>/<%= designTokenProject %>/json/color';
 
 type JsonColors = typeof colors;
 
