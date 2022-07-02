@@ -107,6 +107,7 @@ export default function (tree: Tree, options: NormalizedReactDashboardSchema) {
           paths: [
             `${prefixPath}/src/app/app.tsx`,
             `${prefixPath}/src/app/pages/RootRoutes.tsx`,
+            `${prefixPath}/src/features/common/pages/strapi/strapi.view.tsx`,
           ]
         },
         {
