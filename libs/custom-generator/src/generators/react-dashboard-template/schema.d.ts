@@ -1,4 +1,5 @@
 import type { Linter, SupportedStyles } from '@nrwl/linter'
+import type { NormalizedSchema } from '../../utils/file-modifier'
 
 export interface ReactDashboardTemplateGeneratorSchema {
     name: string;
@@ -22,7 +23,8 @@ export interface ReactDashboardTemplateGeneratorSchema {
     remotes?: string[];
     devServerPort?: number;
     isCraTemplate?: boolean;
-    isUseDesignTheme?: boolean;
-    isUseUtilApi?: boolean;
-    isUseUtilAuth?: boolean;
+    designTokenProject?: string;
+    designSystemProject?: string;
 }
+
+export type NormalizedReactDashboardSchema = NormalizedSchema<ReactDashboardTemplateGeneratorSchema>

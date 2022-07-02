@@ -8,6 +8,9 @@ export interface Product {
   product_name: string;
   stock: number;
   image: string;
+  createdAt: string;
+  updatedAt: string;
+  price: number;
   // additional type
   id_name: string;
 }
@@ -24,6 +27,9 @@ export const initialProductDetail = {
       stock: 0,
       image: '',
       id_name: '',
+      createdAt: '',
+      updatedAt: '',
+      price: 0,
     },
     id: 0,
   },

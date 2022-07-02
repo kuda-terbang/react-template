@@ -6,14 +6,15 @@ import {
 } from '@nrwl/devkit';
 import { applicationGenerator } from '@nrwl/react'
 
-import { ReactDashboardTemplateGeneratorSchema } from './schema';
-import { addFiles } from './util-file'
-import generateCraTemplate from './utils/generate-cra-template'
-import generateFromModules from './utils/generate-from-modules'
-import removeDesignTheme from './utils/remove-design-theme'
-import type { NormalizedSchema } from './types'
+import { NormalizedReactDashboardSchema, ReactDashboardTemplateGeneratorSchema } from './schema';
+import { addFiles } from '../../utils/file-modifier'
+import generateCraTemplate from './libs/generate-cra-template'
+import generateFromModules from './libs/generate-from-modules'
 
-function normalizeOptions(tree: Tree, options: ReactDashboardTemplateGeneratorSchema): NormalizedSchema {
+function normalizeOptions(
+  tree: Tree,
+  options: ReactDashboardTemplateGeneratorSchema,
+): NormalizedReactDashboardSchema {
   const name = names(options.name).fileName;
   const projectDirectory = name;
   const projectName = projectDirectory.replace(new RegExp('/', 'g'), '-');
@@ -38,14 +39,12 @@ export default async function (tree: Tree, options: ReactDashboardTemplateGenera
     ...normalizedOptions,
   });
 
-  addFiles(tree, normalizedOptions, 'files');
+  addFiles(tree, normalizedOptions, 'react-dashboard-template', 'files');
   
   if (normalizedOptions.isCraTemplate) {
     generateCraTemplate(tree, normalizedOptions)
   }
-  if (normalizedOptions.isUseDesignTheme && !normalizedOptions.isCraTemplate) {
-    removeDesignTheme(tree, normalizedOptions)
-  }
+
   generateFromModules(tree, normalizedOptions)
 
   await formatFiles(tree);

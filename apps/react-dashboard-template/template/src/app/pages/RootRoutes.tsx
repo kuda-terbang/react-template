@@ -1,8 +1,6 @@
 import React from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
-
-import Layout from '../../components/Layout';
-
+import { Layout } from 'design-system';
 import { useAuth } from '../../utils/auth-strapi';
 
 import logo from '../../assets/img/logo.svg';

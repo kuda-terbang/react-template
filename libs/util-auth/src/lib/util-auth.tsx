@@ -6,16 +6,15 @@ import useSWR from 'swr'
 
 import { getCookie, setCookie } from './util-cookies'
 
-type TDataUserExtended<TDataUser> = TDataUser
 interface TypeContext<TDataUser> {
   isAuthenticated: boolean
   logout: () => void
   login: (val: string) => void
-  user?: TDataUserExtended<TDataUser>
+  user?: TDataUser
   setIsAuthenticated: (val: boolean) => void
 }
 
-function createAuthContext<TDataUser>() {
+function createAuthContext<TDataUser>(): React.Context<TypeContext<TDataUser>> {
   return createContext<TypeContext<TDataUser>>({
     isAuthenticated: false,
     logout: () => ({}),
@@ -27,7 +26,7 @@ function createAuthContext<TDataUser>() {
 
 interface AuthenticationConfig<TDataUser> {
   tokenKey: string,
-  fetchUser: () => Promise<AxiosResponse<TDataUserExtended<TDataUser>>>
+  fetchUser: () => Promise<AxiosResponse<TDataUser>>
 }
 
 function createAuthProvider<TDataUser, TContext extends React.Context<TypeContext<TDataUser>>>(
