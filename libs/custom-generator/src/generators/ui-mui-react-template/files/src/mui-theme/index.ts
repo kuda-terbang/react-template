@@ -1,4 +1,4 @@
-import colors from '@kudaterbang/design-token-example/json/color'
+import colors from '@<%= npmScope %>/<%= designTokenProject %>/json/color'
 import { createTheme } from '@mui/material/styles';
 
 import components from './override-components'
