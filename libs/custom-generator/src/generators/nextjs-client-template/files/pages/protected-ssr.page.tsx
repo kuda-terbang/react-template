@@ -1,0 +1,12 @@
+import React from 'react';
+import { withProtectedSsr } from '../src/utils/auth-strapi'
+
+const ProtectedSsrView = () => {
+  return <div>ProtectedSsrView</div>;
+};
+
+export const getServerSideProps = withProtectedSsr({
+  destination: '/'
+})
+
+export default ProtectedSsrView;

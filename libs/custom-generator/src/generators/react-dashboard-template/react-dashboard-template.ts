@@ -20,6 +20,8 @@ export default async function (tree: Tree, options: ReactDashboardTemplateGenera
   
   if (normalizedOptions.isCraTemplate) {
     generateCraTemplate(tree, normalizedOptions)
+  } else {
+    tree.delete(normalizedOptions.projectRoot.concat('/src/app/nx-welcome.tsx'))
   }
 
   generateFromModules(tree, normalizedOptions)

@@ -3,10 +3,13 @@ import { createAuthentication } from '@kudaterbang/util-auth';
 import apiStrapi, { strapiTokenKey } from '@kudaterbang/data-access-strapi';
 import { useNavigate } from 'react-router-dom';
 
-const { AuthContext, AuthProvider, useAuth } = createAuthentication({
-  tokenKey: strapiTokenKey,
-  fetchUser: apiStrapi.meGet,
-});
+const { AuthContext, AuthProvider, useAuth } = createAuthentication(
+  {
+    tokenKey: strapiTokenKey,
+    fetchUser: apiStrapi.meGet,
+  },
+  'csr'
+);
 
 const AuthProviderApp = ({ children }: { children: React.ReactNode }) => {
   const navigate = useNavigate();

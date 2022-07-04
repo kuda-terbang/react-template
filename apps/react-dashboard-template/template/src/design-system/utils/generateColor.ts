@@ -15,6 +15,5 @@ export default (jsonColors: JsonColors) => {
       main: lightColor[keyLightColor],
     };
   });
-  console.log('muiPaletteColor', muiPaletteColor);
   return muiPaletteColor;
 };
