@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const { AuthContext, AuthProvider, useAuth } = createAuthentication({
   tokenKey: strapiTokenKey,
   fetchUser: apiStrapi.meGet,
-})
+}, 'csr')
 
 const AuthProviderApp = ({
   children

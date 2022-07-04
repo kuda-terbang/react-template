@@ -3,10 +3,10 @@ import { createAuthentication } from '@<%= npmScope %>/util-auth';
 import apiStrapi, { strapiTokenKey } from '@<%= npmScope %>/data-access-strapi';
 import { useRouter } from 'next/router';
 
-const { AuthContext, AuthProvider, useAuth } = createAuthentication({
+const { AuthContext, AuthProvider, useAuth, withProtectedSsr } = createAuthentication({
   tokenKey: strapiTokenKey,
   fetchUser: apiStrapi.meGet,
-});
+}, 'ssr');
 
 const AuthProviderApp = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
@@ -21,4 +21,4 @@ const AuthProviderApp = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export { AuthContext, AuthProviderApp, useAuth };
+export { AuthContext, AuthProviderApp, useAuth, withProtectedSsr };
