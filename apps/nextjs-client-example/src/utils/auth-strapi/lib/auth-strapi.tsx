@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/nextjs';
 import { createAuthentication } from '@kudaterbang/util-auth';
 
 import apiStrapi, { strapiTokenKey } from '@kudaterbang/data-access-strapi';
@@ -8,6 +9,11 @@ const { AuthContext, AuthProvider, useAuth, withProtectedSsr } =
     {
       tokenKey: strapiTokenKey,
       fetchUser: apiStrapi.meGet,
+      onFetchUserSuccess: (user) => {
+        Sentry.setUser({
+          email: user?.email,
+        });
+      },
     },
     'ssr'
   );

@@ -1,3 +1,4 @@
+import * as Sentry from "@sentry/nextjs";
 import { createAuthentication } from '@<%= npmScope %>/util-auth';
 
 import apiStrapi, { strapiTokenKey } from '@<%= npmScope %>/data-access-strapi';
@@ -6,6 +7,11 @@ import { useRouter } from 'next/router';
 const { AuthContext, AuthProvider, useAuth, withProtectedSsr } = createAuthentication({
   tokenKey: strapiTokenKey,
   fetchUser: apiStrapi.meGet,
+  onFetchUserSuccess: (user) => {
+    Sentry.setUser({
+      email: user?.email,
+    })
+  }
 }, 'ssr');
 
 const AuthProviderApp = ({ children }: { children: React.ReactNode }) => {
