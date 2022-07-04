@@ -22,6 +22,11 @@
       "factory": "./src/generators/ui-mui-react-template/ui-mui-react-template",
       "schema": "./src/generators/ui-mui-react-template/schema.json",
       "description": "Generate shared component library made with material ui react"
+    },
+    "nextjs-client-template": {
+      "factory": "./src/generators/nextjs-client-template/nextjs-client-template",
+      "schema": "./src/generators/nextjs-client-template/schema.json",
+      "description": "NextJS Client generator for example and create-next-app"
     }
   }
 }

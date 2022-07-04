@@ -5,6 +5,7 @@
   "generators": "./generators.json",
   "scripts": {
     "generate-ui-mui-react-example": "sh ./scripts/generate-ui-mui-react-example.sh",
+    "generate-nextjs-client-example": "sh ./scripts/generate-nextjs-client.sh example",
     "generate-react-dashboard-example": "sh ./scripts/generate-react-dashboard.sh example",
     "generate-react-dashboard-template": "sh ./scripts/generate-react-dashboard.sh template"
   }

@@ -5,7 +5,7 @@ import {
   Navigate,
   useLocation,
 } from "react-router-dom";
-import { Layout } from '@<%= npmScope %>/<%= designSystemProject %>';
+import { LayoutDashboard } from '@<%= npmScope %>/<%= designSystemProject %>';
 import { useAuth } from '../../utils/auth-strapi';
 
 import logo from '../../assets/img/logo.svg'
@@ -38,7 +38,7 @@ const RootRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={(
-        <Layout
+        <LayoutDashboard
           logo={logo}
           menus={menus}
           logout={logout}
