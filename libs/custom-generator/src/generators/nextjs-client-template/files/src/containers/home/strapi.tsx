@@ -18,6 +18,7 @@ const StrapiView = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [rendered, setrendered] = useState(false)
 
   const handleLogout = () => {
     logout();
@@ -51,11 +52,15 @@ const StrapiView = () => {
     }
   };
 
+  React.useEffect(() => {
+    setrendered(true)
+  }, [])
+
   return (
     <div>
       <Typography variant="h6">Strapi</Typography>
       <Button onClick={() => mutateProductDetail()}>Refresh</Button>
-      {isAuthenticated ? (
+      {(rendered && isAuthenticated) ? (
         <>
           <Button onClick={handleLogout}>Logout</Button>
           {dataProducts?.data?.data.map((product) => (

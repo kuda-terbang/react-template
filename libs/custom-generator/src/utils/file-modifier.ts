@@ -98,6 +98,7 @@ export function addModules<TOptions>({
   modulePath,
   targetModulePath,
   replaceStrings,
+  deleteFiles,
 }: {
   tree: Tree,
   options: NormalizedSchema<TOptions>,
@@ -108,6 +109,7 @@ export function addModules<TOptions>({
     toString: string
     paths: string[]
   }[]
+  deleteFiles?: string[]
 }) {
   logger.log('GENERATE module', modulePath)
   const templateOptions = {
@@ -138,6 +140,12 @@ export function addModules<TOptions>({
           toString: replaceString.toString,
         })
       })
+    })
+  }
+
+  if (deleteFiles) {
+    deleteFiles.forEach((deleteFilePath) => {
+      tree.delete(options.projectRoot.concat(deleteFilePath))
     })
   }
 }

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
-import { Outlet } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -119,7 +118,8 @@ const Logo = styled('img', {
     }),
   };
 });
-export interface LayoutProps {
+export interface LayoutDashboardProps {
+  children: React.ReactNode;
   isAuthenticated: boolean;
   logo: string;
   logout: () => void;
@@ -133,12 +133,13 @@ export interface LayoutProps {
   }[];
 }
 export default function LayoutDashboard({
+  children,
   isAuthenticated,
   logo,
   logout,
   username,
   menus,
-}: LayoutProps) {
+}: LayoutDashboardProps) {
   const theme = useTheme();
 
   const [open, setOpen] = React.useState(false);
@@ -246,7 +247,7 @@ export default function LayoutDashboard({
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3, height: '100vh' }}>
         <DrawerHeader />
-        <Outlet />
+        {children}
       </Box>
     </Box>
   );

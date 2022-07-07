@@ -5,7 +5,7 @@ import {
   Navigate,
   useLocation,
 } from "react-router-dom";
-import { LayoutDashboard } from '@<%= npmScope %>/<%= designSystemProject %>';
+import LayoutDashboard from '../../design-system/components/layout/layout-dashboard-csr';
 import { useAuth } from '../../utils/auth-strapi';
 
 import logo from '../../assets/img/logo.svg'

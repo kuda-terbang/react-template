@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import { LayoutDashboard } from 'design-system';
+import LayoutDashboard from '../../design-system/components/layout/layout-dashboard-csr';
 import { useAuth } from '../../utils/auth-strapi';
 
 import logo from '../../assets/img/logo.svg';

@@ -1,19 +1,29 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const withNx = require('@nrwl/next/plugins/with-nx');
+<% if (!isCnaTemplate) { %>
+  const withNx = require('@nrwl/next/plugins/with-nx');
+<% } %>
 const { withSentryConfig } = require('@sentry/nextjs');
 const semver = require('semver')
 const { i18n } = require('./next-i18next.config');
 const { execSync } = require('child_process');
 
+<% if (!isCnaTemplate) { %>
 /**
  * @type {import('@nrwl/next/plugins/with-nx').WithNxOptions}
  **/
+<% } else { %>
+/**
+ * @type {import('next').NextConfig}
+ **/
+<% } %>
 const nextConfig = {
+  <% if (!isCnaTemplate) { %>
   nx: {
     // Set this to true if you would like to to use SVGR
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
+  <% } %>
   // Your existing module.exports
   pageExtensions: [
     'page.tsx'
@@ -22,10 +32,12 @@ const nextConfig = {
   reactStrictMode: false,
   webpack: (config, { buildId }) => {
     const buildIdStringify = JSON.stringify(buildId)
-
-    // TODO : show versioning of apps
-    const version = '1.0.0'
-    const name = 'nextjs-client-example'
+    <% if (!isCnaTemplate) { %>
+    const name = process.env.NX_TASK_TARGET_PROJECT
+    <% } else { %>
+    const name = process.env.npm_package_name
+    <% } %>
+    let version = process.env.npm_package_version
     let nextVersion = version
     let releaseVersion = ''
     if (process.env.NX_ENVIRONMENT === 'production') {
@@ -43,7 +55,7 @@ const nextConfig = {
     process.env.APP_VERSION = releaseVersion
 
     // Used to config getStaticProps with next-i18next https://stackoverflow.com/questions/64926174/module-not-found-cant-resolve-fs-in-next-js-application
-    config.resolve.fallback = { fs: false, path: false };
+    // config.resolve.fallback = { fs: false, path: false };
 
     return config
   }
@@ -63,4 +75,11 @@ const sentryWebpackPluginOptions = {
 
 // Make sure adding Sentry options is the last code to run before exporting, to
 // ensure that your source maps include changes from all other Webpack plugins
-module.exports = withSentryConfig(withNx(nextConfig), sentryWebpackPluginOptions);
+module.exports = withSentryConfig(
+  <% if (isCnaTemplate) { %>
+  nextConfig,
+  <% } else { %>
+  withNx(nextConfig),
+  <% } %>
+  sentryWebpackPluginOptions,
+);
