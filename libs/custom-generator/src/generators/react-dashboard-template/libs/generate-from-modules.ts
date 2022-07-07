@@ -44,6 +44,7 @@ export default function (tree: Tree, options: NormalizedReactDashboardSchema) {
           toString: 'REACT_APP_',
           paths: [
             `${prefixPath}/src/config/envValue.ts`,
+            `${prefixPath}/src/design-system/config/envValue.ts`,
             `${prefixPath}/src/services/data-access-strapi/config/envValue.ts`,
             `${prefixPath}/.env-example`,
           ]
@@ -108,6 +109,7 @@ export default function (tree: Tree, options: NormalizedReactDashboardSchema) {
             `${prefixPath}/src/app/app.tsx`,
             `${prefixPath}/src/app/pages/RootRoutes.tsx`,
             `${prefixPath}/src/features/common/pages/strapi/strapi.view.tsx`,
+            `${prefixPath}/src/design-system/components/layout/layout-dashboard-csr.tsx`,
           ]
         },
         {

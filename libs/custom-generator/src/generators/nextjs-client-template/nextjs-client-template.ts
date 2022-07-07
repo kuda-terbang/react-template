@@ -16,6 +16,11 @@ export default async function (tree: Tree, options: NextjsClientTemplateGenerato
   });
 
   addFiles(tree, normalizedOptions, 'nextjs-client-template', 'files');
+  
+  // Delete pages file from applicationGenerator
+  tree.delete(normalizedOptions.projectRoot.concat('/pages/_app.tsx'))
+  tree.delete(normalizedOptions.projectRoot.concat('/pages/_document.tsx'))
+  tree.delete(normalizedOptions.projectRoot.concat('/pages/index.tsx'))
 
   if (normalizedOptions.isCnaTemplate) {
     generateCnaTemplate(tree, normalizedOptions)

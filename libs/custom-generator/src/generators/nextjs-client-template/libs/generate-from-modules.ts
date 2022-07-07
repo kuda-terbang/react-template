@@ -4,7 +4,6 @@ import { NextjsClientTemplateNormalized } from "../schema";
 import { addModules } from "../../../utils/file-modifier";
 
 export default function (tree: Tree, options: NextjsClientTemplateNormalized) {
-  const prefixPath = options.isCnaTemplate ? '/template' : ''
   const workspace = readWorkspaceConfiguration(tree)
   const scopeName = '@' + workspace.npmScope
 
@@ -14,38 +13,41 @@ export default function (tree: Tree, options: NextjsClientTemplateNormalized) {
       tree,
       options,
       modulePath: '/libs/util-api/src',
-      targetModulePath: `${prefixPath}/src/utils/util-api`,
+      targetModulePath: `/src/utils/util-api`,
     })
     addModules({
       tree,
       options,
       modulePath: '/libs/data-access-strapi/src',
-      targetModulePath: `${prefixPath}/src/services/data-access-strapi`,
+      targetModulePath: `/src/services/data-access-strapi`,
       replaceStrings: options.isCnaTemplate ? [
         {
           fromString: `${scopeName}/util-api`,
-          toString: 'utils/util-api',
+          toString: '~/utils/util-api',
           paths: [
-            `${prefixPath}/src/services/data-access-strapi/lib/model/product.ts`,
-            `${prefixPath}/src/services/data-access-strapi/lib/api-strapi.endpoint.ts`,
+            `/src/services/data-access-strapi/lib/model/product.ts`,
+            `/src/services/data-access-strapi/lib/api-strapi.endpoint.ts`,
           ]
         },
         {
           fromString: `${scopeName}/data-access-strapi`,
-          toString: 'services/data-access-strapi',
+          toString: '~/services/data-access-strapi',
           paths: [
-            `${prefixPath}/src/app/pages/home/page-home-view.tsx`,
-            `${prefixPath}/src/features/common/pages/strapi/strapi.view.tsx`,
-            `${prefixPath}/src/utils/auth-strapi/lib/auth-strapi.tsx`,
+            `/src/containers/home/strapi.tsx`,
+            `/src/utils/auth-strapi/lib/auth-strapi.tsx`,
           ]
         },
+        // CHECK
         {
           fromString: 'NX_',
-          toString: 'REACT_APP_',
+          toString: 'NEXT_PUBLIC_',
           paths: [
-            `${prefixPath}/src/config/envValue.ts`,
-            `${prefixPath}/src/services/data-access-strapi/config/envValue.ts`,
-            `${prefixPath}/.env-example`,
+            `/config/envValue.ts`,
+            `/.env-example`,
+            `/next.config.js`,
+            `/sentry.client.config.js`,
+            `/sentry.server.config.js`,
+            `/src/services/data-access-strapi/config/envValue.ts`,
           ]
         },
       ] : undefined
@@ -56,21 +58,21 @@ export default function (tree: Tree, options: NextjsClientTemplateNormalized) {
       tree,
       options,
       modulePath: '/libs/util-confirmation/src',
-      targetModulePath: `${prefixPath}/src/utils/util-confirmation`,
+      targetModulePath: `/src/utils/util-confirmation`,
       replaceStrings: options.isCnaTemplate ? [
         {
           fromString: `${scopeName}/util-confirmation`,
-          toString: 'utils/util-confirmation',
+          toString: '~/utils/util-confirmation',
           paths: [
-            `${prefixPath}/src/app/app.tsx`,
-            `${prefixPath}/src/features/common/pages/page-common-view.tsx`,
+            `/pages/_app.page.tsx`,
+            `/pages/index.page.tsx`,
           ]
         },
         {
           fromString: `${scopeName}/${options.designSystemProject}`,
-          toString: 'design-system',
+          toString: '~/design-system/index',
           paths: [
-            `${prefixPath}/src/utils/util-confirmation/components/dialog-confirm/dialog-confirm.view.tsx`,
+            `/src/utils/util-confirmation/components/dialog-confirm/dialog-confirm.view.tsx`,
           ]
         },
       ] : undefined
@@ -81,14 +83,14 @@ export default function (tree: Tree, options: NextjsClientTemplateNormalized) {
       tree,
       options,
       modulePath: '/libs/util-auth/src',
-      targetModulePath: `${prefixPath}/src/utils/util-auth`,
+      targetModulePath: `/src/utils/util-auth`,
       replaceStrings: options.isCnaTemplate ? [
         {
           fromString: `${scopeName}/util-auth`,
-          toString: 'utils/util-auth',
+          toString: '~/utils/util-auth',
           paths: [
-            `${prefixPath}/src/utils/auth-strapi/lib/auth-strapi.tsx`,
-            `${prefixPath}/src/utils/util-api/lib/util-api.ts`,
+            `/src/utils/auth-strapi/lib/auth-strapi.tsx`,
+            `/src/utils/util-api/lib/util-api.ts`,
           ]
         },
       ] : undefined
@@ -99,32 +101,39 @@ export default function (tree: Tree, options: NextjsClientTemplateNormalized) {
       tree,
       options,
       modulePath: `/libs/${options.designSystemProject}/src`,
-      targetModulePath: `${prefixPath}/src/design-system`,
+      targetModulePath: `/src/design-system`,
       replaceStrings: options.isCnaTemplate ? [
         {
           fromString: `${scopeName}/${options.designSystemProject}`,
-          toString: 'design-system',
+          toString: '~/design-system/index',
           paths: [
-            `${prefixPath}/src/app/app.tsx`,
-            `${prefixPath}/src/app/pages/RootRoutes.tsx`,
-            `${prefixPath}/src/features/common/pages/strapi/strapi.view.tsx`,
+            `/pages/_app.page.tsx`,
+            `/pages/_document.page.tsx`,
+            `/pages/index.page.tsx`,
           ]
         },
         {
           fromString: `${scopeName}/${options.designTokenProject}/json/color`,
           toString: '../token/color.json',
           paths: [
-            `${prefixPath}/src/design-system/utils/generateColor.ts`,
-            `${prefixPath}/src/design-system/mui-theme/index.ts`,
+            `/src/design-system/utils/generateColor.ts`,
+            `/src/design-system/mui-theme/index.ts`,
           ]
-        }
+        },
+        {
+          fromString: 'NX_',
+          toString: 'NEXT_PUBLIC_',
+          paths: [
+            `/src/design-system/config/envValue.ts`,
+          ]
+        },
       ] : undefined
     })
     addModules({
       tree,
       options,
       modulePath: `/libs/${options.designTokenProject}/build/json`,
-      targetModulePath: `${prefixPath}/src/design-system/token`,
+      targetModulePath: `/src/design-system/token`,
     })
   }
 }

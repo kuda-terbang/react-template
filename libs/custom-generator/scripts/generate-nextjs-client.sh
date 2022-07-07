@@ -2,7 +2,7 @@ craType="$1"
 echo "Cra Type : $craType"
 
 # Add options CRA template
-isCnaProps=""
+isCnaProps="--no-isCnaTemplate"
 skipWorkpaceJson=""
 if [ $craType == "template" ];
 then
