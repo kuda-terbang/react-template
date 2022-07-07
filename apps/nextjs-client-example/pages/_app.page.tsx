@@ -18,9 +18,10 @@ import { GTM_ID } from '../src/services/analytics.service';
 import createEmotionCache from '../src/utils/create-emotion-cache';
 import i18nConfig from '../next-i18next.config';
 import defaultConfigSeo from '../next-seo.config';
+import { AuthProviderApp } from '../src/utils/auth-strapi';
+import LayoutBase from '../src/design-system/components/layout/layout-base';
 
 import '../src/styles/globals.css';
-import { AuthProviderApp } from '../src/utils/auth-strapi';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -28,39 +29,36 @@ const clientSideEmotionCache = createEmotionCache();
 interface MyAppProps extends AppPropsWithLayout {
   emotionCache?: EmotionCache;
 }
+
 const MyApp = (props: MyAppProps) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
-  const layoutType = Component.layoutType ?? 'LayoutBasic';
+  const layoutType =
+    (Component.layoutType as keyof typeof layoutClient) || 'LayoutBasic';
 
-  const LayoutComponent = layoutClient[layoutType];
-  let ComponentProvider = (
-    <LayoutComponent>
-      <Component {...pageProps} />
-    </LayoutComponent>
-  );
-
-  ComponentProvider = (
+  const ComponentProvider = (
     <ConfirmationProvider>
       <Snackbar>
         <FlagsProvider>
           <AuthProviderApp>
-            {/* Google Tag Manager - Global base code */}
-            <Script
-              id="gtag-base"
-              strategy="afterInteractive"
-              dangerouslySetInnerHTML={{
-                __html: `
-                  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                  })(window,document,'script','dataLayer', '${GTM_ID}');
-                `,
-              }}
-            />
-            <DefaultSeo {...defaultConfigSeo} />
-            {ComponentProvider}
+            <LayoutBase layoutType={layoutType}>
+              {/* Google Tag Manager - Global base code */}
+              <Script
+                id="gtag-base"
+                strategy="afterInteractive"
+                dangerouslySetInnerHTML={{
+                  __html: `
+                    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                    })(window,document,'script','dataLayer', '${GTM_ID}');
+                  `,
+                }}
+              />
+              <DefaultSeo {...defaultConfigSeo} />
+              <Component {...pageProps} />
+            </LayoutBase>
           </AuthProviderApp>
         </FlagsProvider>
       </Snackbar>

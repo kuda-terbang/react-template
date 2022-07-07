@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { styled, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import React, { useState } from 'react';
@@ -7,6 +7,17 @@ import apiStrapiService, {
   useProductDetailGet,
 } from '~/services/data-access-strapi';
 import { useAuth } from '../../utils/auth-strapi';
+
+const StyledContainer = styled('div')`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+const StyledForm = styled('form')`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const StrapiView = () => {
   const { isAuthenticated, logout, login } = useAuth();
@@ -57,8 +68,8 @@ const StrapiView = () => {
   }, []);
 
   return (
-    <div>
-      <Typography variant="h6">Strapi</Typography>
+    <StyledContainer>
+      <Typography variant="h2">Strapi</Typography>
       <Button onClick={() => mutateProductDetail()}>Refresh</Button>
       {rendered && isAuthenticated ? (
         <>
@@ -78,8 +89,8 @@ const StrapiView = () => {
           </div>
         </>
       ) : (
-        <form>
-          {isLogin ? 'Login' : 'Register'}
+        <StyledForm>
+          <div>{isLogin ? 'Login' : 'Register'}</div>
           <Button onClick={() => setisLogin(!isLogin)}>
             Change to {isLogin ? 'Register' : 'Login'}
           </Button>
@@ -103,9 +114,9 @@ const StrapiView = () => {
           <Button type="submit" onClick={handleSubmit}>
             Submit
           </Button>
-        </form>
+        </StyledForm>
       )}
-    </div>
+    </StyledContainer>
   );
 };
 

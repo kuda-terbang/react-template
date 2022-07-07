@@ -110,6 +110,8 @@ export default function (tree: Tree, options: NextjsClientTemplateNormalized) {
             `/pages/_app.page.tsx`,
             `/pages/_document.page.tsx`,
             `/pages/index.page.tsx`,
+            `/config/menus.ts`,
+            `/src/design-system/components/layout/layout-base.tsx`,
           ]
         },
         {
@@ -134,6 +136,23 @@ export default function (tree: Tree, options: NextjsClientTemplateNormalized) {
       options,
       modulePath: `/libs/${options.designTokenProject}/build/json`,
       targetModulePath: `/src/design-system/token`,
+    })
+
+    logger.log('GENERATE util-common')
+    addModules({
+      tree,
+      options,
+      modulePath: '/libs/util-react-common/src',
+      targetModulePath: '/src/utils/util-react-common',
+      replaceStrings: options.isCnaTemplate ? [
+        {
+          fromString: `${scopeName}/util-react-common`,
+          toString: '~/utils/util-react-common',
+          paths: [
+            '/src/design-system/components/layout/layout-base.tsx',
+          ]
+        },
+      ] : undefined
     })
   }
 }

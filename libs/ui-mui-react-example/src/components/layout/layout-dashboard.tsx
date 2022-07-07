@@ -118,7 +118,7 @@ const Logo = styled('img', {
     }),
   };
 });
-export type LayoutDashboardProps = {
+export interface LayoutDashboardProps {
   children: React.ReactNode;
   isAuthenticated: boolean;
   logo: string;

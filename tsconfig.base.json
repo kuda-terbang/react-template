@@ -52,6 +52,9 @@
       ],
       "@kudaterbang/util-confirmation": [
         "libs/util-confirmation/src/index.ts"
+      ],
+      "@kudaterbang/util-react-common": [
+        "libs/util-react-common/src/index.ts"
       ]
     }
   },
