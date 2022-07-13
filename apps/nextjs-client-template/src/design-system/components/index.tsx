@@ -3,6 +3,11 @@ export {
   default as layoutClient,
   LayoutBasicContext,
 } from './layout/layout-client';
+export type {
+  FooterProps,
+  NavbarProps,
+  LayoutType,
+} from './layout/layout-client';
 export { default as LayoutDashboard } from './layout/layout-dashboard';
 export type { LayoutDashboardProps } from './layout/layout-dashboard';
 export { default as Snackbar } from './snackbar';

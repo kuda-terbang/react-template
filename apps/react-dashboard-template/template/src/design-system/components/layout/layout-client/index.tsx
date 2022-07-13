@@ -7,5 +7,6 @@ const layout = {
 };
 export { LayoutBasicContext } from './layout-basic';
 export type LayoutType = keyof typeof layout;
+export type { FooterProps, NavbarProps } from './layout-basic';
 
 export default layout;

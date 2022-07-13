@@ -18,7 +18,6 @@ import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 
-import { websiteName } from '../../config/envValue';
 const drawerWidth = 240;
 
 const openedMixin = (theme: Theme): CSSObject => ({
@@ -118,7 +117,7 @@ const Logo = styled('img', {
     }),
   };
 });
-export type LayoutDashboardProps = {
+export interface LayoutDashboardProps {
   children: React.ReactNode;
   isAuthenticated: boolean;
   logo: string;
@@ -131,7 +130,8 @@ export type LayoutDashboardProps = {
     route: string;
     Icon?: typeof MenuIcon;
   }[];
-};
+  websiteName?: string;
+}
 export default function LayoutDashboard({
   children,
   isAuthenticated,
@@ -139,6 +139,7 @@ export default function LayoutDashboard({
   logout,
   username,
   menus,
+  websiteName,
 }: LayoutDashboardProps) {
   const theme = useTheme();
 
@@ -170,7 +171,7 @@ export default function LayoutDashboard({
           </IconButton>
           <Logo src={logo} alt="logo-appbar" open={open} />
           <Typography variant="h6" noWrap component="div">
-            {websiteName}
+            {websiteName || null}
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           {isAuthenticated && (

@@ -21,6 +21,7 @@ import Strapi from '../src/containers/home/strapi';
 const SnackbarContainer = styled('div')`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 `;
 
 const Home: NextPage = () => {
@@ -78,15 +79,15 @@ const Home: NextPage = () => {
           alignItems: 'center',
         }}
       >
-        <Typography variant="h4" component="h1" gutterBottom>
-          MUI v5 + Next.js with TypeScript example (Home)
-        </Typography>
+        <Typography variant="h2">i18n</Typography>
         <Link href="/about" color="secondary">
-          Go to the about page
+          Go to the about page utilize i18n
         </Link>
+        <Typography variant="h2">Protected SSR</Typography>
         <Link href="/protected-ssr" color="secondary">
-          Go to protected-ssr page
+          Go to protected-ssr page utilize withProtectedSsr
         </Link>
+        <Typography variant="h2">Snackbar</Typography>
         <SnackbarContainer>
           {variants.map((variant) => (
             <Button key={variant} onClick={handleClickSnackbar(variant)}>
@@ -94,8 +95,10 @@ const Home: NextPage = () => {
             </Button>
           ))}
         </SnackbarContainer>
+        <Typography variant="h2">Dialog</Typography>
         <Button onClick={() => setIsDialogOpen(true)}>Dialog Basic</Button>
         <Button onClick={handleClickConfirm}>Imperative Dialog Confirm</Button>
+        <Typography variant="h2">Sentry</Typography>
         <Button
           type="button"
           onClick={() => {

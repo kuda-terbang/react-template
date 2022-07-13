@@ -10,6 +10,7 @@
     "ui-mui-react-example": "libs/ui-mui-react-example",
     "util-api": "libs/util-api",
     "util-auth": "libs/util-auth",
-    "util-confirmation": "libs/util-confirmation"
+    "util-confirmation": "libs/util-confirmation",
+    "util-react-common": "libs/util-react-common"
   }
 }
