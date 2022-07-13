@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
@@ -13,10 +14,27 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+type NavbarMenu = {
+  title: string;
+  link?: string;
+  onClick?: () => void;
+  isProtected?: boolean;
+  subMenu?: NavbarProps['menus'];
+};
 
-const ResponsiveAppBar = ({ title }: { title: string }) => {
+export type NavbarProps = {
+  title: string;
+  isAuthenticated?: boolean;
+  menus: NavbarMenu[];
+  settingMenus: NavbarMenu[];
+};
+const Navbar = ({
+  isAuthenticated,
+  title,
+  menus,
+  settingMenus,
+}: NavbarProps) => {
+  const [rendered, setrendered] = React.useState(false);
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -35,10 +53,17 @@ const ResponsiveAppBar = ({ title }: { title: string }) => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
+  const handleCloseUserMenu = (onClick?: () => void) => () => {
     setAnchorElUser(null);
+    onClick?.();
   };
 
+  const isShowMenu = (isProtected?: boolean) =>
+    rendered && ((isProtected && isAuthenticated) || !isProtected);
+
+  React.useEffect(() => {
+    setrendered(true);
+  }, []);
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -91,11 +116,17 @@ const ResponsiveAppBar = ({ title }: { title: string }) => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+              {menus.map((page) => {
+                return (
+                  isShowMenu(page.isProtected) && (
+                    <Link href={page.link} key={page.title}>
+                      <MenuItem onClick={handleCloseNavMenu}>
+                        <Typography textAlign="center">{page.title}</Typography>
+                      </MenuItem>
+                    </Link>
+                  )
+                );
+              })}
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -118,15 +149,20 @@ const ResponsiveAppBar = ({ title }: { title: string }) => {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
+            {menus.map((page) => {
+              return (
+                isShowMenu(page.isProtected) && (
+                  <Button
+                    key={page.title}
+                    href={page.link}
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, color: 'white', display: 'block' }}
+                  >
+                    {page.title}
+                  </Button>
+                )
+              );
+            })}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -149,13 +185,20 @@ const ResponsiveAppBar = ({ title }: { title: string }) => {
                 horizontal: 'right',
               }}
               open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
+              onClose={handleCloseUserMenu()}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              {settingMenus.map(
+                (setting) =>
+                  isShowMenu(setting.isProtected) && (
+                    <Link href={setting.link} key={setting.title}>
+                      <MenuItem onClick={handleCloseUserMenu(setting.onClick)}>
+                        <Typography textAlign="center">
+                          {setting.title}
+                        </Typography>
+                      </MenuItem>
+                    </Link>
+                  )
+              )}
             </Menu>
           </Box>
         </Toolbar>
@@ -163,4 +206,4 @@ const ResponsiveAppBar = ({ title }: { title: string }) => {
     </AppBar>
   );
 };
-export default ResponsiveAppBar;
+export default Navbar;

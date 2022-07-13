@@ -187,13 +187,18 @@ const Navbar = ({
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu()}
             >
-              {settingMenus.map((setting) => (isShowMenu(setting.isProtected)) && (
-                <Link href={setting.link} key={setting.title}>
-                  <MenuItem onClick={handleCloseUserMenu(setting.onClick)}>
-                    <Typography textAlign="center">{setting.title}</Typography>
-                  </MenuItem>
-                </Link>
-              ))}
+              {settingMenus.map(
+                (setting) =>
+                  isShowMenu(setting.isProtected) && (
+                    <Link href={setting.link} key={setting.title}>
+                      <MenuItem onClick={handleCloseUserMenu(setting.onClick)}>
+                        <Typography textAlign="center">
+                          {setting.title}
+                        </Typography>
+                      </MenuItem>
+                    </Link>
+                  )
+              )}
             </Menu>
           </Box>
         </Toolbar>

@@ -1,1 +1,1 @@
-export const websiteName = process.env['NX_WEBSITE_NAME'];
+export const websiteName = process.env['REACT_APP_WEBSITE_NAME'];

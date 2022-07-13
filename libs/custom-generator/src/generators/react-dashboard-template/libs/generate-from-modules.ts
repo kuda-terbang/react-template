@@ -44,7 +44,6 @@ export default function (tree: Tree, options: NormalizedReactDashboardSchema) {
           toString: 'REACT_APP_',
           paths: [
             `${prefixPath}/src/config/envValue.ts`,
-            `${prefixPath}/src/design-system/config/envValue.ts`,
             `${prefixPath}/src/services/data-access-strapi/config/envValue.ts`,
             `${prefixPath}/.env-example`,
           ]
@@ -119,7 +118,14 @@ export default function (tree: Tree, options: NormalizedReactDashboardSchema) {
             `${prefixPath}/src/design-system/utils/generateColor.ts`,
             `${prefixPath}/src/design-system/mui-theme/index.ts`,
           ]
-        }
+        },
+        {
+          fromString: 'NX_',
+          toString: 'REACT_APP_',
+          paths: [
+            `${prefixPath}/src/design-system/config/envValue.ts`,
+          ]
+        },
       ] : undefined
     })
     addModules({
