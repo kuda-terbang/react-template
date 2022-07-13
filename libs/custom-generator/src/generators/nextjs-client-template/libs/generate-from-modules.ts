@@ -122,13 +122,6 @@ export default function (tree: Tree, options: NextjsClientTemplateNormalized) {
             `/src/design-system/mui-theme/index.ts`,
           ]
         },
-        {
-          fromString: 'NX_',
-          toString: 'NEXT_PUBLIC_',
-          paths: [
-            `/src/design-system/config/envValue.ts`,
-          ]
-        },
       ] : undefined
     })
     addModules({

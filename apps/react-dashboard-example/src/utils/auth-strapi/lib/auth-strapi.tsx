@@ -1,7 +1,8 @@
-import { createAuthentication } from '@kudaterbang/util-auth';
+import React from 'react';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 
+import { createAuthentication } from '@kudaterbang/util-auth';
 import apiStrapi, { strapiTokenKey } from '@kudaterbang/data-access-strapi';
-import { useNavigate } from 'react-router-dom';
 
 const { AuthContext, AuthProvider, useAuth } = createAuthentication(
   {
@@ -24,4 +25,23 @@ const AuthProviderApp = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export { AuthContext, AuthProviderApp, useAuth };
+const useProtectedRoutes = (
+  Component: React.LazyExoticComponent<() => JSX.Element>,
+  options?: {
+    isProtected: boolean;
+  }
+) => {
+  const { isAuthenticated } = useAuth();
+  const location = useLocation();
+
+  if (options?.isProtected && !isAuthenticated) {
+    return <Navigate to="/" state={{ from: location }} replace />;
+  }
+  return (
+    <React.Suspense fallback={<>...</>}>
+      <Component />
+    </React.Suspense>
+  );
+};
+
+export { AuthContext, AuthProviderApp, useAuth, useProtectedRoutes };
