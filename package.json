@@ -18,6 +18,7 @@
     "@nrwl/react": "^14.1.7",
     "@nrwl/web": "14.1.7",
     "@nrwl/workspace": "14.1.5",
+    "@nx-extend/strapi": "^3.1.0",
     "@testing-library/react": "13.1.1",
     "@types/jest": "27.4.1",
     "@types/js-cookie": "^3.0.2",
