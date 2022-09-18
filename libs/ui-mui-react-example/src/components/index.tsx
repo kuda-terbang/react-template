@@ -12,3 +12,10 @@ export { default as LayoutDashboard } from './layout/layout-dashboard';
 export type { LayoutDashboardProps } from './layout/layout-dashboard';
 export { default as Snackbar } from './snackbar';
 export { default as Table } from './table';
+
+// input
+export { default as CheckBoxGroup } from './input/checkbox-group'
+export { default as DateTime } from './input/datetime'
+export { default as Password } from './input/password'
+export { default as RadioGroup } from './input/radio-group'
+export { default as Switch } from './input/switch'
