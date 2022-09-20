@@ -14,6 +14,7 @@ export { default as Snackbar } from './snackbar';
 export { default as Table } from './table';
 
 // input
+export { default as Autocomplete } from './input/autocomplete'
 export { default as CheckBoxGroup } from './input/checkbox-group'
 export { default as DateTime } from './input/datetime'
 export { default as Password } from './input/password'

@@ -1,8 +1,18 @@
 import { useState } from 'react'
-import { CheckBoxGroup, DateTime, Switch, RadioGroup, Password } from '@kudaterbang/ui-mui-react-example';
+import { CheckBoxGroup, DateTime, Switch, RadioGroup, Password, Autocomplete } from '@kudaterbang/ui-mui-react-example';
 import Stack from '@mui/material/Stack';
 import dayjs from 'dayjs'
 
+import apiStrapi from '@kudaterbang/data-access-strapi';
+
+const defaultAutocompleteFetch = {
+  label: '',
+  value: 0,
+}
+const defaultAutocompleteStatic = {
+  label: '',
+  value: '',
+}
 const InputComponentView = () => {
   const [switchState, setSwitchState] = useState({
     first: false,
@@ -13,9 +23,21 @@ const InputComponentView = () => {
   const [datetimeState, setdatetimeState] = useState(dayjs())
   const [radioState, setradioState] = useState('')
   const [passwordState, setPasswordState] = useState('')
+  const [autocompleteStatic, setautocompleteStatic] = useState<typeof defaultAutocompleteStatic | null>(null)
+  const [autocompleteFetch, setautocompleteFetch] = useState<typeof defaultAutocompleteFetch | null>(null)
+  const options = [
+    {
+      label: 'First',
+      value: 'first',
+    },
+    {
+      label: 'Second',
+      value: 'second',
+    },
+  ]
   return (
     <div>
-      <Stack spacing={3}>
+      <Stack spacing={3} sx={{padding: 8}}>
         <CheckBoxGroup
           label="Check Box Group"
           onChange={(e) => {
@@ -98,18 +120,35 @@ const InputComponentView = () => {
           value={radioState}
           onChange={(_e, value) => setradioState(value)}
           label="Radio Group"
-          options={[
-            {
-              label: 'First',
-              value: 'first',
-            },
-            {
-              label: 'Second',
-              value: 'second',
-            },
-          ]}
+          options={options}
         />
         <Password label="Password" value={passwordState} onChange={(e) => setPasswordState(e.target.value)} />
+        <Autocomplete
+          label="Autocomplete static"
+          value={autocompleteStatic}
+          onChangeValue={(_e, value) => {
+            setautocompleteStatic(value)
+          }}
+          options={options}
+        />
+        <Autocomplete
+          type="fetch"
+          label="Autocomplete fetch"
+          value={autocompleteFetch}
+          onChangeValue={(_e, value) => {
+            setautocompleteFetch(value)
+          }}
+          fetchOptions={{
+            fetchFunction: async (inputText) => {
+              const { data } = await apiStrapi.productsGet({
+                params: {
+                  title: inputText,
+                }
+              })
+              return data?.data.map((item) => ({ label: item.attributes.product_name, value: item.id } )) || []
+            },
+          }}
+        />
       </Stack>
     </div>
   )

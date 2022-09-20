@@ -28,7 +28,12 @@ export default function RadioGroupView({ onChange, value, label, options, formPr
         onChange={onChange}
       >
         {options.map((item) => (
-          <FormControlLabel value={item.value} control={<Radio {...radioProps} />} label={item.label} />
+          <FormControlLabel
+            key={item.label}
+            value={item.value}
+            control={<Radio {...radioProps} />}
+            label={item.label}
+          />
         ))}
       </RadioGroup>
     </FormControl>
