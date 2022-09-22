@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { CheckBoxGroup, DateTime, Switch, RadioGroup, Password, Autocomplete } from '@kudaterbang/ui-mui-react-example';
+import { CheckBoxGroup, DateTime, Switch, RadioGroup, Password, Autocomplete, Select } from '@kudaterbang/ui-mui-react-example';
 import Stack from '@mui/material/Stack';
 import dayjs from 'dayjs'
 
@@ -35,6 +35,8 @@ const InputComponentView = () => {
       value: 'second',
     },
   ]
+  const [selectState, setselectState] = useState('')
+  const [selectStateFetch, setselectStateFetch] = useState('')
   return (
     <div>
       <Stack spacing={3} sx={{padding: 8}}>
@@ -148,6 +150,24 @@ const InputComponentView = () => {
               return data?.data.map((item) => ({ label: item.attributes.product_name, value: item.id } )) || []
             },
           }}
+        />
+        <Select
+          label="Select static"
+          onChange={(e) => setselectState(e.target.value)}
+          options={options}
+          value={selectState}
+        />
+        <Select
+          label="Select fetch"
+          type="fetch"
+          fetchOptions={{
+            fetchFunction: async () => {
+              const { data } = await apiStrapi.productsGet()
+              return data?.data.map((item) => ({ label: item.attributes.product_name, value: String(item.id) } )) || []
+            },
+          }}
+          onChange={(e) => setselectStateFetch(e.target.value)}
+          value={selectStateFetch}
         />
       </Stack>
     </div>
