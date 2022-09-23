@@ -1,5 +1,14 @@
 import { useState } from 'react'
-import { CheckBoxGroup, DateTime, Switch, RadioGroup, Password, Autocomplete, Select } from '@kudaterbang/ui-mui-react-example';
+import {
+  CheckBoxGroup,
+  DateTime,
+  Switch,
+  RadioGroup,
+  Password,
+  Autocomplete,
+  Select,
+  Phone,
+} from '@kudaterbang/ui-mui-react-example';
 import Stack from '@mui/material/Stack';
 import dayjs from 'dayjs'
 
@@ -37,6 +46,7 @@ const InputComponentView = () => {
   ]
   const [selectState, setselectState] = useState('')
   const [selectStateFetch, setselectStateFetch] = useState('')
+  const [phoneState, setphoneState] = useState('')
   return (
     <div>
       <Stack spacing={3} sx={{padding: 8}}>
@@ -168,6 +178,13 @@ const InputComponentView = () => {
           }}
           onChange={(e) => setselectStateFetch(e.target.value)}
           value={selectStateFetch}
+        />
+        <Phone
+          label="Phone Number"
+          onChange={(value) => {
+            setphoneState(value)
+          }}
+          value={phoneState}
         />
       </Stack>
     </div>
