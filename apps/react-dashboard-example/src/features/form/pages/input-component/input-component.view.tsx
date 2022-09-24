@@ -2,6 +2,7 @@ import { useState } from 'react'
 import {
   CheckBoxGroup,
   DateTime,
+  DropFiles,
   Switch,
   RadioGroup,
   Password,
@@ -9,6 +10,7 @@ import {
   Select,
   Phone,
 } from '@kudaterbang/ui-mui-react-example';
+import type { AcceptedFile } from '@kudaterbang/ui-mui-react-example'
 import Stack from '@mui/material/Stack';
 import dayjs from 'dayjs'
 
@@ -47,6 +49,7 @@ const InputComponentView = () => {
   const [selectState, setselectState] = useState('')
   const [selectStateFetch, setselectStateFetch] = useState('')
   const [phoneState, setphoneState] = useState('')
+  const [dropfileState, setdropfileState] = useState<AcceptedFile[]>([])
   return (
     <div>
       <Stack spacing={3} sx={{padding: 8}}>
@@ -185,6 +188,43 @@ const InputComponentView = () => {
             setphoneState(value)
           }}
           value={phoneState}
+        />
+        <DropFiles
+          labelDragActive="Drop files thumbnail"
+          labelDragAccept="Files accepted"
+          labelDragReject="Files rejected"
+          onChangeFile={(file) => {
+            setdropfileState([...dropfileState, ...file])
+          }}
+          onClickSubmit={(files) => {
+            console.log('submit files', files)
+            setdropfileState([])
+          }}
+          onClickRemove={(index: number) => {
+            const newFiles = [...dropfileState]
+            newFiles.splice(index, 1)
+            setdropfileState(newFiles)
+          }}
+          value={dropfileState}
+        />
+        <DropFiles
+          componentType="row"
+          labelDragActive="Drop files row"
+          labelDragAccept="Files accepted"
+          labelDragReject="Files rejected"
+          onChangeFile={(file) => {
+            setdropfileState([...dropfileState, ...file])
+          }}
+          onClickSubmit={(files) => {
+            console.log('submit files', files)
+            setdropfileState([])
+          }}
+          onClickRemove={(index: number) => {
+            const newFiles = [...dropfileState]
+            newFiles.splice(index, 1)
+            setdropfileState(newFiles)
+          }}
+          value={dropfileState}
         />
       </Stack>
     </div>
