@@ -13,7 +13,7 @@ import {
 import type { AcceptedFile } from '@kudaterbang/ui-mui-react-example'
 import Stack from '@mui/material/Stack';
 import dayjs from 'dayjs'
-
+import TextField from '@mui/material/TextField';
 import apiStrapi from '@kudaterbang/data-access-strapi';
 
 const defaultAutocompleteFetch = {
@@ -50,6 +50,7 @@ const InputComponentView = () => {
   const [selectStateFetch, setselectStateFetch] = useState('')
   const [phoneState, setphoneState] = useState('')
   const [dropfileState, setdropfileState] = useState<AcceptedFile[]>([])
+  const [textFieldState, settextFieldState] = useState('')
   return (
     <div>
       <Stack spacing={3} sx={{padding: 8}}>
@@ -225,6 +226,11 @@ const InputComponentView = () => {
             setdropfileState(newFiles)
           }}
           value={dropfileState}
+        />
+        <TextField
+          label="Text Field Custom"
+          onChange={(e) => settextFieldState(e.target.value)}
+          value={textFieldState}
         />
       </Stack>
     </div>
