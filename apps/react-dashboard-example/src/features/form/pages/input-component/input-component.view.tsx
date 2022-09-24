@@ -25,10 +25,53 @@ const defaultAutocompleteStatic = {
   label: '',
   value: '',
 }
+const options = [
+  {
+    label: 'First',
+    value: 'first',
+  },
+  {
+    label: 'Second',
+    value: 'second',
+  },
+]
+const dataCheckbox = [
+  {
+    key: 'first',
+    label: 'Satu',
+    value: 1,
+  },
+  {
+    key: 'second',
+    label: 'Dua',
+    value: 2,
+    disabled: true,
+  },
+  {
+    key: 'third',
+    label: 'Tiga',
+    value: 3,
+  },
+]
+const dataSwitch = [
+  {
+    key: 'first',
+    label: 'First',
+  },
+  {
+    key: 'second',
+    label: 'Second',
+  },
+]
 const InputComponentView = () => {
   const [switchState, setSwitchState] = useState({
     first: false,
     second: true,
+  })
+  const [checkBoxState, setcheckBoxState] = useState({
+    first: false,
+    second: true,
+    third: true,
   })
   const [dateState, setDateState] = useState(dayjs())
   const [timeState, settimeState] = useState(dayjs())
@@ -37,16 +80,6 @@ const InputComponentView = () => {
   const [passwordState, setPasswordState] = useState('')
   const [autocompleteStatic, setautocompleteStatic] = useState<typeof defaultAutocompleteStatic | null>(null)
   const [autocompleteFetch, setautocompleteFetch] = useState<typeof defaultAutocompleteFetch | null>(null)
-  const options = [
-    {
-      label: 'First',
-      value: 'first',
-    },
-    {
-      label: 'Second',
-      value: 'second',
-    },
-  ]
   const [selectState, setselectState] = useState('')
   const [selectStateFetch, setselectStateFetch] = useState('')
   const [phoneState, setphoneState] = useState('')
@@ -58,28 +91,14 @@ const InputComponentView = () => {
       <Stack spacing={3} sx={{padding: 8}}>
         <CheckBoxGroup
           label="Check Box Group"
-          onChange={(e) => {
-            const target = e.target as HTMLInputElement;
-            console.log('e.target.value', target.value)
+          onChange={(name, value) => {
+            setcheckBoxState({
+              ...checkBoxState,
+              [name]: value,
+            })
           }}
-          data={
-            [
-              {
-                label: 'Satu',
-                default: true,
-                value: 1,
-              },
-              {
-                label: 'Dua',
-                value: 2,
-                disabled: true,
-              },
-              {
-                label: 'Tiga',
-                value: 3,
-              },
-            ]
-          }
+          data={dataCheckbox}
+          value={checkBoxState}
         />
         <Switch
           label="Switches"
@@ -89,18 +108,8 @@ const InputComponentView = () => {
               [e.target.name]: e.target.checked,
             })
           }}
-          data={[
-            {
-              key: 'first',
-              label: 'First',
-              value: switchState.first
-            },
-            {
-              key: 'second',
-              label: 'Second',
-              value: switchState.second
-            },
-          ]}
+          data={dataSwitch}
+          value={switchState}
         />
         <DateTime
           type="date-desktop"

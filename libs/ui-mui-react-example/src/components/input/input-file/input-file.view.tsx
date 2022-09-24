@@ -5,12 +5,14 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import styled from 'styled-components';
 import { humanFileSize } from '../../../utils/textFormatter';
-import { FormControl, FormLabel, OutlinedInput } from '@mui/material';
+import { FormControl, FormControlProps, FormLabel, OutlinedInput, OutlinedInputProps } from '@mui/material';
 
 const InputHidden = styled.input`
   display: none;
 `
 type Props = {
+  formProps?: FormControlProps
+  inputProps?: Omit<OutlinedInputProps, 'readOnly' | 'endAdornment' | 'startAdornment' | 'value'>
   label: string
   onClickRemove?: React.MouseEventHandler<HTMLButtonElement>
   onChange: (file: File | null, event?: React.ChangeEvent<HTMLInputElement>) => void
@@ -18,6 +20,8 @@ type Props = {
 }
 
 const InputFile = ({
+  formProps,
+  inputProps,
   label,
   onClickRemove,
   onChange,
@@ -34,9 +38,10 @@ const InputFile = ({
     fileInputRef.current?.click()
   }
   return (
-    <FormControl>
+    <FormControl {...formProps}>
       <FormLabel>{label}</FormLabel>
       <OutlinedInput
+        {...inputProps}
         readOnly
         endAdornment={(!!onClickRemove && !!value) && (
           <InputAdornment position="end">

@@ -7,7 +7,8 @@ import Switch from '@mui/material/Switch';
 
 type FormProps = React.ComponentProps<typeof FormControl>
 type SwitchProps = React.ComponentProps<typeof Switch>
-type Props = {
+
+type SwitchViewProps = {
   label: string,
   onChange: (event: ChangeEvent<HTMLInputElement>, checked: boolean) => void
   switchProps?: Omit<SwitchProps, 'checked'|'onChange'|'name'>
@@ -15,11 +16,18 @@ type Props = {
   data: {
     key: string
     label: string
-    value: boolean
   }[]
+  value: Record<string, boolean>
 }
 
-const SwitchView = ({label, data, onChange, switchProps, formProps}: Props) => {
+function SwitchView({
+  label,
+  data,
+  onChange,
+  switchProps,
+  formProps,
+  value,
+}: SwitchViewProps) {
   return (
     <FormControl {...formProps} variant="standard">
       <FormLabel component="legend">{label}</FormLabel>
@@ -28,7 +36,7 @@ const SwitchView = ({label, data, onChange, switchProps, formProps}: Props) => {
           <FormControlLabel
             key={item.key}
             control={
-              <Switch {...switchProps} checked={item.value} onChange={onChange} name={item.key} />
+              <Switch {...switchProps} checked={value[item.key]} onChange={onChange} name={item.key} />
             }
             label={item.label}
           />

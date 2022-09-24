@@ -10,6 +10,7 @@ type FormProps = React.ComponentProps<typeof FormControl>
 type FormGroupProps = React.ComponentProps<typeof FormGroup>
 type CheckBoxGroupProps = {
   data: {
+    key: string
     label: string
     value: CheckboxProps['value']
     disabled?: boolean
@@ -19,23 +20,33 @@ type CheckBoxGroupProps = {
   formProps?: FormProps
   formGroupProps?: FormGroupProps
   label: string
-  onChange: FormGroupProps['onChange']
+  onChange: (name: string, value: boolean, event: React.FormEvent<HTMLDivElement>) => void
+  value: Record<string, boolean>
 }
 
-const CheckBoxGroupView = ({ data, formProps, label, onChange }: CheckBoxGroupProps) => {
+const CheckBoxGroupView = ({ data, formProps, label, onChange, value }: CheckBoxGroupProps) => {
   return (
     <FormControl {...formProps} variant="standard">
       <FormLabel component="legend">{label}</FormLabel>
-      <FormGroup onChange={onChange}>
-        {data.map((item) => (
-          <FormControlLabel
-            key={`${item.label}${item.value}`}
-            value={item.value}
-            disabled={item.disabled}
-            control={<Checkbox {...item.checkboxProps} defaultChecked={item.default} />}
-            label={item.label}
-          />
-        ))}
+      <FormGroup onChange={(event) => {
+        const target = event.target as HTMLInputElement;
+        onChange(target.name, Boolean(target.value), event)
+      }}>
+        {data.map((item) => {
+          return (
+            <FormControlLabel
+              key={`${item.label}${item.value}`}
+              disabled={item.disabled}
+              value={value[item.key]}
+              checked={value[item.key]}
+              control={<Checkbox
+                {...item.checkboxProps}
+                name={item.key}
+              />}
+              label={item.label}
+            />
+          )
+        })}
       </FormGroup>
     </FormControl>
   )
