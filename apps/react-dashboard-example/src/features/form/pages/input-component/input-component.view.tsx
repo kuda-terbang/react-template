@@ -3,6 +3,7 @@ import {
   CheckBoxGroup,
   DateTime,
   DropFiles,
+  InputFile,
   Switch,
   RadioGroup,
   Password,
@@ -51,6 +52,7 @@ const InputComponentView = () => {
   const [phoneState, setphoneState] = useState('')
   const [dropfileState, setdropfileState] = useState<AcceptedFile[]>([])
   const [textFieldState, settextFieldState] = useState('')
+  const [inputFileState, setinputFileState] = useState<File | null>(null)
   return (
     <div>
       <Stack spacing={3} sx={{padding: 8}}>
@@ -231,6 +233,16 @@ const InputComponentView = () => {
           label="Text Field Custom"
           onChange={(e) => settextFieldState(e.target.value)}
           value={textFieldState}
+        />
+        <InputFile
+          label="Input Single File"
+          onChange={(file) => {
+            setinputFileState(file)
+          }}
+          onClickRemove={() => {
+            setinputFileState(null)
+          }}
+          value={inputFileState}
         />
       </Stack>
     </div>
