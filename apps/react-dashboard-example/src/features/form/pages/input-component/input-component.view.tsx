@@ -10,6 +10,7 @@ import {
   Autocomplete,
   Select,
   Phone,
+  TextEditor,
 } from '@kudaterbang/ui-mui-react-example';
 import type { AcceptedFile } from '@kudaterbang/ui-mui-react-example'
 import Stack from '@mui/material/Stack';
@@ -86,6 +87,7 @@ const InputComponentView = () => {
   const [dropfileState, setdropfileState] = useState<AcceptedFile[]>([])
   const [textFieldState, settextFieldState] = useState('')
   const [inputFileState, setinputFileState] = useState<File | null>(null)
+  const [textEditorState, settextEditorState] = useState('')
   return (
     <div>
       <Stack spacing={3} sx={{padding: 8}}>
@@ -252,6 +254,14 @@ const InputComponentView = () => {
             setinputFileState(null)
           }}
           value={inputFileState}
+        />
+        <TextEditor
+          label="Text Editor Input"
+          onChange={(content) => {
+            console.log('content', content)
+            settextEditorState(content)
+          }}
+          value={textEditorState}
         />
       </Stack>
     </div>
