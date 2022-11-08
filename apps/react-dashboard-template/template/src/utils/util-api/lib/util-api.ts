@@ -49,7 +49,7 @@ interface ApiConfig {
   };
 }
 
-const getUrl = (urlPattern: string, params: Record<string, unknown>) => {
+const getUrl = (urlPattern: string, params: unknown) => {
   const pattern = new UrlPattern(urlPattern);
   return pattern.stringify(params);
 };

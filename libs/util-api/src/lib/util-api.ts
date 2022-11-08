@@ -47,7 +47,7 @@ interface ApiConfig {
   };
 }
 
-const getUrl = (urlPattern: string, params: Record<string, unknown>) => {
+const getUrl = (urlPattern: string, params: unknown) => {
   const pattern = new UrlPattern(urlPattern);
   return pattern.stringify(params);
 };
@@ -106,7 +106,7 @@ export const createAxios: CreateAxios = ({baseURL, baseHeaders}) => {
       if (baseHeaders.tokenKeyName) {
         const authorization = baseHeaders.withBearer ? 'Bearer ' : ''
         const token = getCookie(baseHeaders.tokenKeyName)
-        
+
         // Cancel if no token and authorization
         if (endpoint.isAuthenticated && !token) {
           return Promise.reject('Not Authenticated')
