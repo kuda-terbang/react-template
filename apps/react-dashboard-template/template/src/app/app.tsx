@@ -3,6 +3,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 import { Snackbar, theme } from 'design-system';
 import { ConfirmationProvider } from 'utils/util-confirmation';
@@ -17,20 +19,22 @@ const queryClient = new QueryClient(config);
 function App() {
   return (
     <React.StrictMode>
-      <BrowserRouter>
-        <QueryClientProvider client={queryClient}>
-          <ThemeProvider theme={theme}>
-            <Snackbar>
-              <CssBaseline />
-              <AuthProviderApp>
-                <ConfirmationProvider>
-                  <Routes />
-                </ConfirmationProvider>
-              </AuthProviderApp>
-            </Snackbar>
-          </ThemeProvider>
-        </QueryClientProvider>
-      </BrowserRouter>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <BrowserRouter>
+          <QueryClientProvider client={queryClient}>
+            <ThemeProvider theme={theme}>
+              <Snackbar>
+                <CssBaseline />
+                <AuthProviderApp>
+                  <ConfirmationProvider>
+                    <Routes />
+                  </ConfirmationProvider>
+                </AuthProviderApp>
+              </Snackbar>
+            </ThemeProvider>
+          </QueryClientProvider>
+        </BrowserRouter>
+      </LocalizationProvider>
     </React.StrictMode>
   );
 }

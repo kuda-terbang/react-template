@@ -9,7 +9,9 @@ import { menus } from '../config/menus';
 
 const Home = React.lazy(() => import('../pages/home'));
 const Common = React.lazy(() => import('../../features/common/pages'));
-const InputComponent = React.lazy(() => import('../../features/form/pages/input-component'));
+const InputComponent = React.lazy(
+  () => import('../../features/form/pages/input-component')
+);
 
 const RootRoutes = () => {
   const { isAuthenticated, logout, user } = useAuth();

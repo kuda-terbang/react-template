@@ -36,6 +36,7 @@ export default function (tree: Tree, options: NormalizedReactDashboardSchema) {
           paths: [
             `${prefixPath}/src/app/pages/home/page-home-view.tsx`,
             `${prefixPath}/src/features/common/pages/strapi/strapi.view.tsx`,
+            `${prefixPath}/src/features/form/pages/input-component/input-component.view.tsx`,
             `${prefixPath}/src/utils/auth-strapi/lib/auth-strapi.tsx`,
           ]
         },
@@ -108,6 +109,7 @@ export default function (tree: Tree, options: NormalizedReactDashboardSchema) {
             `${prefixPath}/src/app/app.tsx`,
             `${prefixPath}/src/app/pages/RootRoutes.tsx`,
             `${prefixPath}/src/features/common/pages/strapi/strapi.view.tsx`,
+            `${prefixPath}/src/features/form/pages/input-component/input-component.view.tsx`,
             `${prefixPath}/src/design-system/components/layout/layout-dashboard-csr.tsx`,
           ]
         },
