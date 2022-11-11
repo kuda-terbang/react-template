@@ -18,35 +18,22 @@ const InputHidden = styled('input')`
 `;
 type Props = {
   formProps?: FormControlProps;
-  inputProps?: Omit<
-    OutlinedInputProps,
-    'readOnly' | 'endAdornment' | 'startAdornment' | 'value'
-  >;
+  inputProps?: Omit<OutlinedInputProps, 'readOnly' | 'endAdornment' | 'startAdornment' | 'value'>;
   label: string;
   onClickRemove?: React.MouseEventHandler<HTMLButtonElement>;
-  onChange: (
-    file: File | null,
-    event?: React.ChangeEvent<HTMLInputElement>
-  ) => void;
+  onChange: (file: File | null, event?: React.ChangeEvent<HTMLInputElement>) => void;
   value: File | null;
 };
 
-const InputFile = ({
-  formProps,
-  inputProps,
-  label,
-  onClickRemove,
-  onChange,
-  value,
-}: Props) => {
+const InputFile = ({ formProps, inputProps, label, onClickRemove, onChange, value }: Props) => {
   const fileInputRef = React.useRef<HTMLInputElement>(null);
   const textValue = value ? `${value.name} (${humanFileSize(value.size)})` : '';
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     onChange(e.target.files?.[0] || null, e);
   };
-  const handleOpenFileBrowser: React.MouseEventHandler<
-    HTMLButtonElement | HTMLDivElement
-  > = (e) => {
+  const handleOpenFileBrowser: React.MouseEventHandler<HTMLButtonElement | HTMLDivElement> = (
+    e
+  ) => {
     console.log('clicked');
     e.preventDefault();
     fileInputRef.current?.click();
@@ -69,11 +56,7 @@ const InputFile = ({
         }
         startAdornment={
           <InputAdornment position="start">
-            <Button
-              onClick={handleOpenFileBrowser}
-              color="primary"
-              size="small"
-            >
+            <Button onClick={handleOpenFileBrowser} color="primary" size="small">
               Select file
             </Button>
           </InputAdornment>

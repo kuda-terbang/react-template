@@ -20,16 +20,11 @@ type SelectViewProps<TValue> = {
     label: string;
     value: TValue;
   }[];
-  selectProps?: Omit<
-    SelectProps<TValue>,
-    'labelId' | 'id' | 'value' | 'onChange'
-  >;
+  selectProps?: Omit<SelectProps<TValue>, 'labelId' | 'id' | 'value' | 'onChange'>;
   type?: 'fetch' | 'static';
   value: TValue;
 };
-export default function SelectView<
-  TValue extends string | number | readonly string[] | undefined
->({
+export default function SelectView<TValue extends string | number | readonly string[] | undefined>({
   fetchOptions,
   formProps,
   label,

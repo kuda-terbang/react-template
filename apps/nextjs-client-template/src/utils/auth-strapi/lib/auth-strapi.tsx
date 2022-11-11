@@ -4,19 +4,18 @@ import { createAuthentication } from '~/utils/util-auth';
 import apiStrapi, { strapiTokenKey } from '~/services/data-access-strapi';
 import { useRouter } from 'next/router';
 
-const { AuthContext, AuthProvider, useAuth, withProtectedSsr } =
-  createAuthentication(
-    {
-      tokenKey: strapiTokenKey,
-      fetchUser: apiStrapi.meGet,
-      onFetchUserSuccess: (user) => {
-        Sentry.setUser({
-          email: user?.email,
-        });
-      },
+const { AuthContext, AuthProvider, useAuth, withProtectedSsr } = createAuthentication(
+  {
+    tokenKey: strapiTokenKey,
+    fetchUser: apiStrapi.meGet,
+    onFetchUserSuccess: (user) => {
+      Sentry.setUser({
+        email: user?.email,
+      });
     },
-    'ssr'
-  );
+  },
+  'ssr'
+);
 
 const AuthProviderApp = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();

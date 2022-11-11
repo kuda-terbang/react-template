@@ -8,11 +8,7 @@ import { DefaultSeo } from 'next-seo';
 import { appWithTranslation } from 'next-i18next';
 
 import { ConfirmationProvider } from '@kudaterbang/util-confirmation';
-import {
-  layoutClient,
-  Snackbar,
-  theme,
-} from '@kudaterbang/ui-mui-react-example';
+import { layoutClient, Snackbar, theme } from '@kudaterbang/ui-mui-react-example';
 import FlagsProvider from '../src/services/firebase-remote-config.service';
 import { GTM_ID } from '../src/services/analytics.service';
 import createEmotionCache from '../src/utils/create-emotion-cache';
@@ -33,8 +29,7 @@ interface MyAppProps extends AppPropsWithLayout {
 const MyApp = (props: MyAppProps) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
-  const layoutType =
-    (Component.layoutType as keyof typeof layoutClient) || 'LayoutBasic';
+  const layoutType = (Component.layoutType as keyof typeof layoutClient) || 'LayoutBasic';
 
   const ComponentProvider = (
     <ConfirmationProvider>

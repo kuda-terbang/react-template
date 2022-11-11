@@ -25,19 +25,14 @@ export interface StrapiObjectDetail<Type> {
   data: Type;
   meta: Record<string, unknown>;
 }
-type AxiosRequest<RequestType> = Omit<
-  AxiosRequestConfig<RequestType>,
-  'url' | 'method'
->;
-type ApiOptionsClient<RequestType, ParamsUrlType> =
-  AxiosRequest<RequestType> & {
-    paramsUrl?: ParamsUrlType;
-  };
-type ApiOptionsCreated<RequestType, ResponseType, ParamsUrlType> =
-  AxiosRequest<RequestType> & {
-    endpoint: Endpoint<RequestType, ResponseType, ResponseType>;
-    paramsUrl?: ParamsUrlType;
-  };
+type AxiosRequest<RequestType> = Omit<AxiosRequestConfig<RequestType>, 'url' | 'method'>;
+type ApiOptionsClient<RequestType, ParamsUrlType> = AxiosRequest<RequestType> & {
+  paramsUrl?: ParamsUrlType;
+};
+type ApiOptionsCreated<RequestType, ResponseType, ParamsUrlType> = AxiosRequest<RequestType> & {
+  endpoint: Endpoint<RequestType, ResponseType, ResponseType>;
+  paramsUrl?: ParamsUrlType;
+};
 
 interface ApiConfig {
   baseURL: string;
@@ -49,7 +44,7 @@ interface ApiConfig {
   };
 }
 
-const getUrl = (urlPattern: string, params: Record<string, unknown>) => {
+const getUrl = (urlPattern: string, params: unknown) => {
   const pattern = new UrlPattern(urlPattern);
   return pattern.stringify(params);
 };
@@ -88,8 +83,7 @@ interface ExportedEndpoint {
 
 export const createAxios: CreateAxios = ({ baseURL, baseHeaders }) => {
   return (apiOptions) => {
-    const { endpoint = { method: 'get', path: '/' }, paramsUrl = {} } =
-      apiOptions || {};
+    const { endpoint = { method: 'get', path: '/' }, paramsUrl = {} } = apiOptions || {};
 
     const method = endpoint.method;
     const url = getUrl(endpoint.path, paramsUrl);
@@ -144,8 +138,7 @@ export const createAxios: CreateAxios = ({ baseURL, baseHeaders }) => {
           Object.keys(initialResponse).forEach((key) => {
             const value = response.data[key];
             if (!Array.isArray(value) && !value) {
-              response.data[key] =
-                initialResponse[key as keyof typeof initialResponse];
+              response.data[key] = initialResponse[key as keyof typeof initialResponse];
             }
           });
         }
@@ -173,10 +166,7 @@ export const createAxios: CreateAxios = ({ baseURL, baseHeaders }) => {
   };
 };
 
-export const createExportedEndpoint: ExportedEndpoint = (
-  apiInstance,
-  endpoints
-) => {
+export const createExportedEndpoint: ExportedEndpoint = (apiInstance, endpoints) => {
   return {
     ...Object.keys(endpoints).reduce(
       (prev, key) => {

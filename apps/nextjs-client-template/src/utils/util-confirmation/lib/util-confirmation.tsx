@@ -1,12 +1,6 @@
 /* eslint-disable react/display-name */
 /* eslint-disable no-param-reassign */
-import React, {
-  createContext,
-  useContext,
-  useMemo,
-  useReducer,
-  useCallback,
-} from 'react';
+import React, { createContext, useContext, useMemo, useReducer, useCallback } from 'react';
 import produce, { Immutable } from 'immer';
 
 import DialogConfirm from '../components/dialog-confirm';
@@ -59,43 +53,39 @@ const initialState: ConfirmationPopupState = {
 };
 
 // Create context for state & dispatch confirmation popup
-const ConfirmationPopupStateContext: React.Context<
-  Immutable<ConfirmationPopupState>
-> = createContext(initialState as Immutable<ConfirmationPopupState>);
+const ConfirmationPopupStateContext: React.Context<Immutable<ConfirmationPopupState>> =
+  createContext(initialState as Immutable<ConfirmationPopupState>);
 
-const ConfirmationPopupDispatchContext =
-  createContext<ConfirmationPopupDispatch>({
-    openConfirmation: () => {
-      /* */
-    },
-    closeConfirmation: () => {
-      /* */
-    },
-    onSubmitConfirmation: () => {
-      /* */
-    },
-  });
+const ConfirmationPopupDispatchContext = createContext<ConfirmationPopupDispatch>({
+  openConfirmation: () => {
+    /* */
+  },
+  closeConfirmation: () => {
+    /* */
+  },
+  onSubmitConfirmation: () => {
+    /* */
+  },
+});
 
 // Reducer for manage state confirmation popup
-const reducer = produce(
-  (draft: ConfirmationPopupState, action: ConfirmationPopupAction) => {
-    const { type, payload = {} } = action;
-    switch (type) {
-      case 'OPEN_CONFIRMATION_POPUP':
-        Object.keys(draft).forEach((objKey) => {
-          const key = objKey as keyof ConfirmationPopupState;
-          (draft as any)[key] = payload[key] || initialState[key];
-        });
-        draft.isOpen = true;
-        return;
-      case 'CLOSE_CONFIRMATION_POPUP':
-        draft.isOpen = false;
-        return;
-      default:
-        throw new Error('Unknown action type');
-    }
+const reducer = produce((draft: ConfirmationPopupState, action: ConfirmationPopupAction) => {
+  const { type, payload = {} } = action;
+  switch (type) {
+    case 'OPEN_CONFIRMATION_POPUP':
+      Object.keys(draft).forEach((objKey) => {
+        const key = objKey as keyof ConfirmationPopupState;
+        (draft as any)[key] = payload[key] || initialState[key];
+      });
+      draft.isOpen = true;
+      return;
+    case 'CLOSE_CONFIRMATION_POPUP':
+      draft.isOpen = false;
+      return;
+    default:
+      throw new Error('Unknown action type');
   }
-);
+});
 
 // Custom hooks method confirmation popup
 const useConfirmationPopup = (): ConfirmationPopupContext => {
@@ -148,9 +138,7 @@ const ConfirmationProvider = ({ children }: ConfirmationProviderProps) => {
 
 const useConfirmation = (): UseConfirmation => {
   const { isOpen } = useContext(ConfirmationPopupStateContext);
-  const { onSubmitConfirmation, ...dispatch } = useContext(
-    ConfirmationPopupDispatchContext
-  );
+  const { onSubmitConfirmation, ...dispatch } = useContext(ConfirmationPopupDispatchContext);
   return { isOpen, ...dispatch };
 };
 

@@ -28,19 +28,10 @@ export type NavbarProps = {
   menus: NavbarMenu[];
   settingMenus: NavbarMenu[];
 };
-const Navbar = ({
-  isAuthenticated,
-  title,
-  menus,
-  settingMenus,
-}: NavbarProps) => {
+const Navbar = ({ isAuthenticated, title, menus, settingMenus }: NavbarProps) => {
   const [rendered, setrendered] = React.useState(false);
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
-  );
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null
-  );
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -192,9 +183,7 @@ const Navbar = ({
                   isShowMenu(setting.isProtected) && (
                     <Link href={setting.link} key={setting.title}>
                       <MenuItem onClick={handleCloseUserMenu(setting.onClick)}>
-                        <Typography textAlign="center">
-                          {setting.title}
-                        </Typography>
+                        <Typography textAlign="center">{setting.title}</Typography>
                       </MenuItem>
                     </Link>
                   )

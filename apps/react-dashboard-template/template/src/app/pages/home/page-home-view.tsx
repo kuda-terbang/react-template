@@ -18,9 +18,7 @@ const PageHome = () => {
   const handleLogout = () => {
     logout();
   };
-  const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = async (
-    e
-  ) => {
+  const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = async (e) => {
     e.preventDefault();
     let result;
     if (isLogin) {
@@ -106,12 +104,7 @@ const PageHome = () => {
                 marginBottom: '8px',
               }}
             />
-            <Button
-              variant="contained"
-              color="success"
-              type="submit"
-              onClick={handleSubmit}
-            >
+            <Button variant="contained" color="success" type="submit" onClick={handleSubmit}>
               Submit
             </Button>
           </>

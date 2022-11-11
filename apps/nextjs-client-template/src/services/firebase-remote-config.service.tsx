@@ -1,10 +1,5 @@
 import React, { useContext } from 'react';
-import {
-  fetchAndActivate,
-  getAll,
-  getRemoteConfig,
-  Value,
-} from 'firebase/remote-config';
+import { fetchAndActivate, getAll, getRemoteConfig, Value } from 'firebase/remote-config';
 
 import { firebaseConfigInterval } from '../../config/envValue';
 import app from './firebase.service';
@@ -36,9 +31,7 @@ const getValueFromRemote = (remoteConfigValues: Record<string, Value>) => {
 const initializeRemoteConfig = async ({ flags, setFlags }: InitializeProps) => {
   try {
     const remoteConfig = getRemoteConfig(app);
-    remoteConfig.settings.minimumFetchIntervalMillis = Number(
-      firebaseConfigInterval
-    );
+    remoteConfig.settings.minimumFetchIntervalMillis = Number(firebaseConfigInterval);
     remoteConfig.defaultConfig = defaultConfig;
     // console.log('[remote-config] remoteConfig', remoteConfig)
 
@@ -67,9 +60,7 @@ const FlagsProvider = ({ children }: FlagsProviderProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return (
-    <FlagsContext.Provider value={flags}>{children}</FlagsContext.Provider>
-  );
+  return <FlagsContext.Provider value={flags}>{children}</FlagsContext.Provider>;
 };
 
 export const useRemoteConfigKey = (key: keyof typeof defaultConfig) => {

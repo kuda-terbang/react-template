@@ -29,8 +29,7 @@ interface MyAppProps extends AppPropsWithLayout {
 const MyApp = (props: MyAppProps) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
-  const layoutType =
-    (Component.layoutType as keyof typeof layoutClient) || 'LayoutBasic';
+  const layoutType = (Component.layoutType as keyof typeof layoutClient) || 'LayoutBasic';
 
   const ComponentProvider = (
     <ConfirmationProvider>

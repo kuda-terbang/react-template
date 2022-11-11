@@ -67,9 +67,7 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "apps/react-dashboard-example/**/*.{ts,tsx,js,jsx}"
-        ]
+        "lintFilePatterns": ["apps/react-dashboard-example/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "test": {

@@ -20,14 +20,7 @@ type SwitchViewProps = {
   value: Record<string, boolean>;
 };
 
-function SwitchView({
-  label,
-  data,
-  onChange,
-  switchProps,
-  formProps,
-  value,
-}: SwitchViewProps) {
+function SwitchView({ label, data, onChange, switchProps, formProps, value }: SwitchViewProps) {
   return (
     <FormControl {...formProps} variant="standard">
       <FormLabel component="legend">{label}</FormLabel>
