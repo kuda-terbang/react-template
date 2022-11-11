@@ -20,21 +20,11 @@ type CheckBoxGroupProps = {
   formProps?: FormProps;
   formGroupProps?: FormGroupProps;
   label: string;
-  onChange: (
-    name: string,
-    value: boolean,
-    event: React.FormEvent<HTMLDivElement>
-  ) => void;
+  onChange: (name: string, value: boolean, event: React.FormEvent<HTMLDivElement>) => void;
   value: Record<string, boolean>;
 };
 
-const CheckBoxGroupView = ({
-  data,
-  formProps,
-  label,
-  onChange,
-  value,
-}: CheckBoxGroupProps) => {
+const CheckBoxGroupView = ({ data, formProps, label, onChange, value }: CheckBoxGroupProps) => {
   return (
     <FormControl {...formProps} variant="standard">
       <FormLabel component="legend">{label}</FormLabel>

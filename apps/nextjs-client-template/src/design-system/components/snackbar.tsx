@@ -1,13 +1,18 @@
 import React from 'react';
-import Button from '@mui/material/Button';
+import Alert, { AlertColor } from '@mui/material/Alert';
 import CloseIcon from '@mui/icons-material/Close';
+import IconButton from '@mui/material/IconButton';
 import {
-  SnackbarProvider,
+  OptionsObject,
+  SnackbarContent,
   SnackbarKey,
+  SnackbarMessage,
+  SnackbarProvider,
   SnackbarProviderProps,
+  VariantType,
+  useSnackbar as useSnackbarNotistack,
 } from 'notistack';
-import { Theme } from '@mui/material';
-import { makeStyles } from '@mui/styles';
+import { styled } from '@mui/system';
 
 type Props = {
   children: React.ReactNode;
@@ -18,48 +23,57 @@ const snackbarConfig: SnackbarConfig = {
   maxSnack: 3,
 };
 
-const useStyles = makeStyles((props: Theme) => {
-  return {
-    success: {
-      backgroundColor: `${props.palette.success.main} !important`,
-    },
-    error: {
-      backgroundColor: `${props.palette.error.main} !important`,
-    },
-    info: {
-      backgroundColor: `${props.palette.info.main} !important`,
-    },
-    warning: {
-      backgroundColor: `${props.palette.warning.main} !importan`,
-    },
-  };
-});
+const StyledIconButton = styled(IconButton)`
+  color: white;
+`;
 
-const Snackbar = ({ children }: Props) => {
-  const classes = useStyles();
-  const notistackRef = React.createRef<SnackbarProvider>();
-  const onClickDismiss = (key: SnackbarKey) => () => {
-    notistackRef.current?.closeSnackbar(key);
+interface SnackbarCustomProps {
+  id: SnackbarKey;
+  message: SnackbarMessage;
+  variant: VariantType;
+}
+
+const SnackbarCustom = React.forwardRef<HTMLDivElement, SnackbarCustomProps>((props, ref) => {
+  const { closeSnackbar } = useSnackbarNotistack();
+  const { id, message, variant, ...other } = props;
+  const onClickDismiss = () => {
+    closeSnackbar(id);
+  };
+  const severity: Record<string, AlertColor> = {
+    error: 'error',
+    info: 'info',
+    warning: 'warning',
+    success: 'success',
   };
   return (
-    <SnackbarProvider
-      {...snackbarConfig}
-      classes={{
-        variantSuccess: classes.success,
-        variantError: classes.error,
-        variantWarning: classes.warning,
-        variantInfo: classes.info,
-      }}
-      ref={notistackRef}
-      action={(key) => (
-        <Button onClick={onClickDismiss(key)} color="inherit">
-          <CloseIcon />
-        </Button>
-      )}
-    >
-      {children}
-    </SnackbarProvider>
+    <SnackbarContent ref={ref} role="alert" {...other}>
+      <Alert variant="filled" severity={severity[variant] || 'success'}>
+        {message}
+        <StyledIconButton onClick={onClickDismiss} size="small" aria-label="close">
+          <CloseIcon fontSize="small" />
+        </StyledIconButton>
+      </Alert>
+    </SnackbarContent>
   );
+});
+
+export const Snackbar = ({ children }: Props) => {
+  return <SnackbarProvider {...snackbarConfig}>{children}</SnackbarProvider>;
 };
 
-export default Snackbar;
+export const useSnackbar = () => {
+  const { enqueueSnackbar } = useSnackbarNotistack();
+  const showSnackbar = (
+    variant: VariantType,
+    message: SnackbarMessage,
+    options?: OptionsObject
+  ) => {
+    enqueueSnackbar(message, {
+      ...options,
+      content: (key, message) => <SnackbarCustom id={key} message={message} variant={variant} />,
+    });
+  };
+  return {
+    showSnackbar,
+  };
+};

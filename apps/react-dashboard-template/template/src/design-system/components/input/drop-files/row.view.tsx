@@ -41,10 +41,7 @@ const RowView = ({ files, onClickRemove }: Props) => {
   const actions = [
     {
       icon: (rowIndex: number, rowFile: AcceptedFile) => (
-        <IconButtonRemove
-          onClick={(e) => onClickRemove?.(rowIndex, rowFile, e)}
-          size="small"
-        >
+        <IconButtonRemove onClick={(e) => onClickRemove?.(rowIndex, rowFile, e)} size="small">
           <DeleteIcon fontSize="medium" />
         </IconButtonRemove>
       ),
@@ -65,9 +62,7 @@ const RowView = ({ files, onClickRemove }: Props) => {
             <span>{file.name}</span>
             <span>{humanFileSize(file.size, true)}</span>
           </RowContent>
-          <RowActions>
-            {actions.map((action) => action.icon(index, file))}
-          </RowActions>
+          <RowActions>{actions.map((action) => action.icon(index, file))}</RowActions>
         </RowContainer>
       ))}
     </Rows>

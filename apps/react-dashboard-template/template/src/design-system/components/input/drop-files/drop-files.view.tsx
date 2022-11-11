@@ -82,10 +82,7 @@ const DropFiles = ({
 
   useEffect(() => {
     // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
-    return () =>
-      value.forEach(
-        (file) => file.preview && URL.revokeObjectURL(file.preview)
-      );
+    return () => value.forEach((file) => file.preview && URL.revokeObjectURL(file.preview));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

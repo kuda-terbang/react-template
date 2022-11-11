@@ -8,7 +8,7 @@ export {
   default as LayoutDashboard,
 } from './layout/layout-dashboard';
 export type { LayoutDashboardProps } from './layout/layout-dashboard'
-export { default as Snackbar } from './snackbar';
+export { Snackbar, useSnackbar } from './snackbar';
 export { default as Table } from './table';
 
 // input

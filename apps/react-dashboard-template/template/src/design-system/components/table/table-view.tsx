@@ -11,9 +11,7 @@ import Skeleton from '@mui/material/Skeleton';
 
 import EnhancedTableHead, { HeadCell } from './table-head';
 import EnhancedTableRow, { TableRowProps } from './table-row';
-import EnhancedTableToolbar, {
-  EnhancedTableToolbarProps,
-} from './table-toolbar';
+import EnhancedTableToolbar, { EnhancedTableToolbarProps } from './table-toolbar';
 
 export type TableProps<TData> = {
   rowActionOptions?: TableRowProps<TData>['rowActionOptions'];
@@ -88,9 +86,7 @@ function EnhancedTable<TData>({
     onChangePage(newPage);
   };
 
-  const handleChangeRowsPerPage = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
     const perPage = parseInt(event.target.value, 10);
     onChangeRowsPerPage(perPage);
     setRowsPerPage(perPage);
@@ -100,8 +96,7 @@ function EnhancedTable<TData>({
   const isSelected = (name: never) => selected.indexOf(name) !== -1;
 
   // Avoid a layout jump when reaching the last page with empty rows.
-  const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
   const propsHead = {
     headOptions,

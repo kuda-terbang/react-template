@@ -57,11 +57,7 @@ export const gtmFlushProperties = (propertiesType: 'screen' | 'event') => {
 
 export const useTrackScreen = () => {
   const router = useRouter();
-  return (
-    screenName: string,
-    screenProperties?: Record<string, unknown>,
-    isFlush = true
-  ) => {
+  return (screenName: string, screenProperties?: Record<string, unknown>, isFlush = true) => {
     if (isFlush) {
       gtmFlushProperties('event');
       gtmFlushProperties('screen');
@@ -81,14 +77,8 @@ export const useTrackScreen = () => {
   };
 };
 
-type GTMEventProperties = (
-  eventName: string,
-  eventProperties?: Record<string, unknown>
-) => void;
-export const gtmTrackEvent: GTMEventProperties = (
-  eventName,
-  eventProperties
-) => {
+type GTMEventProperties = (eventName: string, eventProperties?: Record<string, unknown>) => void;
+export const gtmTrackEvent: GTMEventProperties = (eventName, eventProperties) => {
   gtmFlushProperties('event');
   window.dataLayer.push({
     event: eventName,

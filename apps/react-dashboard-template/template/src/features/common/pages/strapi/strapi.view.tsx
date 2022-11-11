@@ -28,12 +28,8 @@ const StrapiView = () => {
           },
         ]}
         rowRenderOption={{
-          createdAt: ({ createdAt }) => (
-            <>{new Date(createdAt).toLocaleDateString()}</>
-          ),
-          updatedAt: ({ updatedAt }) => (
-            <>{new Date(updatedAt).toLocaleDateString()}</>
-          ),
+          createdAt: ({ createdAt }) => <>{new Date(createdAt).toLocaleDateString()}</>,
+          updatedAt: ({ updatedAt }) => <>{new Date(updatedAt).toLocaleDateString()}</>,
         }}
         columnKey="id"
         tableTitle="Product Table"

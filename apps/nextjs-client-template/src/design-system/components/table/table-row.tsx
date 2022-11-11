@@ -19,10 +19,7 @@ export type TableRowProps<TData> = {
   isItemSelected?: boolean;
   labelId: string;
   onClick: (event: React.MouseEvent<unknown>, name: never) => void;
-  rowRenderOption?: PartialRecord<
-    keyof Partial<TData>,
-    React.ComponentType<TData>
-  >;
+  rowRenderOption?: PartialRecord<keyof Partial<TData>, React.ComponentType<TData>>;
   // rowRenderOption?: {
   //   [P in keyof TData]?: React.ComponentType<TData>
   // }
@@ -98,10 +95,7 @@ function TableRow<TData>({
               <CustomRow
                 {...(data as JSX.IntrinsicAttributes &
                   JSX.LibraryManagedAttributes<
-                    Record<
-                      keyof TData,
-                      React.ComponentType<TData>
-                    >[keyof TData],
+                    Record<keyof TData, React.ComponentType<TData>>[keyof TData],
                     TData
                   >)}
               />
@@ -113,12 +107,7 @@ function TableRow<TData>({
       })}
       {rowActionOptions.length > 0 && (
         <TableCell sx={{ zIndex: 100000 }}>
-          <IconButton
-            color="inherit"
-            aria-label="open menu row"
-            onClick={handleClick}
-            edge="start"
-          >
+          <IconButton color="inherit" aria-label="open menu row" onClick={handleClick} edge="start">
             <MoreVertIcon />
           </IconButton>
           <Menu
@@ -136,10 +125,7 @@ function TableRow<TData>({
                 rowAction.onClick(data[columnKey]);
               };
               return (
-                <MenuItem
-                  key={`${rowAction.label}-${index}`}
-                  onClick={handleClickMenu}
-                >
+                <MenuItem key={`${rowAction.label}-${index}`} onClick={handleClickMenu}>
                   {rowAction.label}
                 </MenuItem>
               );

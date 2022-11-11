@@ -9,9 +9,7 @@ import type {
   AutocompleteInputChangeReason,
 } from '@mui/material/Autocomplete';
 
-type AutocompleteViewProps<
-  TOption = { label: string; value: string | number }
-> = {
+type AutocompleteViewProps<TOption = { label: string; value: string | number }> = {
   type?: 'fetch' | 'static';
   label: string;
   getOptionLabel?: (option: TOption) => string;
@@ -37,9 +35,7 @@ type AutocompleteViewProps<
   value?: TOption | null;
 };
 
-function AutocompleteView<
-  TOption extends { label: string; value: string | number }
->({
+function AutocompleteView<TOption extends { label: string; value: string | number }>({
   type = 'static',
   getOptionLabel,
   label,
@@ -86,9 +82,7 @@ function AutocompleteView<
       onChange={(...props) => {
         onChangeValue(...props);
       }}
-      renderInput={(params) => (
-        <TextField {...params} {...textFieldProps} label={label} />
-      )}
+      renderInput={(params) => <TextField {...params} {...textFieldProps} label={label} />}
     />
   );
 }

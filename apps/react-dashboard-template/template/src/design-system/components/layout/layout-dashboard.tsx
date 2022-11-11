@@ -204,11 +204,7 @@ export default function LayoutDashboard({
         <DrawerHeader>
           <Logo src={logo} alt="logo-appbar" open={open} isDrawer />
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
+            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
         <Divider />

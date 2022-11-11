@@ -3,11 +3,7 @@ import { layoutClient } from '@kudaterbang/ui-mui-react-example';
 import type { LayoutType } from '@kudaterbang/ui-mui-react-example';
 import { getDeepValue } from '@kudaterbang/util-react-common';
 
-import {
-  navbarMenus,
-  footerMenus,
-  useSettingMenus,
-} from '../../../../config/menus';
+import { navbarMenus, footerMenus, useSettingMenus } from '../../../../config/menus';
 import { useAuth } from '../../../utils/auth-strapi';
 type Props = {
   children: React.ReactElement | React.ReactElement[];

@@ -17,12 +17,10 @@ export const firebaseApiKey = process.env.NEXT_PUBLIC_API_KEY;
 export const firebaseAuthDomain = process.env.NEXT_PUBLIC_AUTH_DOMAIN;
 export const firebaseProjectId = process.env.NEXT_PUBLIC_PROJECT_ID;
 export const firebaseStorageBucket = process.env.NEXT_PUBLIC_STORAGE_BUCKET;
-export const firebaseMessagingSenderId =
-  process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID;
+export const firebaseMessagingSenderId = process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID;
 export const firebaseAppId = process.env.NEXT_PUBLIC_APP_ID;
 export const firebaseMeasurementId = process.env.NEXT_PUBLIC_MEASUREMENT_ID;
-export const firebaseConfigInterval =
-  process.env.NEXT_PUBLIC_REMOTE_CONFIG_INTERVAL;
+export const firebaseConfigInterval = process.env.NEXT_PUBLIC_REMOTE_CONFIG_INTERVAL;
 
 // Google Tag Manager
 

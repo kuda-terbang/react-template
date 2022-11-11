@@ -21,21 +21,12 @@ export interface EnhancedTableToolbarProps<TData> {
   selectedData?: TData[];
 }
 
-function TableToolbar<TData>(
-  props: EnhancedTableToolbarProps<TData>
-): JSX.Element {
-  const {
-    bulkOptions = [],
-    numSelected,
-    tableTitle,
-    selectedData = [],
-  } = props;
+function TableToolbar<TData>(props: EnhancedTableToolbarProps<TData>): JSX.Element {
+  const { bulkOptions = [], numSelected, tableTitle, selectedData = [] } = props;
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const handleClickButtonMenu = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
+  const handleClickButtonMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
@@ -49,29 +40,16 @@ function TableToolbar<TData>(
         pr: { xs: 1, sm: 1 },
         ...(numSelected > 0 && {
           bgcolor: (theme) =>
-            alpha(
-              theme.palette.primary.main,
-              theme.palette.action.activatedOpacity
-            ),
+            alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity),
         }),
       }}
     >
       {numSelected > 0 ? (
-        <Typography
-          sx={{ flex: '1 1 100%' }}
-          color="inherit"
-          variant="subtitle1"
-          component="div"
-        >
+        <Typography sx={{ flex: '1 1 100%' }} color="inherit" variant="subtitle1" component="div">
           {numSelected} selected
         </Typography>
       ) : (
-        <Typography
-          sx={{ flex: '1 1 100%' }}
-          variant="h6"
-          id="tableTitle"
-          component="div"
-        >
+        <Typography sx={{ flex: '1 1 100%' }} variant="h6" id="tableTitle" component="div">
           {tableTitle}
         </Typography>
       )}
@@ -107,10 +85,7 @@ function TableToolbar<TData>(
                 option.onClick(selectedData);
               };
               return (
-                <MenuItem
-                  key={`${option.label}-${index}`}
-                  onClick={handleClickMenu}
-                >
+                <MenuItem key={`${option.label}-${index}`} onClick={handleClickMenu}>
                   {option.label}
                 </MenuItem>
               );

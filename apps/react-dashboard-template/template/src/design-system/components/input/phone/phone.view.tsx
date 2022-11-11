@@ -10,8 +10,6 @@ const Phone = ({ onChange, ...otherProps }: PhoneProps) => {
   const handleChange: MuiTelInputProps['onChange'] = (value, info) => {
     onChange?.(value, info, matchIsValidTel(value));
   };
-  return (
-    <MuiTelInput {...otherProps} defaultCountry="ID" onChange={handleChange} />
-  );
+  return <MuiTelInput {...otherProps} defaultCountry="ID" onChange={handleChange} />;
 };
 export default Phone;

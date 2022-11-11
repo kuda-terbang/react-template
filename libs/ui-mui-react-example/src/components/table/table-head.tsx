@@ -19,14 +19,8 @@ export interface HeadCell<TData> {
 }
 
 function EnhancedTableHead<TData>(props: EnhancedTableHeadProps<TData>) {
-  const {
-    onSelectAllClick,
-    headOptions,
-    numSelected,
-    rowCount,
-    withCheckbox,
-    withActionColumn,
-  } = props;
+  const { onSelectAllClick, headOptions, numSelected, rowCount, withCheckbox, withActionColumn } =
+    props;
 
   return (
     <TableHead>

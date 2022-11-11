@@ -5,13 +5,10 @@ import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { useSnackbar, VariantType } from 'notistack';
+import { VariantType } from 'notistack';
 import { styled } from '@mui/system';
 
-import {
-  DialogBasic,
-  LayoutBasicContext,
-} from '@kudaterbang/ui-mui-react-example';
+import { DialogBasic, LayoutBasicContext, useSnackbar } from '@kudaterbang/ui-mui-react-example';
 import { useConfirmation } from '@kudaterbang/util-confirmation';
 import { useTrackScreen } from '../src/services/analytics.service';
 
@@ -31,19 +28,11 @@ const Home: NextPage = () => {
   const { setTitle } = React.useContext(LayoutBasicContext);
 
   // Snackbar
-  const { enqueueSnackbar } = useSnackbar();
+  const { showSnackbar } = useSnackbar();
   const handleClickSnackbar = (variant: VariantType) => () => {
-    enqueueSnackbar(`Show snackbar ${variant}`, {
-      variant,
-    });
+    showSnackbar(variant, `Show snackbar ${variant}`);
   };
-  const variants: VariantType[] = [
-    'default',
-    'info',
-    'success',
-    'error',
-    'warning',
-  ];
+  const variants: VariantType[] = ['default', 'info', 'success', 'error', 'warning'];
 
   // Dialog
   const { openConfirmation } = useConfirmation();

@@ -1,11 +1,11 @@
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import React from 'react';
-import ReactQuill from 'react-quill';
+import React, { Component } from 'react';
+import ReactQuillComponent from 'react-quill';
 import type { FormControlProps } from '@mui/material';
 import 'react-quill/dist/quill.snow.css';
 
-type ReactQuillProps = React.ComponentProps<typeof ReactQuill>;
+type ReactQuillProps = React.ComponentProps<typeof ReactQuillComponent>;
 type TextEditorProps = ReactQuillProps & {
   formControlProps?: FormControlProps;
   label: string;
@@ -35,18 +35,34 @@ const defaultModules: ReactQuillProps['modules'] = {
   ],
 };
 
-const TextEditor = ({
-  formControlProps,
-  label,
-  modules = defaultModules,
-  ...props
-}: TextEditorProps) => {
-  return (
-    <FormControl {...formControlProps}>
-      <FormLabel>{label}</FormLabel>
-      <ReactQuill {...props} modules={modules} theme="snow" />
-    </FormControl>
-  );
-};
+class TextEditor extends Component<
+  TextEditorProps,
+  {
+    quill: typeof ReactQuillComponent;
+  }
+> {
+  constructor(props: TextEditorProps) {
+    super(props);
+    if (document) {
+      this.quill = require('react-quill');
+    }
+  }
+  quill: typeof ReactQuillComponent | null = null;
+
+  override render() {
+    const ReactQuill = this.quill;
+    if (ReactQuill) {
+      const { formControlProps, label, modules = defaultModules, ...props } = this.props;
+      return (
+        <FormControl {...formControlProps}>
+          <FormLabel>{label}</FormLabel>
+          <ReactQuill {...props} modules={modules} theme="snow" />
+        </FormControl>
+      );
+    } else {
+      return null;
+    }
+  }
+}
 
 export default TextEditor;

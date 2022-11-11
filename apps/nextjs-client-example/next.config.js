@@ -36,9 +36,7 @@ const nextConfig = {
       releaseVersion = 'development';
     } else {
       nextVersion = semver.inc(version, 'patch');
-      let branchName = execSync(
-        'git rev-parse --abbrev-ref HEAD'
-      ).toLocaleString();
+      let branchName = execSync('git rev-parse --abbrev-ref HEAD').toLocaleString();
       branchName = branchName.replace('/', '-').trim();
       releaseVersion = `${name}@${nextVersion}-${branchName}-${buildIdStringify}`;
     }

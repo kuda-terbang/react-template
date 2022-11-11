@@ -91,11 +91,7 @@ export default function DialogCustom({
       aria-describedby="dialog-description"
     >
       {!!title && (
-        <StyledDialogTitle
-          id="dialog-title"
-          data-testid="dialog-title"
-          onClose={onClose}
-        >
+        <StyledDialogTitle id="dialog-title" data-testid="dialog-title" onClose={onClose}>
           {title}
         </StyledDialogTitle>
       )}
@@ -103,12 +99,7 @@ export default function DialogCustom({
       {actions ? (
         <DialogActions>
           {actions.map(({ onClick, text, buttonVariant, buttonColor }) => (
-            <Button
-              key={text}
-              onClick={onClick}
-              variant={buttonVariant}
-              color={buttonColor}
-            >
+            <Button key={text} onClick={onClick} variant={buttonVariant} color={buttonColor}>
               {text}
             </Button>
           ))}
@@ -123,11 +114,7 @@ export default function DialogCustom({
                 </Button>
               )}
               {!!onClickSubmit && (
-                <Button
-                  variant="contained"
-                  color="success"
-                  onClick={onClickSubmit}
-                >
+                <Button variant="contained" color="success" onClick={onClickSubmit}>
                   {textButtonSubmit}
                 </Button>
               )}

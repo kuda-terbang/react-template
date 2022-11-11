@@ -63,10 +63,7 @@ const Thumbnail = ({ index, file, onClickRemove }: ThumbnailProps) => {
   return (
     <ThumbnailContainer>
       <ThumbnailInner>{thumbnailComponent}</ThumbnailInner>
-      <ThumbnailButtonRemove
-        onClick={(e) => onClickRemove?.(index, file, e)}
-        size="small"
-      >
+      <ThumbnailButtonRemove onClick={(e) => onClickRemove?.(index, file, e)} size="small">
         <CloseIcon fontSize="inherit" />
       </ThumbnailButtonRemove>
     </ThumbnailContainer>
@@ -81,12 +78,7 @@ const ThumbnailView = ({ files, onClickRemove }: ThumbnailViewProps) => {
   return (
     <ThumbnailsContainer>
       {files.map((file, index) => (
-        <Thumbnail
-          key={file.name}
-          file={file}
-          index={index}
-          onClickRemove={onClickRemove}
-        />
+        <Thumbnail key={file.name} file={file} index={index} onClickRemove={onClickRemove} />
       ))}
     </ThumbnailsContainer>
   );

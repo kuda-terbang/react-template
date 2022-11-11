@@ -26,16 +26,11 @@ function createAuthContext<TDataUser>(): React.Context<TypeContext<TDataUser>> {
 
 interface AuthenticationConfig<TDataUser> {
   tokenKey: string;
-  fetchUser: (
-    axiosRequest?: AxiosRequestConfig
-  ) => Promise<AxiosResponse<TDataUser>>;
+  fetchUser: (axiosRequest?: AxiosRequestConfig) => Promise<AxiosResponse<TDataUser>>;
   onFetchUserSuccess?: (user: TDataUser) => void;
 }
 
-function createAuthProvider<
-  TDataUser,
-  TContext extends React.Context<TypeContext<TDataUser>>
->(
+function createAuthProvider<TDataUser, TContext extends React.Context<TypeContext<TDataUser>>>(
   AuthContext: TContext,
   { tokenKey, fetchUser }: AuthenticationConfig<TDataUser>
 ) {
@@ -108,17 +103,11 @@ type WithAuthSsr<GetServerSideProps, GetServerSidePropsContext> = (
   callback?: GetServerSideProps
 ) => (context: GetServerSidePropsContext) => void;
 
-function createWithAuthSsr<
-  TDataUser,
-  GetServerSideProps,
-  GetServerSidePropsContext
->(
+function createWithAuthSsr<TDataUser, GetServerSideProps, GetServerSidePropsContext>(
   config: AuthenticationConfig<TDataUser>
 ): WithAuthSsr<GetServerSideProps, GetServerSidePropsContext> {
   return (options, callback) => async (context) => {
-    const ssrContext = context as unknown as {
-      req: { cookies: { [key: string]: string } };
-    };
+    const ssrContext = context as unknown as { req: { cookies: { [key: string]: string } } };
     const tokenKey = ssrContext.req.cookies[config.tokenKey || ''];
     const redirect = {
       permanent: false,

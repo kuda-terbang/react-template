@@ -23,17 +23,10 @@ const DateTimeView = ({
   inputFormat = 'MM/DD/YYYY',
   value,
 }: Props) => {
-  const renderTextField = (params: TextFieldProps) => (
-    <TextField {...textFieldProps} {...params} />
-  );
+  const renderTextField = (params: TextFieldProps) => <TextField {...textFieldProps} {...params} />;
   if (type === 'time') {
     return (
-      <TimePicker
-        label={label}
-        value={value}
-        onChange={onChange}
-        renderInput={renderTextField}
-      />
+      <TimePicker label={label} value={value} onChange={onChange} renderInput={renderTextField} />
     );
   }
   if (type === 'date-desktop') {
@@ -59,12 +52,7 @@ const DateTimeView = ({
     );
   }
   return (
-    <DateTimePicker
-      label={label}
-      value={value}
-      onChange={onChange}
-      renderInput={renderTextField}
-    />
+    <DateTimePicker label={label} value={value} onChange={onChange} renderInput={renderTextField} />
   );
 };
 

@@ -23,8 +23,7 @@ const StrapiView = () => {
   const { isAuthenticated, logout, login } = useAuth();
 
   const { data: dataProducts } = useProductsGet();
-  const { data: dataProductDetail, mutate: mutateProductDetail } =
-    useProductDetailGet('1');
+  const { data: dataProductDetail, mutate: mutateProductDetail } = useProductDetailGet('1');
   const [isLogin, setisLogin] = useState(true);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -34,9 +33,7 @@ const StrapiView = () => {
   const handleLogout = () => {
     logout();
   };
-  const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = async (
-    e
-  ) => {
+  const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = async (e) => {
     e.preventDefault();
     let result;
     if (isLogin) {
@@ -76,9 +73,7 @@ const StrapiView = () => {
           <Button onClick={handleLogout}>Logout</Button>
           {dataProducts?.data?.data.map((product) => (
             <div key={product.id}>
-              <Typography variant="body2">
-                {product.attributes.product_name}
-              </Typography>
+              <Typography variant="body2">{product.attributes.product_name}</Typography>
             </div>
           ))}
           <div>
