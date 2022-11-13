@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+	AutocompleteSmart,
 	CheckboxGroupSmart,
 	DateTimeSmart,
 	FormSmart,
@@ -8,6 +9,7 @@ import {
 	SwitchSmart,
 	TextFieldSmart
 } from '@kudaterbang/ui-mui-react-example'
+import apiStrapi from '@kudaterbang/data-access-strapi';
 
 type TypeForm = {
 	textFieldSmart: string
@@ -26,6 +28,8 @@ type TypeForm = {
 	time: string
 	radioGroupSmart: string
 	password: string
+	autocompleteStatic: string
+	autocompleteFetch: string
 }
 
 const dataCheckbox = [
@@ -121,6 +125,31 @@ const SmartInputView = () => {
 			<PasswordSmart
 				name="password"
 				label="Password"
+			/>
+			<AutocompleteSmart
+				name="autocompleteStatic"
+				label="Autocomplete static"
+				options={options}
+			/>
+			<AutocompleteSmart
+				name="autocompleteFetch"
+				type="fetch"
+				label="Autocomplete fetch"
+				fetchOptions={{
+					fetchFunction: async (inputText: string) => {
+						const { data } = await apiStrapi.productsGet({
+							params: {
+								title: inputText,
+							},
+						});
+						return (
+							data?.data.map((item) => ({
+								label: item.attributes.product_name,
+								value: item.id,
+							})) || []
+						);
+					},
+				}}
 			/>
 		</FormSmart>
 	)
