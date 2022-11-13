@@ -23,4 +23,5 @@ export { default as Switch } from './input/switch';
 // input smart
 export { default as FormSmart } from './input/form-smart'
 export { default as CheckboxGroupSmart } from './input/checkbox-group/checkbox-group-smart.view'
+export { default as SwitchSmart } from './input/switch/switch-smart.view'
 export { default as TextFieldSmart } from './input/textfield-smart'

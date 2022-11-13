@@ -16,10 +16,10 @@ const CheckboxGroupSmartView = ({ methods, name, value, ...otherProps }: Props) 
     control: methods?.control,
 		defaultValue: value,
   });
-	const handleChange = (name:string, newValue: boolean) => {
+	const handleChange = (nameValue:string, newValue: boolean) => {
 		onChange({
 			...fieldValue,
-			[name]: newValue,
+			[nameValue]: newValue,
 		})
 	}
 	return <CheckboxGroup {...otherProps} onChange={handleChange} value={fieldValue} />

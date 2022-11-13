@@ -1,8 +1,22 @@
 import React from 'react'
-import { CheckboxGroupSmart, FormSmart, TextFieldSmart } from '@kudaterbang/ui-mui-react-example'
+import {
+	CheckboxGroupSmart,
+	FormSmart,
+	SwitchSmart,
+	TextFieldSmart
+} from '@kudaterbang/ui-mui-react-example'
 
 type TypeForm = {
 	textFieldSmart: string
+	checkboxGroupSmart: {
+		first: boolean
+		second: boolean
+		third: boolean
+	}
+	switchSmart: {
+		first: boolean
+		second: boolean
+	}
 }
 
 const dataCheckbox = [
@@ -23,6 +37,16 @@ const dataCheckbox = [
     value: 3,
   },
 ];
+const dataSwitch = [
+  {
+    key: 'first',
+    label: 'First',
+  },
+  {
+    key: 'second',
+    label: 'Second',
+  },
+];
 
 const SmartInputView = () => {
 	return (
@@ -38,6 +62,15 @@ const SmartInputView = () => {
 					first: false,
 					second: true,
 					third: true,
+				}}
+			/>
+			<SwitchSmart
+				name="switchSmart"
+				label="Switch Smart"
+				data={dataSwitch}
+				value={{
+					first: false,
+					second: true,
 				}}
 			/>
 		</FormSmart>
