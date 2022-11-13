@@ -3,6 +3,7 @@ import {
 	CheckboxGroupSmart,
 	DateTimeSmart,
 	FormSmart,
+	PasswordSmart,
 	RadioGroupSmart,
 	SwitchSmart,
 	TextFieldSmart
@@ -24,6 +25,7 @@ type TypeForm = {
 	datetime: string
 	time: string
 	radioGroupSmart: string
+	password: string
 }
 
 const dataCheckbox = [
@@ -115,6 +117,10 @@ const SmartInputView = () => {
 				label="Radio Group"
 				options={options}
 				value={options[0].value}
+			/>
+			<PasswordSmart
+				name="password"
+				label="Password"
 			/>
 		</FormSmart>
 	)
