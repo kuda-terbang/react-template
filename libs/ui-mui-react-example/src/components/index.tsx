@@ -19,3 +19,7 @@ export { default as RadioGroup } from './input/radio-group';
 export { default as TextEditor } from './input/text-editor';
 export { default as Select } from './input/select';
 export { default as Switch } from './input/switch';
+
+// input smart
+export { default as FormSmart } from './input/form-smart'
+export { default as TextFieldSmart } from './input/textfield-smart'

@@ -75,6 +75,7 @@
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-dropzone": "^14.2.2",
+    "react-hook-form": "^7.39.3",
     "react-is": "18.1.0",
     "react-query": "^3.39.0",
     "react-quill": "^2.0.0",
@@ -86,4 +87,3 @@
     "url-pattern": "^1.0.3"
   }
 }
-

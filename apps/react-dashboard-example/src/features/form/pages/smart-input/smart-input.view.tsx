@@ -1,8 +1,17 @@
 import React from 'react'
+import { FormSmart, TextFieldSmart } from '@kudaterbang/ui-mui-react-example'
+
+type TypeForm = {
+	textFieldSmart: string
+}
 
 const SmartInputView = () => {
 	return (
-		<div>SmartInputView</div>
+		<FormSmart<TypeForm> onSubmit={(data) => {
+			console.log('submit data', data)
+		}}>
+			<TextFieldSmart name="textFieldSmart" label="Text Field Smart" />
+		</FormSmart>
 	)
 }
 
