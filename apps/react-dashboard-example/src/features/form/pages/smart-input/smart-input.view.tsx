@@ -1,6 +1,7 @@
 import React from 'react'
 import {
 	CheckboxGroupSmart,
+	DateTimeSmart,
 	FormSmart,
 	SwitchSmart,
 	TextFieldSmart
@@ -17,6 +18,10 @@ type TypeForm = {
 		first: boolean
 		second: boolean
 	}
+	dateDesktop: string
+	dateMobile: string
+	datetime: string
+	time: string
 }
 
 const dataCheckbox = [
@@ -72,6 +77,26 @@ const SmartInputView = () => {
 					first: false,
 					second: true,
 				}}
+			/>
+			<DateTimeSmart
+				name="dateDesktop"
+				type="date-desktop"
+				label="Date Desktop"
+			/>
+			<DateTimeSmart
+				name="dateMobile"
+				type="date-mobile"
+				label="Date Mobile"
+			/>
+			<DateTimeSmart
+				name="datetime"
+				type="datetime"
+				label="Datetime"
+			/>
+			<DateTimeSmart
+				name="time"
+				type="time"
+				label="Time"
 			/>
 		</FormSmart>
 	)

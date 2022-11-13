@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import dayjs from 'dayjs';
 import TextField from '@mui/material/TextField';
@@ -92,6 +93,24 @@ const InputComponentView = () => {
   const [textFieldState, settextFieldState] = useState('');
   const [inputFileState, setinputFileState] = useState<File | null>(null);
   const [textEditorState, settextEditorState] = useState('');
+	const handleSubmit = () => {
+		console.log('switchState', switchState)
+		console.log('checkBoxState', checkBoxState)
+		console.log('dateState', dateState)
+		console.log('timeState', timeState)
+		console.log('datetimeState', datetimeState)
+		console.log('radioState', radioState)
+		console.log('passwordState', passwordState)
+		console.log('autocompleteStatic', autocompleteStatic)
+		console.log('autocompleteFetch', autocompleteFetch)
+		console.log('selectState', selectState)
+		console.log('selectStateFetch', selectStateFetch)
+		console.log('phoneState', phoneState)
+		console.log('dropfileState', dropfileState)
+		console.log('textFieldState', textFieldState)
+		console.log('inputFileState', inputFileState)
+		console.log('textEditorState', textEditorState)
+	}
   return (
     <div>
       <Stack spacing={3} sx={{ padding: 8 }}>
@@ -282,6 +301,7 @@ const InputComponentView = () => {
           value={textEditorState}
         />
       </Stack>
+			<Button onClick={handleSubmit}>Submit</Button>
     </div>
   );
 };
