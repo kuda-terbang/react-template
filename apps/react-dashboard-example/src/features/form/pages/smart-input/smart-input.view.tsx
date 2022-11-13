@@ -3,6 +3,7 @@ import {
 	CheckboxGroupSmart,
 	DateTimeSmart,
 	FormSmart,
+	RadioGroupSmart,
 	SwitchSmart,
 	TextFieldSmart
 } from '@kudaterbang/ui-mui-react-example'
@@ -22,6 +23,7 @@ type TypeForm = {
 	dateMobile: string
 	datetime: string
 	time: string
+	radioGroupSmart: string
 }
 
 const dataCheckbox = [
@@ -50,6 +52,16 @@ const dataSwitch = [
   {
     key: 'second',
     label: 'Second',
+  },
+];
+const options = [
+  {
+    label: 'First',
+    value: 'first',
+  },
+  {
+    label: 'Second',
+    value: 'second',
   },
 ];
 
@@ -97,6 +109,12 @@ const SmartInputView = () => {
 				name="time"
 				type="time"
 				label="Time"
+			/>
+			<RadioGroupSmart
+				name="radioGroupSmart"
+				label="Radio Group"
+				options={options}
+				value={options[0].value}
 			/>
 		</FormSmart>
 	)
