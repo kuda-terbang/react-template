@@ -6,6 +6,7 @@ import {
 	FormSmart,
 	PasswordSmart,
 	RadioGroupSmart,
+	SelectSmart,
 	SwitchSmart,
 	TextFieldSmart
 } from '@kudaterbang/ui-mui-react-example'
@@ -30,6 +31,8 @@ type TypeForm = {
 	password: string
 	autocompleteStatic: string
 	autocompleteFetch: string
+	selectStatic: string
+	selectFetch: string
 }
 
 const dataCheckbox = [
@@ -146,6 +149,27 @@ const SmartInputView = () => {
 							data?.data.map((item) => ({
 								label: item.attributes.product_name,
 								value: item.id,
+							})) || []
+						);
+					},
+				}}
+			/>
+			<SelectSmart
+				name="selectStatic"
+				label="Select static"
+				options={options}
+			/>
+			<SelectSmart
+				name="selectFetch"
+				label="Select fetch"
+				type="fetch"
+				fetchOptions={{
+					fetchFunction: async () => {
+						const { data } = await apiStrapi.productsGet();
+						return (
+							data?.data.map((item) => ({
+								label: item.attributes.product_name,
+								value: String(item.id),
 							})) || []
 						);
 					},
