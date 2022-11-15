@@ -91,7 +91,7 @@ const InputComponentView = () => {
   const [phoneState, setphoneState] = useState('');
   const [dropfileState, setdropfileState] = useState<AcceptedFile[]>([]);
   const [textFieldState, settextFieldState] = useState('');
-  const [inputFileState, setinputFileState] = useState<File | null>(null);
+  const [inputFileState, setinputFileState] = useState<File>();
   const [textEditorState, settextEditorState] = useState('');
 	const handleSubmit = () => {
 		console.log('switchState', switchState)
@@ -285,10 +285,10 @@ const InputComponentView = () => {
         <InputFile
           label="Input Single File"
           onChange={(file) => {
-            setinputFileState(file);
+            setinputFileState(file || undefined);
           }}
           onClickRemove={() => {
-            setinputFileState(null);
+            setinputFileState(undefined);
           }}
           value={inputFileState}
         />

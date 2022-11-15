@@ -5,11 +5,13 @@ import {
 	DateTimeSmart,
 	DropFilesSmart,
 	FormSmart,
+	InputFileSmart,
 	PasswordSmart,
 	PhoneSmart,
 	RadioGroupSmart,
 	SelectSmart,
 	SwitchSmart,
+	TextEditorSmart,
 	TextFieldSmart
 } from '@kudaterbang/ui-mui-react-example'
 import apiStrapi from '@kudaterbang/data-access-strapi';
@@ -38,6 +40,8 @@ type TypeForm = {
 	phoneSmart: string
 	dropFilesThumbnail: File[]
 	dropFilesRow: File[]
+	inputFileSmart: File
+	textEditorSmart: string
 }
 
 const dataCheckbox = [
@@ -84,7 +88,6 @@ const SmartInputView = () => {
 		<FormSmart<TypeForm> onSubmit={(data) => {
 			console.log('submit data', data)
 		}}>
-			<TextFieldSmart name="textFieldSmart" label="Text Field Smart" />
 			<CheckboxGroupSmart
 				name="checkboxGroupSmart"
 				label="Check Box Group Smart"
@@ -196,6 +199,15 @@ const SmartInputView = () => {
 				labelDragActive="Drop files row"
 				labelDragAccept="Files accepted"
 				labelDragReject="Files rejected"
+			/>
+			<TextFieldSmart name="textFieldSmart" label="Text Field Smart" />
+			<InputFileSmart
+				name="inputFileSmart"
+				label="Input Single File"
+			/>
+			<TextEditorSmart
+				name="textEditorSmart"
+				label="Text Editor Input"
 			/>
 		</FormSmart>
 	)
