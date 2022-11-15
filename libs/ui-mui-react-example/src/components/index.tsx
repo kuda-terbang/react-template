@@ -26,6 +26,7 @@ export { default as AutocompleteSmart } from './input/autocomplete/autocomplete-
 export { default as CheckboxGroupSmart } from './input/checkbox-group/checkbox-group-smart.view'
 export { default as DateTimeSmart } from './input/datetime/datetime-smart.view'
 export { default as PasswordSmart } from './input/password/password-smart.view'
+export { default as PhoneSmart } from './input/phone/phone-smart.view'
 export { default as RadioGroupSmart } from './input/radio-group/radio-group-smart.view'
 export { default as SelectSmart } from './input/select/select-smart.view'
 export { default as SwitchSmart } from './input/switch/switch-smart.view'

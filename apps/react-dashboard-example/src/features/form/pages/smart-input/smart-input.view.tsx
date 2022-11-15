@@ -5,6 +5,7 @@ import {
 	DateTimeSmart,
 	FormSmart,
 	PasswordSmart,
+	PhoneSmart,
 	RadioGroupSmart,
 	SelectSmart,
 	SwitchSmart,
@@ -33,6 +34,7 @@ type TypeForm = {
 	autocompleteFetch: string
 	selectStatic: string
 	selectFetch: string
+	phoneSmart: string
 }
 
 const dataCheckbox = [
@@ -174,6 +176,10 @@ const SmartInputView = () => {
 						);
 					},
 				}}
+			/>
+			<PhoneSmart
+				name="phoneSmart"
+				label="Phone Number"
 			/>
 		</FormSmart>
 	)
