@@ -3,6 +3,7 @@ import {
 	AutocompleteSmart,
 	CheckboxGroupSmart,
 	DateTimeSmart,
+	DropFilesSmart,
 	FormSmart,
 	PasswordSmart,
 	PhoneSmart,
@@ -35,6 +36,8 @@ type TypeForm = {
 	selectStatic: string
 	selectFetch: string
 	phoneSmart: string
+	dropFilesThumbnail: File[]
+	dropFilesRow: File[]
 }
 
 const dataCheckbox = [
@@ -180,6 +183,19 @@ const SmartInputView = () => {
 			<PhoneSmart
 				name="phoneSmart"
 				label="Phone Number"
+			/>
+			<DropFilesSmart
+				name="dropFilesThumbnail"
+				labelDragActive="Drop files thumbnail"
+				labelDragAccept="Files accepted"
+				labelDragReject="Files rejected"
+			/>
+			<DropFilesSmart
+				name="dropFilesRow"
+				componentType="row"
+				labelDragActive="Drop files row"
+				labelDragAccept="Files accepted"
+				labelDragReject="Files rejected"
 			/>
 		</FormSmart>
 	)

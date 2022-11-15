@@ -244,7 +244,7 @@ const InputComponentView = () => {
           labelDragActive="Drop files thumbnail"
           labelDragAccept="Files accepted"
           labelDragReject="Files rejected"
-          onChangeFile={(file) => {
+          onChange={(file) => {
             setdropfileState([...dropfileState, ...file]);
           }}
           onClickSubmit={(files) => {
@@ -263,7 +263,7 @@ const InputComponentView = () => {
           labelDragActive="Drop files row"
           labelDragAccept="Files accepted"
           labelDragReject="Files rejected"
-          onChangeFile={(file) => {
+          onChange={(file) => {
             setdropfileState([...dropfileState, ...file]);
           }}
           onClickSubmit={(files) => {
