@@ -1,1 +1,1 @@
-export { default } from './radio-group.view'
+export { default } from './radio-group.view';

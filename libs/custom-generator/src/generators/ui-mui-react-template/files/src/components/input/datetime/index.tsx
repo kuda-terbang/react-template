@@ -1,1 +1,1 @@
-export { default } from './datetime.view'
+export { default } from './datetime.view';

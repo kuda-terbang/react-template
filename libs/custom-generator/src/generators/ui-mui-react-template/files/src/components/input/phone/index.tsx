@@ -1,1 +1,1 @@
-export { default } from './phone.view'
+export { default } from './phone.view';

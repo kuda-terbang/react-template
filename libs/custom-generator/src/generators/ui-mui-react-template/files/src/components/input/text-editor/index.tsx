@@ -1,1 +1,1 @@
-export { default } from './text-editor.view'
+export { default } from './text-editor.view';

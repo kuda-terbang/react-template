@@ -46,26 +46,25 @@ const DropFiles = ({
   labelDragAccept,
   labelDragActive,
   labelDragReject,
-  onChangeFile,
+  onChange,
   onClickSubmit,
   onClickRemove,
   textButtonSelect,
   textButtonSubmit,
-  value,
+  value = [],
 }: DropFilesProps) => {
   const {
     getRootProps,
     getInputProps,
     isDragAccept,
     isDragReject,
-    isFocused,
     open: openDialogFiles,
   } = useDropzone({
     ...dropzoneOptions,
     noClick: true,
     noKeyboard: true,
     onDrop: (acceptedFiles, ...otherProps) => {
-      onChangeFile(
+      onChange(
         acceptedFiles.map((file) =>
           Object.assign(file, {
             preview: URL.createObjectURL(file),
@@ -77,7 +76,7 @@ const DropFiles = ({
   });
 
   const handleClickSubmit = () => {
-    onClickSubmit(value);
+    onClickSubmit?.(value);
   };
 
   useEffect(() => {
@@ -88,7 +87,7 @@ const DropFiles = ({
 
   return (
     <section>
-      <Container {...getRootProps({ isFocused, isDragAccept, isDragReject })}>
+      <Container {...getRootProps()}>
         <input {...getInputProps()} />
         <p>{labelDragActive}</p>
         <Button variant="contained" onClick={openDialogFiles}>
@@ -102,9 +101,11 @@ const DropFiles = ({
       ) : (
         <RowFiles files={value} onClickRemove={onClickRemove} />
       )}
-      <Button variant="contained" onClick={handleClickSubmit}>
-        {textButtonSubmit || 'Submit'}
-      </Button>
+      {onClickSubmit && (
+        <Button variant="contained" onClick={handleClickSubmit}>
+          {textButtonSubmit || 'Submit'}
+        </Button>
+      )}
     </section>
   );
 };

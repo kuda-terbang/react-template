@@ -13,6 +13,7 @@ import { menus } from '../config/menus'
 const Home = React.lazy(() => import('../pages/home'))
 const Common = React.lazy(() => import('../../features/common/pages'));
 const InputComponent = React.lazy(() => import('../../features/form/pages/input-component'));
+const SmartInputComponent = React.lazy(() => import('../../features/form/pages/smart-input'));
 
 const RootRoutes = () => {
   const { isAuthenticated, logout, user } = useAuth()
@@ -35,6 +36,7 @@ const RootRoutes = () => {
           path="/input"
           element={useProtectedRoutes(InputComponent, { isProtected: true })}
         />
+				<Route path="/smart-input" element={useProtectedRoutes(SmartInputComponent, { isProtected: true })} />
       </Route>
     </Routes>
   )

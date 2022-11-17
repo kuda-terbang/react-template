@@ -5,10 +5,10 @@ import TextField, { TextFieldProps } from '@mui/material/TextField';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-type PasswordProps = Omit<TextFieldProps, 'type'>
+type PasswordProps = Omit<TextFieldProps, 'type'>;
 
 const PasswordView = (props: PasswordProps) => {
-  const [isShowPassword, setisShowPassword] = React.useState(false)
+  const [isShowPassword, setisShowPassword] = React.useState(false);
   return (
     <TextField
       {...props}
@@ -25,10 +25,10 @@ const PasswordView = (props: PasswordProps) => {
               {isShowPassword ? <VisibilityOff /> : <Visibility />}
             </IconButton>
           </InputAdornment>
-        )
+        ),
       }}
     />
-  )
-}
+  );
+};
 
-export default PasswordView
+export default PasswordView;

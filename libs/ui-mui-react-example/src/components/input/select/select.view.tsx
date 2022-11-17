@@ -14,7 +14,7 @@ type SelectViewProps<TValue> = {
   formProps?: FormControlProps;
   label: string;
   menuItemProps?: Omit<MenuItemProps, 'value' | 'key'>;
-  onChange: SelectProps<TValue>['onChange'];
+  onChange?: SelectProps<TValue>['onChange'];
   options?: {
     [field: string]: unknown;
     label: string;
@@ -22,7 +22,7 @@ type SelectViewProps<TValue> = {
   }[];
   selectProps?: Omit<SelectProps<TValue>, 'labelId' | 'id' | 'value' | 'onChange'>;
   type?: 'fetch' | 'static';
-  value: TValue;
+  value?: TValue;
 };
 export default function SelectView<TValue extends string | number | readonly string[] | undefined>({
   fetchOptions,
@@ -49,7 +49,7 @@ export default function SelectView<TValue extends string | number | readonly str
   return (
     <FormControl {...formProps}>
       <InputLabel id={`label-${label}`}>{label}</InputLabel>
-      <Select<typeof value>
+      <Select
         {...selectProps}
         labelId={`label-${label}`}
         id={`select-${label}`}

@@ -22,7 +22,7 @@ type Props = {
   label: string;
   onClickRemove?: React.MouseEventHandler<HTMLButtonElement>;
   onChange: (file: File | null, event?: React.ChangeEvent<HTMLInputElement>) => void;
-  value: File | null;
+  value?: File;
 };
 
 const InputFile = ({ formProps, inputProps, label, onClickRemove, onChange, value }: Props) => {

@@ -11,12 +11,12 @@ export type DropFilesProps = {
   labelDragAccept?: string;
   labelDragActive: string;
   labelDragReject?: string;
-  onChangeFile: (
+  onChange: (
     acceptedFiles: AcceptedFile[],
     fileRejections?: FileRejection[],
     event?: DropEvent
   ) => void;
-  onClickSubmit: (files: AcceptedFile[]) => void;
+  onClickSubmit?: (files: AcceptedFile[]) => void;
   onClickRemove?: (
     index: number,
     file: AcceptedFile,
@@ -24,5 +24,5 @@ export type DropFilesProps = {
   ) => void;
   textButtonSelect?: string;
   textButtonSubmit?: string;
-  value: AcceptedFile[];
+  value?: AcceptedFile[];
 };

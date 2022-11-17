@@ -1,1 +1,1 @@
-export { default } from './switch.view'
+export { default } from './switch.view';
