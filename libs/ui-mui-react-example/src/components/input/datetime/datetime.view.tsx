@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import dayjs from 'dayjs'
+import dayjs from 'dayjs';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
@@ -24,14 +24,19 @@ const DateTimeView = ({
   inputFormat = 'MM/DD/YYYY',
   value,
 }: Props) => {
-	const handleChange = (value: any, keyboardInputValue?: string | undefined) => {
-		const valueString = dayjs(value).toISOString()
-		onChange(valueString, keyboardInputValue)
-	}
+  const handleChange = (value: any, keyboardInputValue?: string | undefined) => {
+    const valueString = dayjs(value).toISOString();
+    onChange(valueString, keyboardInputValue);
+  };
   const renderTextField = (params: TextFieldProps) => <TextField {...textFieldProps} {...params} />;
   if (type === 'time') {
     return (
-      <TimePicker label={label} value={value} onChange={handleChange} renderInput={renderTextField} />
+      <TimePicker
+        label={label}
+        value={value}
+        onChange={handleChange}
+        renderInput={renderTextField}
+      />
     );
   }
   if (type === 'date-desktop') {
@@ -57,7 +62,12 @@ const DateTimeView = ({
     );
   }
   return (
-    <DateTimePicker label={label} value={value} onChange={handleChange} renderInput={renderTextField} />
+    <DateTimePicker
+      label={label}
+      value={value}
+      onChange={handleChange}
+      renderInput={renderTextField}
+    />
   );
 };
 

@@ -9,24 +9,22 @@ import type { MenuItemProps } from '@mui/material/MenuItem';
 
 type SelectViewProps<TValue> = {
   fetchOptions?: {
-    fetchFunction: () => Promise<SelectViewProps<TValue>['options']>
-  }
-  formProps?: FormControlProps
-  label: string
-  menuItemProps?: Omit<MenuItemProps, 'value' | 'key'>
-  onChange: SelectProps<TValue>['onChange']
+    fetchFunction: () => Promise<SelectViewProps<TValue>['options']>;
+  };
+  formProps?: FormControlProps;
+  label: string;
+  menuItemProps?: Omit<MenuItemProps, 'value' | 'key'>;
+  onChange?: SelectProps<TValue>['onChange'];
   options?: {
-    [field: string]: unknown
-    label: string
-    value: TValue
-  }[]
-  selectProps?: Omit<SelectProps<TValue>, 'labelId' | 'id' | 'value' | 'onChange'>
-  type?: 'fetch' | 'static'
-  value: TValue
-}
-export default function SelectView<
-  TValue extends string | number | readonly string[] | undefined
->({
+    [field: string]: unknown;
+    label: string;
+    value: TValue;
+  }[];
+  selectProps?: Omit<SelectProps<TValue>, 'labelId' | 'id' | 'value' | 'onChange'>;
+  type?: 'fetch' | 'static';
+  value?: TValue;
+};
+export default function SelectView<TValue extends string | number | readonly string[] | undefined>({
   fetchOptions,
   formProps,
   label,
@@ -37,21 +35,21 @@ export default function SelectView<
   type = 'static',
   value,
 }: SelectViewProps<TValue>) {
-  const [showedOptions, setshowedOptions] = React.useState(options || [])
+  const [showedOptions, setshowedOptions] = React.useState(options || []);
   useEffect(() => {
     if (type === 'fetch') {
       const fetchData = async () => {
-        const data = await fetchOptions?.fetchFunction()
-        setshowedOptions(data || [])
-      }
-      fetchData()
+        const data = await fetchOptions?.fetchFunction();
+        setshowedOptions(data || []);
+      };
+      fetchData();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <FormControl {...formProps}>
       <InputLabel id={`label-${label}`}>{label}</InputLabel>
-      <Select<typeof value>
+      <Select
         {...selectProps}
         labelId={`label-${label}`}
         id={`select-${label}`}
@@ -60,11 +58,7 @@ export default function SelectView<
         onChange={onChange}
       >
         {showedOptions.map((option) => (
-          <MenuItem
-            {...menuItemProps}
-            key={option.label}
-            value={option.value}
-          >
+          <MenuItem {...menuItemProps} key={option.label} value={option.value}>
             {option.label}
           </MenuItem>
         ))}

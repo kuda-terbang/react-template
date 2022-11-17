@@ -33,7 +33,10 @@ const RootRoutes = () => {
         <Route path="*" element={<>No page</>} />
         <Route path="/common" element={useProtectedRoutes(Common, { isProtected: true })} />
         <Route path="/input" element={useProtectedRoutes(InputComponent, { isProtected: true })} />
-        <Route path="/smart-input" element={useProtectedRoutes(SmartInputComponent, { isProtected: true })} />
+        <Route
+          path="/smart-input"
+          element={useProtectedRoutes(SmartInputComponent, { isProtected: true })}
+        />
       </Route>
     </Routes>
   );

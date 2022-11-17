@@ -1,1 +1,1 @@
-export { default } from './smart-input.view'
+export { default } from './smart-input.view';

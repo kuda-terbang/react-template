@@ -35,34 +35,32 @@ const defaultModules: ReactQuillProps['modules'] = {
   ],
 };
 
-class TextEditor extends Component<TextEditorProps, {
-	quill: typeof ReactQuillComponent
-}> {
+class TextEditor extends Component<
+  TextEditorProps,
+  {
+    quill: typeof ReactQuillComponent;
+  }
+> {
   constructor(props: TextEditorProps) {
-    super(props)
+    super(props);
     if (document) {
-      this.quill = require('react-quill')
+      this.quill = require('react-quill');
     }
   }
-	quill: typeof ReactQuillComponent | null = null
+  quill: typeof ReactQuillComponent | null = null;
 
   override render() {
-    const ReactQuill = this.quill
+    const ReactQuill = this.quill;
     if (ReactQuill) {
-			const {
-				formControlProps,
-				label,
-				modules = defaultModules,
-				...props
-			} = this.props
+      const { formControlProps, label, modules = defaultModules, ...props } = this.props;
       return (
-				<FormControl {...formControlProps}>
-					<FormLabel>{label}</FormLabel>
-					<ReactQuill {...props} modules={modules} theme="snow" />
-				</FormControl>
-      )
+        <FormControl {...formControlProps}>
+          <FormLabel>{label}</FormLabel>
+          <ReactQuill {...props} modules={modules} theme="snow" />
+        </FormControl>
+      );
     } else {
-      return null
+      return null;
     }
   }
 }

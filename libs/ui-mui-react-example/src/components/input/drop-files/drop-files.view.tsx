@@ -101,11 +101,11 @@ const DropFiles = ({
       ) : (
         <RowFiles files={value} onClickRemove={onClickRemove} />
       )}
-			{onClickSubmit && (
-				<Button variant="contained" onClick={handleClickSubmit}>
-					{textButtonSubmit || 'Submit'}
-				</Button>
-			)}
+      {onClickSubmit && (
+        <Button variant="contained" onClick={handleClickSubmit}>
+          {textButtonSubmit || 'Submit'}
+        </Button>
+      )}
     </section>
   );
 };

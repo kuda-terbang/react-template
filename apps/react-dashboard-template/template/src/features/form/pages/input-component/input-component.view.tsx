@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import dayjs from 'dayjs';
 import TextField from '@mui/material/TextField';
@@ -90,8 +91,26 @@ const InputComponentView = () => {
   const [phoneState, setphoneState] = useState('');
   const [dropfileState, setdropfileState] = useState<AcceptedFile[]>([]);
   const [textFieldState, settextFieldState] = useState('');
-  const [inputFileState, setinputFileState] = useState<File | null>(null);
+  const [inputFileState, setinputFileState] = useState<File>();
   const [textEditorState, settextEditorState] = useState('');
+  const handleSubmit = () => {
+    console.log('switchState', switchState);
+    console.log('checkBoxState', checkBoxState);
+    console.log('dateState', dateState);
+    console.log('timeState', timeState);
+    console.log('datetimeState', datetimeState);
+    console.log('radioState', radioState);
+    console.log('passwordState', passwordState);
+    console.log('autocompleteStatic', autocompleteStatic);
+    console.log('autocompleteFetch', autocompleteFetch);
+    console.log('selectState', selectState);
+    console.log('selectStateFetch', selectStateFetch);
+    console.log('phoneState', phoneState);
+    console.log('dropfileState', dropfileState);
+    console.log('textFieldState', textFieldState);
+    console.log('inputFileState', inputFileState);
+    console.log('textEditorState', textEditorState);
+  };
   return (
     <div>
       <Stack spacing={3} sx={{ padding: 8 }}>
@@ -225,7 +244,7 @@ const InputComponentView = () => {
           labelDragActive="Drop files thumbnail"
           labelDragAccept="Files accepted"
           labelDragReject="Files rejected"
-          onChangeFile={(file) => {
+          onChange={(file) => {
             setdropfileState([...dropfileState, ...file]);
           }}
           onClickSubmit={(files) => {
@@ -244,7 +263,7 @@ const InputComponentView = () => {
           labelDragActive="Drop files row"
           labelDragAccept="Files accepted"
           labelDragReject="Files rejected"
-          onChangeFile={(file) => {
+          onChange={(file) => {
             setdropfileState([...dropfileState, ...file]);
           }}
           onClickSubmit={(files) => {
@@ -266,10 +285,10 @@ const InputComponentView = () => {
         <InputFile
           label="Input Single File"
           onChange={(file) => {
-            setinputFileState(file);
+            setinputFileState(file || undefined);
           }}
           onClickRemove={() => {
-            setinputFileState(null);
+            setinputFileState(undefined);
           }}
           value={inputFileState}
         />
@@ -282,6 +301,7 @@ const InputComponentView = () => {
           value={textEditorState}
         />
       </Stack>
+      <Button onClick={handleSubmit}>Submit</Button>
     </div>
   );
 };
