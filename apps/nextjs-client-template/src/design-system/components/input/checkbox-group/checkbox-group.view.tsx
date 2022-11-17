@@ -31,7 +31,7 @@ const CheckBoxGroupView = ({ data, formProps, label, onChange, value }: CheckBox
       <FormGroup
         onChange={(event) => {
           const target = event.target as HTMLInputElement;
-          onChange(target.name, Boolean(target.value), event);
+          onChange(target.name, target.checked, event);
         }}
       >
         {data.map((item) => {
