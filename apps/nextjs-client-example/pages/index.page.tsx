@@ -8,8 +8,8 @@ import Box from '@mui/material/Box';
 import { VariantType } from 'notistack';
 import { styled } from '@mui/system';
 
-import { DialogBasic, LayoutBasicContext, useSnackbar } from '@kudaterbang/ui-mui-react-example';
-import { useConfirmation } from '@kudaterbang/util-confirmation';
+import { DialogBasic, LayoutBasicContext, useSnackbar } from '@kuda-terbang/ui-mui-react-example';
+import { useConfirmation } from '@kuda-terbang/util-confirmation';
 import { useTrackScreen } from '../src/services/analytics.service';
 
 import RemoteConfig from '../src/containers/home/remote-config';

@@ -2,8 +2,8 @@ import React from 'react';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 
-import { Table } from '@kudaterbang/ui-mui-react-example';
-import { useProductsGet } from '@kudaterbang/data-access-strapi';
+import { Table } from '@kuda-terbang/ui-mui-react-example';
+import { useProductsGet } from '@kuda-terbang/data-access-strapi';
 
 const StrapiView = () => {
   const navigate = useNavigate();

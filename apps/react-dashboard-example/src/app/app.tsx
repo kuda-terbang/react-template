@@ -6,8 +6,8 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
-import { Snackbar, theme } from '@kudaterbang/ui-mui-react-example';
-import { ConfirmationProvider } from '@kudaterbang/util-confirmation';
+import { Snackbar, theme } from '@kuda-terbang/ui-mui-react-example';
+import { ConfirmationProvider } from '@kuda-terbang/util-confirmation';
 
 import { config } from './config/react-query-config';
 import Routes from './pages/RootRoutes';

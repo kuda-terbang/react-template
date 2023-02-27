@@ -1,4 +1,4 @@
-generateCommand="npx nx generate @kudaterbang/custom-generator:ui-mui-react-component ui-mui-react-example --style=styled-components --designTokenProject=design-token-example --no-interactive "
+generateCommand="npx nx generate @kuda-terbang/custom-generator:ui-mui-react-component ui-mui-react-example --style=styled-components --designTokenProject=design-token-example --no-interactive "
 projectPath=../ui-mui-react-example
 
 if [ ! -d $projectPath ] 

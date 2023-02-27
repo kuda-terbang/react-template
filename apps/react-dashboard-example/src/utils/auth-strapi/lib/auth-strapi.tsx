@@ -1,8 +1,8 @@
 import React from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 
-import { createAuthentication } from '@kudaterbang/util-auth';
-import apiStrapi, { strapiTokenKey } from '@kudaterbang/data-access-strapi';
+import { createAuthentication } from '@kuda-terbang/util-auth';
+import apiStrapi, { strapiTokenKey } from '@kuda-terbang/data-access-strapi';
 
 const { AuthContext, AuthProvider, useAuth } = createAuthentication(
   {

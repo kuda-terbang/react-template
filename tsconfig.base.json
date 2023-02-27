@@ -20,40 +20,40 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "paths": {
-      "@kudaterbang/custom-generator": [
+      "@kuda-terbang/custom-generator": [
         "libs/custom-generator/src/index.ts"
       ],
-      "@kudaterbang/data-access-strapi": [
+      "@kuda-terbang/data-access-strapi": [
         "libs/data-access-strapi/src/index.ts"
       ],
-      "@kudaterbang/design-token-example/color": [
+      "@kuda-terbang/design-token-example/color": [
         "libs/design-token-example/build/json/color.json"
       ],
-      "@kudaterbang/design-token-example/json/breakpoint": [
+      "@kuda-terbang/design-token-example/json/breakpoint": [
         "libs/design-token-example/build/json/breakpoint.json"
       ],
-      "@kudaterbang/design-token-example/json/color": [
+      "@kuda-terbang/design-token-example/json/color": [
         "libs/design-token-example/build/json/color.json"
       ],
-      "@kudaterbang/design-token-example/json/elevation": [
+      "@kuda-terbang/design-token-example/json/elevation": [
         "libs/design-token-example/build/json/elevation.json"
       ],
-      "@kudaterbang/design-token-example/json/font_style": [
+      "@kuda-terbang/design-token-example/json/font_style": [
         "libs/design-token-example/build/json/font_style.json"
       ],
-      "@kudaterbang/ui-mui-react-example": [
+      "@kuda-terbang/ui-mui-react-example": [
         "libs/ui-mui-react-example/src/index.tsx"
       ],
-      "@kudaterbang/util-api": [
+      "@kuda-terbang/util-api": [
         "libs/util-api/src/index.ts"
       ],
-      "@kudaterbang/util-auth": [
+      "@kuda-terbang/util-auth": [
         "libs/util-auth/src/index.ts"
       ],
-      "@kudaterbang/util-confirmation": [
+      "@kuda-terbang/util-confirmation": [
         "libs/util-confirmation/src/index.ts"
       ],
-      "@kudaterbang/util-react-common": [
+      "@kuda-terbang/util-react-common": [
         "libs/util-react-common/src/index.ts"
       ]
     }

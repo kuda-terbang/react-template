@@ -83,7 +83,7 @@
     },
     "withLocalToken": {
       "type": "boolean",
-      "description": "Use @kudaterbang/design-token-template as design-token",
+      "description": "Use @kuda-terbang/design-token-template as design-token",
       "default": true
     },
     "linter": {

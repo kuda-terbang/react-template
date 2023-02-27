@@ -1,19 +1,16 @@
-import React, { memo, useContext } from 'react'
-import Typography from '@mui/material/Typography'
- 
-import { DialogBasic } from '@kudaterbang/ui-mui-react-example'
+import React, { memo, useContext } from 'react';
+import Typography from '@mui/material/Typography';
 
-import {
-  ConfirmationPopupStateContext,
-  ConfirmationPopupDispatchContext,
-} from '../..'
- 
+import { DialogBasic } from '@kuda-terbang/ui-mui-react-example';
+
+import { ConfirmationPopupStateContext, ConfirmationPopupDispatchContext } from '../..';
+
 const ConfirmationPopup = memo(function ConfirmationPopup() {
   const { isOpen, title, message, textButtonConfirm, textButtonCancel } = useContext(
-    ConfirmationPopupStateContext,
-  )
-  const { closeConfirmation, onSubmitConfirmation } = useContext(ConfirmationPopupDispatchContext)
- 
+    ConfirmationPopupStateContext
+  );
+  const { closeConfirmation, onSubmitConfirmation } = useContext(ConfirmationPopupDispatchContext);
+
   return (
     <DialogBasic
       onClose={closeConfirmation}
@@ -26,7 +23,7 @@ const ConfirmationPopup = memo(function ConfirmationPopup() {
     >
       <Typography variant="body2">{message}</Typography>
     </DialogBasic>
-  )
-})
- 
-export default ConfirmationPopup
+  );
+});
+
+export default ConfirmationPopup;

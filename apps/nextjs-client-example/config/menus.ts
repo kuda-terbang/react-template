@@ -1,4 +1,4 @@
-import type { NavbarProps } from '@kudaterbang/ui-mui-react-example';
+import type { NavbarProps } from '@kuda-terbang/ui-mui-react-example';
 import { useAuth } from '../src/utils/auth-strapi';
 
 export const navbarMenus: NavbarProps['menus'] = [

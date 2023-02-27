@@ -15,9 +15,9 @@ import {
   Select,
   Phone,
   TextEditor,
-} from '@kudaterbang/ui-mui-react-example';
-import type { AcceptedFile } from '@kudaterbang/ui-mui-react-example';
-import apiStrapi from '@kudaterbang/data-access-strapi';
+} from '@kuda-terbang/ui-mui-react-example';
+import type { AcceptedFile } from '@kuda-terbang/ui-mui-react-example';
+import apiStrapi from '@kuda-terbang/data-access-strapi';
 
 const defaultAutocompleteFetch = {
   label: '',
@@ -93,24 +93,24 @@ const InputComponentView = () => {
   const [textFieldState, settextFieldState] = useState('');
   const [inputFileState, setinputFileState] = useState<File>();
   const [textEditorState, settextEditorState] = useState('');
-	const handleSubmit = () => {
-		console.log('switchState', switchState)
-		console.log('checkBoxState', checkBoxState)
-		console.log('dateState', dateState)
-		console.log('timeState', timeState)
-		console.log('datetimeState', datetimeState)
-		console.log('radioState', radioState)
-		console.log('passwordState', passwordState)
-		console.log('autocompleteStatic', autocompleteStatic)
-		console.log('autocompleteFetch', autocompleteFetch)
-		console.log('selectState', selectState)
-		console.log('selectStateFetch', selectStateFetch)
-		console.log('phoneState', phoneState)
-		console.log('dropfileState', dropfileState)
-		console.log('textFieldState', textFieldState)
-		console.log('inputFileState', inputFileState)
-		console.log('textEditorState', textEditorState)
-	}
+  const handleSubmit = () => {
+    console.log('switchState', switchState);
+    console.log('checkBoxState', checkBoxState);
+    console.log('dateState', dateState);
+    console.log('timeState', timeState);
+    console.log('datetimeState', datetimeState);
+    console.log('radioState', radioState);
+    console.log('passwordState', passwordState);
+    console.log('autocompleteStatic', autocompleteStatic);
+    console.log('autocompleteFetch', autocompleteFetch);
+    console.log('selectState', selectState);
+    console.log('selectStateFetch', selectStateFetch);
+    console.log('phoneState', phoneState);
+    console.log('dropfileState', dropfileState);
+    console.log('textFieldState', textFieldState);
+    console.log('inputFileState', inputFileState);
+    console.log('textEditorState', textEditorState);
+  };
   return (
     <div>
       <Stack spacing={3} sx={{ padding: 8 }}>
@@ -301,7 +301,7 @@ const InputComponentView = () => {
           value={textEditorState}
         />
       </Stack>
-			<Button onClick={handleSubmit}>Submit</Button>
+      <Button onClick={handleSubmit}>Submit</Button>
     </div>
   );
 };

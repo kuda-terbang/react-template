@@ -1,4 +1,4 @@
-import type { NavbarProps } from '@kudaterbang/ui-mui-react-example'
+import type { NavbarProps } from '@kuda-terbang/ui-mui-react-example';
 import { useAuth } from '../src/utils/auth-strapi';
 
 export const navbarMenus: NavbarProps['menus'] = [
@@ -11,25 +11,21 @@ export const navbarMenus: NavbarProps['menus'] = [
     link: '/protected-ssr',
     isProtected: true,
   },
-]
+];
 
 export const footerMenus = [
   {
     title: 'About',
-    menus: [
-      { title: 'About Us', link: '/about' },
-    ],
+    menus: [{ title: 'About Us', link: '/about' }],
   },
   {
     title: 'SSR',
-    menus: [
-      { title: 'Protected', link: '/protected-ssr' },
-    ],
+    menus: [{ title: 'Protected', link: '/protected-ssr' }],
   },
 ];
 
 export const useSettingMenus = () => {
-  const { logout } = useAuth()
+  const { logout } = useAuth();
   return [
     {
       title: 'About',
@@ -44,8 +40,8 @@ export const useSettingMenus = () => {
       title: 'Logout',
       isProtected: true,
       onClick: () => {
-        logout()
-      }
-    }
-  ]
-}
+        logout();
+      },
+    },
+  ];
+};

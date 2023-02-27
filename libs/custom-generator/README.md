@@ -11,11 +11,18 @@ Run `nx build custom-generator` to build the library.
 Run `nx test custom-generator` to execute the unit tests via [Jest](https://jestjs.io).
 
 # Generator
+
 ## Design Token Template
-Using package @kudaterbang/design-token-template as libs generator, to generate package for producing design token
+
+Using package @kuda-terbang/design-token-template as libs generator, to generate package for producing design token
+
 ## Icons
-Using package @kudaterbang/icons-template as libs generator, to generate package for custom icons
+
+Using package @kuda-terbang/icons-template as libs generator, to generate package for custom icons
+
 ## React Dashboard Template
+
 Extended @nrwl/react application generator to create dashboard with predefined installed package
+
 - React
 - [Material-UI](http://mui.com/)

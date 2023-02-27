@@ -13,8 +13,8 @@ import {
   SwitchSmart,
   TextEditorSmart,
   TextFieldSmart,
-} from '@kudaterbang/ui-mui-react-example';
-import apiStrapi from '@kudaterbang/data-access-strapi';
+} from '@kuda-terbang/ui-mui-react-example';
+import apiStrapi from '@kuda-terbang/data-access-strapi';
 
 type TypeForm = {
   textFieldSmart: string;

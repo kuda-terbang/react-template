@@ -1,5 +1,5 @@
 {
-  "name": "@kudaterbang/design-token-template",
+  "name": "@kuda-terbang/design-token-template",
   "version": "0.1.0",
   "description": "Base repo to transform json design tokens from the figma design token plugin via amazon style directory.",
   "dependencies": {

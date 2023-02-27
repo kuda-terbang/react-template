@@ -1,4 +1,4 @@
-import type { StrapiObject, StrapiObjectDetail } from '@kudaterbang/util-api';
+import type { StrapiObject, StrapiObjectDetail } from '@kuda-terbang/util-api';
 /**
  * Type declaration
  */
@@ -14,7 +14,7 @@ export interface Product {
   // additional type
   id_name: string;
 }
-export type ProductDetailResponse = StrapiObjectDetail<StrapiObject<Product>>
+export type ProductDetailResponse = StrapiObjectDetail<StrapiObject<Product>>;
 
 /**
  * Initial Declaration
@@ -33,5 +33,5 @@ export const initialProductDetail = {
     },
     id: 0,
   },
-  meta: {}
-}
+  meta: {},
+};
