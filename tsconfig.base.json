@@ -41,9 +41,6 @@
       "@kuda-terbang/design-token-example/json/font_style": [
         "libs/design-token-example/build/json/font_style.json"
       ],
-      "@kuda-terbang/ui-mui-react-example": [
-        "libs/ui-mui-react-example/src/index.tsx"
-      ],
       "@kuda-terbang/util-api": [
         "libs/util-api/src/index.ts"
       ],

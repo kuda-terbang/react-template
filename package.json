@@ -1,6 +1,26 @@
 {
-  "name": "kudaterbang",
-  "version": "0.0.0",
+  "name": "@kuda-terbang/react-template",
+  "version": "0.1.0",
+	"description": "Nx plugin and template resources to help you create a production-ready frontend service using React.",
+	"publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kuda-terbang/react-template"
+  },
+  "keywords": [
+    "nx",
+    "react",
+    "nextjs",
+    "next.js",
+    "material",
+    "mui",
+    "typescript"
+  ],
+  "author": {
+    "name": "Robby Caesar Putra"
+  },
   "license": "MIT",
   "scripts": {},
   "private": true,

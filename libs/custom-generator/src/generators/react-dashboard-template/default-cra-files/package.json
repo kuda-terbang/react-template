@@ -1,5 +1,5 @@
 {
-  "name": "@kuda-terbang/cra-template-dashboard",
+  "name": "@<%= npmScope %>/cra-template-dashboard",
   "version": "0.1.0",
   "description": "Production ready react dashboard boilerplate",
   "repository": "https://github.com/kuda-terbang/react-template/tree/main/apps/react-dashboard-template",
@@ -10,8 +10,8 @@
     "boilerplate",
     "template",
     "starter",
-    "material",
-    "mui",
+		"material",
+		"mui",
     "typescript"
   ],
   "homepage": "https://github.com/kuda-terbang/react-template",
@@ -19,7 +19,7 @@
     "url": "https://github.com/kuda-terbang/react-template/issues"
   },
   "funding": {
-    "type": "individual",
-    "url": "https://www.buymeacoffee.com/robbycp"
+    "type" : "individual",
+    "url" : "https://www.buymeacoffee.com/robbycp"
   }
 }
