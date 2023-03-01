@@ -24,7 +24,7 @@ fi
 echo ""
 
 projectName="nextjs-client-$craType"
-generateCommand="npx nx generate @kuda-terbang/custom-generator:nextjs-client-template $projectName --style=styled-components $skipWorkpaceJson --e2eTestRunner=none --designSystemProject=ui-mui-react-example --designTokenProject=design-token-example $isCnaProps --no-interactive $isDefaultCnaTemplate $debug"
+generateCommand="npx nx generate @kuda-terbang/react-generator:nextjs-client-template $projectName --style=styled-components $skipWorkpaceJson --e2eTestRunner=none --designSystemProject=ui-mui-react-example --designTokenProject=design-token-example $isCnaProps --no-interactive $isDefaultCnaTemplate $debug"
 
 projectPath=../../apps/$projectName
 echo "Project Path : $projectPath"

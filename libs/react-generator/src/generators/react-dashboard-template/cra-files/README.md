@@ -1,6 +1,6 @@
 # <%= name %>
 
-React dashboard template, generated with @kuda-terbang/custom-generator:react-dashboard-template
+React dashboard template, generated with @kuda-terbang/react-generator:react-dashboard-template
 
 # Generate Apps
 

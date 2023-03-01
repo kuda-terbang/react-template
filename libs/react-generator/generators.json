@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "name": "custom-generator",
+  "name": "react-generator",
   "version": "0.0.1",
   "generators": {
     "design-token-template": {

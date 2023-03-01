@@ -24,7 +24,7 @@ fi
 echo ""
 
 projectName="react-dashboard-$craType"
-generateCommand="npx nx generate @kuda-terbang/custom-generator:react-dashboard-template $projectName --style=styled-components $skipWorkpaceJson --e2eTestRunner=none --designSystemProject=ui-mui-react-example --designTokenProject=design-token-example $isCraProps --no-interactive $isDefaultCraTemplate $debug"
+generateCommand="npx nx generate @kuda-terbang/react-generator:react-dashboard-template $projectName --style=styled-components $skipWorkpaceJson --e2eTestRunner=none --designSystemProject=ui-mui-react-example --designTokenProject=design-token-example $isCraProps --no-interactive $isDefaultCraTemplate $debug"
 
 projectPath=../../apps/$projectName
 echo "Project Path : $projectPath"

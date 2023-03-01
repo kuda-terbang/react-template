@@ -1,34 +1,34 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/custom-generator/src",
+  "sourceRoot": "libs/react-generator/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/custom-generator",
-        "main": "libs/custom-generator/src/index.ts",
-        "tsConfig": "libs/custom-generator/tsconfig.lib.json",
+        "outputPath": "dist/libs/react-generator",
+        "main": "libs/react-generator/src/index.ts",
+        "tsConfig": "libs/react-generator/tsconfig.lib.json",
         "assets": [
-          "libs/custom-generator/*.md",
+          "libs/react-generator/*.md",
           {
-            "input": "./libs/custom-generator/src",
+            "input": "./libs/react-generator/src",
             "glob": "**/!(*.ts)",
             "output": "./src"
           },
           {
-            "input": "./libs/custom-generator/src",
+            "input": "./libs/react-generator/src",
             "glob": "**/*.d.ts",
             "output": "./src"
           },
           {
-            "input": "./libs/custom-generator",
+            "input": "./libs/react-generator",
             "glob": "generators.json",
             "output": "."
           },
           {
-            "input": "./libs/custom-generator",
+            "input": "./libs/react-generator",
             "glob": "executors.json",
             "output": "."
           }
@@ -45,14 +45,14 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/custom-generator/**/*.ts"]
+        "lintFilePatterns": ["libs/react-generator/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/custom-generator"],
+      "outputs": ["coverage/libs/react-generator"],
       "options": {
-        "jestConfig": "libs/custom-generator/jest.config.ts",
+        "jestConfig": "libs/react-generator/jest.config.ts",
         "passWithNoTests": true
       }
     }
