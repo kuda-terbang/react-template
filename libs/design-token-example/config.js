@@ -40,10 +40,7 @@ const defaultConfig = {
 
 const createFiles = (extension, configFiles) => {
   const files = configFiles.map((item) => ({
-    destination:
-      defaultConfig[item.id].filename +
-      '.' +
-      (item.customExtension || extension),
+    destination: defaultConfig[item.id].filename + '.' + (item.customExtension || extension),
     format: item.format,
     filter: defaultConfig[item.id].filter,
   }));

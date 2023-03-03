@@ -1,5 +1,6 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "design-token-example",
   "projectType": "library",
   "sourceRoot": "libs/design-token-example/build",
   "tags": []

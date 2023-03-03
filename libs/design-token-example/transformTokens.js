@@ -11,15 +11,11 @@ const logIfValueNotExist = (message, token) => {
 
 StyleDictionary.registerFormat({
   name: 'custom/format/android-font-style-xml',
-  formatter: _.template(
-    fs.readFileSync(__dirname + '/templates/android-font-style-xml.templates')
-  ),
+  formatter: _.template(fs.readFileSync(__dirname + '/templates/android-font-style-xml.templates')),
 });
 StyleDictionary.registerFormat({
   name: 'custom/format/android-font-size-xml',
-  formatter: _.template(
-    fs.readFileSync(__dirname + '/templates/android-font-size-xml.templates')
-  ),
+  formatter: _.template(fs.readFileSync(__dirname + '/templates/android-font-size-xml.templates')),
 });
 
 StyleDictionary.registerTransform({
@@ -27,10 +23,7 @@ StyleDictionary.registerTransform({
   type: 'value',
   matcher: (token) => {
     logIfValueNotExist('size/px matcher', token);
-    return (
-      (token.unit === 'pixel' || token.type === 'dimension') &&
-      token.value !== 0
-    );
+    return (token.unit === 'pixel' || token.type === 'dimension') && token.value !== 0;
   },
   transformer: (token) => {
     logIfValueNotExist('size/px transformer', token);
@@ -53,26 +46,17 @@ StyleDictionary.registerTransform({
 
 StyleDictionary.registerTransformGroup({
   name: 'custom/css',
-  transforms: StyleDictionary.transformGroup['css'].concat([
-    'size/px',
-    'size/percent',
-  ]),
+  transforms: StyleDictionary.transformGroup['css'].concat(['size/px', 'size/percent']),
 });
 
 StyleDictionary.registerTransformGroup({
   name: 'custom/less',
-  transforms: StyleDictionary.transformGroup['less'].concat([
-    'size/px',
-    'size/percent',
-  ]),
+  transforms: StyleDictionary.transformGroup['less'].concat(['size/px', 'size/percent']),
 });
 
 StyleDictionary.registerTransformGroup({
   name: 'custom/scss',
-  transforms: StyleDictionary.transformGroup['less'].concat([
-    'size/px',
-    'size/percent',
-  ]),
+  transforms: StyleDictionary.transformGroup['less'].concat(['size/px', 'size/percent']),
 });
 
 StyleDictionary.registerFilter({
