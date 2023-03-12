@@ -56,6 +56,7 @@ export const createPath = <TOptions>(
 export function addFiles<TOptions>(
   tree: Tree,
   options: NormalizedSchema<TOptions>,
+  libraryName: string,
   generatorName: string,
   directoryName: string
 ) {
@@ -66,8 +67,7 @@ export function addFiles<TOptions>(
     offsetFromRoot: offsetFromRoot(options.projectRoot),
     template: '',
   };
-  const outputPath =
-    tree.root + '/libs/react-generator/src/generators' + `/${generatorName}` + `/${directoryName}`;
+  const outputPath = `${tree.root}/libs/${libraryName}/src/generators/${generatorName}/${directoryName}`;
   logger.log(`projectRoot : ${options.projectRoot}`);
   logger.log(`outputPath : ${outputPath}`);
   logger.log('');
@@ -89,7 +89,8 @@ export function replaceContentFile<TOptions>({
 }) {
   const filePath = '/' + options.projectRoot + path;
   const fileContent = tree.read(filePath);
-  const fileContentString = fileContent.toString().replace(new RegExp(fromString, 'g'), toString);
+  const fileContentString =
+    fileContent?.toString().replace(new RegExp(fromString, 'g'), toString) || '';
   const fileContentBuffer = Buffer.from(fileContentString, 'utf-8');
   tree.write(filePath, fileContentBuffer);
   logger.log(`REPLACE ${fromString} with ${toString} : ${filePath}`);
@@ -150,7 +151,7 @@ export function addModules<TOptions>({
 
 export function copyFile(tree: Tree, oldPath: string, newPath: string) {
   const readPublicFile = tree.read(oldPath);
-  tree.write(newPath, readPublicFile);
+  tree.write(newPath, readPublicFile || '');
   tree.delete(oldPath);
   logger.log(`COPY : ${oldPath} to ${newPath}`);
 }

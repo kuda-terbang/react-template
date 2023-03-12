@@ -1,7 +1,7 @@
 import { logger, readWorkspaceConfiguration, Tree } from '@nrwl/devkit';
 
 import { NormalizedReactDashboardSchema } from '../schema';
-import { addModules } from '../../../utils/file-modifier';
+import { addModules } from '@kuda-terbang/generator-utils';
 
 export default function (tree: Tree, options: NormalizedReactDashboardSchema) {
   const prefixPath = options.isCraTemplate ? '/template' : '';

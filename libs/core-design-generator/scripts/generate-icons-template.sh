@@ -1,5 +1,5 @@
-generateCommand="npx nx generate @kuda-terbang/react-generator:design-token-template design-token-example --no-interactive"
-projectPath=../design-token-example
+generateCommand="npx nx generate @kuda-terbang/core-design:icons-template icons-example --no-interactive"
+projectPath=../icons-example
 
 if [ ! -d $projectPath ]
 then

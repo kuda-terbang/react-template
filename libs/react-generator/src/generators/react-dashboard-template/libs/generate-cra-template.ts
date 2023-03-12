@@ -1,7 +1,8 @@
 import { moveFilesToNewDirectory, logger, Tree } from '@nrwl/devkit';
+import { addFiles, copyFile, createPath } from '@kuda-terbang/generator-utils';
 
+import { name } from '../../../../project.json';
 import { NormalizedReactDashboardSchema } from '../schema';
-import { addFiles, copyFile, createPath } from '../../../utils/file-modifier';
 
 export default function (tree: Tree, normalizedOptions: NormalizedReactDashboardSchema) {
   logger.log('START restructure for create react app');
@@ -10,7 +11,7 @@ export default function (tree: Tree, normalizedOptions: NormalizedReactDashboard
     normalizedOptions.projectRoot,
     normalizedOptions.projectRoot.concat('/template')
   );
-  addFiles(tree, normalizedOptions, 'react-dashboard-template', 'cra-files');
+  addFiles(tree, normalizedOptions, name, 'react-dashboard-template', 'cra-files');
 
   // Move index.html to public
   ['index.html', 'favicon.ico'].forEach((publicFile) => {
@@ -44,6 +45,6 @@ export default function (tree: Tree, normalizedOptions: NormalizedReactDashboard
 
   if (normalizedOptions.isDefaultCraTemplate) {
     tree.delete(normalizedOptions.projectRoot.concat('/package.json'));
-    addFiles(tree, normalizedOptions, 'react-dashboard-template', 'default-cra-files');
+    addFiles(tree, normalizedOptions, name, 'react-dashboard-template', 'default-cra-files');
   }
 }

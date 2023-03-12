@@ -10,14 +10,22 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "paths": {
-      "@kuda-terbang/data-access-strapi": ["libs/data-access-strapi/src/index.ts"],
+      "@kuda-terbang/core-design": [
+        "libs/core-design-generator/src/index.ts"
+      ],
+      "@kuda-terbang/data-access-strapi": [
+        "libs/data-access-strapi/src/index.ts"
+      ],
       "@kuda-terbang/design-token-example/color": [
         "libs/design-token-example/build/json/color.json"
       ],
@@ -33,12 +41,31 @@
       "@kuda-terbang/design-token-example/json/font_style": [
         "libs/design-token-example/build/json/font_style.json"
       ],
-      "@kuda-terbang/react-generator": ["libs/react-generator/src/index.ts"],
-      "@kuda-terbang/util-api": ["libs/util-api/src/index.ts"],
-      "@kuda-terbang/util-auth": ["libs/util-auth/src/index.ts"],
-      "@kuda-terbang/util-confirmation": ["libs/util-confirmation/src/index.ts"],
-      "@kuda-terbang/util-react-common": ["libs/util-react-common/src/index.ts"]
+      "@kuda-terbang/generator-utils": [
+        "libs/generator-utils/src/index.ts"
+      ],
+      "@kuda-terbang/react-generator": [
+        "libs/react-generator/src/index.ts"
+      ],
+      "@kuda-terbang/ui-mui-react-example": [
+        "libs/ui-mui-react-example/src/index.tsx"
+      ],
+      "@kuda-terbang/util-api": [
+        "libs/util-api/src/index.ts"
+      ],
+      "@kuda-terbang/util-auth": [
+        "libs/util-auth/src/index.ts"
+      ],
+      "@kuda-terbang/util-confirmation": [
+        "libs/util-confirmation/src/index.ts"
+      ],
+      "@kuda-terbang/util-react-common": [
+        "libs/util-react-common/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

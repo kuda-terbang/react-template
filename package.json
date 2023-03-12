@@ -1,8 +1,8 @@
 {
   "name": "@kuda-terbang/react-template",
   "version": "0.1.0",
-	"description": "Nx plugin and template resources to help you create a production-ready frontend service using React.",
-	"publishConfig": {
+  "description": "Nx plugin and template resources to help you create a production-ready frontend service using React.",
+  "publishConfig": {
     "access": "public"
   },
   "repository": {
@@ -39,6 +39,9 @@
     "@nrwl/web": "15.0.13",
     "@nrwl/workspace": "15.0.13",
     "@nx-extend/strapi": "^3.1.0",
+    "@swc-node/register": "^1.4.2",
+    "@swc/cli": "~0.1.55",
+    "@swc/core": "^1.2.173",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "13.4.0",
     "@types/jest": "28.1.1",
@@ -64,6 +67,7 @@
     "eslint-plugin-react-hooks": "4.6.0",
     "jest": "28.1.1",
     "jest-environment-jsdom": "28.1.1",
+    "jsonc-eslint-parser": "^2.1.0",
     "nx": "15.0.13",
     "prettier": "2.7.1",
     "react-test-renderer": "18.2.0",
@@ -82,6 +86,7 @@
     "@mui/x-date-pickers": "^5.0.2",
     "@nrwl/next": "14.4.0",
     "@sentry/nextjs": "^7.38.0",
+    "@swc/helpers": "~0.4.11",
     "axios": "^0.27.2",
     "core-js": "^3.6.5",
     "dayjs": "^1.11.5",

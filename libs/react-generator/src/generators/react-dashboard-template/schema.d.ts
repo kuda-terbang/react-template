@@ -1,5 +1,5 @@
 import type { Linter, SupportedStyles } from '@nrwl/linter';
-import type { NormalizedSchema } from '../../utils/file-modifier';
+import type { NormalizedSchema } from '@kuda-terbang/generator-utils';
 
 export interface ReactDashboardTemplateGeneratorSchema {
   name: string;

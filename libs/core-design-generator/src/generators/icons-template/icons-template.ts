@@ -1,6 +1,7 @@
 import { addProjectConfiguration, formatFiles, Tree } from '@nrwl/devkit';
-import { addFiles, normalizeOptions } from '../../utils/file-modifier';
+import { addFiles, normalizeOptions } from '@kuda-terbang/generator-utils';
 import { IconsGeneratorSchema } from './schema';
+import { name } from '../../../project.json';
 
 export default async function (tree: Tree, options: IconsGeneratorSchema) {
   const normalizedOptions = normalizeOptions(tree, options);
@@ -10,6 +11,6 @@ export default async function (tree: Tree, options: IconsGeneratorSchema) {
     sourceRoot: `${normalizedOptions.projectRoot}/src`,
     tags: normalizedOptions.parsedTags,
   });
-  addFiles(tree, normalizedOptions, 'icons-template', 'files');
+  addFiles(tree, normalizedOptions, name, 'icons-template', 'files');
   await formatFiles(tree);
 }

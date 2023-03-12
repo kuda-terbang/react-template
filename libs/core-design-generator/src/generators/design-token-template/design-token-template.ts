@@ -10,7 +10,7 @@ import {
 import * as path from 'path';
 import fs from 'fs';
 
-import { normalizeOptions } from '../../utils/file-modifier';
+import { normalizeOptions } from '@kuda-terbang/generator-utils';
 import { CustomGeneratorGeneratorSchema } from './schema';
 
 interface NormalizedSchema extends CustomGeneratorGeneratorSchema {

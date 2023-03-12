@@ -1,12 +1,13 @@
 import { logger, Tree } from '@nrwl/devkit';
+import { addFiles } from '@kuda-terbang/generator-utils';
 
+import { name } from '../../../../project.json';
 import { NextjsClientTemplateNormalized } from '../schema';
-import { addFiles } from '../../../utils/file-modifier';
 
 export default function (tree: Tree, normalizedOptions: NextjsClientTemplateNormalized) {
   logger.log('START restructure for create react app');
 
-  addFiles(tree, normalizedOptions, 'nextjs-client-template', 'cna-files');
+  addFiles(tree, normalizedOptions, name, 'nextjs-client-template', 'cna-files');
 
   // Delete or update all files related to nx
   tree.delete(normalizedOptions.projectRoot.concat('/project.json'));
@@ -16,6 +17,6 @@ export default function (tree: Tree, normalizedOptions: NextjsClientTemplateNorm
 
   if (normalizedOptions.isDefaultCnaTemplate) {
     tree.delete(normalizedOptions.projectRoot.concat('/package.json'));
-    addFiles(tree, normalizedOptions, 'nextjs-client-template', 'default-cna-files');
+    addFiles(tree, normalizedOptions, name, 'nextjs-client-template', 'default-cna-files');
   }
 }

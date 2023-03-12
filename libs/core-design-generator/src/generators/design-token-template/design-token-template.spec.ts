@@ -4,7 +4,7 @@ import { Tree, readProjectConfiguration } from '@nrwl/devkit';
 import generator from './design-token-template';
 import { CustomGeneratorGeneratorSchema } from './schema';
 
-describe('react-generator generator', () => {
+describe('core-design-generator generator', () => {
   let appTree: Tree;
   const options: CustomGeneratorGeneratorSchema = { name: 'test' };
 

@@ -1,12 +1,13 @@
 {
   "version": 2,
   "projects": {
+    "core-design-generator": "libs/core-design-generator",
     "data-access-strapi": "libs/data-access-strapi",
     "design-token-example": "libs/design-token-example",
+    "generator-utils": "libs/generator-utils",
     "icons-example": "libs/icons-example",
     "nextjs-client-example": "apps/nextjs-client-example",
     "react-dashboard-example": "apps/react-dashboard-example",
-    "react-generator": "libs/react-generator",
     "ui-mui-react-example": "libs/ui-mui-react-example",
     "util-api": "libs/util-api",
     "util-auth": "libs/util-auth",
