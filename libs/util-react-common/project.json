@@ -1,43 +1,41 @@
 {
+  "name": "util-react-common",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/util-react-common/src",
   "projectType": "library",
-  "tags": [],
   "targets": {
     "build": {
-      "executor": "@nrwl/web:rollup",
+      "executor": "@nrwl/webpack:webpack",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/util-react-common",
+        "main": "libs/util-react-common/src/index.ts",
         "tsConfig": "libs/util-react-common/tsconfig.lib.json",
-        "project": "libs/util-react-common/package.json",
-        "entryFile": "libs/util-react-common/src/index.ts",
-        "external": ["react/jsx-runtime"],
-        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
-        "compiler": "babel",
-        "assets": [
-          {
-            "glob": "libs/util-react-common/README.md",
-            "input": ".",
-            "output": "."
-          }
-        ]
+        "assets": []
       }
+    },
+    "publish": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node tools/scripts/publish.mjs util-react-common {args.ver} {args.tag}"
+      },
+      "dependsOn": ["build"]
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/util-react-common/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["libs/util-react-common/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/util-react-common"],
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
         "jestConfig": "libs/util-react-common/jest.config.ts",
         "passWithNoTests": true
       }
     }
-  }
+  },
+  "tags": []
 }

@@ -1,1 +1,1 @@
-export { default } from './dialog-confirm.view'
+export { default } from './dialog-confirm.view';

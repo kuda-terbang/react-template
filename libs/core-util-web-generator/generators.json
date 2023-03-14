@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "core-util-web-generator",
+  "version": "0.0.1",
+  "generators": {
+    "util-auth": {
+      "factory": "./src/generators/util-auth/util-auth",
+      "schema": "./src/generators/util-auth/schema.json",
+      "description": "Generate util authentication related for web"
+    },
+    "util-confirmation": {
+      "factory": "./src/generators/util-confirmation/util-confirmation",
+      "schema": "./src/generators/util-confirmation/schema.json",
+      "description": "Generate util confirmation related (dialog and helper function) for web"
+    }
+  }
+}

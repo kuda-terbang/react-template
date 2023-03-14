@@ -2,6 +2,8 @@
   "version": 2,
   "projects": {
     "core-design-generator": "libs/core-design-generator",
+    "core-util-generator": "libs/core-util-generator",
+    "core-util-web-generator": "libs/core-util-web-generator",
     "data-access-strapi": "libs/data-access-strapi",
     "design-token-example": "libs/design-token-example",
     "generator-utils": "libs/generator-utils",
