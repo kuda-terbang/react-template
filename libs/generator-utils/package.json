@@ -1,4 +1,20 @@
 {
   "name": "@kuda-terbang/generator-utils",
-  "version": "0.1.0"
+	"version": "0.1.0",
+  "description": "Shared utils function for running generator",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kuda-terbang/react-template/tree/main/libs/generator-utils"
+  },
+  "keywords": [
+    "nx",
+    "nx-plugin",
+    "typescript"
+  ],
+  "author": {
+    "name": "Robby Caesar Putra"
+  }
 }
