@@ -1,14 +1,7 @@
-import {
-  addProjectConfiguration,
-  formatFiles,
-  generateFiles,
-  logger,
-  names,
-  offsetFromRoot,
-  Tree,
-} from '@nrwl/devkit';
+import { formatFiles, generateFiles, logger, names, offsetFromRoot, Tree } from '@nrwl/devkit';
 import * as path from 'path';
 import fs from 'fs';
+import { libraryGenerator } from '@nrwl/workspace/generators';
 
 import { normalizeOptions } from '@kuda-terbang/generator-utils';
 import { CustomGeneratorGeneratorSchema } from './schema';
@@ -60,40 +53,43 @@ async function addFiles(tree: Tree, options: NormalizedSchema) {
 export default async function (tree: Tree, options: CustomGeneratorGeneratorSchema) {
   const normalizedOptions = normalizeOptions(tree, options);
 
-  addProjectConfiguration(tree, normalizedOptions.projectName, {
-    root: normalizedOptions.projectRoot,
-    projectType: 'library',
-    sourceRoot: `${normalizedOptions.projectRoot}/generated`,
-    tags: normalizedOptions.parsedTags,
+  await libraryGenerator(tree, {
+    ...normalizedOptions,
+    buildable: true,
   });
-  addFiles(tree, normalizedOptions);
-  const fileContent = fs.readFileSync('../../tsconfig.base.json');
-  const content = JSON.parse(fileContent.toString());
-  const newContent = {
-    ...content,
-    compilerOptions: {
-      ...content.compilerOptions,
-      paths: {
-        ...content.compilerOptions.paths,
-        [`@${normalizedOptions.npmScope}/${normalizedOptions.name}/color`]: [
-          `libs/${normalizedOptions.name}/generated/json/color.json`,
-        ],
-        [`@${normalizedOptions.npmScope}/${normalizedOptions.name}/json/breakpoint`]: [
-          `libs/${normalizedOptions.name}/generated/json/breakpoint.json`,
-        ],
-        [`@${normalizedOptions.npmScope}/${normalizedOptions.name}/json/color`]: [
-          `libs/${normalizedOptions.name}/generated/json/color.json`,
-        ],
-        [`@${normalizedOptions.npmScope}/${normalizedOptions.name}/json/elevation`]: [
-          `libs/${normalizedOptions.name}/generated/json/elevation.json`,
-        ],
-        [`@${normalizedOptions.npmScope}/${normalizedOptions.name}/json/font_style`]: [
-          `libs/${normalizedOptions.name}/generated/json/font_style.json`,
-        ],
-      },
-    },
-  };
 
-  await fs.writeFileSync('../../tsconfig.base.json', JSON.stringify(newContent));
-  await formatFiles(tree);
+  addFiles(tree, normalizedOptions);
+
+  tree.delete(normalizedOptions.projectRoot.concat('/src/lib/'));
+
+  return async () => {
+    const fileContent = fs.readFileSync('../../tsconfig.base.json');
+    const content = JSON.parse(fileContent.toString());
+    const newContent = {
+      ...content,
+      compilerOptions: {
+        ...content.compilerOptions,
+        paths: {
+          ...content.compilerOptions.paths,
+          [`@${normalizedOptions.npmScope}/${normalizedOptions.name}/color`]: [
+            `libs/${normalizedOptions.name}/generated/json/color.json`,
+          ],
+          [`@${normalizedOptions.npmScope}/${normalizedOptions.name}/json/breakpoint`]: [
+            `libs/${normalizedOptions.name}/generated/json/breakpoint.json`,
+          ],
+          [`@${normalizedOptions.npmScope}/${normalizedOptions.name}/json/color`]: [
+            `libs/${normalizedOptions.name}/generated/json/color.json`,
+          ],
+          [`@${normalizedOptions.npmScope}/${normalizedOptions.name}/json/elevation`]: [
+            `libs/${normalizedOptions.name}/generated/json/elevation.json`,
+          ],
+          [`@${normalizedOptions.npmScope}/${normalizedOptions.name}/json/font_style`]: [
+            `libs/${normalizedOptions.name}/generated/json/font_style.json`,
+          ],
+        },
+      },
+    };
+    await fs.writeFileSync('../../tsconfig.base.json', JSON.stringify(newContent, null, 2));
+    await formatFiles(tree);
+  };
 }
