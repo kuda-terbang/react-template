@@ -137,7 +137,7 @@ export default function (tree: Tree, options: NormalizedReactDashboardSchema) {
     addModules({
       tree,
       options,
-      modulePath: `/libs/${options.designTokenProject}/build/json`,
+      modulePath: `/libs/${options.designTokenProject}/generated/json`,
       targetModulePath: `${prefixPath}/src/design-system/token`,
     });
   }

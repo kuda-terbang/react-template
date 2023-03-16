@@ -34,7 +34,7 @@ export default async function (tree: Tree, options: UiMuiReactComponentNormalize
     addModules({
       tree,
       options: normalizedOptions,
-      modulePath: `/libs/${options.designTokenProject}/build/json`,
+      modulePath: `/libs/${options.designTokenProject}/generated/json`,
       targetModulePath: '/src/token',
       replaceStrings: [
         {

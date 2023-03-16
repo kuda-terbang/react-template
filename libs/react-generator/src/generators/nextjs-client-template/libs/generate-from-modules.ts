@@ -132,7 +132,7 @@ export default function (tree: Tree, options: NextjsClientTemplateNormalized) {
     addModules({
       tree,
       options,
-      modulePath: `/libs/${options.designTokenProject}/build/json`,
+      modulePath: `/libs/${options.designTokenProject}/generated/json`,
       targetModulePath: `/src/design-system/token`,
     });
 

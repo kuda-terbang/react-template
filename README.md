@@ -79,7 +79,7 @@ yarn create next-app --example https://github.com/robbycp/design-system-template
 ```
 
 2. I recommend creating a new repository to generate design tokens and icons from Figma. You could follow the implementation from the [design token project](/libs/design-token-example) to generate design token JSON and the [icons project](/libs/icons-example).
-3. Put all the JSON files generated from step two in `/design-token-project/build/json` to `/src/design-system/token`
+3. Put all the JSON files generated from step two in `/design-token-project/generated/json` to `/src/design-system/token`
 4. Check if you want to adjust the basic components in `/src/design-system/components`, and override component props in `/src/design-system/mui-theme`.
 5. Create all third-party apps accounts needed and implement them in .env. Follow the guidelines [here](#creating-third-party-apps-accounts)
 6. Start your service
