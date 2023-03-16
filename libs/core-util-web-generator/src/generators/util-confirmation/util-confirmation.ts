@@ -1,6 +1,7 @@
 import { addFiles, normalizeOptions } from '@kuda-terbang/generator-utils';
 import { formatFiles, Tree } from '@nrwl/devkit';
-import { libraryGenerator } from '@nrwl/js';
+import { Linter } from '@nrwl/linter';
+import { libraryGenerator } from '@nrwl/react';
 
 import { name } from '../../../project.json';
 import { UtilConfirmationGeneratorSchema } from './schema';
@@ -13,11 +14,13 @@ export default async function (tree: Tree, options: UtilConfirmationGeneratorSch
   await libraryGenerator(tree, {
     ...normalizedOptions,
     buildable: true,
-    bundler: 'webpack',
-    config: 'project',
-    testEnvironment: 'node',
     publishable: true,
     importPath: `@${normalizedOptions.npmScope}/util-confirmation`,
+    style: 'none',
+    skipFormat: false,
+    skipTsConfig: false,
+    unitTestRunner: 'jest',
+    linter: Linter.EsLint,
   });
   addFiles(tree, normalizedOptions, name, 'util-confirmation', 'files');
 

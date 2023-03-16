@@ -52,7 +52,7 @@ module.exports = {
   platforms: {
     android: {
       transformGroup: 'android',
-      buildPath: 'build/android/',
+      buildPath: 'generated/android/',
       files: createFiles('xml', [
         {
           id: 'fontSize',
@@ -70,7 +70,7 @@ module.exports = {
     },
     'json-nested': {
       transformGroup: 'web',
-      buildPath: 'build/json/',
+      buildPath: 'generated/json/',
       files: createFiles('json', [
         {
           id: 'breakpoint',
@@ -92,7 +92,7 @@ module.exports = {
     },
     js: {
       transformGroup: 'js',
-      buildPath: 'build/js/',
+      buildPath: 'generated/js/',
       filed: createFiles('js', [
         {
           id: 'breakpoint',
@@ -114,7 +114,7 @@ module.exports = {
     },
     ts: {
       transformGroup: 'js',
-      buildPath: 'build/ts/',
+      buildPath: 'generated/ts/',
       files: createFiles('ts', [
         {
           id: 'breakpoint',
@@ -156,7 +156,7 @@ module.exports = {
     },
     ios: {
       transformGroup: 'ios',
-      buildPath: 'build/ios/',
+      buildPath: 'generated/ios/',
       files: [
         {
           destination: 'StyleDictionaryColor.h',
@@ -198,7 +198,7 @@ module.exports = {
     },
     'ios-swift': {
       transformGroup: 'ios-swift',
-      buildPath: 'build/ios-swift/',
+      buildPath: 'generated/ios-swift/',
       files: [
         {
           destination: 'StyleDictionary.swift',
@@ -210,7 +210,7 @@ module.exports = {
     },
     'ios-swift-separate-enums': {
       transformGroup: 'ios-swift-separate',
-      buildPath: 'build/ios-swift/',
+      buildPath: 'generated/ios-swift/',
       files: [
         {
           destination: 'StyleDictionaryColor.swift',

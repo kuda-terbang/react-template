@@ -63,7 +63,7 @@ export default async function (tree: Tree, options: CustomGeneratorGeneratorSche
   addProjectConfiguration(tree, normalizedOptions.projectName, {
     root: normalizedOptions.projectRoot,
     projectType: 'library',
-    sourceRoot: `${normalizedOptions.projectRoot}/build`,
+    sourceRoot: `${normalizedOptions.projectRoot}/generated`,
     tags: normalizedOptions.parsedTags,
   });
   addFiles(tree, normalizedOptions);
@@ -76,19 +76,19 @@ export default async function (tree: Tree, options: CustomGeneratorGeneratorSche
       paths: {
         ...content.compilerOptions.paths,
         [`@${normalizedOptions.npmScope}/${normalizedOptions.name}/color`]: [
-          `libs/${normalizedOptions.name}/build/json/color.json`,
+          `libs/${normalizedOptions.name}/generated/json/color.json`,
         ],
         [`@${normalizedOptions.npmScope}/${normalizedOptions.name}/json/breakpoint`]: [
-          `libs/${normalizedOptions.name}/build/json/breakpoint.json`,
+          `libs/${normalizedOptions.name}/generated/json/breakpoint.json`,
         ],
         [`@${normalizedOptions.npmScope}/${normalizedOptions.name}/json/color`]: [
-          `libs/${normalizedOptions.name}/build/json/color.json`,
+          `libs/${normalizedOptions.name}/generated/json/color.json`,
         ],
         [`@${normalizedOptions.npmScope}/${normalizedOptions.name}/json/elevation`]: [
-          `libs/${normalizedOptions.name}/build/json/elevation.json`,
+          `libs/${normalizedOptions.name}/generated/json/elevation.json`,
         ],
         [`@${normalizedOptions.npmScope}/${normalizedOptions.name}/json/font_style`]: [
-          `libs/${normalizedOptions.name}/build/json/font_style.json`,
+          `libs/${normalizedOptions.name}/generated/json/font_style.json`,
         ],
       },
     },

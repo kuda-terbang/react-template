@@ -52,7 +52,7 @@ module.exports = {
   "platforms": {
     android: {
       transformGroup: "android",
-      buildPath: "build/android/",
+      buildPath: "generated/android/",
       files: createFiles('xml', [{
         id: 'fontSize',
         format: "custom/format/android-font-size-xml",
@@ -66,7 +66,7 @@ module.exports = {
     },
     "json-nested": {
       transformGroup: "web",
-      buildPath: "build/json/",
+      buildPath: "generated/json/",
       files: createFiles('json', [{
           id: 'breakpoint',
           format: "json/nested"
@@ -83,7 +83,7 @@ module.exports = {
     },
     js: {
       transformGroup: "js",
-      buildPath: "build/js/",
+      buildPath: "generated/js/",
       filed: createFiles('js', [{
         id: 'breakpoint',
         format: "javascript/es6"
@@ -100,7 +100,7 @@ module.exports = {
     },
     "ts": {
       "transformGroup": "js",
-      "buildPath": "build/ts/",
+      "buildPath": "generated/ts/",
       files: createFiles('ts', [{
         id: 'breakpoint',
         format: "javascript/es6"
@@ -133,7 +133,7 @@ module.exports = {
     },
     "ios": {
       "transformGroup": "ios",
-      "buildPath": "build/ios/",
+      "buildPath": "generated/ios/",
       "files": [{
         "destination": "StyleDictionaryColor.h",
         "format": "ios/colors.h",
@@ -170,7 +170,7 @@ module.exports = {
     },
     "ios-swift": {
       "transformGroup": "ios-swift",
-      "buildPath": "build/ios-swift/",
+      "buildPath": "generated/ios-swift/",
       "files": [{
         "destination": "StyleDictionary.swift",
         "format": "ios-swift/class.swift",
@@ -180,7 +180,7 @@ module.exports = {
     },
     "ios-swift-separate-enums": {
       "transformGroup": "ios-swift-separate",
-      "buildPath": "build/ios-swift/",
+      "buildPath": "generated/ios-swift/",
       "files": [{
         "destination": "StyleDictionaryColor.swift",
         "format": "ios-swift/enum.swift",

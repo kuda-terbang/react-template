@@ -9,12 +9,21 @@ import { libraryGenerator } from '@nrwl/react';
 import { addFiles, addModules, normalizeOptions } from '@kuda-terbang/generator-utils';
 import { name } from '../../../project.json';
 import { UiMuiReactComponentNormalized } from './schema';
+import { Linter } from '@nrwl/linter';
 
 export default async function (tree: Tree, options: UiMuiReactComponentNormalized) {
   const normalizedOptions = normalizeOptions(tree, options);
 
   await libraryGenerator(tree, {
     ...normalizedOptions,
+    buildable: true,
+    publishable: true,
+    importPath: `@${normalizedOptions.npmScope}/ui-mui-react-example`,
+    style: 'none',
+    skipFormat: false,
+    skipTsConfig: false,
+    unitTestRunner: 'jest',
+    linter: Linter.EsLint,
   });
 
   addFiles(tree, normalizedOptions, name, 'ui-mui-react-template', 'files');
@@ -39,7 +48,6 @@ export default async function (tree: Tree, options: UiMuiReactComponentNormalize
 
   // Delete existing template from nrwl/react library generator files
   tree.delete(normalizedOptions.projectRoot.concat('/src/lib/'));
-  tree.delete(normalizedOptions.projectRoot.concat('/src/index.ts'));
 
   // Update tsconfig config previously generated from libraryGenerator
   const packageOrgName = getWorkspaceLayout(tree).npmScope;
@@ -47,15 +55,8 @@ export default async function (tree: Tree, options: UiMuiReactComponentNormalize
     json.compilerOptions.paths = {
       ...json.compilerOptions.paths,
       [`@${packageOrgName}/${normalizedOptions.projectName}`]: [
-        `${normalizedOptions.projectRoot}/src/index.tsx`,
+        `${normalizedOptions.projectRoot}/src/index.ts`,
       ],
-    };
-    return json;
-  });
-  updateJson(tree, `${normalizedOptions.projectRoot}/tsconfig.lib.json`, (json) => {
-    json.compilerOptions.paths = {
-      ...json.compilerOptions.paths,
-      [`config/envValue`]: [`${normalizedOptions.projectRoot}/src/config/envValue.ts`],
     };
     return json;
   });

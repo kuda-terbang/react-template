@@ -3,29 +3,33 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/util-confirmation/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
     "build": {
-      "executor": "@nrwl/webpack:webpack",
+      "executor": "@nrwl/web:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/util-confirmation",
-        "main": "libs/util-confirmation/src/index.ts",
         "tsConfig": "libs/util-confirmation/tsconfig.lib.json",
-        "assets": []
+        "project": "libs/util-confirmation/package.json",
+        "entryFile": "libs/util-confirmation/src/index.ts",
+        "external": ["react/jsx-runtime"],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "libs/util-confirmation/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
       }
-    },
-    "publish": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "node tools/scripts/publish.mjs util-confirmation {args.ver} {args.tag}"
-      },
-      "dependsOn": ["build"]
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/util-confirmation/**/*.ts"]
+        "lintFilePatterns": ["libs/util-confirmation/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "test": {
@@ -36,6 +40,5 @@
         "passWithNoTests": true
       }
     }
-  },
-  "tags": []
+  }
 }

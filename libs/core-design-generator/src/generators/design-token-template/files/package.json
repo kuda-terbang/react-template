@@ -12,8 +12,7 @@
     "ts-jest": "^27.0.3"
   },
   "scripts": {
-    "build": "npm run transform-tokens",
-    "transform-tokens": "node ./transformTokens.js",
+    "generate-token": "node ./transformTokens.js",
     "test": "jest tests --coverage=false"
   },
   "repository": {
