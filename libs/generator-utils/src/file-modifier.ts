@@ -152,6 +152,40 @@ export function addModules<TOptions>({
 export function copyFile(tree: Tree, oldPath: string, newPath: string) {
   const readPublicFile = tree.read(oldPath);
   tree.write(newPath, readPublicFile || '');
-  tree.delete(oldPath);
   logger.log(`COPY : ${oldPath} to ${newPath}`);
 }
+export const copyFiles = (tree: Tree, paths: { oldPath: string; newPath: string }[]) => {
+  paths.forEach((path) => {
+    copyFile(tree, path.oldPath, path.newPath);
+  });
+};
+
+export function moveFile(tree: Tree, oldPath: string, newPath: string) {
+  const readPublicFile = tree.read(oldPath);
+  tree.write(newPath, readPublicFile || '');
+  tree.delete(oldPath);
+  logger.log(`MOVE : ${oldPath} to ${newPath}`);
+}
+export const moveFiles = (tree: Tree, paths: { oldPath: string; newPath: string }[]) => {
+  paths.forEach((path) => {
+    moveFile(tree, path.oldPath, path.newPath);
+  });
+};
+
+export const deleteFileInstance =
+  <TOptions>({
+    tree,
+    normalizedOptions,
+  }: {
+    tree: Tree;
+    normalizedOptions: NormalizedSchema<TOptions>;
+  }) =>
+  (path: string | string[]) => {
+    if (typeof path === 'object') {
+      path.forEach((strPath) => {
+        tree.delete(normalizedOptions.projectRoot.concat(strPath));
+      });
+    } else {
+      tree.delete(normalizedOptions.projectRoot.concat(path));
+    }
+  };

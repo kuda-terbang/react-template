@@ -1,0 +1,17 @@
+{
+  "name": "<%= projectName %>",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/<%= projectName %>/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@kuda-terbang/generator-utils:build-template",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/<%= projectName %>",
+				"projectName": "<%= projectName %>"
+      }
+    }
+  },
+  "tags": []
+}

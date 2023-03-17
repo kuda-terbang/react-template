@@ -1,6 +1,6 @@
 {
   "name": "@kuda-terbang/generator-utils",
-	"version": "0.1.0",
+  "version": "0.1.0",
   "description": "Shared utils function for running generator",
   "publishConfig": {
     "access": "public"
@@ -16,5 +16,6 @@
   ],
   "author": {
     "name": "Robby Caesar Putra"
-  }
+  },
+  "executors": "executors.json"
 }

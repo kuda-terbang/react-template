@@ -1,0 +1,9 @@
+{
+  "executors": {
+    "build-template": {
+      "implementation": "./src/executors/build-template/build-template",
+      "schema": "./src/executors/build-template/schema.json",
+      "description": "Build template as is without modifing any files"
+    }
+  }
+}
