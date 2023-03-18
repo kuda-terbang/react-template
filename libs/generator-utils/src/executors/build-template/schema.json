@@ -23,7 +23,12 @@
         "$source": "projectName"
       },
       "x-prompt": "What is the name of the project template yout want to build?"
-    }
+    },
+		"deleteFiles": {
+			"type": "array",
+			"description": "Path to delete",
+			"x-prompt": "What list of file path needed to delete"
+		}
 	},
   "required": ["outputPath", "projectName"]
 }

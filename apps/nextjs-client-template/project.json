@@ -1,0 +1,18 @@
+{
+  "name": "nextjs-client-template",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/nextjs-client-template/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@kuda-terbang/generator-utils:build-template",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/nextjs-client-template",
+        "projectName": "nextjs-client-template",
+        "deleteFiles": ["project.json"]
+      }
+    }
+  },
+  "tags": []
+}

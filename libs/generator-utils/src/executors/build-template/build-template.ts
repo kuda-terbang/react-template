@@ -14,13 +14,14 @@ export default async function runExecutor(
   execSync(`cp -R ${prevPath} ${destinationPath}`);
 
   logger.log(`DELETE : nx related file`);
-  const deleteFiles = [
-    `./${destinationPath}/tsconfig.json`,
-    `./${destinationPath}/tsconfig.app.json`,
-    `./${destinationPath}/tsconfig.spec.json`,
-    `./${destinationPath}/project.json`,
-  ];
-  execSync(`rm -rf ${deleteFiles.join(' ')}`);
+  const deletePathFiles = options.deleteFiles?.map((deleteFile) => {
+    return `./${destinationPath}/${deleteFile}`;
+  });
+
+  if (deletePathFiles) {
+    execSync(`rm -rf ${deletePathFiles.join(' ')}`);
+  }
+
   return {
     success: true,
   };
