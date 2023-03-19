@@ -66,6 +66,7 @@ export function addFiles<TOptions>(
     ...names(options.name),
     offsetFromRoot: offsetFromRoot(options.projectRoot),
     template: '',
+    tmpl: '',
   };
   const outputPath = `${tree.root}/libs/${libraryName}/src/generators/${generatorName}/${directoryName}`;
   logger.log(`projectRoot : ${options.projectRoot}`);
