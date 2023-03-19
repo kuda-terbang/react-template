@@ -1,4 +1,5 @@
 export { default as DialogBasic } from './dialog/dialog-basic';
+export { default as DialogConfirm } from './dialog/dialog-confirm';
 export { default as layoutClient, LayoutBasicContext } from './layout/layout-client';
 export type { FooterProps, NavbarProps, LayoutType } from './layout/layout-client';
 export { default as LayoutDashboard } from './layout/layout-dashboard';

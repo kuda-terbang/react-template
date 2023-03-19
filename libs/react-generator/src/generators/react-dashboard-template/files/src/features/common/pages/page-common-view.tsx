@@ -1,8 +1,7 @@
 import React from 'react';
 import { Button, Typography } from '@mui/material';
 
-import { useConfirmation } from '@<%= npmScope %>/util-confirmation'
-import { useSnackbar } from '@<%= npmScope %>/<%= designSystemProject %>'
+import { useConfirmation, useSnackbar } from '@<%= npmScope %>/<%= designSystemProject %>'
 
 import Strapi from './strapi'
 

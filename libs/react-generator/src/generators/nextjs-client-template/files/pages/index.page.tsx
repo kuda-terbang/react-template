@@ -12,8 +12,8 @@ import {
   DialogBasic,
   LayoutBasicContext,
 	useSnackbar,
+	useConfirmation,
 } from '@<%= npmScope %>/<%= designSystemProject %>';
-import { useConfirmation } from '@<%= npmScope %>/util-confirmation';
 import { useTrackScreen } from '../src/services/analytics.service';
 
 import RemoteConfig from '../src/containers/home/remote-config';

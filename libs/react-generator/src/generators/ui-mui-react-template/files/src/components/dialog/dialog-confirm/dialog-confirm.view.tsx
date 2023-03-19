@@ -1,9 +1,9 @@
 import React, { memo, useContext } from 'react';
 import Typography from '@mui/material/Typography';
 
-import { DialogBasic } from 'design-system';
+import { DialogBasic } from '@kuda-terbang/ui-mui-react-example';
 
-import { ConfirmationPopupStateContext, ConfirmationPopupDispatchContext } from '../..';
+import { ConfirmationPopupStateContext, ConfirmationPopupDispatchContext } from '../../../utils/util-confirmation';
 
 const ConfirmationPopup = memo(function ConfirmationPopup() {
   const { isOpen, title, message, textButtonConfirm, textButtonCancel } = useContext(

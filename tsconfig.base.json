@@ -62,9 +62,6 @@
       "@kuda-terbang/util-auth": [
         "libs/util-auth/src/index.ts"
       ],
-      "@kuda-terbang/util-confirmation": [
-        "libs/util-confirmation/src/index.ts"
-      ],
       "@kuda-terbang/util-react-common": [
         "libs/util-react-common/src/index.ts"
       ]

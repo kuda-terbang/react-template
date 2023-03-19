@@ -55,30 +55,6 @@ export default function (tree: Tree, options: NextjsClientTemplateNormalized) {
         : undefined,
     });
 
-    logger.log('GENERATE Util Confirmation');
-    addModules({
-      tree,
-      options,
-      modulePath: '/libs/util-confirmation/src',
-      targetModulePath: `/src/utils/util-confirmation`,
-      replaceStrings: options.isCnaTemplate
-        ? [
-            {
-              fromString: `${scopeName}/util-confirmation`,
-              toString: '~/utils/util-confirmation',
-              paths: [`/pages/_app.page.tsx`, `/pages/index.page.tsx`],
-            },
-            {
-              fromString: `${scopeName}/${options.designSystemProject}`,
-              toString: '~/design-system/index',
-              paths: [
-                `/src/utils/util-confirmation/components/dialog-confirm/dialog-confirm.view.tsx`,
-              ],
-            },
-          ]
-        : undefined,
-    });
-
     logger.log('GENERATE Util Auth');
     addModules({
       tree,
@@ -111,10 +87,12 @@ export default function (tree: Tree, options: NextjsClientTemplateNormalized) {
               fromString: `${scopeName}/${options.designSystemProject}`,
               toString: '~/design-system/index',
               paths: [
+                `/config/menus.ts`,
                 `/pages/_app.page.tsx`,
                 `/pages/_document.page.tsx`,
                 `/pages/index.page.tsx`,
                 `/config/menus.ts`,
+                `/src/design-system/components/dialog/dialog-confirm/dialog-confirm.view.tsx`,
                 `/src/design-system/components/layout/layout-base.tsx`,
                 `/global.d.ts`,
               ],

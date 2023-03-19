@@ -55,33 +55,6 @@ export default function (tree: Tree, options: NormalizedReactDashboardSchema) {
         : undefined,
     });
 
-    logger.log('GENERATE Util Confirmation');
-    addModules({
-      tree,
-      options,
-      modulePath: '/libs/util-confirmation/src',
-      targetModulePath: `${prefixPath}/src/utils/util-confirmation`,
-      replaceStrings: options.isCraTemplate
-        ? [
-            {
-              fromString: `${scopeName}/util-confirmation`,
-              toString: 'utils/util-confirmation',
-              paths: [
-                `${prefixPath}/src/app/app.tsx`,
-                `${prefixPath}/src/features/common/pages/page-common-view.tsx`,
-              ],
-            },
-            {
-              fromString: `${scopeName}/${options.designSystemProject}`,
-              toString: 'design-system',
-              paths: [
-                `${prefixPath}/src/utils/util-confirmation/components/dialog-confirm/dialog-confirm.view.tsx`,
-              ],
-            },
-          ]
-        : undefined,
-    });
-
     logger.log('GENERATE Util Auth');
     addModules({
       tree,
@@ -116,6 +89,7 @@ export default function (tree: Tree, options: NormalizedReactDashboardSchema) {
               paths: [
                 `${prefixPath}/src/app/app.tsx`,
                 `${prefixPath}/src/app/pages/RootRoutes.tsx`,
+                `${prefixPath}/src/design-system/components/dialog/dialog-confirm/dialog-confirm.view.tsx`,
                 `${prefixPath}/src/features/common/pages/page-common-view.tsx`,
                 `${prefixPath}/src/features/common/pages/strapi/strapi.view.tsx`,
                 `${prefixPath}/src/features/form/pages/input-component/input-component.view.tsx`,

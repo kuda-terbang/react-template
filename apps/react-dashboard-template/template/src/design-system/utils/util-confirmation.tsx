@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useMemo, useReducer, useCallback } from 'react';
 import produce, { Immutable } from 'immer';
 
-import DialogConfirm from '../components/dialog-confirm';
+import DialogConfirm from '../components/dialog/dialog-confirm';
 
 export type ConfirmationPopupState = {
   isOpen: boolean;

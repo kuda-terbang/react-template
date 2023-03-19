@@ -7,8 +7,12 @@ import { ThemeProvider } from '@mui/material/styles';
 import { DefaultSeo } from 'next-seo';
 import { appWithTranslation } from 'next-i18next';
 
-import { ConfirmationProvider } from '@kuda-terbang/util-confirmation';
-import { layoutClient, Snackbar, theme } from '@kuda-terbang/ui-mui-react-example';
+import {
+  ConfirmationProvider,
+  layoutClient,
+  Snackbar,
+  theme,
+} from '@kuda-terbang/ui-mui-react-example';
 import FlagsProvider from '../src/services/firebase-remote-config.service';
 import { GTM_ID } from '../src/services/analytics.service';
 import createEmotionCache from '../src/utils/create-emotion-cache';
