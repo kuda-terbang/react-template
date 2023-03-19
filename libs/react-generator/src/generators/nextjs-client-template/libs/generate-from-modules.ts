@@ -116,6 +116,7 @@ export default function (tree: Tree, options: NextjsClientTemplateNormalized) {
                 `/pages/index.page.tsx`,
                 `/config/menus.ts`,
                 `/src/design-system/components/layout/layout-base.tsx`,
+                `/global.d.ts`,
               ],
             },
             {
