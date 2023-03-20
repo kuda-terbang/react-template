@@ -9,9 +9,9 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/design-token-example",
-        "main": "libs/design-token-example/generated/",
+        "main": "libs/design-token-example/src/index.ts",
         "tsConfig": "libs/design-token-example/tsconfig.lib.json",
-        "assets": ["libs/design-token-example/*.md", "libs/design-token-example/generated/json/*.json"]
+        "assets": ["libs/design-token-example/*.md"]
       }
     },
     "lint": {

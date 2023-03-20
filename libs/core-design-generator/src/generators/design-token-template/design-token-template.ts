@@ -20,6 +20,7 @@ async function addFiles(tree: Tree, options: NormalizedSchema) {
     offsetFromRoot: offsetFromRoot(options.projectRoot),
     // Define variable used in design-token-template template as it is
     allTokens: [],
+    tmpl: '',
   };
 
   // Copy paste template value
