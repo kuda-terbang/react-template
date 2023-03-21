@@ -36,6 +36,12 @@
         ]
       }
     },
+		"rename-template": {
+			"executor": "@kuda-terbang/generator-utils:rename-template-generator",
+			"options": {
+				"projectName": "core-design-generator"
+			}
+		},
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
