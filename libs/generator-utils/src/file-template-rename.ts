@@ -6,7 +6,7 @@ type RenameOption = {
 };
 
 export const renameFile = (parentPath: string, options?: RenameOption) => {
-  console.log('parentPath', parentPath);
+  console.log('MODIFY', parentPath);
   for (const childPath of readdirSync(`./${parentPath}`)) {
     const currentPath = `${parentPath}/${childPath}`;
     const extension = extname(childPath) as string;
@@ -14,10 +14,11 @@ export const renameFile = (parentPath: string, options?: RenameOption) => {
     if (isDir) {
       renameFile(currentPath, options);
     }
-    if (!options?.isRevert && ['.ts', '.tsx', '.js'].includes(extension)) {
+    const hasFilesPath = currentPath.includes('files');
+    if (!options?.isRevert && hasFilesPath && ['.ts', '.tsx', '.js'].includes(extension)) {
       renameSync(`./${currentPath}`, `./${currentPath}__tmpl__`);
     }
-    if (options?.isRevert && extension.includes('__tmpl__')) {
+    if (options?.isRevert && hasFilesPath && extension.includes('__tmpl__')) {
       const revertedName = currentPath.replace('__tmpl__', '');
       renameSync(`./${currentPath}`, `./${revertedName}`);
     }

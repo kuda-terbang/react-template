@@ -4,6 +4,11 @@
       "implementation": "./src/executors/build-template/build-template",
       "schema": "./src/executors/build-template/schema.json",
       "description": "Build template as is without modifing any files"
+    },
+    "rename-template-generator": {
+      "implementation": "./src/executors/rename-template-generator/rename-template-generator",
+      "schema": "./src/executors/rename-template-generator/schema.json",
+      "description": "Rename all js, ts file with __tmpl__ and revert back"
     }
   }
 }

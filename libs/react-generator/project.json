@@ -42,6 +42,12 @@
         "script": "generate-ui-mui-react-example"
       }
     },
+		"rename-template": {
+			"executor": "@kuda-terbang/generator-utils:rename-template-generator",
+			"options": {
+				"projectName": "react-generator"
+			}
+		},
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
