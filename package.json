@@ -23,7 +23,6 @@
   },
   "license": "MIT",
   "scripts": {},
-  "private": true,
   "devDependencies": {
     "@emotion/babel-plugin": "11.9.2",
     "@nrwl/cli": "15.0.13",
