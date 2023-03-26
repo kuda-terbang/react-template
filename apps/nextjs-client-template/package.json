@@ -1,6 +1,6 @@
 {
   "name": "@kuda-terbang/nextjs-client-template",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Production ready nextjs client template",
   "repository": "https://github.com/kuda-terbang/react-template/tree/main/apps/nextjs-client-template",
   "author": "Robby Caesar Putra <robbycaesar@gmail.com>",
