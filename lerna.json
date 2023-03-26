@@ -1,0 +1,12 @@
+{
+	"packages": [
+		"dist/apps/nextjs-client-template",
+		"dist/apps/react-dashboard-template",
+		"dist/libs/core-design-generator",
+		"dist/libs/core-util-generator",
+		"dist/libs/core-util-web-generator",
+		"dist/libs/generator-utils",
+		"dist/libs/react-generator"
+	],
+  "version": "0.1.0"
+}

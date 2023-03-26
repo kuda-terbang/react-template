@@ -94,6 +94,7 @@
     "firebase": "^9.8.4",
     "immer": "^9.0.15",
     "js-cookie": "^3.0.1",
+    "lerna": "^6.6.1",
     "mui-tel-input": "^2.0.2",
     "next": "13.0.0",
     "next-i18next": "^11.0.0",
