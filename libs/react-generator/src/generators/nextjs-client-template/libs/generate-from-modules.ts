@@ -112,7 +112,29 @@ export default function (tree: Tree, options: NextjsClientTemplateNormalized) {
       tree,
       options,
       modulePath: `/libs/${options.designTokenProject}/generated/json`,
-      targetModulePath: `/src/design-system/token`,
+      targetModulePath: `/src/design-system/token/generated/json`,
+      replaceStrings: [
+        {
+          fromString: `${scopeName}/${options.designTokenProject}`,
+          toString: '../token/src',
+          paths: [
+            `/src/design-system/utils/generateColor.ts`,
+            `/src/design-system/mui-theme/index.ts`,
+          ],
+        },
+      ],
+    });
+    addModules({
+      tree,
+      options,
+      modulePath: `/libs/${options.designTokenProject}/generated/ts`,
+      targetModulePath: `/src/design-system/token/generated/ts`,
+    });
+    addModules({
+      tree,
+      options,
+      modulePath: `/libs/${options.designTokenProject}/src`,
+      targetModulePath: `/src/design-system/token/src`,
     });
 
     logger.log('GENERATE util-common');

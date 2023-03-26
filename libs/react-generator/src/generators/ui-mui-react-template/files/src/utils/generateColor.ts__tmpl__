@@ -1,6 +1,6 @@
-import type colors from '@<%= npmScope %>/<%= designTokenProject %>/json/color';
+import type { json } from '@<%= npmScope %>/<%= designTokenProject %>';
 
-type JsonColors = typeof colors;
+type JsonColors = typeof json.color;
 
 export default (jsonColors: JsonColors) => {
   const muiPaletteColor: Record<string, unknown> = {};

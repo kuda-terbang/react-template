@@ -1,6 +1,6 @@
-import type colors from '@kuda-terbang/design-token-example/json/color';
+import type { json } from '@kuda-terbang/design-token-example';
 
-type JsonColors = typeof colors;
+type JsonColors = typeof json.color;
 
 export default (jsonColors: JsonColors) => {
   const muiPaletteColor: Record<string, unknown> = {};

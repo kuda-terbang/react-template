@@ -2,7 +2,7 @@ import type { ReactElement, ReactNode } from 'react';
 import type { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import type { AxiosRequestConfig } from 'axios';
-import type { LayoutType } from '@kuda-terbang/ui-mui-react-example';
+import type { LayoutType } from '@<%= npmScope %>/<%= designSystemProject %>';
 
 declare global {
   interface Window {

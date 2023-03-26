@@ -1,9 +1,5 @@
-/* eslint-disable react/display-name */
-/* eslint-disable no-param-reassign */
-import React, { createContext, useContext, useMemo, useReducer, useCallback } from 'react';
+import React, { createContext, useMemo, useReducer, useCallback } from 'react';
 import produce, { Immutable } from 'immer';
-
-import DialogConfirm from '../components/dialog/dialog-confirm';
 
 export type ConfirmationPopupState = {
   isOpen: boolean;
@@ -17,29 +13,16 @@ export type ConfirmationPopupState = {
 
 type OpenConfirmationArgs = Omit<ConfirmationPopupState, 'isOpen'>;
 
-type ConfirmationPopupAction = {
-  type: 'OPEN_CONFIRMATION_POPUP' | 'CLOSE_CONFIRMATION_POPUP';
-  payload?: Partial<ConfirmationPopupState>;
-};
-
 export type ConfirmationPopupDispatch = {
   openConfirmation: (args: OpenConfirmationArgs) => void;
   closeConfirmation: () => void;
   onSubmitConfirmation: () => void;
 };
 
-export type ConfirmationPopupContext = {
-  state: Immutable<ConfirmationPopupState>;
-  dispatch: ConfirmationPopupDispatch;
+type ConfirmationPopupAction = {
+  type: 'OPEN_CONFIRMATION_POPUP' | 'CLOSE_CONFIRMATION_POPUP';
+  payload?: Partial<ConfirmationPopupState>;
 };
-
-interface ConfirmationProviderProps {
-  children: React.ReactNode;
-}
-
-interface UseConfirmation
-  extends Pick<ConfirmationPopupState, 'isOpen'>,
-    Omit<ConfirmationPopupDispatch, 'onSubmitConfirmation'> {}
 
 // Initial state confirmation popup
 const initialState: ConfirmationPopupState = {
@@ -52,11 +35,15 @@ const initialState: ConfirmationPopupState = {
   textButtonConfirm: 'Submit',
 };
 
+type ConfirmationPopupContext = {
+  state: Immutable<ConfirmationPopupState>;
+  dispatch: ConfirmationPopupDispatch;
+};
 // Create context for state & dispatch confirmation popup
-const ConfirmationPopupStateContext: React.Context<Immutable<ConfirmationPopupState>> =
+export const ConfirmationPopupStateContext: React.Context<Immutable<ConfirmationPopupState>> =
   createContext(initialState as Immutable<ConfirmationPopupState>);
 
-const ConfirmationPopupDispatchContext = createContext<ConfirmationPopupDispatch>({
+export const ConfirmationPopupDispatchContext = createContext<ConfirmationPopupDispatch>({
   openConfirmation: () => {
     /* */
   },
@@ -88,7 +75,7 @@ const reducer = produce((draft: ConfirmationPopupState, action: ConfirmationPopu
 });
 
 // Custom hooks method confirmation popup
-const useConfirmationPopup = (): ConfirmationPopupContext => {
+export const useConfirmationPopup = (): ConfirmationPopupContext => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { onClose, onSubmit, ...popupProps } = state;
 
@@ -122,29 +109,4 @@ const useConfirmationPopup = (): ConfirmationPopupContext => {
     }),
     [popupProps, openConfirmation, closeConfirmation, onSubmitConfirmation]
   );
-};
-
-const ConfirmationProvider = ({ children }: ConfirmationProviderProps) => {
-  const { state, dispatch } = useConfirmationPopup();
-  return (
-    <ConfirmationPopupDispatchContext.Provider value={dispatch}>
-      <ConfirmationPopupStateContext.Provider value={state}>
-        <DialogConfirm />
-        {children}
-      </ConfirmationPopupStateContext.Provider>
-    </ConfirmationPopupDispatchContext.Provider>
-  );
-};
-
-const useConfirmation = (): UseConfirmation => {
-  const { isOpen } = useContext(ConfirmationPopupStateContext);
-  const { onSubmitConfirmation, ...dispatch } = useContext(ConfirmationPopupDispatchContext);
-  return { isOpen, ...dispatch };
-};
-
-export {
-  useConfirmation,
-  ConfirmationPopupStateContext,
-  ConfirmationPopupDispatchContext,
-  ConfirmationProvider,
 };

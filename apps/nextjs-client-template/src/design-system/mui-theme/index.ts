@@ -1,15 +1,19 @@
-import colors from '../token/color.json';
+import { json } from '../token/src';
 import { createTheme } from '@mui/material/styles';
 
-import components from './override-components';
+import Button from './override-components/Button';
+import Link from './override-components/Link';
+import TextField from './override-components/TextField';
 import generateColor from '../utils/generateColor';
 
 const theme = createTheme({
   components: {
-    ...components,
+    MuiButtonBase: Button?.MuiButtonBase,
+    MuiLink: Link?.MuiLink,
+    MuiTextField: TextField?.MuiTextField,
   },
   palette: {
-    ...generateColor(colors),
+    ...generateColor(json.color),
   },
 });
 

@@ -6,6 +6,7 @@ import apiStrapiService, {
   useProductsGet,
   useProductDetailGet,
 } from '~/services/data-access-strapi';
+import { Password } from '@kuda-terbang/ui-mui-react-example';
 import { useAuth } from '../../utils/auth-strapi';
 
 const StyledContainer = styled('div')`
@@ -101,7 +102,7 @@ const StrapiView = () => {
             onChange={(e) => setEmail(e.currentTarget.value)}
             label="Email"
           />
-          <TextField
+          <Password
             value={password}
             onChange={(e) => setPassword(e.currentTarget.value)}
             label="Password"

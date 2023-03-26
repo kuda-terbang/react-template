@@ -1,6 +1,6 @@
-import type colors from '../token/color.json';
+import type { json } from '../token/src';
 
-type JsonColors = typeof colors;
+type JsonColors = typeof json.color;
 
 export default (jsonColors: JsonColors) => {
   const muiPaletteColor: Record<string, unknown> = {};
