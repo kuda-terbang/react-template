@@ -3,28 +3,18 @@
   "name": "react-generator",
   "version": "0.0.1",
   "generators": {
-    "design-token-template": {
-      "factory": "./src/generators/design-token-template/design-token-template",
-      "schema": "./src/generators/design-token-template/schema.json",
-      "description": "design-token-template generator"
-    },
-    "icons-template": {
-      "factory": "./src/generators/icons-template/icons-template",
-      "schema": "./src/generators/icons-template/schema.json",
-      "description": "generate icons template"
-    },
     "react-dashboard-template": {
-      "factory": "./src/generators/react-dashboard-template/react-dashboard-template",
+      "factory": "./src/generators/react-dashboard-template/react-dashboard-template.ts",
       "schema": "./src/generators/react-dashboard-template/schema.json",
       "description": "generate react dashboard"
     },
     "ui-mui-react-component": {
-      "factory": "./src/generators/ui-mui-react-template/ui-mui-react-template",
+      "factory": "./src/generators/ui-mui-react-template/ui-mui-react-template.ts",
       "schema": "./src/generators/ui-mui-react-template/schema.json",
       "description": "Generate shared component library made with material ui react"
     },
     "nextjs-client-template": {
-      "factory": "./src/generators/nextjs-client-template/nextjs-client-template",
+      "factory": "./src/generators/nextjs-client-template/nextjs-client-template.ts",
       "schema": "./src/generators/nextjs-client-template/schema.json",
       "description": "NextJS Client generator for example and create-next-app"
     }

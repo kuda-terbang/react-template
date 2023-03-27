@@ -4,12 +4,12 @@
   "version": "0.0.1",
   "generators": {
     "util-api": {
-      "factory": "./src/generators/util-api/util-api",
+      "factory": "./src/generators/util-api/util-api.ts",
       "schema": "./src/generators/util-api/schema.json",
       "description": "Generate api related helper function for clean and managed api"
     },
     "util-react-common": {
-      "factory": "./src/generators/util-react-common/util-react-common",
+      "factory": "./src/generators/util-react-common/util-react-common.ts",
       "schema": "./src/generators/util-react-common/schema.json",
       "description": "Generate api related helper function for clean and managed api"
     }

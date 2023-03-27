@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "generators": {
     "util-auth": {
-      "factory": "./src/generators/util-auth/util-auth",
+      "factory": "./src/generators/util-auth/util-auth.ts",
       "schema": "./src/generators/util-auth/schema.json",
       "description": "Generate util authentication related for web"
     }
