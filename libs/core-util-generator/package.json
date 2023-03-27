@@ -1,6 +1,6 @@
 {
   "name": "@kuda-terbang/core-util-generator",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "src/index.js",
   "generators": "./generators.json",
   "description": "Nx plugin generator to help you create a production-ready frontend core related utils or library",

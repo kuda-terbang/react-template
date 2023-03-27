@@ -1,6 +1,6 @@
 {
   "name": "@kuda-terbang/generator-utils",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Shared utils function for running generator",
   "publishConfig": {
     "access": "public"
