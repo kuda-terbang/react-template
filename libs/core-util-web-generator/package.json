@@ -23,5 +23,8 @@
   },
   "scripts": {
     "generate-core-util-web": "sh ./scripts/generate-core-util-web.sh"
-  }
+  },
+	"dependencies": {
+		"@kuda-terbang/generator-utils": "0.0.3"
+	}
 }

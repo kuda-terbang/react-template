@@ -24,5 +24,8 @@
   "scripts": {
     "generate-design-token-example": "sh ./scripts/generate-design-token-example.sh",
     "generate-icons-template": "sh ./scripts/generate-icons-template.sh"
-  }
+  },
+	"dependencies": {
+		"@kuda-terbang/generator-utils": "0.0.3"
+	}
 }
