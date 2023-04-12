@@ -5,6 +5,9 @@
   "repository": "https://github.com/kuda-terbang/react-template/tree/main/apps/nextjs-client-template",
   "author": "Robby Caesar Putra <robbycaesar@gmail.com>",
   "license": "MIT",
+	"publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "react",
 		"nextjs",

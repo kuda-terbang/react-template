@@ -1,8 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import UrlPattern from 'url-pattern';
 
-import { getCookie } from '~/utils/util-auth';
-
 export type Endpoint<RequestType, ResponseType, ParamsUrlType = void> = {
   method: AxiosRequestConfig['method'];
   path: string;
@@ -40,8 +38,8 @@ interface ApiConfig {
     serviceId?: string;
     serviceSecret?: string;
     withBearer?: boolean;
-    tokenKeyName?: string;
   };
+  getToken: () => Promise<string | undefined> | string | undefined;
 }
 
 const getUrl = (urlPattern: string, params: unknown) => {
@@ -81,8 +79,12 @@ interface ExportedEndpoint {
   };
 }
 
-export const createAxios: CreateAxios = ({ baseURL, baseHeaders }) => {
-  return (apiOptions) => {
+function isPromise(promise: any) {
+  return !!promise && typeof promise.then === 'function';
+}
+
+export const createAxios: CreateAxios = ({ baseURL, baseHeaders, getToken }) => {
+  return async (apiOptions) => {
     const { endpoint = { method: 'get', path: '/' }, paramsUrl = {} } = apiOptions || {};
 
     const method = endpoint.method;
@@ -97,9 +99,14 @@ export const createAxios: CreateAxios = ({ baseURL, baseHeaders }) => {
       if (headers['serviceSecret']) {
         headers['serviceSecret'] = baseHeaders.serviceSecret;
       }
-      if (baseHeaders.tokenKeyName) {
+      if (getToken) {
         const authorization = baseHeaders.withBearer ? 'Bearer ' : '';
-        const token = getCookie(baseHeaders.tokenKeyName);
+        let token;
+        if (isPromise(getToken)) {
+          token = await getToken();
+        } else {
+          token = getToken();
+        }
 
         // Cancel if no token and authorization
         if (endpoint.isAuthenticated && !token) {
