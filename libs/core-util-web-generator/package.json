@@ -1,6 +1,6 @@
 {
   "name": "@kuda-terbang/core-util-web-generator",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "src/index.js",
   "generators": "./generators.json",
   "description": "Nx plugin generator to help you create a production-ready frontend core web related utils or library",
@@ -24,7 +24,7 @@
   "scripts": {
     "generate-core-util-web": "sh ./scripts/generate-core-util-web.sh"
   },
-	"dependencies": {
-		"@kuda-terbang/generator-utils": "0.0.3"
-	}
+  "dependencies": {
+    "@kuda-terbang/generator-utils": "^0.0.4"
+  }
 }
