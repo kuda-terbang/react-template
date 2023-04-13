@@ -5,6 +5,7 @@ import { libraryGenerator } from '@nrwl/workspace/generators';
 
 import { normalizeOptions } from '@kuda-terbang/generator-utils';
 import { CustomGeneratorGeneratorSchema } from './schema';
+import { version } from '../../../../../lerna.json';
 
 interface NormalizedSchema extends CustomGeneratorGeneratorSchema {
   projectName: string;
@@ -21,6 +22,7 @@ async function addFiles(tree: Tree, options: NormalizedSchema) {
     // Define variable used in design-token-template template as it is
     allTokens: [],
     tmpl: '',
+    currentVersion: version,
   };
 
   // Copy paste template value

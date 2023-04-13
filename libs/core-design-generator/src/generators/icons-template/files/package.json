@@ -1,6 +1,6 @@
 {
   "name": "@<%= npmScope %>/<%= name %>",
-  "version": "0.1.0",
+  "version": "<%= currentVersion %>",
   "description": "Custom icons template from svg",
   "scripts": {
     "build": "yarn run build:web && yarn run build:native",

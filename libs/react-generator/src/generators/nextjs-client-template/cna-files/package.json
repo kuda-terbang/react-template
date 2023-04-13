@@ -1,6 +1,6 @@
 {
   "name": "<%= name %>",
-  "version": "0.1.0",
+  "version": "<%= currentVersion %>",
   "private": false,
   "scripts": {
     "dev": "next dev",

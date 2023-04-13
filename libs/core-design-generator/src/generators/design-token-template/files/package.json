@@ -1,6 +1,6 @@
 {
   "name": "@<%= npmScope %>/<%= name %>",
-  "version": "0.1.0",
+  "version": "<%= currentVersion %>",
   "description": "Base repo to transform json design tokens from the figma design token plugin via amazon style directory.",
   "dependencies": {
     "style-dictionary": "^3",

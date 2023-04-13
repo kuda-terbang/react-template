@@ -6,6 +6,7 @@ import {
   offsetFromRoot,
   Tree,
 } from '@nrwl/devkit';
+import { version } from '../../../lerna.json';
 
 type DefaultSchema = {
   name: string;
@@ -41,6 +42,7 @@ export function normalizeOptions<TOptions extends DefaultSchema>(
     projectRoot,
     projectDirectory,
     parsedTags,
+    currentVersion: version,
   };
 }
 

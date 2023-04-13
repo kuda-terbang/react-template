@@ -1,6 +1,6 @@
 {
   "name": "@<%= npmScope %>/nextjs-client-template",
-  "version": "0.1.0",
+  "version": "<%= currentVersion %>",
   "description": "Production ready nextjs client template",
   "repository": "https://github.com/kuda-terbang/react-template/tree/main/apps/nextjs-client-template",
   "author": "Robby Caesar Putra <robbycaesar@gmail.com>",
