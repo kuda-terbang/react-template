@@ -67,6 +67,7 @@ export default function (tree: Tree, options: NormalizedReactDashboardSchema) {
               fromString: `${scopeName}/util-auth`,
               toString: 'utils/util-auth',
               paths: [
+                `${prefixPath}/src/services/data-access-strapi/lib/api-strapi.endpoint.ts`,
                 `${prefixPath}/src/utils/auth-strapi/lib/auth-strapi.tsx`,
                 `${prefixPath}/src/utils/util-api/lib/util-api.ts`,
               ],

@@ -6,7 +6,7 @@ import apiStrapiService, {
   useProductsGet,
   useProductDetailGet,
 } from '~/services/data-access-strapi';
-import { Password } from '@kuda-terbang/ui-mui-react-example';
+import { Password } from '~/design-system/index';
 import { useAuth } from '../../utils/auth-strapi';
 
 const StyledContainer = styled('div')`

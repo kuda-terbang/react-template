@@ -67,6 +67,7 @@ export default function (tree: Tree, options: NextjsClientTemplateNormalized) {
               fromString: `${scopeName}/util-auth`,
               toString: '~/utils/util-auth',
               paths: [
+                `/src/services/data-access-strapi/lib/api-strapi.endpoint.ts`,
                 `/src/utils/auth-strapi/lib/auth-strapi.tsx`,
                 `/src/utils/util-api/lib/util-api.ts`,
               ],
@@ -92,6 +93,7 @@ export default function (tree: Tree, options: NextjsClientTemplateNormalized) {
                 `/pages/_document.page.tsx`,
                 `/pages/index.page.tsx`,
                 `/config/menus.ts`,
+                `/src/containers/home/strapi.tsx`,
                 `/src/design-system/components/dialog/dialog-confirm/dialog-confirm.view.tsx`,
                 `/src/design-system/components/layout/layout-base.tsx`,
                 `/global.d.ts`,

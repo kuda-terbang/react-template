@@ -1,6 +1,6 @@
 import { createAxios, createExportedEndpoint } from '~/utils/util-api';
 import type { Endpoint, StrapiObject } from '~/utils/util-api';
-import { getCookie } from '@kuda-terbang/util-auth';
+import { getCookie } from '~/utils/util-auth';
 
 import { strapiBaseURL, strapiTokenKey } from '../config/envValue';
 import { initialProductDetail, initialUser } from './model';
