@@ -1,6 +1,6 @@
 {
   "name": "@kuda-terbang/react-generator",
-  "version": "0.0.4",
+  "version": "0.0.5-alpha.0",
   "main": "src/index.js",
   "generators": "./generators.json",
   "description": "Nx plugin generator to help you create a production-ready frontend service and utils in React.",
@@ -35,6 +35,6 @@
     "generate-react-dashboard-template": "sh ./scripts/generate-react-dashboard.sh template"
   },
   "dependencies": {
-    "@kuda-terbang/generator-utils": "^0.0.4"
+    "@kuda-terbang/generator-utils": "^0.0.5-alpha.0"
   }
 }

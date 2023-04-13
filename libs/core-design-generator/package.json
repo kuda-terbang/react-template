@@ -1,6 +1,6 @@
 {
   "name": "@kuda-terbang/core-design",
-  "version": "0.0.4",
+  "version": "0.0.5-alpha.0",
   "main": "src/index.js",
   "generators": "./generators.json",
   "description": "Nx plugin generator to help you create a production-ready frontend design related utils or library",
@@ -26,6 +26,6 @@
     "generate-icons-template": "sh ./scripts/generate-icons-template.sh"
   },
   "dependencies": {
-    "@kuda-terbang/generator-utils": "^0.0.4"
+    "@kuda-terbang/generator-utils": "^0.0.5-alpha.0"
   }
 }
