@@ -5,7 +5,7 @@ import { libraryGenerator } from '@nrwl/workspace/generators';
 
 import { normalizeOptions } from '@kuda-terbang/generator-utils';
 import { CustomGeneratorGeneratorSchema } from './schema';
-import { version } from '../../../../../lerna.json';
+import { version } from '../../../package.json';
 
 interface NormalizedSchema extends CustomGeneratorGeneratorSchema {
   projectName: string;

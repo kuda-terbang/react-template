@@ -6,7 +6,7 @@ import {
   offsetFromRoot,
   Tree,
 } from '@nrwl/devkit';
-import { version } from '../../../lerna.json';
+import { version } from '../package.json';
 
 type DefaultSchema = {
   name: string;
