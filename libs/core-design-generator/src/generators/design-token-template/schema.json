@@ -18,6 +18,12 @@
       "type": "string",
       "description": "Add tags to the project (used for linting)",
       "alias": "t"
+    },
+		"version": {
+      "type": "string",
+      "description": "Add version as starter version",
+			"default": "0.1.0",
+      "alias": "v"
     }
   },
   "required": ["name"]
