@@ -4,12 +4,12 @@
   "version": "0.0.1",
   "generators": {
     "design-token-template": {
-      "factory": "./src/generators/design-token-template/design-token-template.ts",
+      "factory": "./src/generators/design-token-template/design-token-template",
       "schema": "./src/generators/design-token-template/schema.json",
       "description": "Generate design token from figma material v3"
     },
     "icons-template": {
-      "factory": "./src/generators/icons-template/icons-template.ts",
+      "factory": "./src/generators/icons-template/icons-template",
       "schema": "./src/generators/icons-template/schema.json",
       "description": "Generate custom icons"
     }
