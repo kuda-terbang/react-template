@@ -1,5 +1,10 @@
 {
-  "$schema": "node_modules/lerna/schemas/lerna-schema.json",
   "packages": ["dist/apps/*", "dist/libs/*"],
-  "version": "0.0.5-alpha.1"
+  "version": "0.0.5-alpha.1",
+	"granularPathspec": false,
+	"command": {
+    "publish": {
+      "graphType": "all"
+    }
+  }
 }
