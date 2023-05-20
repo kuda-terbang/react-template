@@ -108,24 +108,21 @@ const parseArgs = () => {
 
 (async () => {
   const options = parseArgs();
-  console.log('> options', options);
+
   console.log('> versioning build with lerna');
   let commandVersion = 'npx lerna version';
   if (options.version) {
     commandVersion += ` ${options.version}`;
   }
-  // commandVersion += ` --exact --force-publish --conventional-commits --create-release=github --message='chore(misc): publish %v' --preid=${options.preid}`;
-  commandVersion += ` --force-publish`;
+  commandVersion += ` --no-changelog --exact --force-publish --conventional-commits --create-release=github --message='chore(misc): publish %v' --preid=${options.preid}`;
 
-  // if (options.tag) {
-  //   commandVersion += ' --conventional-prerelease';
-  // }
-  // if (options.gitRemote) {
-  //   commandVersion += ` --git-remote=${options.gitRemote}`;
-  // }
-  // if (process.env.NPM_TOKEN) {
-  //   commandVersion += ' --no-git-tag-version';
-  // }
+  if (options.tag) {
+    commandVersion += ' --conventional-prerelease';
+  }
+  if (options.gitRemote) {
+    commandVersion += ` --git-remote=${options.gitRemote}`;
+  }
+	commandVersion += ' --no-git-tag-version';
   let logLevel = 'info';
   if (options.loglevel) {
     logLevel = options.loglevel;
@@ -134,13 +131,8 @@ const parseArgs = () => {
 	commandVersion += ' --yes';
 
   console.log(`> exec version ${commandVersion}`);
-	try {
-		execSync(commandVersion);
-	} catch (err) {
-		console.log('> ERROR COK')
-		console.log(err.output)
-	}
+	execSync(commandVersion);
 
-  // console.log('> publish build with lerna');
-  // execSync('npx lerna publish from-package --no-private');
+  console.log('> publish build with lerna');
+  execSync('npx lerna publish from-package --no-private');
 })();
