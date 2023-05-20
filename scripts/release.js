@@ -134,5 +134,5 @@ const parseArgs = () => {
 	execSync(commandVersion);
 
   console.log('> publish build with lerna');
-  execSync('npx lerna publish from-package --no-private');
+  execSync('npx lerna publish from-package --no-private --yes');
 })();
