@@ -1,3 +1,4 @@
+import fs from 'fs';
 import { ExecutorContext, logger } from '@nrwl/devkit';
 import { execSync } from 'child_process';
 import { BuildTemplateExecutorSchema } from './schema';
@@ -6,6 +7,10 @@ export default async function runExecutor(
   options: BuildTemplateExecutorSchema,
   context: ExecutorContext
 ) {
+  const isApps = fs.existsSync(`./${options.outputPath}`);
+  if (!isApps) {
+    fs.mkdirSync(`./${options.outputPath}`);
+  }
   const currentProject = context.workspace.projects[options.projectName];
   const prevPath = `"./${currentProject.root}"`;
   const destinationPath = `"./${options.outputPath}"`;

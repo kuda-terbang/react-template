@@ -11,6 +11,8 @@
         "outputPath": "dist/libs/react-generator",
         "main": "libs/react-generator/src/index.ts",
         "tsConfig": "libs/react-generator/tsconfig.lib.json",
+				"buildableProjectDepsInPackageJsonType": "dependencies",
+				"updateBuildableProjectDepsInPackageJson": true,
         "assets": [
           "libs/react-generator/*.md",
           {

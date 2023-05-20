@@ -22,7 +22,10 @@
     "name": "Robby Caesar Putra"
   },
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build": "node ./scripts/build.ts",
+    "release": "node ./scripts/release.ts"
+  },
   "devDependencies": {
     "@emotion/babel-plugin": "11.9.2",
     "@nrwl/cli": "15.0.13",
@@ -52,6 +55,7 @@
     "@types/react-is": "17.0.3",
     "@types/react-router-dom": "5.3.3",
     "@types/styled-components": "5.1.26",
+    "@types/yargs": "^17.0.24",
     "@typescript-eslint/eslint-plugin": "5.42.1",
     "@typescript-eslint/parser": "5.42.1",
     "babel-jest": "28.1.1",
@@ -75,7 +79,8 @@
     "ts-jest": "28.0.5",
     "ts-node": "10.9.1",
     "tslib": "^2.3.0",
-    "typescript": "4.8.4"
+    "typescript": "4.8.4",
+    "yargs": "^17.7.2"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",

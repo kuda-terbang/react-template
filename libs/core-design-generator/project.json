@@ -10,6 +10,8 @@
       "options": {
         "outputPath": "dist/libs/core-design-generator",
         "main": "libs/core-design-generator/src/index.ts",
+				"buildableProjectDepsInPackageJsonType": "dependencies",
+				"updateBuildableProjectDepsInPackageJson": true,
         "tsConfig": "libs/core-design-generator/tsconfig.lib.json",
         "assets": [
           "libs/core-design-generator/*.md",

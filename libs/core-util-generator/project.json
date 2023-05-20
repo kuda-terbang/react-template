@@ -11,6 +11,8 @@
         "outputPath": "dist/libs/core-util-generator",
         "main": "libs/core-util-generator/src/index.ts",
         "tsConfig": "libs/core-util-generator/tsconfig.lib.json",
+				"buildableProjectDepsInPackageJsonType": "dependencies",
+				"updateBuildableProjectDepsInPackageJson": true,
         "assets": [
           "libs/core-util-generator/*.md",
           {
