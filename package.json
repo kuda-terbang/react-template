@@ -23,8 +23,8 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "node ./scripts/build.ts",
-    "release": "node ./scripts/release.ts"
+    "build": "node ./scripts/build.js",
+    "release": "node ./scripts/release.js"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "11.9.2",
