@@ -1,6 +1,6 @@
 {
   "packages": ["dist/apps/*", "dist/libs/*"],
-  "version": "0.0.5-alpha.2",
+  "version": "0.0.5-alpha.3",
   "granularPathspec": false,
   "command": {
     "publish": {
