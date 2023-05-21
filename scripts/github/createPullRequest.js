@@ -7,7 +7,7 @@ module.exports = async ({context, exec, github}) => {
   const finalVersion = semver.inc(process.env.TAG_LATEST, 'patch');
   console.log('> finalVersion', finalVersion);
   // Commit changes package.json
-  await exec.exec('git checkout staging');
+  await exec.exec('git checkout develop');
   try {
     const jsonString = fs.readFileSync('./package.json');
     const packageJson = JSON.parse(jsonString);
@@ -25,13 +25,13 @@ module.exports = async ({context, exec, github}) => {
     '-m',
     "'[MODIFY] patch version package.json to start new pull request release'",
   ]);
-  await exec.exec('git push origin staging');
+  await exec.exec('git push origin develop');
 
   // Create PR
   const createdPR = await github.rest.pulls.create({
     owner: context.repo.owner,
     repo: context.repo.repo,
-    head: 'staging',
+    head: 'develop',
     base: 'main',
     title: `Release - ${finalVersion}`,
     labels: ['release'],

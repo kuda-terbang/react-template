@@ -1,4 +1,4 @@
-function generateBodyPR(pullRequestsStagingMerged) {
+function generateBodyPR(pullRequestsDevelopMerged) {
   const semver = require('semver');
 
   // Generate and update pull request body
@@ -10,7 +10,7 @@ function generateBodyPR(pullRequestsStagingMerged) {
     };
   };
   let body = '';
-  const titles = pullRequestsStagingMerged.map(item => ({
+  const titles = pullRequestsDevelopMerged.map(item => ({
     ...mappedTitle(item.title),
     url: item.url,
   }));
@@ -44,12 +44,12 @@ function generateBodyPR(pullRequestsStagingMerged) {
 }
 
 module.exports = async ({context, github}) => {
-  // get list of merged PR to staging since last git tag
+  // get list of merged PR to develop since last git tag
   const lastTagReleaseDate = new Date(
     Number(process.env.TAG_LATEST_DATE) * 1000,
   ).toISOString();
   console.log('> lastTagReleaseDate', lastTagReleaseDate);
-  const pullRequestsStagingMerged = await github.rest.issues.listForRepo({
+  const pullRequestsDevelopMerged = await github.rest.issues.listForRepo({
     owner: context.actor,
     repo: context.repo.repo,
     state: 'closed',
@@ -57,10 +57,10 @@ module.exports = async ({context, github}) => {
     sort: 'updated',
     since: lastTagReleaseDate,
   });
-  console.log('> pullRequestsStagingMerged', pullRequestsStagingMerged);
+  console.log('> pullRequestsDevelopMerged', pullRequestsDevelopMerged);
 
   // generate body
-  const {body, finalVersion} = generateBodyPR(pullRequestsStagingMerged.data);
+  const {body, finalVersion} = generateBodyPR(pullRequestsDevelopMerged.data);
 
   // Get Pull Request Release
   const pullRequestsReleases = await github.rest.pulls.list({
