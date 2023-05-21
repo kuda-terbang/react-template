@@ -93,8 +93,8 @@ const parseArgs = () => {
 	commandVersion += ' --yes';
 
   console.log(`> exec version ${commandVersion}`);
-	execSync(commandVersion);
+	execSync(commandVersion, { stdio: 'inherit' });
 
   console.log('> publish build with lerna');
-  execSync('npx lerna publish from-package --no-private --yes');
+  execSync('npx lerna publish from-package --no-private --yes', { stdio: 'inherit' });
 })();
