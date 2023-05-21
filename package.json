@@ -1,6 +1,5 @@
 {
   "name": "@kuda-terbang/react-template",
-  "version": "0.1.0",
   "description": "Nx plugin and template resources to help you create a production-ready frontend service using React.",
   "publishConfig": {
     "access": "public"
@@ -23,8 +22,8 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "node ./scripts/build.js",
-    "release": "node ./scripts/release.js"
+    "build": "node ./scripts/npm/build.js",
+    "release": "node ./scripts/npm/release.js"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "11.9.2",
