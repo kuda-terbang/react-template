@@ -16,22 +16,17 @@ jobs:
         uses: actions/github-script@v5
         with:
           script: |
-            console.log('> repo source details', context)
             let errorMessage = ''
             // Check title
             const title = context.payload.pull_request.title
             const prefix = title.split('-')[0].trim()
-            console.log('> prefix', prefix)
             const regex = /^[f|F]ix|[f|F]eature|[b|B]reaking|[m|M]odify|[r|R]elease$/
             if (!prefix.match(regex)) {
               errorMessage += 'Prefix must be fix|modify|feature|breaking|release, '
             }
 
             // Check label QAPassed
-            console.log('> head', context.payload.pull_request.head)
-            console.log('> base', context.payload.pull_request.base)
             const labels = context.payload.pull_request.labels
-            console.log('> labels', labels)
             if (!labels.find((item) => item.name === 'QAPassed')) {
               errorMessage += 'must have label QA passed, '
             }
