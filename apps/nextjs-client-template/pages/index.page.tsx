@@ -8,8 +8,12 @@ import Box from '@mui/material/Box';
 import { VariantType } from 'notistack';
 import { styled } from '@mui/system';
 
-import { DialogBasic, LayoutBasicContext, useSnackbar } from '~/design-system/index';
-import { useConfirmation } from '~/utils/util-confirmation';
+import {
+  DialogBasic,
+  LayoutBasicContext,
+  useSnackbar,
+  useConfirmation,
+} from '~/design-system/index';
 import { useTrackScreen } from '../src/services/analytics.service';
 
 import RemoteConfig from '../src/containers/home/remote-config';

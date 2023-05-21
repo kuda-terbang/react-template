@@ -1,34 +1,50 @@
-import { createAxios, createExportedEndpoint } from '@kudaterbang/util-api';
-import type { Endpoint, StrapiObject } from '@kudaterbang/util-api';
+import { createAxios, createExportedEndpoint } from '@kuda-terbang/util-api';
+import type { Endpoint, StrapiObject } from '@kuda-terbang/util-api';
+import { getCookie } from '@kuda-terbang/util-auth';
 
-import { strapiBaseURL, strapiTokenKey } from '../config/envValue'
-import { initialProductDetail, initialUser } from './model'
-import type { Product, ProductDetailResponse, User } from './model'
+import { strapiBaseURL, strapiTokenKey } from '../config/envValue';
+import { initialProductDetail, initialUser } from './model';
+import type { Product, ProductDetailResponse, User } from './model';
 
 const apiProductStrapi = createAxios({
   baseURL: `${strapiBaseURL}/api` ?? '',
   baseHeaders: {
-    tokenKeyName: strapiTokenKey,
     withBearer: true,
-  }
+  },
+  getToken: () => {
+    return getCookie(strapiTokenKey);
+  },
 });
 
 interface StrapiEndpoints {
-  productsGet: Endpoint<void, {
-    data: StrapiObject<Product>[],
-  }>;
-  productDetailGet: Endpoint<void, ProductDetailResponse, {
-    id: string | number
-  }>
-  loginPost: Endpoint<{ identifier: string, password: string }, {
-    jwt: string,
-    user: User
-  }>,
-  registerPost: Endpoint<{ username: string, email: string, password: string }, {
-    jwt: string,
-    user: User,
-  }>,
-  meGet: Endpoint<void, User>,
+  productsGet: Endpoint<
+    void,
+    {
+      data: StrapiObject<Product>[];
+    }
+  >;
+  productDetailGet: Endpoint<
+    void,
+    ProductDetailResponse,
+    {
+      id: string | number;
+    }
+  >;
+  loginPost: Endpoint<
+    { identifier: string; password: string },
+    {
+      jwt: string;
+      user: User;
+    }
+  >;
+  registerPost: Endpoint<
+    { username: string; email: string; password: string },
+    {
+      jwt: string;
+      user: User;
+    }
+  >;
+  meGet: Endpoint<void, User>;
 }
 
 const endpoints: StrapiEndpoints = {
@@ -37,7 +53,7 @@ const endpoints: StrapiEndpoints = {
     path: '/auth/local',
     response: {
       jwt: '',
-      user: { ...initialUser }
+      user: { ...initialUser },
     },
   },
   registerPost: {
@@ -45,7 +61,7 @@ const endpoints: StrapiEndpoints = {
     path: '/auth/local/register',
     response: {
       jwt: '',
-      user: { ...initialUser }
+      user: { ...initialUser },
     },
   },
   productsGet: {
@@ -62,24 +78,24 @@ const endpoints: StrapiEndpoints = {
     path: '/products/:id',
     paramsUrl: { id: 0 },
     response: {
-      ...initialProductDetail
+      ...initialProductDetail,
     },
     mapData: (response: ProductDetailResponse) => {
-      const id = response.data.id
-      const productName = response.data.attributes.product_name
+      const id = response.data.id;
+      const productName = response.data.attributes.product_name;
       response.data.attributes = {
         ...response.data.attributes,
-        id_name: id + '-' + productName
-      }
-    }
+        id_name: id + '-' + productName,
+      };
+    },
   },
   meGet: {
     method: 'get',
     path: '/users/me',
     response: {
-      ...initialUser
+      ...initialUser,
     },
-  }
+  },
 };
 
 export default createExportedEndpoint(apiProductStrapi, endpoints);

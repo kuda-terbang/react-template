@@ -1,0 +1,70 @@
+{
+	"name": "react-generator",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/react-generator/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/react-generator",
+        "main": "libs/react-generator/src/index.ts",
+        "tsConfig": "libs/react-generator/tsconfig.lib.json",
+				"buildableProjectDepsInPackageJsonType": "dependencies",
+				"updateBuildableProjectDepsInPackageJson": true,
+        "assets": [
+          "libs/react-generator/*.md",
+          {
+            "input": "./libs/react-generator/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./libs/react-generator/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./libs/react-generator",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./libs/react-generator",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "generate-ui-mui-react-example": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "generate-ui-mui-react-example"
+      }
+    },
+		"rename-template": {
+			"executor": "@kuda-terbang/generator-utils:rename-template-generator",
+			"options": {
+				"projectName": "react-generator"
+			}
+		},
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/react-generator/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/react-generator"],
+      "options": {
+        "jestConfig": "libs/react-generator/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

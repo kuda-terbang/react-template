@@ -1,5 +1,6 @@
 import { createAxios, createExportedEndpoint } from '~/utils/util-api';
 import type { Endpoint, StrapiObject } from '~/utils/util-api';
+import { getCookie } from '~/utils/util-auth';
 
 import { strapiBaseURL, strapiTokenKey } from '../config/envValue';
 import { initialProductDetail, initialUser } from './model';
@@ -8,8 +9,10 @@ import type { Product, ProductDetailResponse, User } from './model';
 const apiProductStrapi = createAxios({
   baseURL: `${strapiBaseURL}/api` ?? '',
   baseHeaders: {
-    tokenKeyName: strapiTokenKey,
     withBearer: true,
+  },
+  getToken: () => {
+    return getCookie(strapiTokenKey);
   },
 });
 

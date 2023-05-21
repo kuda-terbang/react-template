@@ -1,7 +1,33 @@
 {
-  "name": "nextjs-client-template",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@kuda-terbang/nextjs-client-template",
+  "version": "0.0.1",
+  "description": "Production ready nextjs client template",
+  "repository": "https://github.com/kuda-terbang/react-template/tree/main/apps/nextjs-client-template",
+  "author": "Robby Caesar Putra <robbycaesar@gmail.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "react",
+    "nextjs",
+    "next.js",
+    "boilerplate",
+    "template",
+    "starter",
+    "material",
+    "mui",
+    "typescript"
+  ],
+  "homepage": "https://github.com/kuda-terbang/react-template",
+  "bugs": {
+    "url": "https://github.com/kuda-terbang/react-template/issues"
+  },
+  "funding": {
+    "type": "individual",
+    "url": "https://www.buymeacoffee.com/robbycp"
+  },
+  "private": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -15,7 +41,7 @@
     "@mui/icons-material": "^5.8.0",
     "@mui/material": "^5.8.0",
     "@mui/x-date-pickers": "^5.0.2",
-    "@sentry/nextjs": "^7.4.1",
+    "@sentry/nextjs": "^7.38.0",
     "axios": "^0.27.2",
     "dayjs": "^1.11.5",
     "firebase": "^9.8.4",

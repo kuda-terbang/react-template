@@ -1,4 +1,5 @@
-module.exports = `:root {
+module.exports = 
+`:root {
   --sizes-32: 32.72px;
   --sizes-40: 40px;
   --sizes-60: 60px;
@@ -89,4 +90,4 @@ module.exports = `:root {
   --typography-body-super-paragraph-indent: 0;
   --typography-body-super-paragraph-spacing: 0;
   --typography-body-super-text-case: none;
-}`;
+}`

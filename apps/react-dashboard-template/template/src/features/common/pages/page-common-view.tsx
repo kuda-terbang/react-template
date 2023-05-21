@@ -1,8 +1,7 @@
 import React from 'react';
 import { Button, Typography } from '@mui/material';
 
-import { useConfirmation } from 'utils/util-confirmation';
-import { useSnackbar } from 'design-system';
+import { useConfirmation, useSnackbar } from 'design-system';
 
 import Strapi from './strapi';
 

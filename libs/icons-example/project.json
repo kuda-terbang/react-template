@@ -1,5 +1,6 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "icons-example",
   "projectType": "library",
   "sourceRoot": "libs/icons-example/src",
   "tags": []

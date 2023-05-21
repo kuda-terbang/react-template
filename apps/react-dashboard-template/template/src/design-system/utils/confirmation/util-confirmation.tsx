@@ -1,0 +1,39 @@
+/* eslint-disable react/display-name */
+/* eslint-disable no-param-reassign */
+import React, { useContext } from 'react';
+
+import DialogConfirm from '../../components/dialog/dialog-confirm';
+import {
+  ConfirmationPopupStateContext,
+  ConfirmationPopupDispatchContext,
+  useConfirmationPopup,
+} from './context';
+import type { ConfirmationPopupState, ConfirmationPopupDispatch } from './context';
+
+interface ConfirmationProviderProps {
+  children: React.ReactNode;
+}
+
+interface UseConfirmation
+  extends Pick<ConfirmationPopupState, 'isOpen'>,
+    Omit<ConfirmationPopupDispatch, 'onSubmitConfirmation'> {}
+
+const ConfirmationProvider = ({ children }: ConfirmationProviderProps) => {
+  const { state, dispatch } = useConfirmationPopup();
+  return (
+    <ConfirmationPopupDispatchContext.Provider value={dispatch}>
+      <ConfirmationPopupStateContext.Provider value={state}>
+        <DialogConfirm />
+        {children}
+      </ConfirmationPopupStateContext.Provider>
+    </ConfirmationPopupDispatchContext.Provider>
+  );
+};
+
+const useConfirmation = (): UseConfirmation => {
+  const { isOpen } = useContext(ConfirmationPopupStateContext);
+  const { onSubmitConfirmation, ...dispatch } = useContext(ConfirmationPopupDispatchContext);
+  return { isOpen, ...dispatch };
+};
+
+export { useConfirmation, ConfirmationProvider };

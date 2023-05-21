@@ -1,0 +1,28 @@
+{
+  "name": "@<%= npmScope %>/cra-template-dashboard",
+  "version": "<%= currentVersion %>",
+  "description": "Production ready react dashboard boilerplate",
+  "repository": "https://github.com/kuda-terbang/react-template/tree/main/apps/react-dashboard-template",
+  "author": "Robby Caesar Putra <robbycaesar@gmail.com>",
+  "license": "MIT",
+	"publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "react",
+    "boilerplate",
+    "template",
+    "starter",
+		"material",
+		"mui",
+    "typescript"
+  ],
+  "homepage": "https://github.com/kuda-terbang/react-template",
+  "bugs": {
+    "url": "https://github.com/kuda-terbang/react-template/issues"
+  },
+  "funding": {
+    "type" : "individual",
+    "url" : "https://www.buymeacoffee.com/robbycp"
+  }
+}
