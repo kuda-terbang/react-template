@@ -44,3 +44,7 @@ jobs:
             if (errorMessage) {
               core.setFailed(errorMessage)
             }
+      - name: Build Check
+        run: |
+          npm ci
+          npm run build

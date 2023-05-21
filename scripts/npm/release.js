@@ -1,24 +1,6 @@
 const { execSync } = require('child_process');
 const yargs = require('yargs');
-const version = require('lerna/commands/version');
 
-// const parseArgs = () => {
-//   const parsedArgs = yargs
-//     .wrap(144)
-//     .strictOptions()
-//     .version(false)
-//     .command('$0 [version]', 'This script is for publishing Nx both locally and publically')
-//     .positional('version', {
-//       type: 'string',
-//       description: 'The version to publish. This does not need to be passed and can be inferred.',
-//     })
-//     .parseSync();
-//   console.log('parsedArgs', parsedArgs);
-//   return parsedArgs;
-// };
-function getRegistry() {
-  return new URL(execSync('npm config get registry').toString().trim());
-}
 const parseArgs = () => {
   const parsedArgs = yargs(process.argv.slice(2))
     .scriptName('npm run release')
@@ -79,26 +61,6 @@ const parseArgs = () => {
     )
     .group(['local', 'clearLocalRegistry'], 'Local Publishing Options for most developers')
     .group(['gitRemote', 'force'], 'Real Publishing Options for actually publishing to NPM')
-    // .check((args) => {
-    //   const registry = getRegistry();
-    //   const registryIsLocalhost = registry.hostname === 'localhost';
-    //   if (!args.local) {
-    //     if (!process.env.GH_TOKEN) {
-    //       throw new Error('process.env.GH_TOKEN is not set');
-    //     }
-    //     if (!args.force && registryIsLocalhost) {
-    //       throw new Error(
-    //         'Registry is still set to localhost! Run "pnpm local-registry disable" or pass --force'
-    //       );
-    //     }
-    //   } else {
-    //     if (!args.force && !registryIsLocalhost) {
-    //       throw new Error('--local was passed and registry is not localhost');
-    //     }
-    //   }
-
-    //   return true;
-    // })
     .parseSync();
 
   parsedArgs.tag ??= parsedArgs.local ? 'latest' : 'next';
