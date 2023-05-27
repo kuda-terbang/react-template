@@ -1,5 +1,3 @@
-import createPullRequest from './createPullRequest';
-
 function generateBodyPR(pullRequestsDevelopMerged) {
   const semver = require('semver');
 
@@ -55,6 +53,7 @@ const getPullRequstRelease = async ({github, context, lastTagReleaseDate}) => gi
 });
 
 module.exports = async ({context, exec, github}) => {
+	const createPullRequest = require('./createPullRequest');
   // get list of merged PR to develop since last git tag
   const lastTagReleaseDate = new Date(
     Number(process.env.TAG_LATEST_DATE) * 1000,
