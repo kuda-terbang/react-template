@@ -44,7 +44,7 @@ function generateBodyPR(pullRequestsDevelopMerged) {
 }
 
 const getPullRequstRelease = async ({github, context, lastTagReleaseDate}) => github.rest.issues.listForRepo({
-	owner: context.organization.login,
+	owner: context.repository.organization,
 	repo: context.repo.repo,
 	state: 'closed',
 	labels: ['QAPassed', 'dev'],
@@ -54,25 +54,21 @@ const getPullRequstRelease = async ({github, context, lastTagReleaseDate}) => gi
 
 module.exports = async ({context, exec, github}) => {
 	const createPullRequest = require('./createPullRequest');
+	const checkPullRequestRelease = require('./checkPullRequest');
   // get list of merged PR to develop since last git tag
   const lastTagReleaseDate = new Date(
     Number(process.env.TAG_LATEST_DATE) * 1000,
   ).toISOString();
   console.log('> lastTagReleaseDate', lastTagReleaseDate);
 
-	let pullRequestsDevelopMerged
-	try {
-		pullRequestsDevelopMerged = await getPullRequstRelease({context, github, lastTagReleaseDate})
-	} catch (error) {
-		pullRequestsDevelopMerged = null
-	}
-  console.log('> pullRequestsDevelopMerged', pullRequestsDevelopMerged);
-
-	if (!pullRequestsDevelopMerged) {
+	// Check pull request release exist
+	const {processType} = await checkPullRequestRelease({github, context})
+	if (processType === 'create') {
 		await createPullRequest({context, exec, github})
-		pullRequestsDevelopMerged = await getPullRequstRelease({context, github, lastTagReleaseDate})
-		console.log('> pullRequestsDevelopMerged after create PR', pullRequestsDevelopMerged);
 	}
+
+	let pullRequestsDevelopMerged = await getPullRequstRelease({context, github, lastTagReleaseDate})
+  console.log('> pullRequestsDevelopMerged', pullRequestsDevelopMerged);
 
   // generate body
   const {body, finalVersion} = generateBodyPR(pullRequestsDevelopMerged.data);
