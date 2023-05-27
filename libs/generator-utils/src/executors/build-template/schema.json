@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "version": 2,
+  "cli": "nx",
+  "title": "BuildTemplate executor",
+  "description": "",
+  "type": "object",
+  "properties": {
+		"outputPath": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What is the output path?"
+    },
+		"projectName": {
+      "type": "string",
+      "description": "The name of the design token project.",
+      "alias": "p",
+      "$default": {
+        "$source": "projectName"
+      },
+      "x-prompt": "What is the name of the project template yout want to build?"
+    },
+		"deleteFiles": {
+			"type": "array",
+			"description": "Path to delete",
+			"x-prompt": "What list of file path needed to delete"
+		}
+	},
+  "required": ["outputPath", "projectName"]
+}

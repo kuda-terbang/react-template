@@ -1,7 +1,7 @@
 import * as Sentry from '@sentry/nextjs';
-import { createAuthentication } from '@kudaterbang/util-auth';
+import { createAuthentication } from '@kuda-terbang/util-auth';
 
-import apiStrapi, { strapiTokenKey } from '@kudaterbang/data-access-strapi';
+import apiStrapi, { strapiTokenKey } from '@kuda-terbang/data-access-strapi';
 import { useRouter } from 'next/router';
 
 const { AuthContext, AuthProvider, useAuth, withProtectedSsr } = createAuthentication(

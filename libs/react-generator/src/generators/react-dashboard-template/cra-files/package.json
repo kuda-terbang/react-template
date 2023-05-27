@@ -1,0 +1,15 @@
+{
+  "name": "<%= name %>",
+  "version": "<%= currentVersion %>",
+  "description": "Production ready react dashboard boilerplate",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "boilerplate",
+    "template",
+    "starter",
+    "redux",
+    "redux-saga",
+    "typescript"
+  ]
+}

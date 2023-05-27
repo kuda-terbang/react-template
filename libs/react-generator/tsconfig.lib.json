@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "declaration": true,
+    "types": []
+  },
+  "include": [
+    "**/*.ts",
+    "src/generators/ui-mui-react-template/files/src/index.ts",
+    "src/generators/ui-mui-react-template/files/src/components/index.tsx",
+    "src/generators/react-dashboard-template/files/src/app/styles/override-component/index.tsx",
+    "src/generators/react-dashboard-template/files/src/app/utils/auth-strapi/index.tsx",
+  ],
+  "exclude": ["jest.config.ts", "**/*.spec.ts", "**/*.test.ts"]
+}

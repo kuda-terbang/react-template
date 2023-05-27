@@ -1,7 +1,6 @@
 import React from 'react';
-import { layoutClient } from '@kudaterbang/ui-mui-react-example';
-import type { LayoutType } from '@kudaterbang/ui-mui-react-example';
-import { getDeepValue } from '@kudaterbang/util-react-common';
+import { LayoutBasic, LayoutEmpty } from '@kuda-terbang/ui-mui-react-example';
+import type { LayoutType } from '@kuda-terbang/ui-mui-react-example';
 
 import { navbarMenus, footerMenus, useSettingMenus } from '../../../../config/menus';
 import { useAuth } from '../../../utils/auth-strapi';
@@ -14,20 +13,18 @@ const LayoutBase = ({ children, layoutType }: Props) => {
   const { isAuthenticated } = useAuth();
   const settingMenus = useSettingMenus();
   if (layoutType === 'LayoutBasic') {
-    const LayoutComponent = getDeepValue(layoutClient, layoutType);
     return (
-      <LayoutComponent
+      <LayoutBasic
         footerMenus={footerMenus}
         navbarMenus={navbarMenus}
         settingMenus={settingMenus}
         isAuthenticated={isAuthenticated}
       >
         {children}
-      </LayoutComponent>
+      </LayoutBasic>
     );
   }
-  const LayoutComponent = getDeepValue(layoutClient, layoutType);
-  return <LayoutComponent>{children}</LayoutComponent>;
+  return <LayoutEmpty>{children}</LayoutEmpty>;
 };
 
 export default LayoutBase;

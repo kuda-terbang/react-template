@@ -1,0 +1,18 @@
+{
+  "name": "react-dashboard-template",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/react-dashboard-template/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@kuda-terbang/generator-utils:build-template",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/react-dashboard-template",
+        "projectName": "react-dashboard-template",
+        "deleteFiles": ["tsconfig.json", "tsconfig.app.json", "tsconfig.spec.json", "project.json"]
+      }
+    }
+  },
+  "tags": []
+}

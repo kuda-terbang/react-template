@@ -1,5 +1,5 @@
 {
-  "name": "@kudaterbang/design-token-template",
+  "name": "@kuda-terbang/design-token-example",
   "version": "0.1.0",
   "description": "Base repo to transform json design tokens from the figma design token plugin via amazon style directory.",
   "dependencies": {
@@ -12,8 +12,7 @@
     "ts-jest": "^27.0.3"
   },
   "scripts": {
-    "build": "npm run transform-tokens",
-    "transform-tokens": "node ./transformTokens.js",
+    "generate-token": "node ./transformTokens.js",
     "test": "jest tests --coverage=false"
   },
   "repository": {

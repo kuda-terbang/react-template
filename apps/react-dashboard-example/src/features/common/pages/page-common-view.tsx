@@ -1,8 +1,7 @@
 import React from 'react';
 import { Button, Typography } from '@mui/material';
 
-import { useConfirmation } from '@kudaterbang/util-confirmation';
-import { useSnackbar } from '@kudaterbang/ui-mui-react-example';
+import { useConfirmation, useSnackbar } from '@kuda-terbang/ui-mui-react-example';
 
 import Strapi from './strapi';
 

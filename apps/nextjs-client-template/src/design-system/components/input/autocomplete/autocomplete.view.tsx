@@ -79,9 +79,7 @@ function AutocompleteView<TOption extends { label: string; value: string | numbe
         onInputChange?.(...props);
       }}
       value={value}
-      onChange={(...props) => {
-        onChangeValue(...props);
-      }}
+      onChange={onChangeValue}
       renderInput={(params) => <TextField {...params} {...textFieldProps} label={label} />}
     />
   );

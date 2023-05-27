@@ -1,17 +1,17 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { AxiosRequestConfig, AxiosResponse } from 'axios'
-import React, { createContext, useEffect, useState } from 'react'
-import { useContext } from 'react'
-import useSWR from 'swr'
+import { AxiosRequestConfig, AxiosResponse } from 'axios';
+import React, { createContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
+import useSWR from 'swr';
 
-import { getCookie, setCookie } from './util-cookies'
+import { getCookie, setCookie } from './util-cookies';
 
 interface TypeContext<TDataUser> {
-  isAuthenticated: boolean
-  logout: () => void
-  login: (val: string) => void
-  user?: TDataUser
-  setIsAuthenticated: (val: boolean) => void
+  isAuthenticated: boolean;
+  logout: () => void;
+  login: (val: string) => void;
+  user?: TDataUser;
+  setIsAuthenticated: (val: boolean) => void;
 }
 
 function createAuthContext<TDataUser>(): React.Context<TypeContext<TDataUser>> {
@@ -21,62 +21,59 @@ function createAuthContext<TDataUser>(): React.Context<TypeContext<TDataUser>> {
     login: () => ({}),
     user: undefined,
     setIsAuthenticated: () => ({}),
-  })
+  });
 }
 
 interface AuthenticationConfig<TDataUser> {
-  tokenKey: string,
-  fetchUser: (axiosRequest?: AxiosRequestConfig) => Promise<AxiosResponse<TDataUser>>
-  onFetchUserSuccess?: (user: TDataUser) => void
+  tokenKey: string;
+  fetchUser: (axiosRequest?: AxiosRequestConfig) => Promise<AxiosResponse<TDataUser>>;
+  onFetchUserSuccess?: (user: TDataUser) => void;
 }
 
 function createAuthProvider<TDataUser, TContext extends React.Context<TypeContext<TDataUser>>>(
   AuthContext: TContext,
-  {
-    tokenKey,
-    fetchUser,
-  }: AuthenticationConfig<TDataUser>
+  { tokenKey, fetchUser }: AuthenticationConfig<TDataUser>
 ) {
   return ({
     children,
     navigateLogout,
   }: {
-    children: React.ReactNode,
-    navigateLogout: () => void,
+    children: React.ReactNode;
+    navigateLogout: () => void;
   }) => {
-    const token = getCookie(tokenKey)
-    const [isAuthenticated, setIsAuthenticated] = useState(!!token)
-  
+    const token = getCookie(tokenKey);
+    const [isAuthenticated, setIsAuthenticated] = useState(!!token);
+
     // Get me
     const { data } = useSWR(token ? '/users/me' : null, fetchUser, {
-      onErrorRetry: error => {
+      onErrorRetry: (error) => {
         // Never retry on 404.
         if (error.status === 401) {
-          navigateLogout()
-          return
+          navigateLogout();
+          return;
         }
       },
-    })
-  
-    const user = data?.data
-    const finished = Boolean(data)
-    const hasUser = Boolean(user)
-  
+    });
+
+    const user = data?.data;
+    const finished = Boolean(data);
+    const hasUser = Boolean(user);
+
     const logout = () => {
-      setCookie(tokenKey, '')
-      setIsAuthenticated(false)
-      navigateLogout()
-    }
+      setCookie(tokenKey, '');
+      setIsAuthenticated(false);
+      navigateLogout();
+    };
     const login = (token: string) => {
-      setIsAuthenticated(true)
-      setCookie(tokenKey, token)
-    }
-  
+      setIsAuthenticated(true);
+      setCookie(tokenKey, token);
+    };
+
     useEffect(() => {
       if (token && hasUser && finished) {
-        setIsAuthenticated(true)
+        setIsAuthenticated(true);
       }
-    }, [token, hasUser, user, finished])
+    }, [token, hasUser, user, finished]);
 
     return (
       <AuthContext.Provider
@@ -90,95 +87,100 @@ function createAuthProvider<TDataUser, TContext extends React.Context<TypeContex
       >
         {children}
       </AuthContext.Provider>
-    )
-  }
+    );
+  };
 }
 
 function createUseAuth<TContext>(AuthContext: React.Context<TContext>) {
-  return () => useContext<TContext>(AuthContext)
+  return () => useContext<TContext>(AuthContext);
 }
 
 type AuthSsrOptions = {
-  destination: string
-}
-type WithAuthSsr<GetServerSideProps, GetServerSidePropsContext> = (options?: AuthSsrOptions, callback?: GetServerSideProps) => (context: GetServerSidePropsContext) => void
+  destination: string;
+};
+type WithAuthSsr<GetServerSideProps, GetServerSidePropsContext> = (
+  options?: AuthSsrOptions,
+  callback?: GetServerSideProps
+) => (context: GetServerSidePropsContext) => void;
 
-function createWithAuthSsr <
-  TDataUser,
-  GetServerSideProps,
-  GetServerSidePropsContext,
->(
+function createWithAuthSsr<TDataUser, GetServerSideProps, GetServerSidePropsContext>(
   config: AuthenticationConfig<TDataUser>
 ): WithAuthSsr<GetServerSideProps, GetServerSidePropsContext> {
   return (options, callback) => async (context) => {
-    const ssrContext = context as unknown as { req: { cookies: { [key: string]: string }}}
-    const tokenKey = ssrContext.req.cookies[config.tokenKey || '']
+    const ssrContext = context as unknown as { req: { cookies: { [key: string]: string } } };
+    const tokenKey = ssrContext.req.cookies[config.tokenKey || ''];
     const redirect = {
       permanent: false,
       destination: options?.destination || '/',
-    }
+    };
 
     if (!tokenKey) {
-      return { redirect }
+      return { redirect };
     }
-  
+
     try {
       const result = await config.fetchUser({
         headers: {
           Authorization: 'Bearer ' + tokenKey,
-        }
-      })
+        },
+      });
       if (!result.data) {
-        return { redirect }
+        return { redirect };
       }
     } catch (err) {
-      return { redirect }
+      return { redirect };
     }
-  
+
     if (typeof callback === 'function') {
-      callback(context)
+      callback(context);
     }
     return {
-      props: {}
-    }
-  }
+      props: {},
+    };
+  };
 }
 
 /**
- * 
+ *
  * @param config Configuration to set key to store token, and promise function to get user data
  */
 export function createAuthentication<
   TDataUser,
   GetServerSideProps = unknown,
-  GetServerSidePropsContext = unknown,
+  GetServerSidePropsContext = unknown
 >(
   config: AuthenticationConfig<TDataUser>,
-  renderType: 'ssr' | 'csr',
+  renderType: 'ssr' | 'csr'
 ): {
-  AuthContext: React.Context<TypeContext<TDataUser>>,
-  AuthProvider: ({ children, navigateLogout, }: {
+  AuthContext: React.Context<TypeContext<TDataUser>>;
+  AuthProvider: ({
+    children,
+    navigateLogout,
+  }: {
     children: React.ReactNode;
     navigateLogout: () => void;
-  }) => JSX.Element,
-  useAuth: () => TypeContext<TDataUser>,
-  withProtectedSsr?: WithAuthSsr<GetServerSideProps, GetServerSidePropsContext>
-}
-{
-  const AuthContext = createAuthContext<TDataUser>()
-  const AuthProvider = createAuthProvider(AuthContext, config)
-  const useAuth = createUseAuth(AuthContext)
+  }) => JSX.Element;
+  useAuth: () => TypeContext<TDataUser>;
+  withProtectedSsr?: WithAuthSsr<GetServerSideProps, GetServerSidePropsContext>;
+} {
+  const AuthContext = createAuthContext<TDataUser>();
+  const AuthProvider = createAuthProvider(AuthContext, config);
+  const useAuth = createUseAuth(AuthContext);
   const returned = {
     AuthContext,
     AuthProvider,
     useAuth,
-  }
+  };
   if (renderType === 'ssr') {
-    const withProtectedSsr = createWithAuthSsr<TDataUser, GetServerSideProps, GetServerSidePropsContext>(config)
+    const withProtectedSsr = createWithAuthSsr<
+      TDataUser,
+      GetServerSideProps,
+      GetServerSidePropsContext
+    >(config);
     return {
       ...returned,
       withProtectedSsr,
-    }
+    };
   }
-  return returned
+  return returned;
 }

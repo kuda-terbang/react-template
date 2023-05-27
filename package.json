@@ -1,9 +1,31 @@
 {
-  "name": "kudaterbang",
-  "version": "0.0.0",
+  "name": "@kuda-terbang/react-template",
+	"version": "0.0.5-alpha.3",
+  "description": "Nx plugin and template resources to help you create a production-ready frontend service using React.",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kuda-terbang/react-template"
+  },
+  "keywords": [
+    "nx",
+    "react",
+    "nextjs",
+    "next.js",
+    "material",
+    "mui",
+    "typescript"
+  ],
+  "author": {
+    "name": "Robby Caesar Putra"
+  },
   "license": "MIT",
-  "scripts": {},
-  "private": true,
+  "scripts": {
+    "build": "node ./scripts/npm/build.js",
+    "release": "node ./scripts/npm/release.js"
+  },
   "devDependencies": {
     "@emotion/babel-plugin": "11.9.2",
     "@nrwl/cli": "15.0.13",
@@ -17,8 +39,12 @@
     "@nrwl/nx-plugin": "15.0.13",
     "@nrwl/react": "15.0.13",
     "@nrwl/web": "15.0.13",
+    "@nrwl/webpack": "15.0.13",
     "@nrwl/workspace": "15.0.13",
     "@nx-extend/strapi": "^3.1.0",
+    "@swc-node/register": "^1.4.2",
+    "@swc/cli": "~0.1.55",
+    "@swc/core": "^1.2.173",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "13.4.0",
     "@types/jest": "28.1.1",
@@ -29,6 +55,7 @@
     "@types/react-is": "17.0.3",
     "@types/react-router-dom": "5.3.3",
     "@types/styled-components": "5.1.26",
+    "@types/yargs": "^17.0.24",
     "@typescript-eslint/eslint-plugin": "5.42.1",
     "@typescript-eslint/parser": "5.42.1",
     "babel-jest": "28.1.1",
@@ -44,6 +71,7 @@
     "eslint-plugin-react-hooks": "4.6.0",
     "jest": "28.1.1",
     "jest-environment-jsdom": "28.1.1",
+    "jsonc-eslint-parser": "^2.1.0",
     "nx": "15.0.13",
     "prettier": "2.7.1",
     "react-test-renderer": "18.2.0",
@@ -51,7 +79,8 @@
     "ts-jest": "28.0.5",
     "ts-node": "10.9.1",
     "tslib": "^2.3.0",
-    "typescript": "4.8.4"
+    "typescript": "4.8.4",
+    "yargs": "^17.7.2"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
@@ -61,13 +90,15 @@
     "@mui/material": "^5.8.0",
     "@mui/x-date-pickers": "^5.0.2",
     "@nrwl/next": "14.4.0",
-    "@sentry/nextjs": "^7.4.1",
+    "@sentry/nextjs": "^7.38.0",
+    "@swc/helpers": "~0.4.11",
     "axios": "^0.27.2",
     "core-js": "^3.6.5",
     "dayjs": "^1.11.5",
     "firebase": "^9.8.4",
     "immer": "^9.0.15",
     "js-cookie": "^3.0.1",
+    "lerna": "^6.6.1",
     "mui-tel-input": "^2.0.2",
     "next": "13.0.0",
     "next-i18next": "^11.0.0",
