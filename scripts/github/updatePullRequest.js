@@ -44,7 +44,7 @@ function generateBodyPR(pullRequestsDevelopMerged) {
 }
 
 const getPullRequstRelease = async ({github, context, lastTagReleaseDate}) => github.rest.issues.listForRepo({
-	owner: context.actor,
+	owner: context.organization.login,
 	repo: context.repo.repo,
 	state: 'closed',
 	labels: ['QAPassed', 'dev'],
