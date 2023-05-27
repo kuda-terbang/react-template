@@ -79,7 +79,7 @@ module.exports = async ({context, exec, github}) => {
 
   // Get Pull Request Release
   const pullRequestsReleases = await github.rest.pulls.list({
-    owner: context.actor,
+    owner: context.organization.login,
     repo: context.repo.repo,
     state: 'open',
     base: 'main',
@@ -89,7 +89,7 @@ module.exports = async ({context, exec, github}) => {
 
   // Update
   await github.rest.pulls.update({
-    owner: context.actor,
+    owner: context.organization.login,
     repo: context.repo.repo,
     pull_number: pullRequestsReleases.data[0].number,
     title: `Release - ${finalVersion}`,
