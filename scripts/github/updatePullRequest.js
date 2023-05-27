@@ -43,14 +43,18 @@ function generateBodyPR(pullRequestsDevelopMerged) {
   };
 }
 
-const getPullRequstRelease = async ({github, context, lastTagReleaseDate}) => github.rest.issues.listForRepo({
-	owner: context.repository.organization,
-	repo: context.repo.repo,
-	state: 'closed',
-	labels: ['QAPassed', 'dev'],
-	sort: 'updated',
-	since: lastTagReleaseDate,
-});
+const getPullRequstRelease = async ({github, context, lastTagReleaseDate}) => {
+	const payload = {
+		owner: context.repository.organization,
+		repo: context.repo.repo,
+		state: 'closed',
+		labels: ['QAPassed', 'dev'],
+		sort: 'updated',
+		since: lastTagReleaseDate,
+	}
+	console.log('> payload issues')
+	return github.rest.issues.listForRepo(payload)
+};
 
 module.exports = async ({context, exec, github}) => {
 	const createPullRequest = require('./createPullRequest');
@@ -75,7 +79,7 @@ module.exports = async ({context, exec, github}) => {
 
   // Get Pull Request Release
   const pullRequestsReleases = await github.rest.pulls.list({
-    owner: context.organization.login,
+    owner: context.repository.organization,
     repo: context.repo.repo,
     state: 'open',
     base: 'main',
@@ -85,7 +89,7 @@ module.exports = async ({context, exec, github}) => {
 
   // Update
   await github.rest.pulls.update({
-    owner: context.organization.login,
+    owner: context.repository.organization,
     repo: context.repo.repo,
     pull_number: pullRequestsReleases.data[0].number,
     title: `Release - ${finalVersion}`,
