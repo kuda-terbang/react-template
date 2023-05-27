@@ -29,5 +29,5 @@ jobs:
         with:
           script: |
             const script = require('./scripts/github/updatePullRequest.js')
-            script({github, context})
+            script({github, exec, context})
 

@@ -1,3 +1,5 @@
+import createPullRequest from './createPullRequest';
+
 function generateBodyPR(pullRequestsDevelopMerged) {
   const semver = require('semver');
 
@@ -43,21 +45,35 @@ function generateBodyPR(pullRequestsDevelopMerged) {
   };
 }
 
-module.exports = async ({context, github}) => {
+const getPullRequstRelease = async ({github, context, lastTagReleaseDate}) => github.rest.issues.listForRepo({
+	owner: context.actor,
+	repo: context.repo.repo,
+	state: 'closed',
+	labels: ['QAPassed', 'dev'],
+	sort: 'updated',
+	since: lastTagReleaseDate,
+});
+
+module.exports = async ({context, exec, github}) => {
   // get list of merged PR to develop since last git tag
   const lastTagReleaseDate = new Date(
     Number(process.env.TAG_LATEST_DATE) * 1000,
   ).toISOString();
   console.log('> lastTagReleaseDate', lastTagReleaseDate);
-  const pullRequestsDevelopMerged = await github.rest.issues.listForRepo({
-    owner: context.actor,
-    repo: context.repo.repo,
-    state: 'closed',
-    labels: ['QAPassed', 'dev'],
-    sort: 'updated',
-    since: lastTagReleaseDate,
-  });
+
+	let pullRequestsDevelopMerged
+	try {
+		pullRequestsDevelopMerged = await getPullRequstRelease({context, github, lastTagReleaseDate})
+	} catch (error) {
+		pullRequestsDevelopMerged = null
+	}
   console.log('> pullRequestsDevelopMerged', pullRequestsDevelopMerged);
+
+	if (!pullRequestsDevelopMerged) {
+		await createPullRequest({context, exec, github})
+		pullRequestsDevelopMerged = await getPullRequstRelease({context, github, lastTagReleaseDate})
+		console.log('> pullRequestsDevelopMerged after create PR', pullRequestsDevelopMerged);
+	}
 
   // generate body
   const {body, finalVersion} = generateBodyPR(pullRequestsDevelopMerged.data);
