@@ -8,6 +8,10 @@ jobs:
   create:
     name: Create pull request release
     runs-on: ubuntu-latest
+    permissions:
+      # write permission is required to create a github release
+      contents: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v3
         with:
@@ -27,7 +31,7 @@ jobs:
           git checkout main
           git config user.name Github Action
       - name: Create Pull Request
-        uses: actions/github-script@v5
+        uses: actions/github-script@v6
         env:
           TAG_LATEST: ${{ steps.previoustag.outputs.tag }}
         with:

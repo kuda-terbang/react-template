@@ -43,20 +43,35 @@ function generateBodyPR(pullRequestsDevelopMerged) {
   };
 }
 
-module.exports = async ({context, github}) => {
+const getPullRequstRelease = async ({github, context, lastTagReleaseDate}) => {
+	const payload = {
+		owner: context.payload.repository.organization,
+		repo: context.repo.repo,
+		state: 'closed',
+		labels: ['QAPassed', 'dev'],
+		sort: 'updated',
+		since: lastTagReleaseDate,
+	}
+	console.log('> payload issues')
+	return github.rest.issues.listForRepo(payload)
+};
+
+module.exports = async ({context, exec, github}) => {
+	const createPullRequest = require('./createPullRequest');
+	const checkPullRequestRelease = require('./checkPullRequest');
   // get list of merged PR to develop since last git tag
   const lastTagReleaseDate = new Date(
     Number(process.env.TAG_LATEST_DATE) * 1000,
   ).toISOString();
   console.log('> lastTagReleaseDate', lastTagReleaseDate);
-  const pullRequestsDevelopMerged = await github.rest.issues.listForRepo({
-    owner: context.actor,
-    repo: context.repo.repo,
-    state: 'closed',
-    labels: ['QAPassed', 'dev'],
-    sort: 'updated',
-    since: lastTagReleaseDate,
-  });
+
+	// Check pull request release exist
+	const {processType} = await checkPullRequestRelease({github, context})
+	if (processType === 'create') {
+		await createPullRequest({context, exec, github})
+	}
+
+	let pullRequestsDevelopMerged = await getPullRequstRelease({context, github, lastTagReleaseDate})
   console.log('> pullRequestsDevelopMerged', pullRequestsDevelopMerged);
 
   // generate body
@@ -64,7 +79,7 @@ module.exports = async ({context, github}) => {
 
   // Get Pull Request Release
   const pullRequestsReleases = await github.rest.pulls.list({
-    owner: context.actor,
+    owner: context.payload.repository.organization,
     repo: context.repo.repo,
     state: 'open',
     base: 'main',
@@ -74,7 +89,7 @@ module.exports = async ({context, github}) => {
 
   // Update
   await github.rest.pulls.update({
-    owner: context.actor,
+    owner: context.payload.repository.organization,
     repo: context.repo.repo,
     pull_number: pullRequestsReleases.data[0].number,
     title: `Release - ${finalVersion}`,

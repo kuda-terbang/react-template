@@ -8,6 +8,10 @@ jobs:
   update:
     name: update pull request release
     runs-on: ubuntu-latest
+    permissions:
+      # write permission is required to create a github release
+      contents: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v3
         with:
@@ -21,13 +25,18 @@ jobs:
       - name: 'Get Previous tag'
         id: previoustag
         uses: "WyriHaximus/github-action-get-previous-tag@v1"
+      - name: Set up git
+        run: |
+          git fetch
+          git checkout develop
+          git config user.name Github Action
       - name: Update Pull Request
-        uses: actions/github-script@v5
+        uses: actions/github-script@v6
         env:
           TAG_LATEST: ${{ steps.previoustag.outputs.tag }}
           TAG_LATEST_DATE: ${{ steps.previoustag.outputs.timestamp }}
         with:
           script: |
             const script = require('./scripts/github/updatePullRequest.js')
-            script({github, context})
+            script({github, exec, context})
 
