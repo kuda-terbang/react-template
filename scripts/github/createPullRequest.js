@@ -25,7 +25,7 @@ module.exports = async ({context, exec, github}) => {
     '-m',
     "'[MODIFY] patch version package.json to start new pull request release'",
   ]);
-  await exec.exec('git push origin develop');
+  await exec.exec('git push');
 
   // Create PR
   const createdPR = await github.rest.pulls.create({
