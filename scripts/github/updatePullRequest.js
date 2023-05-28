@@ -69,31 +69,31 @@ module.exports = async ({context, exec, github}) => {
 	const {processType} = await checkPullRequestRelease({github, context})
 	if (processType === 'create') {
 		await createPullRequest({context, exec, github})
+	} else {
+		let pullRequestsDevelopMerged = await getPullRequstRelease({context, github, lastTagReleaseDate})
+		console.log('> pullRequestsDevelopMerged', pullRequestsDevelopMerged);
+
+		// generate body
+		const {body, finalVersion} = generateBodyPR(pullRequestsDevelopMerged.data);
+
+		// Get Pull Request Release
+		const pullRequestsReleases = await github.rest.pulls.list({
+			owner: context.payload.repository.organization,
+			repo: context.repo.repo,
+			state: 'open',
+			base: 'main',
+			sort: 'updated',
+		});
+		console.log('> pullRequestsReleases', pullRequestsReleases);
+
+		// Update
+		await github.rest.pulls.update({
+			owner: context.payload.repository.organization,
+			repo: context.repo.repo,
+			pull_number: pullRequestsReleases.data[0].number,
+			title: `Release - ${finalVersion}`,
+			labels: ['release'],
+			body,
+		});
 	}
-
-	let pullRequestsDevelopMerged = await getPullRequstRelease({context, github, lastTagReleaseDate})
-  console.log('> pullRequestsDevelopMerged', pullRequestsDevelopMerged);
-
-  // generate body
-  const {body, finalVersion} = generateBodyPR(pullRequestsDevelopMerged.data);
-
-  // Get Pull Request Release
-  const pullRequestsReleases = await github.rest.pulls.list({
-    owner: context.payload.repository.organization,
-    repo: context.repo.repo,
-    state: 'open',
-    base: 'main',
-    sort: 'updated',
-  });
-  console.log('> pullRequestsReleases', pullRequestsReleases);
-
-  // Update
-  await github.rest.pulls.update({
-    owner: context.payload.repository.organization,
-    repo: context.repo.repo,
-    pull_number: pullRequestsReleases.data[0].number,
-    title: `Release - ${finalVersion}`,
-    labels: ['release'],
-    body,
-  });
 };

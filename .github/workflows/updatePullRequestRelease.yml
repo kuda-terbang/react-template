@@ -29,7 +29,8 @@ jobs:
         run: |
           git fetch
           git checkout develop
-          git config user.name Github Action
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor}}@users.noreply.github.com"
       - name: Update Pull Request
         uses: actions/github-script@v6
         env:
