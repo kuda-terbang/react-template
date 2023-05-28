@@ -1,7 +1,7 @@
 module.exports = async ({github, context}) => {
   // Get Pull Request Release
   const pullRequestsReleases = await github.rest.pulls.list({
-    owner: context.repository.organization,
+    owner: context.payload.repository.organization,
     repo: context.repo.repo,
     state: 'open',
     base: 'main',
