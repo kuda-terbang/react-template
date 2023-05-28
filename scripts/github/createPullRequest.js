@@ -29,7 +29,7 @@ module.exports = async ({context, exec, github}) => {
 
   // Create PR
   const createdPR = await github.rest.pulls.create({
-    owner: context.repository.organization,
+    owner: context.payload.repository.organization,
     repo: context.repo.repo,
     head: 'develop',
     base: 'main',
