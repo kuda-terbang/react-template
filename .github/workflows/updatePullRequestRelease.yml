@@ -24,7 +24,7 @@ jobs:
       - name: Set up git
         run: |
           git fetch
-          git checkout main
+          git checkout develop
           git config user.name Github Action
       - name: Update Pull Request
         uses: actions/github-script@v6
