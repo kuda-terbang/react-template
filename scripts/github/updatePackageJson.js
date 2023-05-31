@@ -38,7 +38,7 @@ module.exports = async ({exec, version}) => {
 			await exec.exec('git', [
 				'commit',
 				'-m',
-				"'[MODIFY] patch version package.json to start new pull request release'",
+				`Update ${version}`,
 			]);
 			await exec.exec('git push');
 		} else {
