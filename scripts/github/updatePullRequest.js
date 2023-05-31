@@ -52,13 +52,13 @@ const getPullRequstRelease = async ({github, context, lastTagReleaseDate}) => {
 		sort: 'updated',
 		since: lastTagReleaseDate,
 	}
-	console.log('> payload issues')
 	return github.rest.issues.listForRepo(payload)
 };
 
 module.exports = async ({context, exec, github}) => {
 	const createPullRequest = require('./createPullRequest');
 	const checkPullRequestRelease = require('./checkPullRequest');
+	const updatePackageJson = require('./updatePackageJson');
   // get list of merged PR to develop since last git tag
   const lastTagReleaseDate = new Date(
     Number(process.env.TAG_LATEST_DATE) * 1000,
@@ -75,6 +75,7 @@ module.exports = async ({context, exec, github}) => {
 
 		// generate body
 		const {body, finalVersion} = generateBodyPR(pullRequestsDevelopMerged.data);
+		await updatePackageJson({exec, version: finalVersion})
 
 		// Get Pull Request Release
 		const pullRequestsReleases = await github.rest.pulls.list({
