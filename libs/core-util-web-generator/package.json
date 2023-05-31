@@ -4,6 +4,7 @@
   "main": "src/index.js",
   "generators": "./generators.json",
   "description": "Nx plugin generator to help you create a production-ready frontend core web related utils or library",
+	"license": "MIT",
   "publishConfig": {
     "access": "public"
   },
