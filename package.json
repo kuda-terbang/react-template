@@ -1,6 +1,6 @@
 {
   "name": "@kuda-terbang/react-template",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "Nx plugin and template resources to help you create a production-ready frontend service using React.",
   "publishConfig": {
     "access": "public"
