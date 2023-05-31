@@ -41,6 +41,5 @@ jobs:
         with:
           script: |
             console.log('> TAG_LATEST', process.env.TAG_LATEST)
-            console.log('> context', context)
             const script = require('./scripts/github/createPullRequest.js')
             script({github, exec, context})
