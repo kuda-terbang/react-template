@@ -16,7 +16,7 @@ const updateVersion = ({fs, version}, files) => {
 		}
 		console.log(`> ${path} ${json.version} > ${version}`)
 		let stringifyJson = JSON.stringify(json, null, 2);
-		// additional enter
+
 		stringifyJson += '\n';
 		fs.writeFileSync(path, stringifyJson);
 	})
