@@ -34,6 +34,11 @@
             "input": "./libs/core-design-generator",
             "glob": "executors.json",
             "output": "."
+          },
+					{
+            "input": "",
+            "glob": "LICENSE",
+            "output": "/"
           }
         ]
       }

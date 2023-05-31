@@ -34,6 +34,11 @@
             "input": "./libs/core-util-web-generator",
             "glob": "executors.json",
             "output": "."
+          },
+					{
+            "input": "",
+            "glob": "LICENSE",
+            "output": "/"
           }
         ]
       }

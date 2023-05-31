@@ -11,7 +11,14 @@
         "outputPath": "dist/libs/generator-utils",
         "main": "libs/generator-utils/src/index.ts",
         "tsConfig": "libs/generator-utils/tsconfig.lib.json",
-        "assets": ["libs/generator-utils/*.md"]
+        "assets": [
+					"libs/generator-utils/*.md",
+					{
+            "input": "",
+            "glob": "LICENSE",
+            "output": "/"
+          }
+				]
       }
     },
     "lint": {
