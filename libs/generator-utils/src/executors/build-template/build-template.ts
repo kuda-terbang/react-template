@@ -9,7 +9,9 @@ export default async function runExecutor(
 ) {
   const isApps = fs.existsSync(`./${options.outputPath}`);
   if (!isApps) {
-    fs.mkdirSync(`./${options.outputPath}`, { recursive: true });
+    const splittedDirPath = options.outputPath.split('/');
+    const dirPath = splittedDirPath.splice(0, splittedDirPath.length - 1).join('/');
+    fs.mkdirSync(`./${dirPath}`, { recursive: true });
   }
   const currentProject = context.workspace.projects[options.projectName];
   const prevPath = `"./${currentProject.root}"`;
