@@ -1,24 +1,32 @@
+const readJson = (fs, paths) => {
+	return paths.map((path) => {
+		const fileString = fs.readFileSync(path)
+		return JSON.parse(fileString)
+	})
+}
+const updateVersion = ({fs, version}, files) => {
+	files.forEach(({json, path}) => {
+		json.version = version;
+		console.log(`> ${path} ${json.version} > ${version}`)
+		const stringifyJson = JSON.stringify(json, null, 2);
+		fs.writeFileSync(path, stringifyJson);
+	})
+}
 module.exports = async ({exec, version}) => {
 	const fs = require('fs');
 	await exec.exec('git checkout develop');
   try {
-    const packageJsonString = fs.readFileSync('./package.json');
-    const packageLockJsonString = fs.readFileSync('./package-lock.json');
-    const packageJson = JSON.parse(packageJsonString);
-    const packageLockJson = JSON.parse(packageLockJsonString);
+		const [
+			packageJson,
+			packageLockJson,
+			lernaJson,
+		] = readJson(fs, ['./package.json', './package-lock.json', './lerna.json'])
 		if (packageJson.version !== version) {
-			console.log('> first version');
-			console.log('> - package.json', packageJson.version);
-			console.log('> - package-lock.json', packageLockJson.version);
-			packageJson.version = version;
-			packageLockJson.version = version;
-			const stringifyPackageJson = JSON.stringify(packageJson, null, 2);
-			const stringifyPackageLockJson = JSON.stringify(packageLockJson, null, 2);
-			console.log('> second version');
-			console.log('> - package.json', stringifyPackageJson);
-			console.log('> - package-lock.json', stringifyPackageLockJson);
-			fs.writeFileSync('./package.json', stringifyPackageJson);
-			fs.writeFileSync('./package-lock.json', stringifyPackageLockJson);
+			await updateVersion({fs, version}, [
+				{json: packageJson, path: './package.json'},
+				{json: packageLockJson, path: './package-lock.json'},
+				{json: lernaJson, path: './lerna.json'},
+			])
 		} else {
 			console.log('> skip update version, current version ', packageJson.version)
 		}
