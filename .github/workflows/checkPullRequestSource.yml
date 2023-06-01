@@ -30,9 +30,9 @@ jobs:
             // Check title
             const title = context.payload.pull_request.title
             const prefix = title.split('-')[0].trim()
-            const regex = /^[f|F]ix|[f|F]eature|[b|B]reaking|[m|M]odify|[r|R]elease$/
+            const regex = /^[f|F]ix|[f|F]eature|[b|B]reaking|[m|M]odify|[r|R]elease|[h|H]otfix$/
             if (!prefix.match(regex)) {
-              errorMessage += 'Prefix must be fix|modify|feature|breaking|release, '
+              errorMessage += 'Prefix must be fix|modify|feature|breaking|release|hotfix, '
             }
 
             // Check label QAPassed
@@ -44,11 +44,12 @@ jobs:
             // Check label dev or release
             const labelDev = labels.find((item) => item.name === 'dev')
             const labelRelease = labels.find((item) => item.name === 'release')
+            const labelHotfix = labels.find((item) => item.name === 'hotfix')
             if (
-              (context.payload.pull_request.base.name === 'main' && !labelRelease)
+              (context.payload.pull_request.base.name === 'main' && (!labelRelease || !labelHotfix))
               || (context.payload.pull_request.base.name === 'develop' && !labelDev)
             ) {
-              errorMessage += 'must have label dev or release'
+              errorMessage += 'must have label dev, release, or hotfix'
             }
             console.log('> errorMessage', errorMessage)
             if (errorMessage) {
