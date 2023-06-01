@@ -29,7 +29,9 @@ jobs:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           git fetch
-          git checkout develop
+          branchName=${{ github.head_ref }}
+          echo "Branch Name: $branchName"
+          git checkout $branchName
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor}}@users.noreply.github.com"
           git remote set-url origin "https://x-access-token:${PAT_TOKEN}@github.com/${{ github.repository }}"
