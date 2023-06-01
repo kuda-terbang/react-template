@@ -32,7 +32,7 @@ module.exports = async ({exec, version}) => {
 			lernaJson,
 		] = readJson(fs, ['./package.json', './package-lock.json', './lerna.json'])
 
-		if (semver.gt(packageJson.version, version)) {
+		if (semver.gt(version, packageJson.version)) {
 			await updateVersion({fs, version}, [
 				{json: packageJson, path: './package.json'},
 				{json: packageLockJson, path: './package-lock.json'},
