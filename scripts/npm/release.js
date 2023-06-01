@@ -42,11 +42,17 @@ const parseArgs = () => {
 	commandVersion += ' --yes';
 
 	try {
-		console.log(`> exec version ${commandVersion}`);
+		console.log(`> exec lerna version : ${commandVersion}`);
 		execSync(commandVersion, { stdio: 'inherit' });
 
-		console.log('> publish build with lerna');
-		execSync('npx lerna publish from-git --no-private --yes', { stdio: 'inherit' });
+		console.log('> last git tag :')
+		execSync('git tag --sort=committerdate | tail -1')
+		execSync('git fetch')
+		console.log('> last git tag :')
+		execSync('git tag --sort=committerdate | tail -1')
+		const commandPublish = 'npx lerna publish from-git --no-private --yes'
+		console.log(`> exec lerna pubish : ${commandPublish}`);
+		execSync(commandPublish, { stdio: 'inherit' });
 
 	} catch (error) {
 		console.error(`Command execution failed: ${error.message}`);
