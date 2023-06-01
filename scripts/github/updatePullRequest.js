@@ -85,7 +85,6 @@ module.exports = async ({context, exec, github}) => {
 			base: 'main',
 			sort: 'updated',
 		});
-		console.log('> pullRequestsReleases', pullRequestsReleases);
 
 		// Update
 		await github.rest.pulls.update({
