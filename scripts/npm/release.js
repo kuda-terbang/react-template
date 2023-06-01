@@ -76,7 +76,7 @@ const parseArgs = () => {
   if (options.version) {
     commandVersion += ` ${options.version}`;
   }
-  commandVersion += ` --no-changelog --exact --force-publish --conventional-commits --create-release=github --message='chore(misc): publish %v' ${options.preid ? '--preid=' : ''}`;
+  commandVersion += ` --no-changelog --exact --force-publish --conventional-commits --message='chore(misc): publish %v' ${options.preid ? '--preid=' : ''}`;
 
   if (options.tag) {
     commandVersion += ' --conventional-prerelease';
