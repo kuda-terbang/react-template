@@ -76,7 +76,7 @@ const parseArgs = () => {
   if (options.version) {
     commandVersion += ` ${options.version}`;
   }
-  commandVersion += ` --no-changelog --exact --force-publish --conventional-commits --create-release=github --message='chore(misc): publish %v' --preid=${options.preid}`;
+  commandVersion += ` --no-changelog --exact --force-publish --conventional-commits --create-release=github --message='chore(misc): publish %v' ${options.preid ? '--preid=' : ''}`;
 
   if (options.tag) {
     commandVersion += ' --conventional-prerelease';
@@ -84,7 +84,7 @@ const parseArgs = () => {
   if (options.gitRemote) {
     commandVersion += ` --git-remote=${options.gitRemote}`;
   }
-	commandVersion += ' --no-git-tag-version';
+
   let logLevel = 'info';
   if (options.loglevel) {
     logLevel = options.loglevel;

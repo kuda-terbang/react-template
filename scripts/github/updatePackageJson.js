@@ -23,6 +23,7 @@ const updateVersion = ({fs, version}, files) => {
 }
 module.exports = async ({exec, version}) => {
 	const fs = require('fs');
+	const semver = require('semver')
 	await exec.exec('git checkout develop');
   try {
 		const [
@@ -30,7 +31,8 @@ module.exports = async ({exec, version}) => {
 			packageLockJson,
 			lernaJson,
 		] = readJson(fs, ['./package.json', './package-lock.json', './lerna.json'])
-		if (packageJson.version !== version) {
+
+		if (semver.gt(packageJson.version, version)) {
 			await updateVersion({fs, version}, [
 				{json: packageJson, path: './package.json'},
 				{json: packageLockJson, path: './package-lock.json'},
@@ -44,7 +46,7 @@ module.exports = async ({exec, version}) => {
 			]);
 			await exec.exec('git push');
 		} else {
-			console.log('> skip update version, current version ', packageJson.version)
+			console.log(`> skip update version, current version ${packageJson.version}, next version ${version}`, )
 		}
   } catch (err) {
     console.log(err);
