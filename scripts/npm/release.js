@@ -92,9 +92,14 @@ const parseArgs = () => {
   commandVersion += ` --loglevel=${logLevel}`;
 	commandVersion += ' --yes';
 
-  console.log(`> exec version ${commandVersion}`);
-	execSync(commandVersion, { stdio: 'inherit' });
+	try {
+		console.log(`> exec version ${commandVersion}`);
+		execSync(commandVersion, { stdio: 'inherit' });
 
-  console.log('> publish build with lerna');
-  execSync('npx lerna publish from-package --no-private --yes', { stdio: 'inherit' });
+		console.log('> publish build with lerna');
+		execSync('npx lerna publish from-package --no-private --yes', { stdio: 'inherit' });
+
+	} catch (error) {
+		console.error(`Command execution failed: ${error.message}`);
+	}
 })();
