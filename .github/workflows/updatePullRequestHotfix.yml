@@ -10,7 +10,7 @@ jobs:
   update:
     name: update pull request hotfix
     runs-on: ubuntu-latest
-    if: github.event.pull_request.labels.*.name == 'hotfix'
+    if: contains(github.event.pull_request.labels.*.name, 'hotfix')
     permissions:
       contents: write
       pull-requests: write

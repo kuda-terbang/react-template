@@ -97,7 +97,7 @@ const parseArgs = () => {
 		execSync(commandVersion, { stdio: 'inherit' });
 
 		console.log('> publish build with lerna');
-		execSync('npx lerna publish from-package --no-private --yes', { stdio: 'inherit' });
+		execSync('npx lerna publish from-git --no-private --yes', { stdio: 'inherit' });
 
 	} catch (error) {
 		console.error(`Command execution failed: ${error.message}`);
