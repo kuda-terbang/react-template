@@ -1,30 +1,29 @@
-name: Update Pull Request Release
+name: Update Pull Request Hotfix
 
 on:
-  push:
-    branches: [develop]
+  pull_request:
+    types: [labeled]
+    branches:
+      - main
 
 jobs:
   update:
-    name: update pull request release
+    name: update pull request hotfix
     runs-on: ubuntu-latest
+    if: github.event.pull_request.labels.*.name == 'hotfix'
     permissions:
-      # write permission is required to create a github release
       contents: write
       pull-requests: write
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # Required due to the weg Git works, without it this action won't be able to find any or the correct tags
+          fetch-depth: 0
       - uses: actions/setup-node@v2
         with:
           node-version: 16
-      - name: "Setup NPM" # Interesting step
+      - name: "Setup NPM"
         run: |
           npm ci
-      - name: 'Get Previous tag'
-        id: previoustag
-        uses: "WyriHaximus/github-action-get-previous-tag@v1"
       - name: Set up git
         env:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
@@ -34,6 +33,9 @@ jobs:
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor}}@users.noreply.github.com"
           git remote set-url origin "https://x-access-token:${PAT_TOKEN}@github.com/${{ github.repository }}"
+      - name: 'Get Previous tag'
+        id: previoustag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
       - name: Update Pull Request
         uses: actions/github-script@v6
         env:
@@ -41,6 +43,6 @@ jobs:
           TAG_LATEST_DATE: ${{ steps.previoustag.outputs.timestamp }}
         with:
           script: |
-            const script = require('./scripts/github/updatePullRequestRelease.js')
+            const script = require('./scripts/github/updatePullRequestHotfix.js')
             script({github, exec, context})
 
