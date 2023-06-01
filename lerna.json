@@ -1,8 +1,5 @@
 {
-  "packages": [
-    "dist/apps/*",
-    "dist/libs/*"
-  ],
+  "packages": ["dist/apps/*", "dist/libs/*"],
   "version": "0.0.5",
   "granularPathspec": false,
   "command": {
