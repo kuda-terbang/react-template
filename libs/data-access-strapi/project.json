@@ -1,4 +1,5 @@
 {
+  "name": "data-access-strapi",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/data-access-strapi/src",
   "projectType": "library",

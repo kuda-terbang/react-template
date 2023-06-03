@@ -11,7 +11,10 @@
         "outputPath": "dist/libs/util-api",
         "main": "libs/util-api/src/index.ts",
         "tsConfig": "libs/util-api/tsconfig.lib.json",
-        "assets": []
+        "assets": [],
+        "webpackConfig": "libs/util-api/webpack.config.js",
+        "isolatedConfig": true,
+        "babelUpwardRootMode": true
       }
     },
     "publish": {

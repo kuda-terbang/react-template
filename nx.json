@@ -52,5 +52,10 @@
       }
     }
   },
-  "defaultProject": "react-dashboard-template"
+  "defaultProject": "react-dashboard-template",
+  "targetDefaults": {
+    "lint": {
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
+    }
+  }
 }
