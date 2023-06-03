@@ -24,8 +24,8 @@ export interface ReactDashboardTemplateGeneratorSchema {
   devServerPort?: number;
   isCraTemplate?: boolean;
   isDefaultCraTemplate?: boolean;
-  designTokenProject?: string;
-  designSystemProject?: string;
+  designTokenProject: string;
+  designSystemProject: string;
 }
 
 export type NormalizedReactDashboardSchema =

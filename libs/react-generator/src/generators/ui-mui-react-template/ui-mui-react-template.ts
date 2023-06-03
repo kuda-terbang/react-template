@@ -18,7 +18,7 @@ export default async function (tree: Tree, options: UiMuiReactComponentNormalize
     ...normalizedOptions,
     buildable: true,
     publishable: true,
-    importPath: `@${normalizedOptions.npmScope}/ui-mui-react-example`,
+    importPath: `@${normalizedOptions.npmScope}/${normalizedOptions.name}`,
     style: 'none',
     skipFormat: false,
     skipTsConfig: false,

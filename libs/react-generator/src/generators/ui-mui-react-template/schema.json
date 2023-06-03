@@ -177,5 +177,5 @@
       "description": "Which compiler to use."
     }
   },
-  "required": ["name"]
+  "required": ["name", "designTokenProject"]
 }

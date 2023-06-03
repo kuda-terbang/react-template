@@ -7,7 +7,7 @@ export interface NextjsClientTemplateGeneratorSchema extends Schema {
   directory?: string;
   isCnaTemplate?: boolean;
   isDefaultCnaTemplate?: boolean;
-  designTokenProject?: string;
-  designSystemProject?: string;
+  designTokenProject: string;
+  designSystemProject: string;
 }
 export type NextjsClientTemplateNormalized = NormalizedSchema<NextjsClientTemplateGeneratorSchema>;

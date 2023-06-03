@@ -37,7 +37,7 @@
     "designTokenProject": {
       "type": "string",
       "description": "The name of the design token project.",
-      "alias": "p",
+      "alias": "dtp",
       "$default": {
         "$source": "projectName"
       },
@@ -46,7 +46,7 @@
     "designSystemProject": {
       "type": "string",
       "description": "The name of the design system project.",
-      "alias": "p",
+      "alias": "dsp",
       "$default": {
         "$source": "projectName"
       },
@@ -90,5 +90,5 @@
       }
     }
   },
-  "required": ["name"]
+  "required": ["name", "designTokenProject", "designSystemProject"]
 }
