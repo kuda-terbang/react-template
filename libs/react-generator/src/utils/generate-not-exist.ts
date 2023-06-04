@@ -1,6 +1,6 @@
 import { Tree } from '@nrwl/devkit';
 import { areProjectsExist, ProjectExist } from '@kuda-terbang/generator-utils';
-import { utilApiGenerator } from '@kuda-terbang/core-util-generator';
+import { utilApiGenerator, dataAccessGenerator } from '@kuda-terbang/core-util-generator';
 import { utilAuthGenerator } from '@kuda-terbang/core-util-web-generator';
 
 export const generateNotExist = (
@@ -18,11 +18,19 @@ export const generateNotExist = (
     if (packageName === 'util-auth') {
       currentPromise.push(utilAuthGenerator(tree, {}));
     }
+    if (packageName === 'data-access-strapi') {
+      currentPromise.push(
+        dataAccessGenerator(tree, {
+          name: 'data-access-strapi',
+          isWebExample: true,
+        })
+      );
+    }
   }
 };
 
 export const checkAndGenerateDepLibs = async (tree: Tree) => {
-  const checkedLibs = ['util-api', 'util-auth'];
+  const checkedLibs = ['util-api', 'util-auth', 'data-access-strapi'];
   const existingProjects = areProjectsExist(tree, checkedLibs);
   const promiseGenerate = [];
   checkedLibs.forEach((lib) => {
