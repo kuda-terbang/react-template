@@ -14,7 +14,6 @@
         "index": "apps/react-dashboard-example/src/index.html",
         "baseHref": "/",
         "main": "apps/react-dashboard-example/src/main.tsx",
-        "polyfills": "apps/react-dashboard-example/src/polyfills.ts",
         "tsConfig": "apps/react-dashboard-example/tsconfig.app.json",
         "assets": [
           "apps/react-dashboard-example/src/favicon.ico",
@@ -22,9 +21,8 @@
         ],
         "styles": [],
         "scripts": [],
-        "webpackConfig": "apps/react-dashboard-example/webpack.config.js",
-        "babelUpwardRootMode": true,
-        "isolatedConfig": true
+        "isolatedConfig": true,
+        "webpackConfig": "apps/react-dashboard-example/webpack.config.js"
       },
       "configurations": {
         "development": {
@@ -79,6 +77,12 @@
       "options": {
         "jestConfig": "apps/react-dashboard-example/jest.config.ts",
         "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
       }
     }
   },

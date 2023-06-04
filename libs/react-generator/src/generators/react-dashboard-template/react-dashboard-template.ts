@@ -6,9 +6,12 @@ import { name } from '../../../project.json';
 import { ReactDashboardTemplateGeneratorSchema } from './schema';
 import generateCraTemplate from './libs/generate-cra-template';
 import generateFromModules from './libs/generate-from-modules';
+import { checkAndGenerateDepLibs } from '../../utils/generate-not-exist';
 
 export default async function (tree: Tree, options: ReactDashboardTemplateGeneratorSchema) {
   const normalizedOptions = normalizeOptions(tree, options, 'app');
+
+  await checkAndGenerateDepLibs(tree);
 
   await applicationGenerator(tree, {
     ...normalizedOptions,

@@ -49,6 +49,12 @@
       "options": {
         "jestConfig": "apps/nextjs-client-example/jest.config.ts",
         "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
       }
     },
     "lint": {
