@@ -5,16 +5,13 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nrwl/webpack:webpack",
+      "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/util-api",
         "main": "libs/util-api/src/index.ts",
         "tsConfig": "libs/util-api/tsconfig.lib.json",
-        "assets": [],
-        "webpackConfig": "libs/util-api/webpack.config.js",
-        "isolatedConfig": true,
-        "babelUpwardRootMode": true
+        "assets": ["libs/util-api/*.md"]
       }
     },
     "publish": {
@@ -37,6 +34,12 @@
       "options": {
         "jestConfig": "libs/util-api/jest.config.ts",
         "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
       }
     }
   },

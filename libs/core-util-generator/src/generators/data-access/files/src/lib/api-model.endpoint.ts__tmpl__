@@ -1,0 +1,63 @@
+import { createAxios, createExportedEndpoint } from '@<%= npmScope %>/util-api';
+import type { Endpoint, StrapiObject } from '@<%= npmScope %>/util-api';
+import { getCookie } from '@<%= npmScope %>/util-auth';
+
+import { baseUrl, baseUrlToken } from '../config/envValue';
+import { initialModel } from './model';
+import type { Model, ModelResponse } from './model';
+
+const apiModel = createAxios({
+  baseURL: `${baseUrl}/api` ?? '',
+  baseHeaders: {
+    withBearer: true,
+  },
+  getToken: () => {
+    return getCookie(baseUrlToken);
+  },
+});
+
+interface ModelEndpoints {
+  modelGet: Endpoint<
+    void,
+    {
+      data: StrapiObject<Model>[];
+    }
+  >;
+  modelDetailGet: Endpoint<
+    void,
+    ModelResponse,
+    {
+      id: string | number;
+    }
+  >;
+}
+
+const endpoints: ModelEndpoints = {
+  modelGet: {
+    method: 'get',
+    isAuthenticated: true,
+    path: '/products',
+    response: {
+      data: [],
+    },
+  },
+  modelDetailGet: {
+    method: 'get',
+    isAuthenticated: true,
+    path: '/products/:id',
+    paramsUrl: { id: 0 },
+    response: {
+      ...initialModel,
+    },
+    mapData: (response: ModelResponse) => {
+      const id = response.data.id;
+      const productName = response.data.name;
+      response.data = {
+        ...response.data,
+        id_name: id + '-' + productName,
+      };
+    },
+  },
+};
+
+export default createExportedEndpoint(apiModel, endpoints);

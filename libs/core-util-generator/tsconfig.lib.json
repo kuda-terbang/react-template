@@ -5,6 +5,14 @@
     "declaration": true,
     "types": ["node"]
   },
-  "include": ["**/*.ts", "src/generators/util-api/files/src/index.ts", "src/generators/util-react-common/files/src/index.ts"],
+  "include": [
+		"**/*.ts",
+		"src/generators/util-api/files/src/index.ts",
+		"src/generators/util-react-common/files/src/index.ts",
+		"src/generators/data-access/files/src/lib/hooks/index.tsindex.ts",
+		"src/generators/data-access/files/src/lib/model/index.tsindex.ts",
+		"src/generators/data-access/files/src/lib/hooks/product.tsoduct.ts",
+		"src/generators/data-access/files/src/lib/model/product.tsoduct.ts"
+	],
   "exclude": ["jest.config.ts", "**/*.spec.ts", "**/*.test.ts"]
 }
