@@ -30,7 +30,8 @@ export const generateNotExist = (
 };
 
 export const checkAndGenerateDepLibs = async (tree: Tree) => {
-  const checkedLibs = ['util-api', 'util-auth', 'data-access-strapi'];
+  const checkedLibs = ['data-access-strapi'];
+  console.log(`> Check these libs ${checkedLibs.join(' ')}`);
   const existingProjects = areProjectsExist(tree, checkedLibs);
   const promiseGenerate = [];
   checkedLibs.forEach((lib) => {
@@ -39,5 +40,8 @@ export const checkAndGenerateDepLibs = async (tree: Tree) => {
 
   if (promiseGenerate.length > 0) {
     await Promise.all(promiseGenerate);
+    console.log('> Done add packages');
+  } else {
+    console.log('> No added packages');
   }
 };

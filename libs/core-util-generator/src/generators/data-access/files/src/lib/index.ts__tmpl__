@@ -1,4 +1,4 @@
 export { default } from './api-model.endpoint';
-export * from './model/index';
-export * from './hooks/index';
+export * from './model';
+export * from './hooks';
 export * from './api-model.endpoint';

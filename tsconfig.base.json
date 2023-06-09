@@ -21,8 +21,6 @@
       "@kuda-terbang/core-util-generator": ["libs/core-util-generator/src/index.ts"],
       "@kuda-terbang/core-util-web-generator": ["libs/core-util-web-generator/src/index.ts"],
       "@kuda-terbang/data-access-strapi": ["libs/data-access-strapi/src/index.ts"],
-      "@kuda-terbang/data-access-test": ["libs/data-access-test/src/index.ts"],
-      "@kuda-terbang/design-token-example": ["libs/design-token-example/src/index.ts"],
       "@kuda-terbang/design-token-example/color": [
         "libs/design-token-example/generated/json/color.json"
       ],

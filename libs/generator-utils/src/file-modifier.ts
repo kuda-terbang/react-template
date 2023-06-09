@@ -186,9 +186,13 @@ export const deleteFileInstance =
   (path: string | string[]) => {
     if (typeof path === 'object') {
       path.forEach((strPath) => {
-        tree.delete(normalizedOptions.projectRoot.concat(strPath));
+        const deletePath = normalizedOptions.projectRoot.concat(strPath);
+        console.log(`> DELETE ${deletePath}`);
+        tree.delete(deletePath);
       });
     } else {
+      const deletePath = normalizedOptions.projectRoot.concat(path);
+      console.log(`> DELETE ${deletePath}`);
       tree.delete(normalizedOptions.projectRoot.concat(path));
     }
   };

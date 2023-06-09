@@ -63,11 +63,11 @@ export const dataAccessGenerator = async (tree: Tree, options: DataAccessStrapiG
     importPath: `@${normalizedOptions.npmScope}/${projectName}`,
   });
   const deleteInstance = deleteFileInstance({ tree, normalizedOptions });
-  deleteInstance('/srclib/data-acces-strapi.ts');
-  deleteInstance('/srclib/data-acces-strapi.spec.ts');
 
   addFiles(tree, normalizedOptions, 'core-util-generator', 'data-access', usedFilesToCopy);
   await formatFiles(tree);
+
+  deleteInstance(['/src/lib/data-access-strapi.ts', '/src/lib/data-access-strapi.spec.ts']);
 };
 
 export const dataAccessSchematic = convertNxGenerator(dataAccessGenerator);
