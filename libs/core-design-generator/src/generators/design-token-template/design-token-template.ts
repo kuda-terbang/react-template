@@ -1,6 +1,6 @@
-import { formatFiles, generateFiles, logger, names, offsetFromRoot, Tree } from '@nrwl/devkit';
+import { formatFiles, generateFiles, logger, names, offsetFromRoot, Tree } from '@nx/devkit';
 import * as path from 'path';
-import { libraryGenerator } from '@nrwl/workspace/generators';
+import { libraryGenerator } from '@nx/workspace/generators';
 
 import { normalizeOptions } from '@kuda-terbang/generator-utils';
 import { CustomGeneratorGeneratorSchema } from './schema';

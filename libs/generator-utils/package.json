@@ -2,7 +2,7 @@
   "name": "@kuda-terbang/generator-utils",
   "version": "0.0.1",
   "description": "Shared utils function for running generator",
-	"license": "MIT",
+  "license": "MIT",
   "publishConfig": {
     "access": "public"
   },

@@ -1,6 +1,6 @@
 import { normalizeOptions, addFiles } from '@kuda-terbang/generator-utils';
-import { convertNxGenerator, formatFiles, Tree } from '@nrwl/devkit';
-import { libraryGenerator } from '@nrwl/js';
+import { convertNxGenerator, formatFiles, Tree } from '@nx/devkit';
+import { libraryGenerator } from '@nx/js';
 
 import { name } from '../../../project.json';
 import { UtilApiGeneratorSchema } from './schema';

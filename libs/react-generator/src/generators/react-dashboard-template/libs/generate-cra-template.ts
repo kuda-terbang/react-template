@@ -1,4 +1,4 @@
-import { moveFilesToNewDirectory, logger, Tree } from '@nrwl/devkit';
+import { moveFilesToNewDirectory, logger, Tree } from '@nx/devkit';
 import {
   addFiles,
   moveFile,

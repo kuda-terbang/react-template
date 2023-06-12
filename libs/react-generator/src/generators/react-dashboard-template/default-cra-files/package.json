@@ -5,7 +5,7 @@
   "repository": "https://github.com/kuda-terbang/react-template/tree/main/apps/react-dashboard-template",
   "author": "Robby Caesar Putra <robbycaesar@gmail.com>",
   "license": "MIT",
-	"publishConfig": {
+  "publishConfig": {
     "access": "public"
   },
   "keywords": [
@@ -13,8 +13,8 @@
     "boilerplate",
     "template",
     "starter",
-		"material",
-		"mui",
+    "material",
+    "mui",
     "typescript"
   ],
   "homepage": "https://github.com/kuda-terbang/react-template",
@@ -22,7 +22,7 @@
     "url": "https://github.com/kuda-terbang/react-template/issues"
   },
   "funding": {
-    "type" : "individual",
-    "url" : "https://www.buymeacoffee.com/robbycp"
+    "type": "individual",
+    "url": "https://www.buymeacoffee.com/robbycp"
   }
 }

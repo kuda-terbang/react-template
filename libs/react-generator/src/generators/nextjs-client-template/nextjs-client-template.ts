@@ -1,5 +1,5 @@
-import { formatFiles, Tree } from '@nrwl/devkit';
-import { applicationGenerator } from '@nrwl/next';
+import { formatFiles, Tree } from '@nx/devkit';
+import { applicationGenerator } from '@nx/next';
 import { normalizeOptions, addFiles } from '@kuda-terbang/generator-utils';
 import { name } from '../../../project.json';
 import { NextjsClientTemplateGeneratorSchema } from './schema';

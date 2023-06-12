@@ -1,4 +1,4 @@
-import { Tree } from '@nrwl/devkit';
+import { Tree } from '@nx/devkit';
 import { areProjectsExist, ProjectExist } from '@kuda-terbang/generator-utils';
 import { utilApiGenerator, dataAccessGenerator } from '@kuda-terbang/core-util-generator';
 import { utilAuthGenerator } from '@kuda-terbang/core-util-web-generator';

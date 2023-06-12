@@ -4,7 +4,7 @@
   "main": "src/index.js",
   "generators": "./generators.json",
   "description": "Nx plugin generator to help you create a production-ready frontend service and utils in React.",
-	"license": "MIT",
+  "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
