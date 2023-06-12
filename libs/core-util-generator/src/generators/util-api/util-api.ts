@@ -13,7 +13,7 @@ export const utilApiGenerator = async (tree: Tree, options: UtilApiGeneratorSche
   await libraryGenerator(tree, {
     ...normalizedOptions,
     buildable: true,
-    bundler: 'tsc',
+    bundler: 'swc',
     config: 'project',
     testEnvironment: 'node',
     publishable: true,

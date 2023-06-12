@@ -14,7 +14,7 @@
       },
       "configurations": {
         "development": {
-          "outputPath": "apps/nextjs-client-example"
+          "outputPath": "dist/apps/nextjs-client-example"
         },
         "production": {}
       }

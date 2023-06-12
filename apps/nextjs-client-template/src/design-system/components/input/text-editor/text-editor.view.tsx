@@ -3,7 +3,6 @@ import FormLabel from '@mui/material/FormLabel';
 import React, { Component } from 'react';
 import ReactQuillComponent from 'react-quill';
 import type { FormControlProps } from '@mui/material';
-import 'react-quill/dist/quill.snow.css';
 
 type ReactQuillProps = React.ComponentProps<typeof ReactQuillComponent>;
 type TextEditorProps = ReactQuillProps & {
