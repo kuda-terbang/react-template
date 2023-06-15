@@ -27,6 +27,12 @@
       "options": {
         "jestConfig": "libs/design-token-example/jest.config.ts",
         "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
       }
     }
   },

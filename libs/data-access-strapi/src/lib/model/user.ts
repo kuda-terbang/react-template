@@ -2,14 +2,14 @@
  * Type declaration
  */
 export interface User {
-  blocked: boolean
-  confirmed: boolean
-  createdAt: string
-  email: string
-  id: number
-  provider: string
-  updatedAt: string
-  username: string
+  blocked: boolean;
+  confirmed: boolean;
+  createdAt: string;
+  email: string;
+  id: number;
+  provider: string;
+  updatedAt: string;
+  username: string;
 }
 
 /**
@@ -24,4 +24,4 @@ export const initialUser = {
   provider: '',
   updatedAt: '',
   username: '',
-}
+};
