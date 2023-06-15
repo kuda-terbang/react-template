@@ -7,6 +7,16 @@
     "build": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
+			"dependsOn": [
+				{
+					"projects": "generator-utils",
+					"target": "build"
+				},
+				{
+					"projects": "core-util-web-generator",
+					"target": "build"
+				}
+			],
       "options": {
         "outputPath": "dist/libs/core-util-generator",
         "main": "libs/core-util-generator/src/index.ts",

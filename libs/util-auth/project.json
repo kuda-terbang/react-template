@@ -20,7 +20,7 @@
         "tsConfig": "libs/util-auth/tsconfig.lib.json",
         "project": "libs/util-auth/package.json",
         "entryFile": "libs/util-auth/src/index.ts",
-        "external": ["react/jsx-runtime"],
+        "external": ["react", "react-dom", "react/jsx-runtime"],
         "rollupConfig": "@nx/react/plugins/bundle-rollup",
         "compiler": "babel",
         "assets": [

@@ -14,6 +14,7 @@ export default async function (tree: Tree, options: NextjsClientTemplateGenerato
 
   await applicationGenerator(tree, {
     ...normalizedOptions,
+    appDir: false,
   });
 
   addFiles(tree, normalizedOptions, name, 'nextjs-client-template', 'files');

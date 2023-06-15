@@ -16,7 +16,6 @@ import defaultConfigSeo from '../next-seo.config';
 import { AuthProviderApp } from '../src/utils/auth-strapi';
 import LayoutBase from '../src/design-system/components/layout/layout-base'
 
-import 'react-quill/dist/quill.snow.css';
 import '../src/styles/globals.css';
 
 // Client-side cache, shared for the whole session of the user in the browser.

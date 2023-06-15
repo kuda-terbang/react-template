@@ -4,5 +4,5 @@ module.exports = {
     locales: ['en', 'id'],
   },
 	localeDetection: false,
-	localePath: './apps/<%= projectName %>/public/locales',
+	localePath: './public/locales',
 };

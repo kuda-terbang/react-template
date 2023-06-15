@@ -11,6 +11,11 @@ if (swcJestConfig.swcrc === undefined) {
   swcJestConfig.swcrc = false;
 }
 
+// Uncomment if using global setup/teardown files being transformed via swc
+// https://nx.dev/packages/jest/documents/overview#global-setup/teardown-with-nx-libraries
+// jest needs EsModule Interop to find the default exported setup/teardown functions
+// swcJestConfig.module.noInterop = false;
+
 export default {
   displayName: 'util-api',
   preset: '../../jest.preset.js',
@@ -18,5 +23,6 @@ export default {
     '^.+\\.[tj]s$': ['@swc/jest', swcJestConfig],
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
+  testEnvironment: 'node',
   coverageDirectory: '../../coverage/libs/util-api',
 };

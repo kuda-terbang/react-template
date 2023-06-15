@@ -50,4 +50,34 @@ const nextConfig = {
   },
 };
 
-module.exports = withNx(nextConfig);
+const sentryWebpackPluginOptions = {
+  // Additional config options for the Sentry Webpack plugin. Keep in mind that
+  // the following options are set automatically, and overriding them is not
+  // recommended:
+  //   release, url, org, project, authToken, configFile, stripPrefix,
+  //   urlPrefix, include, ignore
+
+  silent: true, // Suppresses all logs
+  // For all available options, see:
+  // https://github.com/getsentry/sentry-webpack-plugin#options.
+};
+
+module.exports =
+  // Make sure adding Sentry options is the last code to run before exporting, to
+  // ensure that your source maps include changes from all other Webpack plugins
+  module.exports = async (phase, context) => {
+    // Add plugins here
+    const plugins = [];
+
+    let updatedConfig = plugins.reduce((acc, fn) => fn(acc), nextConfig);
+
+    // Apply the async function that `withNx` returns.
+    updatedConfig = await withNx(updatedConfig)(phase, context);
+
+    // If you have plugins that has to be added after Nx you can do that here.
+    // For example, Sentry needs to be added last.
+    const { withSentryConfig } = require('@sentry/nextjs');
+    updatedConfig = withSentryConfig(updatedConfig, sentryWebpackPluginOptions);
+
+    return updatedConfig;
+  };
