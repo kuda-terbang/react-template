@@ -1,0 +1,26 @@
+/**
+ * Type declaration
+ */
+
+export interface Model {
+  id: string;
+  name: string;
+  // mapped field type from response
+  id_name: string;
+}
+export type ModelResponse = {
+  data: Model;
+  meta: Record<string, string | boolean | number>;
+};
+
+/**
+ * Initial Declaration
+ */
+export const initialModel = {
+  data: {
+    id: '',
+    name: '',
+    id_name: '',
+  },
+  meta: {},
+};

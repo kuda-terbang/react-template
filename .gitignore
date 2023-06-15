@@ -9,6 +9,8 @@ build
 /dist
 /tmp
 /out-tsc
+# libs/*-test/*
+# apps/*-test/*
 
 # dependencies
 node_modules

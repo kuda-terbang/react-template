@@ -1,0 +1,2 @@
+export const baseUrl = process.env['NX_URL_DATA_MODEL'];
+export const baseUrlToken = process.env['NX_TOKEN_DATA_MODEL'];

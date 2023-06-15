@@ -1,0 +1,16 @@
+import useSWR from 'swr';
+import apiModel from '..';
+
+export const useModelGet = () => useSWR('/model', apiModel.modelGet);
+
+export const useModelDetailGet = (id: string) =>
+  useSWR(
+    {
+      id,
+    },
+    ({ id }) => {
+      return apiModel.modelDetailGet({
+        paramsUrl: { id },
+      });
+    }
+  );

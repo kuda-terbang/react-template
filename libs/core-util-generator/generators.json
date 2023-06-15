@@ -2,9 +2,25 @@
   "$schema": "http://json-schema.org/schema",
   "name": "core-util-generator",
   "version": "0.0.1",
+	"schematics": {
+		"util-api": {
+      "factory": "./src/generators/util-api/util-api#utilApiSchematic",
+      "schema": "./src/generators/util-api/schema.json",
+      "aliases": ["util-api"],
+      "x-type": "libs",
+      "description": "Create a util api libs."
+    },
+		"data-access": {
+      "factory": "./src/generators/data-access/data-access#dataAccessSchematic",
+      "schema": "./src/generators/data-access/schema.json",
+      "aliases": ["data-access"],
+      "x-type": "libs",
+      "description": "Create a data-access libs."
+    }
+	},
   "generators": {
     "util-api": {
-      "factory": "./src/generators/util-api/util-api.ts",
+      "factory": "./src/generators/util-api/util-api#utilApiGenerator",
       "schema": "./src/generators/util-api/schema.json",
       "description": "Generate api related helper function for clean and managed api"
     },
@@ -12,6 +28,11 @@
       "factory": "./src/generators/util-react-common/util-react-common.ts",
       "schema": "./src/generators/util-react-common/schema.json",
       "description": "Generate api related helper function for clean and managed api"
+    },
+    "data-access": {
+      "factory": "./src/generators/data-access/data-access#dataAccessGenerator",
+      "schema": "./src/generators/data-access/schema.json",
+      "description": "data-access generator"
     }
   }
 }

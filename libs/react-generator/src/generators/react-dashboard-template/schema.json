@@ -173,5 +173,5 @@
       "x-prompt": "What is the name of the design system project?"
     }
   },
-  "required": ["name"]
+  "required": ["name", "designTokenProject", "designSystemProject"]
 }

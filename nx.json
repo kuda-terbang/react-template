@@ -35,6 +35,7 @@
       "application": {
         "style": "styled-components",
         "linter": "eslint",
+        "bundler": "webpack",
         "babel": true
       },
       "component": {
@@ -42,7 +43,8 @@
       },
       "library": {
         "style": "styled-components",
-        "linter": "eslint"
+        "linter": "eslint",
+        "unitTestRunner": "jest"
       }
     },
     "@nrwl/next": {
@@ -52,5 +54,10 @@
       }
     }
   },
-  "defaultProject": "react-dashboard-template"
+  "defaultProject": "react-dashboard-template",
+  "targetDefaults": {
+    "lint": {
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
+    }
+  }
 }

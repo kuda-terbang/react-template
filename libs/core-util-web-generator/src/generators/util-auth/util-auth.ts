@@ -1,12 +1,12 @@
 import { addFiles, normalizeOptions } from '@kuda-terbang/generator-utils';
-import { formatFiles, Tree } from '@nrwl/devkit';
+import { convertNxGenerator, formatFiles, Tree } from '@nrwl/devkit';
 import { Linter } from '@nrwl/linter';
 import { libraryGenerator } from '@nrwl/react';
 
 import { name } from '../../../project.json';
 import { UtilAuthGeneratorSchema } from './schema';
 
-export default async function (tree: Tree, options: UtilAuthGeneratorSchema) {
+export const utilAuthGenerator = async (tree: Tree, options: UtilAuthGeneratorSchema) => {
   const normalizedOptions = normalizeOptions(tree, {
     ...options,
     name: 'util-auth',
@@ -28,4 +28,6 @@ export default async function (tree: Tree, options: UtilAuthGeneratorSchema) {
   tree.delete(normalizedOptions.projectRoot.concat('/src/lib/util-auth.spec.ts'));
   tree.delete(normalizedOptions.projectRoot.concat('/src/lib/util-auth.ts'));
   await formatFiles(tree);
-}
+};
+
+export const utilAuthSchematic = convertNxGenerator(utilAuthGenerator);

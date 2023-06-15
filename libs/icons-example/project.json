@@ -3,5 +3,6 @@
   "name": "icons-example",
   "projectType": "library",
   "sourceRoot": "libs/icons-example/src",
-  "tags": []
+  "tags": [],
+	"targets": {}
 }
