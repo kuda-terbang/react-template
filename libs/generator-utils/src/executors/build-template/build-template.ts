@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { ExecutorContext, logger } from '@nrwl/devkit';
+import { ExecutorContext, logger } from '@nx/devkit';
 import { execSync } from 'child_process';
 import { BuildTemplateExecutorSchema } from './schema';
 

@@ -1,4 +1,4 @@
-import { convertNxGenerator, formatFiles, Tree } from '@nrwl/devkit';
+import { convertNxGenerator, formatFiles, Tree } from '@nx/devkit';
 import {
   addFiles,
   areProjectsExist,
@@ -6,7 +6,7 @@ import {
   normalizeOptions,
   ProjectExist,
 } from '@kuda-terbang/generator-utils';
-import { libraryGenerator } from '@nrwl/js';
+import { libraryGenerator } from '@nx/js';
 import { utilAuthGenerator } from '@kuda-terbang/core-util-web-generator';
 import { utilApiGenerator } from '../util-api/util-api';
 

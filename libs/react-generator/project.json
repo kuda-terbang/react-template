@@ -1,18 +1,35 @@
 {
-	"name": "react-generator",
+  "name": "react-generator",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/react-generator/src",
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nrwl/js:tsc",
+      "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
+			"dependsOn": [
+				{
+					"projects": "generator-utils",
+					"target": "build",
+					"params": "ignore"
+				},
+				{
+					"projects": "core-util-generator",
+					"target": "build",
+					"params": "ignore"
+				},
+				{
+					"projects": "core-util-web-generator",
+					"target": "build",
+					"params": "ignore"
+				}
+			],
       "options": {
         "outputPath": "dist/libs/react-generator",
         "main": "libs/react-generator/src/index.ts",
         "tsConfig": "libs/react-generator/tsconfig.lib.json",
-				"buildableProjectDepsInPackageJsonType": "dependencies",
-				"updateBuildableProjectDepsInPackageJson": true,
+        "buildableProjectDepsInPackageJsonType": "dependencies",
+        "updateBuildableProjectDepsInPackageJson": true,
         "assets": [
           "libs/react-generator/*.md",
           {
@@ -35,7 +52,7 @@
             "glob": "executors.json",
             "output": "."
           },
-					{
+          {
             "input": "",
             "glob": "LICENSE",
             "output": "/"
@@ -49,21 +66,21 @@
         "script": "generate-ui-mui-react-example"
       }
     },
-		"rename-template": {
-			"executor": "@kuda-terbang/generator-utils:rename-template-generator",
-			"options": {
-				"projectName": "react-generator"
-			}
-		},
+    "rename-template": {
+      "executor": "@kuda-terbang/generator-utils:rename-template-generator",
+      "options": {
+        "projectName": "react-generator"
+      }
+    },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["libs/react-generator/**/*.ts"]
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["coverage/libs/react-generator"],
       "options": {
         "jestConfig": "libs/react-generator/jest.config.ts",

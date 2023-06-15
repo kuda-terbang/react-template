@@ -1,6 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 
 const { withSentryConfig } = require('@sentry/nextjs');
+
 const semver = require('semver');
 const { i18n } = require('./next-i18next.config');
 const { execSync } = require('child_process');
@@ -55,10 +56,4 @@ const sentryWebpackPluginOptions = {
   // https://github.com/getsentry/sentry-webpack-plugin#options.
 };
 
-// Make sure adding Sentry options is the last code to run before exporting, to
-// ensure that your source maps include changes from all other Webpack plugins
-module.exports = withSentryConfig(
-  nextConfig,
-
-  sentryWebpackPluginOptions
-);
+module.exports = withSentryConfig(nextConfig, sentryWebpackPluginOptions);

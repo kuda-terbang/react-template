@@ -1,4 +1,4 @@
-import { getProjects, Tree } from '@nrwl/devkit';
+import { getProjects, Tree } from '@nx/devkit';
 
 export type ProjectExist = {
   name: string;

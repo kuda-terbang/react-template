@@ -1,6 +1,5 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "cli": "nx",
   "$id": "UiMuiReactComponent",
   "title": "Create UI MUI React component library",
   "description": "Create a UI MUI React component Library for an Nx workspace.",
@@ -40,7 +39,10 @@
         "message": "Which stylesheet format would you like to use?",
         "type": "list",
         "items": [
-          { "value": "css", "label": "CSS" },
+          {
+            "value": "css",
+            "label": "CSS"
+          },
           {
             "value": "scss",
             "label": "SASS(.scss)       [ http://sass-lang.com          ]"
@@ -89,12 +91,18 @@
     "linter": {
       "description": "The tool to use for running lint checks.",
       "type": "string",
-      "enum": ["eslint", "tslint"],
+      "enum": [
+        "eslint",
+        "tslint"
+      ],
       "default": "eslint"
     },
     "unitTestRunner": {
       "type": "string",
-      "enum": ["jest", "none"],
+      "enum": [
+        "jest",
+        "none"
+      ],
       "description": "Test runner to use for unit tests.",
       "default": "jest"
     },
@@ -172,10 +180,16 @@
     },
     "compiler": {
       "type": "string",
-      "enum": ["babel", "swc"],
+      "enum": [
+        "babel",
+        "swc"
+      ],
       "default": "babel",
       "description": "Which compiler to use."
     }
   },
-  "required": ["name", "designTokenProject"]
+  "required": [
+    "name",
+    "designTokenProject"
+  ]
 }

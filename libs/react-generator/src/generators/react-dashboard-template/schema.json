@@ -1,6 +1,5 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "cli": "nx",
   "$id": "ReactDashboardTemplate",
   "title": "",
   "type": "object",
@@ -66,7 +65,10 @@
     "linter": {
       "description": "The tool to use for running lint checks.",
       "type": "string",
-      "enum": ["eslint", "tslint"],
+      "enum": [
+        "eslint",
+        "tslint"
+      ],
       "default": "eslint"
     },
     "routing": {
@@ -87,13 +89,19 @@
     },
     "unitTestRunner": {
       "type": "string",
-      "enum": ["jest", "none"],
+      "enum": [
+        "jest",
+        "none"
+      ],
       "description": "Test runner to use for unit tests.",
       "default": "jest"
     },
     "e2eTestRunner": {
       "type": "string",
-      "enum": ["cypress", "none"],
+      "enum": [
+        "cypress",
+        "none"
+      ],
       "description": "Test runner to use for end to end (E2E) tests.",
       "default": "cypress"
     },
@@ -141,7 +149,10 @@
     "compiler": {
       "type": "string",
       "description": "The compiler to use.",
-      "enum": ["babel", "swc"],
+      "enum": [
+        "babel",
+        "swc"
+      ],
       "default": "babel"
     },
     "isCraTemplate": {
@@ -149,7 +160,7 @@
       "description": "Build create react application template",
       "default": false
     },
-		"isDefaultCraTemplate": {
+    "isDefaultCraTemplate": {
       "type": "boolean",
       "description": "Build create react application template with custom",
       "default": false
@@ -173,5 +184,9 @@
       "x-prompt": "What is the name of the design system project?"
     }
   },
-  "required": ["name", "designTokenProject", "designSystemProject"]
+  "required": [
+    "name",
+    "designTokenProject",
+    "designSystemProject"
+  ]
 }

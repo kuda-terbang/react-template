@@ -1,4 +1,4 @@
-import { Schema } from '@nrwl/next/src/generators/application/schema';
+import { Schema } from '@nx/next/src/generators/application/schema';
 import type { NormalizedSchema } from '@kuda-terbang/generator-utils';
 
 export interface NextjsClientTemplateGeneratorSchema extends Schema {

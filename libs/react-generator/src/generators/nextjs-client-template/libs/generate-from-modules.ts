@@ -1,4 +1,4 @@
-import { logger, readWorkspaceConfiguration, Tree } from '@nrwl/devkit';
+import { logger, readWorkspaceConfiguration, Tree } from '@nx/devkit';
 import { addModules } from '@kuda-terbang/generator-utils';
 
 import { NextjsClientTemplateNormalized } from '../schema';

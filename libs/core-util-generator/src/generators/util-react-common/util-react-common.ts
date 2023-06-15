@@ -1,7 +1,7 @@
 import { addFiles, normalizeOptions } from '@kuda-terbang/generator-utils';
-import { formatFiles, Tree } from '@nrwl/devkit';
-import { Linter } from '@nrwl/linter';
-import { libraryGenerator } from '@nrwl/react';
+import { formatFiles, Tree } from '@nx/devkit';
+import { Linter } from '@nx/linter';
+import { libraryGenerator } from '@nx/react';
 
 import { name } from '../../../project.json';
 import { UtilReactCommonGeneratorSchema } from './schema';
