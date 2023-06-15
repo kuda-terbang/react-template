@@ -1,6 +1,6 @@
 {
   "name": "@kuda-terbang/react-template",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Nx plugin and template resources to help you create a production-ready frontend service using React.",
   "publishConfig": {
     "access": "public"
@@ -23,7 +23,7 @@
   },
   "license": "MIT",
   "scripts": {
-		"build-apps": "npx nx run-many --target build --projects=nextjs-client-example,react-dashboard-example",
+    "build-apps": "npx nx run-many --target build --projects=nextjs-client-example,react-dashboard-example",
     "build": "node ./scripts/npm/build.js",
     "release": "node ./scripts/npm/release.js"
   },
