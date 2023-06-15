@@ -1,4 +1,4 @@
-import { addProjectConfiguration, formatFiles, Tree } from '@nrwl/devkit';
+import { addProjectConfiguration, formatFiles, Tree } from '@nx/devkit';
 import { addFiles, normalizeOptions } from '@kuda-terbang/generator-utils';
 import { IconsGeneratorSchema } from './schema';
 

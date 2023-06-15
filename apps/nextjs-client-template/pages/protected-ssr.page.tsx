@@ -5,7 +5,7 @@ const ProtectedSsrView = () => {
   return <div>ProtectedSsrView</div>;
 };
 
-export const getServerSideProps = withProtectedSsr({
+export const getServerSideProps = withProtectedSsr?.({
   destination: '/',
 });
 

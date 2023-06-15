@@ -1,14 +1,13 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 
-const withNx = require('@nrwl/next/plugins/with-nx');
+const withNx = require('@nx/next/plugins/with-nx');
 
-const { withSentryConfig } = require('@sentry/nextjs');
 const semver = require('semver');
 const { i18n } = require('./next-i18next.config');
 const { execSync } = require('child_process');
 
 /**
- * @type {import('@nrwl/next/plugins/with-nx').WithNxOptions}
+ * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
  **/
 
 const nextConfig = {
@@ -63,10 +62,22 @@ const sentryWebpackPluginOptions = {
   // https://github.com/getsentry/sentry-webpack-plugin#options.
 };
 
-// Make sure adding Sentry options is the last code to run before exporting, to
-// ensure that your source maps include changes from all other Webpack plugins
-module.exports = withSentryConfig(
-  withNx(nextConfig),
+module.exports =
+  // Make sure adding Sentry options is the last code to run before exporting, to
+  // ensure that your source maps include changes from all other Webpack plugins
+  module.exports = async (phase, context) => {
+    // Add plugins here
+    const plugins = [];
 
-  sentryWebpackPluginOptions
-);
+    let updatedConfig = plugins.reduce((acc, fn) => fn(acc), nextConfig);
+
+    // Apply the async function that `withNx` returns.
+    updatedConfig = await withNx(updatedConfig)(phase, context);
+
+    // If you have plugins that has to be added after Nx you can do that here.
+    // For example, Sentry needs to be added last.
+    const { withSentryConfig } = require('@sentry/nextjs');
+    updatedConfig = withSentryConfig(updatedConfig, sentryWebpackPluginOptions);
+
+    return updatedConfig;
+  };

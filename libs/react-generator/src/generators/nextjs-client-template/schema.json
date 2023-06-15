@@ -1,6 +1,5 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "cli": "nx",
   "$id": "NextjsClientTemplate",
   "title": "",
   "type": "object",
@@ -29,7 +28,7 @@
       "description": "Build create react application template",
       "default": false
     },
-		"isDefaultCnaTemplate": {
+    "isDefaultCnaTemplate": {
       "type": "boolean",
       "description": "Build create nextjs client application template with custom",
       "default": false
@@ -52,7 +51,7 @@
       },
       "x-prompt": "What is the name of the design system project?"
     },
-		"style": {
+    "style": {
       "description": "The file extension to be used for style files.",
       "type": "string",
       "default": "css",
@@ -61,7 +60,10 @@
         "message": "Which stylesheet format would you like to use?",
         "type": "list",
         "items": [
-          { "value": "css", "label": "CSS" },
+          {
+            "value": "css",
+            "label": "CSS"
+          },
           {
             "value": "scss",
             "label": "SASS(.scss)       [ http://sass-lang.com          ]"
@@ -90,5 +92,9 @@
       }
     }
   },
-  "required": ["name", "designTokenProject", "designSystemProject"]
+  "required": [
+    "name",
+    "designTokenProject",
+    "designSystemProject"
+  ]
 }

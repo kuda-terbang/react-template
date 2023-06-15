@@ -1,4 +1,4 @@
-import { moveFilesToNewDirectory, logger, Tree } from '@nrwl/devkit';
+import { moveFilesToNewDirectory, logger, Tree } from '@nx/devkit';
 import {
   addFiles,
   moveFile,
@@ -21,7 +21,7 @@ export default function (tree: Tree, normalizedOptions: NormalizedReactDashboard
   );
 
   // Move nx files to root
-  deleteInstance('/template/project.json');
+  deleteInstance(['/template/project.json', '/template/webpack.config.js']);
   moveFiles(tree, [
     createPath(normalizedOptions, '/template/tsconfig.json', '/tsconfig.json'),
     createPath(normalizedOptions, '/template/tsconfig.app.json', '/tsconfig.app.json'),

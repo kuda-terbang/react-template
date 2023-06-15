@@ -1,4 +1,4 @@
-import { logger, Tree } from '@nrwl/devkit';
+import { logger, Tree } from '@nx/devkit';
 import { addFiles, deleteFileInstance } from '@kuda-terbang/generator-utils';
 
 import { name } from '../../../../project.json';

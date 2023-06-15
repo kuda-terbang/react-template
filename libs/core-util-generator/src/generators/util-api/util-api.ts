@@ -1,6 +1,6 @@
 import { normalizeOptions, addFiles } from '@kuda-terbang/generator-utils';
-import { convertNxGenerator, formatFiles, Tree } from '@nrwl/devkit';
-import { libraryGenerator } from '@nrwl/js';
+import { convertNxGenerator, formatFiles, Tree } from '@nx/devkit';
+import { libraryGenerator } from '@nx/js';
 
 import { name } from '../../../project.json';
 import { UtilApiGeneratorSchema } from './schema';
@@ -13,7 +13,7 @@ export const utilApiGenerator = async (tree: Tree, options: UtilApiGeneratorSche
   await libraryGenerator(tree, {
     ...normalizedOptions,
     buildable: true,
-    bundler: 'tsc',
+    bundler: 'swc',
     config: 'project',
     testEnvironment: 'node',
     publishable: true,

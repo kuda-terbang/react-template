@@ -4,12 +4,12 @@ import {
   updateJson,
   Tree,
   readWorkspaceConfiguration,
-} from '@nrwl/devkit';
-import { libraryGenerator } from '@nrwl/react';
+} from '@nx/devkit';
+import { libraryGenerator } from '@nx/react';
 import { addFiles, addModules, normalizeOptions } from '@kuda-terbang/generator-utils';
 import { name } from '../../../project.json';
 import { UiMuiReactComponentNormalized } from './schema';
-import { Linter } from '@nrwl/linter';
+import { Linter } from '@nx/linter';
 
 export default async function (tree: Tree, options: UiMuiReactComponentNormalized) {
   const normalizedOptions = normalizeOptions(tree, options);

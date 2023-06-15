@@ -1,6 +1,5 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "cli": "nx",
   "$id": "DataAccessStrapi",
   "title": "",
   "type": "object",
@@ -23,11 +22,13 @@
       "type": "string",
       "description": "A directory where the project is placed"
     },
-		"isWebExample": {
+    "isWebExample": {
       "type": "boolean",
       "description": "Generate example data-access-strapi used for web",
-			"default": false
+      "default": false
     }
   },
-  "required": ["name"]
+  "required": [
+    "name"
+  ]
 }

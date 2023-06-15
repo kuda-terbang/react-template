@@ -1,4 +1,4 @@
-import { ExecutorContext } from '@nrwl/devkit';
+import { ExecutorContext } from '@nx/devkit';
 import { renameFile } from '../../file-template-rename';
 import { RenameTemplateGeneratorExecutorSchema } from './schema';
 

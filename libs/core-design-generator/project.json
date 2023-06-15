@@ -5,13 +5,19 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nrwl/js:tsc",
+      "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
+			"dependsOn": [
+				{
+					"projects": "generator-utils",
+					"target": "build"
+				}
+			],
       "options": {
         "outputPath": "dist/libs/core-design-generator",
         "main": "libs/core-design-generator/src/index.ts",
-				"buildableProjectDepsInPackageJsonType": "dependencies",
-				"updateBuildableProjectDepsInPackageJson": true,
+        "buildableProjectDepsInPackageJsonType": "dependencies",
+        "updateBuildableProjectDepsInPackageJson": true,
         "tsConfig": "libs/core-design-generator/tsconfig.lib.json",
         "assets": [
           "libs/core-design-generator/*.md",
@@ -35,7 +41,7 @@
             "glob": "executors.json",
             "output": "."
           },
-					{
+          {
             "input": "",
             "glob": "LICENSE",
             "output": "/"
@@ -43,14 +49,14 @@
         ]
       }
     },
-		"rename-template": {
-			"executor": "@kuda-terbang/generator-utils:rename-template-generator",
-			"options": {
-				"projectName": "core-design-generator"
-			}
-		},
+    "rename-template": {
+      "executor": "@kuda-terbang/generator-utils:rename-template-generator",
+      "options": {
+        "projectName": "core-design-generator"
+      }
+    },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
@@ -62,7 +68,7 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
         "jestConfig": "libs/core-design-generator/jest.config.ts",

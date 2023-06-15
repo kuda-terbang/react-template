@@ -4,7 +4,7 @@
   "main": "src/index.js",
   "generators": "./generators.json",
   "description": "Nx plugin generator to help you create a production-ready frontend service and utils in React.",
-	"license": "MIT",
+  "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
@@ -27,8 +27,6 @@
     "name": "Robby Caesar Putra"
   },
   "scripts": {
-    "generate-design-token-example": "sh ./scripts/generate-design-token-example.sh",
-    "generate-icons-template": "sh ./scripts/generate-icons-template.sh",
     "generate-ui-mui-react-example": "sh ./scripts/generate-ui-mui-react-example.sh",
     "generate-nextjs-client-example": "sh ./scripts/generate-nextjs-client.sh example",
     "generate-nextjs-client-template": "sh ./scripts/generate-nextjs-client.sh template",

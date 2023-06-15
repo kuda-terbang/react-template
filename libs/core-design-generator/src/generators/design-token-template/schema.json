@@ -1,6 +1,5 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "cli": "nx",
   "$id": "CustomGenerator",
   "title": "",
   "type": "object",
@@ -19,12 +18,14 @@
       "description": "Add tags to the project (used for linting)",
       "alias": "t"
     },
-		"version": {
+    "version": {
       "type": "string",
       "description": "Add version as starter version",
-			"default": "0.1.0",
+      "default": "0.1.0",
       "alias": "v"
     }
   },
-  "required": ["name"]
+  "required": [
+    "name"
+  ]
 }

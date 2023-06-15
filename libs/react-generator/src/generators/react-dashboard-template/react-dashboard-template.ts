@@ -1,5 +1,5 @@
-import { formatFiles, Tree } from '@nrwl/devkit';
-import { applicationGenerator } from '@nrwl/react';
+import { formatFiles, Tree } from '@nx/devkit';
+import { applicationGenerator } from '@nx/react';
 import { addFiles, normalizeOptions } from '@kuda-terbang/generator-utils';
 
 import { name } from '../../../project.json';

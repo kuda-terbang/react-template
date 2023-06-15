@@ -22,7 +22,7 @@ Using package @kuda-terbang/icons-template as libs generator, to generate packag
 
 ## React Dashboard Template
 
-Extended @nrwl/react application generator to create dashboard with predefined installed package
+Extended @nx/react application generator to create dashboard with predefined installed package
 
 - React
 - [Material-UI](http://mui.com/)

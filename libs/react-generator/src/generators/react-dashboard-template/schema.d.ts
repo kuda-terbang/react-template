@@ -1,4 +1,4 @@
-import type { Linter, SupportedStyles } from '@nrwl/linter';
+import type { Linter, SupportedStyles } from '@nx/linter';
 import type { NormalizedSchema } from '@kuda-terbang/generator-utils';
 
 export interface ReactDashboardTemplateGeneratorSchema {

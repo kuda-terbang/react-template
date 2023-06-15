@@ -1,11 +1,4 @@
-import {
-  generateFiles,
-  getWorkspaceLayout,
-  logger,
-  names,
-  offsetFromRoot,
-  Tree,
-} from '@nrwl/devkit';
+import { generateFiles, getWorkspaceLayout, logger, names, offsetFromRoot, Tree } from '@nx/devkit';
 import { version } from '../package.json';
 
 type DefaultSchema = {
