@@ -17,7 +17,7 @@ export type TableProps<TData> = {
   rowActionOptions?: TableRowProps<TData>['rowActionOptions'];
   columnKey: keyof TData;
   headOptions: HeadCell<TData>[];
-	fetchType?: 'all' | 'page'
+  fetchType?: 'all' | 'page';
   isLoading?: boolean;
   onChangePage?: (newPage: number) => void;
   onChangeRowsPerPage?: (newPage: number) => void;
@@ -28,7 +28,7 @@ export type TableProps<TData> = {
     bulkOptions: EnhancedTableToolbarProps<TData>['bulkOptions'];
     onSelect?: (selected: TData[keyof TData][]) => void;
   };
-	totalData?: number
+  totalData?: number;
   tableTitle: string;
 };
 
@@ -36,7 +36,7 @@ function EnhancedTable<TData>({
   rowActionOptions = [],
   checkboxOptions,
   columnKey,
-	fetchType = 'all',
+  fetchType = 'all',
   headOptions,
   isLoading = false,
   onChangePage = () => ({}),
@@ -45,7 +45,7 @@ function EnhancedTable<TData>({
   rows,
   rowsPerPageOptions = [5, 10, 25],
   tableTitle,
-	totalData,
+  totalData,
 }: TableProps<TData>): JSX.Element {
   const [selected, setSelected] = React.useState<TData[keyof TData][]>([]);
   const [page, setPage] = React.useState(0);
@@ -118,9 +118,8 @@ function EnhancedTable<TData>({
     selectedData: selected,
   };
 
-	const usedRows = fetchType === 'all'
-		? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-		: rows
+  const usedRows =
+    fetchType === 'all' ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : rows;
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -139,25 +138,24 @@ function EnhancedTable<TData>({
                   ))}
                 </TableRow>
               )}
-              {usedRows
-                .map((row, index) => {
-                  const isItemSelected = isSelected(row[columnKey] as never);
-                  const labelId = `enhanced-table-checkbox-${index}`;
+              {usedRows.map((row, index) => {
+                const isItemSelected = isSelected(row[columnKey] as never);
+                const labelId = `enhanced-table-checkbox-${index}`;
 
-                  const props = {
-                    columnKey,
-                    onClick: handleClick,
-                    data: row,
-                    headOptions,
-                    isItemSelected,
-                    labelId,
-                    rowRenderOption,
-                    rowActionOptions,
-                    withCheckbox: !!checkboxOptions,
-                  };
+                const props = {
+                  columnKey,
+                  onClick: handleClick,
+                  data: row,
+                  headOptions,
+                  isItemSelected,
+                  labelId,
+                  rowRenderOption,
+                  rowActionOptions,
+                  withCheckbox: !!checkboxOptions,
+                };
 
-                  return <EnhancedTableRow key={labelId} {...props} />;
-                })}
+                return <EnhancedTableRow key={labelId} {...props} />;
+              })}
               {emptyRows > 0 && (
                 <TableRow key="empty">
                   <TableCell colSpan={6} />

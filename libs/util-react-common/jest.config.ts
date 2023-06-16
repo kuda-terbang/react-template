@@ -2,14 +2,9 @@
 export default {
   displayName: 'util-react-common',
   preset: '../../jest.preset.js',
-  globals: {},
   transform: {
-    '^.+\\.[tj]sx?$': [
-      'ts-jest',
-      {
-        tsconfig: '<rootDir>/tsconfig.spec.json',
-      },
-    ],
+    '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': '@nx/react/plugins/jest',
+    '^.+\\.[tj]sx?$': ['babel-jest', { presets: ['@nx/react/babel'] }],
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coverageDirectory: '../../coverage/libs/util-react-common',

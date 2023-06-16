@@ -1,34 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 
 import { Table } from '@kuda-terbang/ui-mui-react-example';
-import { useProductsGet, useProductsGetPage } from '@kuda-terbang/data-access-strapi';
+import { useProductsGet } from '@kuda-terbang/data-access-strapi';
 
 const StrapiView = () => {
-	const [page, setpage] = useState(1)
-	const [rowsPerPage, setrowsPerPage] = useState(3)
+  const [page, setpage] = useState(1);
+  const [rowsPerPage, setrowsPerPage] = useState(3);
   const navigate = useNavigate();
   const { data: dataProducts } = useProductsGet();
-	const { data: dataProductsPage } = useProductsGetPage({page, rowsPerPage})
-	const dataFull = dataProducts?.data?.data.map((item) => ({
-		...item,
-		...item.attributes,
-		attributes: undefined,
-	})) || []
-	const handleChangePage = (newPage: number) => {
-		setpage(newPage + 1)
-	}
-	const hanldeChangeRowsPerPage = (newPage: number) => {
-		setrowsPerPage(newPage)
-		setpage(0)
-	}
+  const { data: dataProductsPage } = useProductsGetPage({ page, rowsPerPage });
+  const dataFull =
+    dataProducts?.data?.data.map((item) => ({
+      ...item,
+      ...item.attributes,
+      attributes: undefined,
+    })) || [];
+  const handleChangePage = (newPage: number) => {
+    setpage(newPage + 1);
+  };
+  const hanldeChangeRowsPerPage = (newPage: number) => {
+    setrowsPerPage(newPage);
+    setpage(0);
+  };
   return (
     <div>
       <Typography variant="h2">Strapi</Typography>
       <Typography variant="h5">Table full fetch</Typography>
       <Table
-				fetchType='all'
+        fetchType="all"
         rows={dataFull}
         rowActionOptions={[
           {
@@ -44,7 +45,7 @@ const StrapiView = () => {
         }}
         columnKey="id"
         tableTitle="Product Table"
-				totalData={dataFull.length}
+        totalData={dataFull.length}
         checkboxOptions={{
           bulkOptions: [
             {
@@ -90,12 +91,12 @@ const StrapiView = () => {
           },
         ]}
       />
-			<Typography variant="h5">Table pagination</Typography>
+      <Typography variant="h5">Table pagination</Typography>
       <Table
-				fetchType='page'
-				rowsPerPageOptions={[rowsPerPage, 10, 25]}
-				totalData={dataProductsPage?.meta?.pagination?.total}
-				onChangeRowsPerPage={hanldeChangeRowsPerPage}
+        fetchType="page"
+        rowsPerPageOptions={[rowsPerPage, 10, 25]}
+        totalData={dataProductsPage?.meta?.pagination?.total}
+        onChangeRowsPerPage={hanldeChangeRowsPerPage}
         rows={
           dataProductsPage?.data?.map((item) => ({
             ...item,
@@ -103,7 +104,7 @@ const StrapiView = () => {
             attributes: undefined,
           })) || []
         }
-				onChangePage={handleChangePage}
+        onChangePage={handleChangePage}
         rowActionOptions={[
           {
             label: 'To Detail',
