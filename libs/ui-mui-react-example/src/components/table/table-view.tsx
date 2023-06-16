@@ -17,6 +17,7 @@ export type TableProps<TData> = {
   rowActionOptions?: TableRowProps<TData>['rowActionOptions'];
   columnKey: keyof TData;
   headOptions: HeadCell<TData>[];
+	fetchType?: 'all' | 'page'
   isLoading?: boolean;
   onChangePage?: (newPage: number) => void;
   onChangeRowsPerPage?: (newPage: number) => void;
@@ -27,6 +28,7 @@ export type TableProps<TData> = {
     bulkOptions: EnhancedTableToolbarProps<TData>['bulkOptions'];
     onSelect?: (selected: TData[keyof TData][]) => void;
   };
+	totalData?: number
   tableTitle: string;
 };
 
@@ -34,6 +36,7 @@ function EnhancedTable<TData>({
   rowActionOptions = [],
   checkboxOptions,
   columnKey,
+	fetchType = 'all',
   headOptions,
   isLoading = false,
   onChangePage = () => ({}),
@@ -42,6 +45,7 @@ function EnhancedTable<TData>({
   rows,
   rowsPerPageOptions = [5, 10, 25],
   tableTitle,
+	totalData,
 }: TableProps<TData>): JSX.Element {
   const [selected, setSelected] = React.useState<TData[keyof TData][]>([]);
   const [page, setPage] = React.useState(0);
@@ -114,6 +118,10 @@ function EnhancedTable<TData>({
     selectedData: selected,
   };
 
+	const usedRows = fetchType === 'all'
+		? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+		: rows
+
   return (
     <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
@@ -131,8 +139,7 @@ function EnhancedTable<TData>({
                   ))}
                 </TableRow>
               )}
-              {rows
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              {usedRows
                 .map((row, index) => {
                   const isItemSelected = isSelected(row[columnKey] as never);
                   const labelId = `enhanced-table-checkbox-${index}`;
@@ -162,7 +169,7 @@ function EnhancedTable<TData>({
         <TablePagination
           rowsPerPageOptions={rowsPerPageOptions}
           component="div"
-          count={rows.length}
+          count={totalData || rows.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}

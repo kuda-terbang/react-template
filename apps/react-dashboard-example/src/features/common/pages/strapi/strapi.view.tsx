@@ -1,24 +1,109 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 
 import { Table } from '@kuda-terbang/ui-mui-react-example';
-import { useProductsGet } from '@kuda-terbang/data-access-strapi';
+import { useProductsGet, useProductsGetPage } from '@kuda-terbang/data-access-strapi';
 
 const StrapiView = () => {
+	const [page, setpage] = useState(1)
+	const [rowsPerPage, setrowsPerPage] = useState(3)
   const navigate = useNavigate();
   const { data: dataProducts } = useProductsGet();
+	const { data: dataProductsPage } = useProductsGetPage({page, rowsPerPage})
+	const dataFull = dataProducts?.data?.data.map((item) => ({
+		...item,
+		...item.attributes,
+		attributes: undefined,
+	})) || []
+	const handleChangePage = (newPage: number) => {
+		setpage(newPage + 1)
+	}
+	const hanldeChangeRowsPerPage = (newPage: number) => {
+		setrowsPerPage(newPage)
+		setpage(0)
+	}
   return (
     <div>
       <Typography variant="h2">Strapi</Typography>
+      <Typography variant="h5">Table full fetch</Typography>
       <Table
+				fetchType='all'
+        rows={dataFull}
+        rowActionOptions={[
+          {
+            label: 'To Detail',
+            onClick: (labelId) => {
+              navigate(`/table-detail/${labelId}`);
+            },
+          },
+        ]}
+        rowRenderOption={{
+          createdAt: ({ createdAt }) => <>{new Date(createdAt).toLocaleDateString()}</>,
+          updatedAt: ({ updatedAt }) => <>{new Date(updatedAt).toLocaleDateString()}</>,
+        }}
+        columnKey="id"
+        tableTitle="Product Table"
+				totalData={dataFull.length}
+        checkboxOptions={{
+          bulkOptions: [
+            {
+              label: 'Export',
+              onClick: (selected) => {
+                console.log('selected export', selected);
+              },
+            },
+          ],
+        }}
+        headOptions={[
+          {
+            id: 'id',
+            label: 'Id',
+          },
+          {
+            id: 'description',
+            label: 'Description',
+          },
+          {
+            id: 'image',
+            label: 'Image',
+          },
+          {
+            id: 'price',
+            label: 'Price',
+          },
+          {
+            id: 'createdAt',
+            label: 'Created',
+          },
+          {
+            id: 'updatedAt',
+            label: 'Updated',
+          },
+          {
+            id: 'product_name',
+            label: 'Product Name',
+          },
+          {
+            id: 'stock',
+            label: 'Stock',
+          },
+        ]}
+      />
+			<Typography variant="h5">Table pagination</Typography>
+      <Table
+				fetchType='page'
+				rowsPerPageOptions={[rowsPerPage, 10, 25]}
+				totalData={dataProductsPage?.meta?.pagination?.total}
+				onChangeRowsPerPage={hanldeChangeRowsPerPage}
         rows={
-          dataProducts?.data?.data.map((item) => ({
+          dataProductsPage?.data?.map((item) => ({
             ...item,
             ...item.attributes,
             attributes: undefined,
           })) || []
         }
+				onChangePage={handleChangePage}
         rowActionOptions={[
           {
             label: 'To Detail',
