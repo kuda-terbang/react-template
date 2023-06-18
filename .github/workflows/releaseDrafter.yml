@@ -46,6 +46,10 @@ jobs:
       - name: Version and publish
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: actions/github-script@v6
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         with:
           script: |
             const script = require('./scripts/github/publish.js')
