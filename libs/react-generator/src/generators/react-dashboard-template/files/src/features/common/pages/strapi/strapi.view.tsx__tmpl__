@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Typography from '@mui/material/Typography'
 import { useNavigate } from 'react-router-dom'
 
 import { Table } from '@<%= npmScope %>/<%= designSystemProject %>'
-import { useProductsGet } from '@<%= npmScope %>/data-access-strapi'
+import { useProductsGet, useProductsGetPage } from '@<%= npmScope %>/data-access-strapi'
 
 const StrapiView = () => {
 	const [page, setpage] = useState(1)

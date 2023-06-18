@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 
 import { Table } from 'design-system';
-import { useProductsGet } from 'services/data-access-strapi';
+import { useProductsGet, useProductsGetPage } from 'services/data-access-strapi';
 
 const StrapiView = () => {
   const [page, setpage] = useState(1);
