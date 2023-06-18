@@ -2,10 +2,14 @@
   "name": "@kuda-terbang/cra-template-dashboard",
   "version": "0.0.1",
   "description": "Production ready react dashboard boilerplate",
-  "repository": "https://github.com/kuda-terbang/react-template/tree/main/apps/react-dashboard-template",
+  "repository": {
+		"url": "https://github.com/kuda-terbang/react-template.git",
+		"directory": "apps/react-dashboard-template"
+	},
   "author": "Robby Caesar Putra <robbycaesar@gmail.com>",
   "license": "MIT",
   "publishConfig": {
+		"registry": "https://npm.pkg.github.com/",
     "access": "public"
   },
   "keywords": [

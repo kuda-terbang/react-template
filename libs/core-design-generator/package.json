@@ -6,11 +6,13 @@
   "description": "Nx plugin generator to help you create a production-ready frontend design related utils or library",
   "license": "MIT",
   "publishConfig": {
+		"registry": "https://npm.pkg.github.com/",
     "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kuda-terbang/react-template/tree/main/libs/core-design-generator"
+		"url": "https://github.com/kuda-terbang/react-template.git",
+		"directory": "libs/core-design-generator"
   },
   "keywords": [
     "nx",
