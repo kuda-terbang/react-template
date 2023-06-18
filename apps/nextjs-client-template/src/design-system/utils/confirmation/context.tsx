@@ -3,12 +3,15 @@ import produce, { Immutable } from 'immer';
 
 export type ConfirmationPopupState = {
   isOpen: boolean;
-  title?: string;
-  message: string;
+  message?: string;
+  onSubmit?: () => void;
+  onCancel?: () => void;
+  onClose?: () => void;
   textButtonConfirm?: string;
   textButtonCancel?: string;
-  onSubmit?: () => void;
-  onClose?: () => void;
+  title?: string;
+  type?: 'confirmation' | 'alert';
+  variant?: 'success' | 'error';
 };
 
 type OpenConfirmationArgs = Omit<ConfirmationPopupState, 'isOpen'>;
@@ -17,6 +20,7 @@ export type ConfirmationPopupDispatch = {
   openConfirmation: (args: OpenConfirmationArgs) => void;
   closeConfirmation: () => void;
   onSubmitConfirmation: () => void;
+  onCancelConfirmation: () => void;
 };
 
 type ConfirmationPopupAction = {
@@ -26,11 +30,14 @@ type ConfirmationPopupAction = {
 
 // Initial state confirmation popup
 const initialState: ConfirmationPopupState = {
+  type: 'confirmation',
+  variant: 'success',
   title: '',
   isOpen: false,
   message: '',
   onSubmit: () => ({}),
   onClose: () => ({}),
+  onCancel: () => ({}),
   textButtonCancel: 'Cancel',
   textButtonConfirm: 'Submit',
 };
@@ -51,6 +58,9 @@ export const ConfirmationPopupDispatchContext = createContext<ConfirmationPopupD
     /* */
   },
   onSubmitConfirmation: () => {
+    /* */
+  },
+  onCancelConfirmation: () => {
     /* */
   },
 });
@@ -77,7 +87,7 @@ const reducer = produce((draft: ConfirmationPopupState, action: ConfirmationPopu
 // Custom hooks method confirmation popup
 export const useConfirmationPopup = (): ConfirmationPopupContext => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { onClose, onSubmit, ...popupProps } = state;
+  const { onClose, onCancel, onSubmit, ...popupProps } = state;
 
   const openConfirmation = useCallback((args: OpenConfirmationArgs) => {
     dispatch({
@@ -98,15 +108,21 @@ export const useConfirmationPopup = (): ConfirmationPopupContext => {
     closeConfirmation();
   }, [closeConfirmation, onSubmit]);
 
+  const onCancelConfirmation = useCallback(() => {
+    if (typeof onCancel === 'function') onCancel();
+    closeConfirmation();
+  }, [closeConfirmation, onCancel]);
+
   return useMemo(
     () => ({
       state: popupProps,
       dispatch: {
         openConfirmation,
         closeConfirmation,
+        onCancelConfirmation,
         onSubmitConfirmation,
       },
     }),
-    [popupProps, openConfirmation, closeConfirmation, onSubmitConfirmation]
+    [popupProps, openConfirmation, closeConfirmation, onSubmitConfirmation, onCancelConfirmation]
   );
 };

@@ -47,10 +47,7 @@ const parseArgs = () => {
 
 		console.log('> last git tag :')
 		execSync('git tag --sort=committerdate | tail -1', { stdio: 'inherit' })
-		execSync('git fetch --all', { stdio: 'inherit' })
-		console.log('> last git tag :')
-		execSync('git tag --sort=committerdate | tail -1', { stdio: 'inherit' })
-		const commandPublish = 'npx lerna publish from-git --no-private --yes'
+		const commandPublish = 'npx lerna publish from-package --no-private --yes'
 		console.log(`> exec lerna pubish : ${commandPublish}`);
 		execSync(commandPublish, { stdio: 'inherit' });
 
