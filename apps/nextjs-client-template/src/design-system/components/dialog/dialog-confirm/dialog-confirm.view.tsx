@@ -21,7 +21,9 @@ const ConfirmationPopup = memo(function ConfirmationPopup() {
     textButtonConfirm,
     textButtonCancel,
   } = useContext(ConfirmationPopupStateContext);
-  const { closeConfirmation, onCancelConfirmation, onSubmitConfirmation } = useContext(ConfirmationPopupDispatchContext);
+  const { closeConfirmation, onCancelConfirmation, onSubmitConfirmation } = useContext(
+    ConfirmationPopupDispatchContext
+  );
 
   let usedTextButtonCancel = textButtonCancel;
   let usedTextButtonConfirm = textButtonConfirm;
@@ -60,9 +62,9 @@ const ConfirmationPopup = memo(function ConfirmationPopup() {
   return (
     <DialogBasic
       onClose={closeConfirmation}
-			onClickCancel={onCancelConfirmation}
       isOpen={isOpen}
       maxWidth="xs"
+      onClickCancel={onCancelConfirmation}
       onClickSubmit={onSubmitConfirmation}
       textButtonCancel={usedTextButtonCancel}
       textButtonSubmit={usedTextButtonConfirm}

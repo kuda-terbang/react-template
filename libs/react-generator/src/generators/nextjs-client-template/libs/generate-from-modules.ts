@@ -150,7 +150,11 @@ export default function (tree: Tree, options: NextjsClientTemplateNormalized) {
             {
               fromString: `${scopeName}/util-react-common`,
               toString: '~/utils/util-react-common',
-              paths: ['/src/design-system/components/layout/layout-base.tsx'],
+              paths: [
+                '/src/design-system/components/layout/layout-base.tsx',
+                '/pages/about.page.tsx',
+                '/pages/_app.page.tsx',
+              ],
             },
           ]
         : undefined,

@@ -5,7 +5,7 @@ export type ConfirmationPopupState = {
   isOpen: boolean;
   message?: string;
   onSubmit?: () => void;
-	onCancel?: () => void
+  onCancel?: () => void;
   onClose?: () => void;
   textButtonConfirm?: string;
   textButtonCancel?: string;
@@ -60,7 +60,7 @@ export const ConfirmationPopupDispatchContext = createContext<ConfirmationPopupD
   onSubmitConfirmation: () => {
     /* */
   },
-	onCancelConfirmation: () => {
+  onCancelConfirmation: () => {
     /* */
   },
 });
@@ -108,10 +108,10 @@ export const useConfirmationPopup = (): ConfirmationPopupContext => {
     closeConfirmation();
   }, [closeConfirmation, onSubmit]);
 
-	const onCancelConfirmation = useCallback(() => {
-    if (typeof onCancel === 'function') onCancel()
-    closeConfirmation()
-  }, [closeConfirmation, onCancel])
+  const onCancelConfirmation = useCallback(() => {
+    if (typeof onCancel === 'function') onCancel();
+    closeConfirmation();
+  }, [closeConfirmation, onCancel]);
 
   return useMemo(
     () => ({
@@ -119,7 +119,7 @@ export const useConfirmationPopup = (): ConfirmationPopupContext => {
       dispatch: {
         openConfirmation,
         closeConfirmation,
-				onCancelConfirmation,
+        onCancelConfirmation,
         onSubmitConfirmation,
       },
     }),
