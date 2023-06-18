@@ -4,11 +4,13 @@
   "description": "Shared utils function for running generator",
   "license": "MIT",
   "publishConfig": {
+		"registry": "https://npm.pkg.github.com/",
     "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kuda-terbang/react-template/tree/main/libs/generator-utils"
+    "url": "https://github.com/kuda-terbang/react-template.git",
+		"directory": "libs/generator-utils"
   },
   "keywords": [
     "nx",

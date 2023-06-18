@@ -3,11 +3,12 @@
   "version": "0.0.6",
   "description": "Nx plugin and template resources to help you create a production-ready frontend service using React.",
   "publishConfig": {
+		"registry": "https://npm.pkg.github.com/",
     "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kuda-terbang/react-template"
+    "url": "https://github.com/kuda-terbang/react-template.git"
   },
   "keywords": [
     "nx",
