@@ -8,6 +8,7 @@ import { DefaultSeo } from 'next-seo';
 import { appWithTranslation } from 'next-i18next';
 
 import { ConfirmationProvider, Snackbar, theme } from '@kuda-terbang/ui-mui-react-example';
+import { setDayJsLocale } from '@kuda-terbang/util-react-common';
 import FlagsProvider from '../src/services/firebase-remote-config.service';
 import { GTM_ID } from '../src/services/analytics.service';
 import createEmotionCache from '../src/utils/create-emotion-cache';
@@ -26,9 +27,14 @@ interface MyAppProps extends AppPropsWithLayout {
 }
 
 const MyApp = (props: MyAppProps) => {
-  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+  const { Component, emotionCache = clientSideEmotionCache, pageProps, router } = props;
 
   const layoutType = Component.layoutType || 'LayoutBasic';
+
+  React.useEffect(() => {
+    setDayJsLocale(router.locale || (router.defaultLocale as string));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.locale]);
 
   const ComponentProvider = (
     <ConfirmationProvider>

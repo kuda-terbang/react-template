@@ -7,6 +7,14 @@ import Link from 'next/link';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import type { GetStaticProps } from 'next';
+import dayjs from 'dayjs';
+import {
+  capitalize,
+  formatDate,
+  formatDateFullMonth,
+  formatDateTime,
+  formatDateTimeFullMonth,
+} from '~/utils/util-react-common';
 
 import { trackChangeLocale } from '../src/utils/analytics-event';
 import { useTrackScreen } from '../src/services/analytics.service';
@@ -19,6 +27,8 @@ const About: NextPageWithLayout = (props) => {
   React.useEffect(() => {
     trackScreen('about');
   });
+
+  const now = dayjs('2023-05-01').toISOString();
 
   return (
     <Container maxWidth="lg">
@@ -55,6 +65,15 @@ const About: NextPageWithLayout = (props) => {
             {t('change-locale')} english
           </Button>
         </Link>
+        <Box>
+          <Typography variant="h2">Format</Typography>
+          <Box>Format Date: {formatDate(now)}</Box>
+          <Box>Format Date Full Month: {formatDateFullMonth(now)}</Box>
+          <Box>Format Date Time: {formatDateTime(now)}</Box>
+          <Box>Format Date Full Month: {formatDateTimeFullMonth(now)}</Box>
+          <Box>Lowercase: {capitalize('lowercase words')}</Box>
+          <Box>Lowercase: {capitalize('lowercase')}</Box>
+        </Box>
         <Box maxWidth="sm">
           <Button variant="contained" href="/">
             {t('to-home')}

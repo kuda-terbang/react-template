@@ -21,7 +21,16 @@ interface StrapiEndpoints {
     void,
     {
       data: StrapiObject<Product>[];
-    }
+			meta?: {
+        pagination?: {
+          page: number;
+          pageCount: number;
+          pageSize: number;
+          total: number;
+        };
+      };
+    },
+		{ 'pagination[page]': number; 'pagination[pageSize]': number }
   >;
   productDetailGet: Endpoint<
     void,
@@ -68,6 +77,10 @@ const endpoints: StrapiEndpoints = {
     method: 'get',
     isAuthenticated: true,
     path: '/products',
+		paramsUrl: {
+      'pagination[page]': 0,
+      'pagination[pageSize]': 0,
+    },
     response: {
       data: [],
     },

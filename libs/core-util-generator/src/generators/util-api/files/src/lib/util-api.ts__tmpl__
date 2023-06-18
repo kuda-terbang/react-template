@@ -132,6 +132,7 @@ export const createAxios: CreateAxios = ({ baseURL, baseHeaders, getToken }) => 
 
     const axiosOptions = {
       ...apiOptions,
+			params: paramsUrl,
       method,
       url,
     };

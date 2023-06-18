@@ -26,6 +26,12 @@ const PageCommonView = () => {
             openConfirmation({
               title: 'Title',
               message: 'Are you sure?',
+							onCancel: () => {
+								alert('Click cancel')
+							},
+							onSubmit: () => {
+								alert('Click Submit')
+							},
             })
           }
         >
@@ -39,6 +45,28 @@ const PageCommonView = () => {
           }
         >
           Confirm without title
+        </Button>
+				<Button
+          onClick={() =>
+            openConfirmation({
+							type: 'alert',
+							variant: 'success',
+              message: 'Good Answer',
+            })
+          }
+        >
+          Alert success
+        </Button>
+				<Button
+          onClick={() =>
+            openConfirmation({
+							type: 'alert',
+							variant: 'error',
+              message: 'Wrong Answer',
+            })
+          }
+        >
+          Alert error
         </Button>
       </div>
       <Strapi />
