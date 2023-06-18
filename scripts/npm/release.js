@@ -42,6 +42,9 @@ const parseArgs = () => {
 	commanPublish += ' --yes';
 
 	try {
+		console.log('> NPM_TOKEN exist: ', !!process.env.NPM_TOKEN)
+		console.log('> GITHUB_TOKEN exist: ', !!process.env.GITHUB_TOKEN)
+		execSync('npm whoami', { stdio: 'inherit' });
 		console.log(`> exec lerna publish : ${commanPublish}`);
 		execSync(commanPublish, { stdio: 'inherit' });
 
