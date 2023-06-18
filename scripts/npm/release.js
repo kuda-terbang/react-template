@@ -28,28 +28,25 @@ const parseArgs = () => {
   const options = parseArgs();
 
   console.log('> versioning build with lerna');
-  let commandVersion = 'npx lerna version';
+  let commanPublish = 'npx lerna publish --no-private';
   if (options.version) {
-    commandVersion += ` ${options.version}`;
+    commanPublish += ` ${options.version}`;
   }
-  commandVersion += ' --force-publish';
+  commanPublish += ' --force-publish';
 
   let logLevel = 'info';
   if (options.loglevel) {
     logLevel = options.loglevel;
   }
-  commandVersion += ` --loglevel=${logLevel}`;
-	commandVersion += ' --yes';
+  commanPublish += ` --loglevel=${logLevel}`;
+	commanPublish += ' --yes';
 
 	try {
-		console.log(`> exec lerna version : ${commandVersion}`);
-		execSync(commandVersion, { stdio: 'inherit' });
+		console.log(`> exec lerna publish : ${commanPublish}`);
+		execSync(commanPublish, { stdio: 'inherit' });
 
 		console.log('> last git tag :')
 		execSync('git tag --sort=committerdate | tail -1', { stdio: 'inherit' })
-		const commandPublish = 'npx lerna publish from-package --no-private --yes'
-		console.log(`> exec lerna pubish : ${commandPublish}`);
-		execSync(commandPublish, { stdio: 'inherit' });
 
 	} catch (error) {
 		console.error(`Command execution failed: ${error.message}`);
