@@ -3,7 +3,6 @@
   "version": "0.0.6",
   "description": "Nx plugin and template resources to help you create a production-ready frontend service using React.",
   "publishConfig": {
-		"registry": "https://npm.pkg.github.com/",
     "access": "public"
   },
   "repository": {

@@ -9,7 +9,6 @@
   "author": "Robby Caesar Putra <robbycaesar@gmail.com>",
   "license": "MIT",
   "publishConfig": {
-		"registry": "https://npm.pkg.github.com/",
     "access": "public"
   },
   "keywords": [
