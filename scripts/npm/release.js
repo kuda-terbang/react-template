@@ -43,8 +43,12 @@ const parseArgs = () => {
 
 	try {
 		console.log('> NPM_TOKEN exist: ', !!process.env.NPM_TOKEN)
+		const npmToken = process.env.NPM_TOKEN
+		console.log(`> ${npmToken.slice(0, 5)}...${npmToken.slice(npmToken.length - 5, npmToken.length)}`)
 		console.log('> GITHUB_TOKEN exist: ', !!process.env.GITHUB_TOKEN)
 		execSync('npm whoami', { stdio: 'inherit' });
+		console.log(`> NPM config Registry`);
+		execSync('npm config get registry', { stdio: 'inherit' });
 		console.log(`> exec lerna publish : ${commanPublish}`);
 		execSync(commanPublish, { stdio: 'inherit' });
 
