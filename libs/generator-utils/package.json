@@ -4,7 +4,6 @@
   "description": "Shared utils function for running generator",
   "license": "MIT",
   "publishConfig": {
-		"registry": "https://npm.pkg.github.com/",
     "access": "public"
   },
   "repository": {

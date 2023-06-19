@@ -6,7 +6,6 @@
   "description": "Nx plugin generator to help you create a production-ready frontend service and utils in React.",
   "license": "MIT",
   "publishConfig": {
-		"registry": "https://npm.pkg.github.com/",
     "access": "public"
   },
   "repository": {

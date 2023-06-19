@@ -6,7 +6,6 @@
   "description": "Nx plugin generator to help you create a production-ready frontend core web related utils or library",
   "license": "MIT",
   "publishConfig": {
-		"registry": "https://npm.pkg.github.com/",
     "access": "public"
   },
   "repository": {
