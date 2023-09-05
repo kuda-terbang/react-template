@@ -10,8 +10,8 @@ module.exports = async ({context, exec, github}) => {
 	await updatePackageJson({exec, version: finalVersion})
 
   // Create PR
-  const createdPR = await github.pulls.create({
-    owner: context.payload.repository.organization,
+  const createdPR = await github.rest.pulls.create({
+    owner: context.payload.organization.login,
     repo: context.repo.repo,
     head: 'develop',
     base: 'main',
