@@ -11,7 +11,8 @@
         "outputPath": "dist/libs/data-access-strapi",
         "main": "libs/data-access-strapi/src/index.ts",
         "tsConfig": "libs/data-access-strapi/tsconfig.lib.json",
-        "assets": ["libs/data-access-strapi/*.md"]
+        "assets": ["libs/data-access-strapi/*.md"],
+        "updateBuildableProjectDepsInPackageJson": true
       }
     },
     "publish": {

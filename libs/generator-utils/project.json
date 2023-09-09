@@ -18,7 +18,8 @@
             "glob": "LICENSE",
             "output": "/"
           }
-        ]
+        ],
+        "updateBuildableProjectDepsInPackageJson": true
       }
     },
     "lint": {

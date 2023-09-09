@@ -7,23 +7,23 @@
     "build": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
-			"dependsOn": [
-				{
-					"projects": "generator-utils",
-					"target": "build",
-					"params": "ignore"
-				},
-				{
-					"projects": "core-util-generator",
-					"target": "build",
-					"params": "ignore"
-				},
-				{
-					"projects": "core-util-web-generator",
-					"target": "build",
-					"params": "ignore"
-				}
-			],
+      "dependsOn": [
+        {
+          "projects": "generator-utils",
+          "target": "build",
+          "params": "ignore"
+        },
+        {
+          "projects": "core-util-generator",
+          "target": "build",
+          "params": "ignore"
+        },
+        {
+          "projects": "core-util-web-generator",
+          "target": "build",
+          "params": "ignore"
+        }
+      ],
       "options": {
         "outputPath": "dist/libs/react-generator",
         "main": "libs/react-generator/src/index.ts",
@@ -81,7 +81,7 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["coverage/libs/react-generator"],
+      "outputs": ["{workspaceRoot}/coverage/libs/react-generator"],
       "options": {
         "jestConfig": "libs/react-generator/jest.config.ts",
         "passWithNoTests": true

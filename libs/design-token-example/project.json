@@ -11,7 +11,8 @@
         "outputPath": "dist/libs/design-token-example",
         "main": "libs/design-token-example/src/index.ts",
         "tsConfig": "libs/design-token-example/tsconfig.lib.json",
-        "assets": ["libs/design-token-example/*.md"]
+        "assets": ["libs/design-token-example/*.md"],
+        "updateBuildableProjectDepsInPackageJson": true
       }
     },
     "lint": {
